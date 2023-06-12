@@ -62,9 +62,9 @@
   <main class="main">
     <!-- HERO  -->
     <section class="hero">
-      <div class="hero__text">
-        <h1 class="hero__text__title">La confiance avant tout!</h1>
-        <p class="hero__text__description">
+      <div class="hero-text">
+        <h1 class="hero-text-title">La confiance avant tout!</h1>
+        <p class="hero-text-description">
           Avec 15 d'experience, nous avont une large gamme de services et
           voitures d'occasion à vous offrir.
         </p>
@@ -75,7 +75,7 @@
     <div class="wrapper">
       <!-- SERVICES  -->
       <section id="services" class="services sections">
-        <h2 class="header__titles">Services</h2>
+        <h2 class="header-titles">Services</h2>
         <article class="cards">
           <div class="card">
             <div class="card-header">
@@ -118,8 +118,8 @@
       <!-- END SERVICES  -->
 
       <!-- CARS  -->
-      <section id="cars" class="new__cars sections">
-        <h2 class="header__titles">Nos derniers occasions</h2>
+      <section id="cars" class="used-cars sections">
+        <h2 class="header-titles">Nos voitures d'occasion</h2>
         <article class="cards">
           <div class="card">
             <div class="card-header">
@@ -173,7 +173,7 @@
 
     <!-- testimonial  -->
     <section class="testimonial sections" id="testimonial">
-      <h2 class="header__titles">Les avis</h2>
+      <h2 class="header-titles">Les avis</h2>
       <div id="demo" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
 
@@ -247,7 +247,7 @@
 
     <!-- CONTACT  -->
     <section class="contact sections" id="contact">
-      <h2 class="header__titles">Contact</h2>
+      <h2 class="header-titles">Contact</h2>
       <div class="contact-wrapper">
         <h3>Comment pouvons-nous vous aider?</h3>
         <p>Service? Rendez-vous? Voiture d'occasion?</p>
