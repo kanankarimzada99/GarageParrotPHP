@@ -64,6 +64,7 @@ img {
   display: block;
 }
 
+
 /* STOP SCROLL ON MOBILE  */
 .noscroll {
   margin: 0;
@@ -106,15 +107,18 @@ img {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin:0 auto;
 }
 
 .card {
-  flex: 1 0 250px;
+  flex: 1 0 400px;
   box-sizing: border-box;
   margin: 1rem 0.25em;
   border: 2px solid var(--grayLight);
   border-radius: 10px;
   padding: 10px;
+  max-width: calc(100% - 1em);
 }
 
 .card .card-header {
@@ -144,9 +148,55 @@ img {
   padding: 0.2rem 1rem;
 }
 
+.btn-fill:hover{
+  background-color: var(--primary);
+}
+input[type="submit"]{
+  background-color: var(--primary);
+  border:2px solid transparent;
+}
+
+input[type="submit"]:hover{
+ 
+  border:2px solid var(--primary);
+  background-color: #fff;
+  color:var(--font);
+  transition: all 0.2s ease;
+}
+
+.btn-wire {
+  border: 2px solid var(--primary);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.5rem;
+  color: var(--font);
+  display: inline-block;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  transition: all 0.2s ease;
+}
+.btn-wire.large {
+  padding: 0.2rem 1rem;
+}
+
+.btn-wire:hover{
+  background-color: var(--primary);
+}
+
+
+
+
+
+
 .header__titles {
   color: var(--font);
   font-size: 1.5rem;
+}
+
+
+@media (min-width:480px){
+  .card{
+    width: 400px;
+  }
 }
 
 @media (min-width: 992px) {
@@ -166,7 +216,7 @@ img {
 /* HEADER -----------------------------------*/
 
 .header {
-  padding: 20px 30px;
+  padding: 20px 60px;
 }
 
 .logo img {
@@ -382,6 +432,12 @@ new__cars {
   text-align: center;
 }
 
+@media screen and (min-width: 480px) {
+  .services .card,
+  .new__cars .card {
+    max-width: calc(100% - 1em);
+  }
+}
 @media screen and (min-width: 576px) {
   .services .card,
   .new__cars .card {
@@ -389,10 +445,18 @@ new__cars {
   }
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
+  
   .services .card,
   .new__cars .card {
-    max-width: 30%;
+    max-width: calc(50% - 1em);
+  }
+} */
+@media screen and (min-width: 992px) {
+  
+  .services .card,
+  .new__cars .card {
+    max-width: calc(33% - 1em);
   }
 }
 

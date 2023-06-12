@@ -52,7 +52,7 @@
           </li>
 
           <li>
-            <a href="#" class="btn-fill">Connecter</a>
+            <a href="#" class="btn-wire">Connecter</a>
           </li>
         </ul>
       </nav>
@@ -133,7 +133,7 @@
               </p>
               <hr>
               <p class="price">4444€</p>
-              <a href="#" class="btn-fill large">Details</a>
+              <a href="#" class="btn-wire large">Details</a>
             </div>
           </div>
           <div class="card">
@@ -148,7 +148,7 @@
               </p>
               <hr>
               <p class="price">4444€</p>
-              <a href="#" class="btn-fill large">Details</a>
+              <a href="#" class="btn-wire large">Details</a>
             </div>
           </div>
           <div class="card">
@@ -163,7 +163,7 @@
               </p>
               <hr>
               <p class="price">4444€</p>
-              <a href="#" class="btn-fill large">Details</a>
+              <a href="#" class="btn-wire large">Details</a>
             </div>
           </div>
         </article>
