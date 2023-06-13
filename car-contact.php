@@ -69,7 +69,8 @@
         <ul class="breadcrumb">
           <li><a href="#">Accueil</a></li>
           <li><a href="#">Veicules d'occasion</a></li>
-          <li><a href="#" class="isDisabled">Renault Clio - 5</a></li>
+          <li><a href="#">Renault Clio - 5</a></li>
+          <li><a href="#">Contact Achat</a></li>
         </ul>
         <div class="go-back-list">
           <li><a href="#">Revenir liste</a></li>
@@ -78,75 +79,53 @@
       <!-- END BREADCRUMB  -->
 
 
-      <!-- CARS  -->
-      <section id="cars" class="used-cars sections filtering">
-        <h2 class="header-titles">Renault Clio - 5</h2>
-        <div class="car">
-          <div class="car-images">
-            <div class="car-img">
-              <img src="./assets/images/car_card.png" alt="clio 5">
+      <!-- CONTACT  BUY CAR-->
+      <section class="contact contact-buy-car sections" id="contact">
+        <h2 class="header-titles">Contact achat</h2>
+        <p class="contact-buy-car-txt">Service? Rendez-vous? Voiture d'occasion? N'hésitez pas à nous rejoindre.</p>
+
+        <div class="contact-wrapper">
+
+
+          <form action="">
+            <div class="contact-form">
+              <div class="contact-form-left">
+                <div>
+                  <label for="lastname">Nom</label>
+                  <input type="text" name="lastname" id="lastname">
+                </div>
+                <div>
+                  <label for="name">Prenom</label>
+                  <input type="text" name="name" id="name">
+                </div>
+                <div>
+                  <label for="email">Adresse email</label>
+                  <input type="text" name="email" id="email">
+                </div>
+                <div>
+                  <label for="phone">Téléphone</label>
+                  <input type="text" name="phone" id="phone">
+                </div>
+              </div>
+              <div class="contact-form-right">
+                <div>
+                  <label for="subject">Sujet</label>
+                  <input type="text" name="subject" id="subject" value="Annonce numero 34 Renault Clio 5">
+                </div>
+                <div>
+                  <label for="message">Message</label>
+                  <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                </div>
+              </div>
             </div>
-            <div class="car-thumbnails">
-              <img src="./assets/images/car_card.png" alt="view frontal">
-              <img src="./assets/images/car_card.png" alt="view frontal">
-              <img src="./assets/images/car_card.png" alt="view frontal">
-              <img src="./assets/images/car_card.png" alt="view frontal">
+            <div class="form-btn">
+
+              <input type="submit" value="Envoyer" class="btn-fill">
             </div>
-          </div>
-          <div class="car-descriptions">
-            <div class="car-accessories">
-              <div class="car-accessories-description">
-                <span>Modele:</span>
-                <span>Clio -5</span>
-              </div>
-              <div class="car-accessories-description">
-                <span>Marque:</span>
-                <span>Renault</span>
-              </div>
-
-              <div class="car-accessories-description">
-                <span>Année:</span>
-                <span>2018</span>
-              </div>
-              <div class="car-accessories-description">
-                <span>Kilométrage</span>
-                <span>34866</span>
-              </div>
-
-              <br>
-
-              <div class="car-accessories-description">
-                <span>Color:</span>
-                <span>bleue</span>
-              </div>
-              <div class="car-accessories-description">
-                <span>Nombre place:</span>
-                <span>5</span>
-              </div>
-              <div class="car-accessories-description">
-                <span>Boite vitesse:</span>
-                <span>manuel</span>
-              </div>
-              <div class="car-accessories-description">
-                <span>CO2:</span>
-                <span>95 g/km</span>
-              </div>
-
-            </div>
-            <div class="car-price">4500€</div>
-            <div class="car-contact">
-              <hr>
-              <p>Pour acheter cette voiture, contactez-nous
-                au 555-554555 ou avec le formulaire de contact
-                en clicant <a href="#" class="car-link-contact">ici</a></p>
-            </div>
-
-          </div>
+          </form>
         </div>
-
-
       </section>
-      <!-- END CARS  -->
+      <!-- END CONTACT BUY CAR -->
     </div>
 
 

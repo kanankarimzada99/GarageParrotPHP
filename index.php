@@ -283,7 +283,7 @@
               </div>
             </div>
           </div>
-          <div class="contact-form-btn">
+          <div class="form-btn">
 
             <input type="submit" value="Envoyer" class="btn-fill">
           </div>
