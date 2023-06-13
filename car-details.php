@@ -69,6 +69,7 @@
         <ul class="breadcrumb">
           <li><a href="#">Accueil</a></li>
           <li><a href="#">Veicules d'occasion</a></li>
+          <li><a href="#">Renault Clio - 5</a></li>
         </ul>
         <div class="go-back-list">
           <li><a href="#">Revenir liste</a></li>
@@ -79,82 +80,70 @@
 
       <!-- CARS  -->
       <section id="cars" class="used-cars sections filtering">
-        <h2 class="header-titles">Nos voitures d'occasions</h2>
-        <div class="filter-cars">
-          <article class="filters">
+        <h2 class="header-titles">Renault Clio - 5</h2>
+        <div class="car">
+          <div class="car-images">
+            <div class="car-img">
+              <img src="./assets/images/car_card.png" alt="clio 5">
+            </div>
+            <div class="car-thumbnails">
+              <img src="./assets/images/car_card.png" alt="view frontal">
+              <img src="./assets/images/car_card.png" alt="view frontal">
+              <img src="./assets/images/car_card.png" alt="view frontal">
+              <img src="./assets/images/car_card.png" alt="view frontal">
+            </div>
+          </div>
+          <div class="car-descriptions">
+            <div class="car-accessories">
+              <div class="car-accessories-description">
+                <span>Modele:</span>
+                <span>Clio -5</span>
+              </div>
+              <div class="car-accessories-description">
+                <span>Marque:</span>
+                <span>Renault</span>
+              </div>
 
-            <div class="filter-group">
-              <h3 class="filter-group-title">Kilométrage</h3>
-              <input type="hidden" id="hidden_minimum_price" value="177220">
-              <input type="hidden" id="hidden_maximum_price" value="267220">
-              <p id="price-show">177220km - 267220km</p>
-              <input type="text" class="btn-wire" value="Réinitialiser">
+              <div class="car-accessories-description">
+                <span>Année:</span>
+                <span>2018</span>
+              </div>
+              <div class="car-accessories-description">
+                <span>Kilométrage</span>
+                <span>34866</span>
+              </div>
+
+              <br>
+
+              <div class="car-accessories-description">
+                <span>Color:</span>
+                <span>bleue</span>
+              </div>
+              <div class="car-accessories-description">
+                <span>Nombre place:</span>
+                <span>5</span>
+              </div>
+              <div class="car-accessories-description">
+                <span>Boite vitesse:</span>
+                <span>manuel</span>
+              </div>
+              <div class="car-accessories-description">
+                <span>CO2:</span>
+                <span>95 g/km</span>
+              </div>
+
             </div>
-            <div class="filter-group">
-              <h3 class="filter-group-title">Prix</h3>
-              <input type="hidden" id="hidden_minimum_price" value="4790">
-              <input type="hidden" id="hidden_maximum_price" value="38000">
-              <p id="price-show">4790€ - 38000€</p>
-              <input type="text" class="btn-wire" value="Réinitialiser">
-            </div>
-            <div class="filter-group">
-              <h3 class="filter-group-title">Kilométrage</h3>
-              <input type="hidden" id="hidden_minimum_price" value="177220">
-              <input type="hidden" id="hidden_maximum_price" value="267220">
-              <p id="price-show">2000 - 2020</p>
-              <input type="text" class="btn-wire" value="Réinitialiser">
+            <div class="car-price">4500€</div>
+            <div class="car-contact">
+              <hr>
+              <p>Pour acheter cette voiture, contactez-nous
+                au 555-554555 ou avec le formulaire de contact
+                en clicant <a href="#" class="car-link-contact">ici</a></p>
             </div>
 
-          </article>
-          <hr class="filters-diivision" />
-          <article class="cards">
-            <div class="card">
-              <div class="card-header">
-                <img class="card-img-top" src="./assets/images/car_card.png" alt="voiture marque X">
-              </div>
-              <div class="card-body">
-                <h4 class="card-title">Title</h4>
-                <p class="card-text">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Nesciunt, quidem.
-                </p>
-                <hr>
-                <p class="price">4444€</p>
-                <a href="#" class="btn-wire large">Details</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <img class="card-img-top" src="./assets/images/car_card.png" alt="voiture marque Y">
-              </div>
-              <div class="card-body">
-                <h4 class="card-title">Title</h4>
-                <p class="card-text">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Nesciunt, quidem.
-                </p>
-                <hr>
-                <p class="price">4444€</p>
-                <a href="#" class="btn-wire large">Details</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <img class="card-img-top" src="./assets/images/car_card.png" alt="voiture marque D">
-              </div>
-              <div class="card-body">
-                <h4 class="card-title">Title</h4>
-                <p class="card-text">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Nesciunt, quidem.
-                </p>
-                <hr>
-                <p class="price">4444€</p>
-                <a href="#" class="btn-wire large">Details</a>
-              </div>
-            </div>
-          </article>
+          </div>
         </div>
+
 
       </section>
       <!-- END CARS  -->

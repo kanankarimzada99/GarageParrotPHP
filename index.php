@@ -123,7 +123,7 @@
         <article class="cards">
           <div class="card">
             <div class="card-header">
-              <img class="card-img-top" src="./assets/images/car_hero.png" alt="voiture marque X">
+              <img class="card-img-top" src="./assets/images/car_card.png" alt="voiture marque X">
             </div>
             <div class="card-body">
               <h4 class="card-title">Title</h4>
@@ -138,7 +138,7 @@
           </div>
           <div class="card">
             <div class="card-header">
-              <img class="card-img-top" src="./assets/images/car_hero.png" alt="voiture marque Y">
+              <img class="card-img-top" src="./assets/images/car_card.png" alt="voiture marque Y">
             </div>
             <div class="card-body">
               <h4 class="card-title">Title</h4>
@@ -153,7 +153,7 @@
           </div>
           <div class="card">
             <div class="card-header">
-              <img class="card-img-top" src="./assets/images/car_hero.png" alt="voiture marque D">
+              <img class="card-img-top" src="./assets/images/car_card.png" alt="voiture marque D">
             </div>
             <div class="card-body">
               <h4 class="card-title">Title</h4>
