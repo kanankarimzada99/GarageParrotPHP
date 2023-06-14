@@ -17,6 +17,7 @@ font-family: 'Ubuntu', sans-serif; */
   --bs-card-color: var(--primary);
   --overlay: rgba(28, 28, 28, 0.7);
   --max-width: 2000px;
+  --max-wrapper: 1200px;
   /* --breakPSmall:576px;
   --breakPMedium:768px;
   --breakPLarge:992px;
@@ -48,10 +49,12 @@ body {
 a {
   color: #000;
   text-decoration: none;
+  outline:none;
 }
 a:hover {
   color: #fff;
   text-decoration: none;
+
 }
 
 html,
@@ -124,7 +127,7 @@ a.isDisabled {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 1200px;
+  max-width: var(--max-wrapper);
   margin:0 auto;
 }
 
@@ -261,7 +264,7 @@ input[type="submit"]:hover{
 }
 
 .breadcrumbs .go-back-list{
-  width: 30%;
+  width: 120px;
   padding:0;
   margin:0;
   line-height: 1rem;
@@ -336,7 +339,7 @@ input[type="submit"]:hover{
   list-style: none;
   z-index: 3;
   margin: 0;
-  max-width: 1200px;
+  max-width: var(--max-wrapper);
 }
 
 .nav-list li {
@@ -735,7 +738,7 @@ input[type="submit"]:hover{
   width: 100%;
   margin: 0 auto 40px;
   border-radius: 15px;
-  max-width: 1200px;
+  max-width: var(--max-wrapper);
 }
 
 .contact-wrapper h3 {
@@ -1053,7 +1056,7 @@ input[type="submit"]:hover{
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--max-wrapper);
   margin:0 auto;
  
  }
@@ -1219,7 +1222,7 @@ color:var(--primary);
 
 
 /* ---------------------------------------------------  
-connection BOSS EMPLOYE---------------------------
+CONNECTION BOSS EMPLOYE---------------------------
 -----------------------------------
 */
 
@@ -1245,7 +1248,7 @@ text-align: right;
   width: 100%;
 }
 
-.connection-wrapper {
+.connection .connection-wrapper {
   /* display: flex;
   flex-direction: column;
   align-items: center;
@@ -1253,9 +1256,9 @@ text-align: right;
   background-color: #fff;
   padding: 20px 10px 40px;
   width: 100%;
-  margin: 0 auto 40px;
+  margin: 20px auto 40px;
   border-radius: 15px;
-  max-width: 800px;
+  max-width: var(--max-wrapper);
 }
 
 
@@ -1297,7 +1300,7 @@ text-align: right;
 @media (min-width: 992px) {
 
   .connection {
-    padding:20px 60px;
+    padding:60px;
   }
 
 
@@ -1306,16 +1309,18 @@ text-align: right;
     gap: 30px;
     align-items: flex-start;
     margin-bottom: 30px;
-  }
+    padding:50px;
+    }
 
-  .connection-wrapper {
-    padding: 40px;
+  .connection .connection-wrapper {
+    padding: 20px;
+    margin:20px auto;
   }
 
 }
 
 
-/* ADD EMPLOYEE ------------------------------  */
+/* EMPLOYEE ------------------------------  */
 
  .breadcrumbs.breadcrumbs-connection{
   display:flex;
@@ -1324,9 +1329,144 @@ text-align: right;
  
 }
 
-/* ADD service ------------------------------  */
+
+
+
+/* SERVICE ------------------------------  */
 
 textarea.service-description{
   width: 100%;
 }
 
+
+
+/* 
+.connection .connection-wrapper
+
+{
+  max-width: var(--max-wrapper);
+  margin:20px auto;
+  padding:10px;
+  
+} */
+
+
+.connection .connection-header
+ {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max-wrapper);
+  width: 100%;
+  margin:40px auto;
+
+ 
+}
+
+ .connection .header-titles{
+  padding:0;
+  margin:0;
+  /* flex-grow:1; */
+}
+
+ a.btn-fill{
+  background-color: var(--primary);
+  color:var(--grayLight);
+}
+
+
+ a.btn-fill:hover, a.btn-fill:focus{
+  background-color: var(--primary);
+  color:var(--grayLight);
+  outline: 0;
+  border: none;
+  
+  
+}
+
+
+
+.connection .header-titles .btn-wire{
+margin-left:auto;
+
+}
+
+.connection-table
+
+{
+  /* margin:20px auto 40px;
+  max-width: var(--max-wrapper);
+  display:flex;
+  justify-content: center; */
+  overflow-x:auto;
+  
+}
+
+
+/* connection TABLE  */
+
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid var(--grayDark);
+  
+}
+
+td, th {
+  border: 1px solid var(--grayDark);
+  text-align: left;
+  padding: 8px;
+  
+}
+th:last-child{
+  text-align: center;
+}
+
+td{
+  font-size:1rem;
+}
+td:last-child{
+  
+  text-align: center;
+}
+td:last-child :first-child{
+  color:var(--font);
+  margin:5px;
+}
+td:last-child :last-child{
+  color:var(--primary);
+  margin:5px;
+}
+
+tr th:first-child{
+width: 300px;
+}
+tr th:last-child{
+width: 150px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+
+
+
+
+@media screen and (min-width:992px){
+  .service.sections {
+    
+    padding:20px 60px;
+ 
+  }
+
+  td{
+    font-size:1rem;
+  }
+
+  .service-wrapper{
+    margin:40px auto;
+  }
+}
