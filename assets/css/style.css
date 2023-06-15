@@ -68,12 +68,30 @@ img {
   /* max-width: 400px; */
 }
 
+input::placehoder{
+  color:var(--grayDark);
+}
 
-/* STOP SCROLL ON MOBILE  */
-.noscroll {
-  margin: 0;
-  height: 100%;
-  overflow: hidden;
+fieldset {
+  margin:20px 0 60px;
+  background: var(--grayLight);
+  border-radius: 5px;
+  padding: 15px;
+  border:2px solid var(--grayDark);
+  width: 100%;
+  max-width: 300px;
+  margin:20px auto 0;
+}
+
+fieldset legend {
+  display:inline-block;
+  color: var(--font);
+  font-size: 1rem;
+  border-radius: 5px;
+  font-weight: 500;
+  width: 110px;
+  text-transform: uppercase;
+  margin:0;
 }
 
 /* link disabled  */
@@ -82,6 +100,17 @@ a.isDisabled {
   pointer-events: none;
   opacity:0.5;
 }
+
+
+
+/* STOP SCROLL ON MOBILE  */
+.noscroll {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+
 
 
 .wrapper {
@@ -1470,3 +1499,62 @@ tr:nth-child(even) {
     margin:40px auto;
   }
 }
+
+
+/* OPENING TIME --------------  */
+.connection-wrapper.w-max{
+  max-width: 400px;
+  padding:20px;
+}
+
+.connection-wrapper.w-max input.large{
+  width: 100%;
+  max-width:150px;
+  padding:0 10px;
+}
+.connection-wrapper.w-max input{
+  width: 100%;
+  max-width:80px;
+  padding:0 10px;
+  margin:0;
+ 
+}
+
+
+.form-day.center{
+  text-align: center;
+
+ }
+
+.schedule-form{
+  margin:10px 0 40px;
+}
+
+.schedule-form .form-group{
+  width: 100%;
+  margin:10px auto 20px;
+
+}
+
+ 
+
+
+
+@media screen and (min-width:576px){
+  .connection-wrapper.w-max{
+    padding:30px;
+  }
+
+  .schedule-form .form-group{
+    width: 70%;
+    
+  
+  }
+
+  .connection-wrapper.w-max input{
+   margin:5px;
+  }
+
+  
+}
+
