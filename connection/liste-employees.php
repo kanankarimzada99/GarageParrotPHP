@@ -95,11 +95,8 @@
                 <td>andresd@sdf.ff</td>
                 <td>asdf234sdf</td>
                 <td>
-                  <i class="fa-solid fa-pencil"></i>
-                  </a>
-                  </a>
-                  <i class="fa-solid fa-trash-can"></i>
-                  </a>
+                  <a href=""><i class="fa-solid fa-pencil"></i></a>
+                  <a href="#"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
               <tr>
@@ -108,11 +105,8 @@
                 <td>andresd@sdf.ff</td>
                 <td>asdf234sdf</td>
                 <td>
-                  <i class="fa-solid fa-pencil"></i>
-                  </a>
-                  </a>
-                  <i class="fa-solid fa-trash-can"></i>
-                  </a>
+                  <a href=""><i class="fa-solid fa-pencil"></i></a>
+                  <a href="#"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
               <tr>
@@ -121,11 +115,8 @@
                 <td>andresd@sdf.ff</td>
                 <td>asdf234sdf</td>
                 <td>
-                  <i class="fa-solid fa-pencil"></i>
-                  </a>
-                  </a>
-                  <i class="fa-solid fa-trash-can"></i>
-                  </a>
+                  <a href=""><i class="fa-solid fa-pencil"></i></a>
+                  <a href="#"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
               <tr>
@@ -134,11 +125,8 @@
                 <td>andresd@sdf.ff</td>
                 <td>asdf234sdf</td>
                 <td>
-                  <i class="fa-solid fa-pencil"></i>
-                  </a>
-                  </a>
-                  <i class="fa-solid fa-trash-can"></i>
-                  </a>
+                  <a href=""><i class="fa-solid fa-pencil"></i></a>
+                  <a href="#"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
               <tr>
@@ -147,11 +135,8 @@
                 <td>andresd@sdf.ff</td>
                 <td>asdf234sdf</td>
                 <td>
-                  <i class="fa-solid fa-pencil"></i>
-                  </a>
-                  </a>
-                  <i class="fa-solid fa-trash-can"></i>
-                  </a>
+                  <a href=""><i class="fa-solid fa-pencil"></i></a>
+                  <a href="#"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
             </table>

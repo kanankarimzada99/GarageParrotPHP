@@ -1455,25 +1455,37 @@ th:last-child{
 td{
   font-size:1rem;
 }
+
 td:last-child{
-  
   text-align: center;
 }
-td:last-child :first-child{
+
+td a:first-child i{
+  color:var(--font);
+  margin:5px;
+  font-size:1.2rem;
+}
+td a:last-child i{
+  color:var(--primary);
+  margin:5px;
+  font-size:1.2rem;
+}
+
+/* td:last-child a i:first-child{
   color:var(--font);
   margin:5px;
 }
-td:last-child :last-child{
+td:last-child a i:last-child{
   color:var(--primary);
   margin:5px;
-}
+} */
 
-tr th:first-child{
+/* tr th:first-child{
 width: 300px;
 }
 tr th:last-child{
 width: 150px;
-}
+} */
 
 tr:nth-child(even) {
   background-color: #dddddd;

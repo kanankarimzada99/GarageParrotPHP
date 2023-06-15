@@ -75,7 +75,7 @@
       <!-- connection  -->
       <section class="connection">
         <div class="connection-header">
-          <h2 class="header-titles">Liste Horaires d'ouverture</h2>
+          <h2 class="header-titles">Liste Voitures</h2>
           <a href="add-employee.php" class="btn  btn-fill">Ajouter</a>
         </div>
 
@@ -83,87 +83,184 @@
           <div class="connection-table">
             <table>
               <tr>
-                <th>Jour</th>
-                <th>Matin début</th>
-                <th>Matin fin</th>
-                <th>Midi début</th>
-                <th>Midi fin</th>
-                <th>Action</th>
+                <th>Code</th>
+                <th>Titre</th>
+                <th>Marque</th>
+                <th>Année</th>
+                <th>Prix</th>
+                <th>Kilométrage</th>
+                <th>Couleur</th>
+                <th>Boite vitesse</th>
+                <th>Carburant</th>
+                <th>Portes</th>
+                <th>Images</th>
+                <th>action</th>
               </tr>
               <tr>
-                <td>Lundi</td>
-                <td>08:00</td>
-                <td>08:00</td>
-                <td>08:00</td>
-                <td>08:00</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
                 <td>
                   <a href=""><i class="fa-solid fa-pencil"></i></a>
                   <a href="#"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
               <tr>
-                <td>Lundi</td>
-                <td>08:00</td>
-                <td>08:00</td>
-                <td>08:00</td>
-                <td>08:00</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
                 <td>
                   <a href=""><i class="fa-solid fa-pencil"></i></a>
                   <a href="#"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
               <tr>
-                <td>Lundi</td>
-                <td>08:00</td>
-                <td>08:00</td>
-                <td>08:00</td>
-                <td>08:00</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
                 <td>
                   <a href=""><i class="fa-solid fa-pencil"></i></a>
                   <a href="#"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
               <tr>
-                <td>Lundi</td>
-                <td>08:00</td>
-                <td>08:00</td>
-                <td>08:00</td>
-                <td>08:00</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
                 <td>
                   <a href=""><i class="fa-solid fa-pencil"></i></a>
                   <a href="#"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
               <tr>
-                <td>Lundi</td>
-                <td>08:00</td>
-                <td>08:00</td>
-                <td>08:00</td>
-                <td>08:00</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
                 <td>
                   <a href=""><i class="fa-solid fa-pencil"></i></a>
                   <a href="#"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
               <tr>
-                <td>Lundi</td>
-                <td>08:00</td>
-                <td>08:00</td>
-                <td>08:00</td>
-                <td>08:00</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
                 <td>
                   <a href=""><i class="fa-solid fa-pencil"></i></a>
                   <a href="#"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
-
-
               <tr>
-                <td>Dimanche</td>
-                <td>fermé</td>
-                <td>fermé</td>
-                <td>fermé</td>
-                <td>fermé</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>
+                  <a href=""><i class="fa-solid fa-pencil"></i></a>
+                  <a href="#"><i class="fa-solid fa-trash-can"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>
+                  <a href=""><i class="fa-solid fa-pencil"></i></a>
+                  <a href="#"><i class="fa-solid fa-trash-can"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>
+                  <a href=""><i class="fa-solid fa-pencil"></i></a>
+                  <a href="#"><i class="fa-solid fa-trash-can"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
+                <td>Lorem</td>
                 <td>
                   <a href=""><i class="fa-solid fa-pencil"></i></a>
                   <a href="#"><i class="fa-solid fa-trash-can"></i></a>
