@@ -26,6 +26,7 @@
         <a class="logo" href="/">
           <img src="./assets/images/logo_car_title.png" alt="logo garage parrot">
         </a>
+        <!-- HAMBURGER MENU  -->
         <div class="mobile-menu">
           <div class="line1"></div>
           <div class="line2"></div>
@@ -71,7 +72,7 @@
           <li><a href="#">Veicules d'occasion</a></li>
         </ul>
         <div class="go-back-list">
-          <li><a href="#">Revenir liste</a></li>
+          <a href="#">Revenir liste</a>
         </div>
       </div>
       <!-- END BREADCRUMB  -->
@@ -85,9 +86,9 @@
 
             <div class="filter-group">
               <h3 class="filter-group-title">Kilométrage</h3>
-              <input type="hidden" id="hidden_minimum_price" value="177220">
-              <input type="hidden" id="hidden_maximum_price" value="267220">
-              <p id="price-show">177220km - 267220km</p>
+              <input type="hidden" id="hidden_minimum_kilometers" value="177220">
+              <input type="hidden" id="hidden_maximum_kilometers" value="267220">
+              <p id="kilometer-show">177220km - 267220km</p>
               <input type="text" class="btn-wire" value="Réinitialiser">
             </div>
             <div class="filter-group">
@@ -98,15 +99,15 @@
               <input type="text" class="btn-wire" value="Réinitialiser">
             </div>
             <div class="filter-group">
-              <h3 class="filter-group-title">Kilométrage</h3>
-              <input type="hidden" id="hidden_minimum_price" value="177220">
-              <input type="hidden" id="hidden_maximum_price" value="267220">
-              <p id="price-show">2000 - 2020</p>
+              <h3 class="filter-group-title">Année</h3>
+              <input type="hidden" id="hidden_minimum_year" value="177220">
+              <input type="hidden" id="hidden_maximum_year" value="267220">
+              <p id="year-show">2000 - 2020</p>
               <input type="text" class="btn-wire" value="Réinitialiser">
             </div>
 
           </article>
-          <hr class="filters-diivision" />
+          <hr class="filters-diivision">
           <article class="cards">
             <div class="card">
               <div class="card-header">

@@ -25,7 +25,6 @@
       <div class="user-connection">
         <span>Vicent</span>
         <i class="fa-solid fa-user"></i>
-
       </div>
       <nav class="nav">
         <a class="logo" href="/">
@@ -52,26 +51,19 @@
             <a href="#" class="btn-wire">Deconnecter</a>
           </li>
         </ul>
-
-
+        <!-- HAMBURGER MENU  -->
         <div class="mobile-menu">
           <div class="line1"></div>
           <div class="line2"></div>
           <div class="line3"></div>
         </div>
       </nav>
-
     </header>
   </div>
 
   <main class="main">
 
-
     <div class="wrapper">
-
-
-
-
       <!-- connection  -->
       <section class="connection">
         <div class="connection-header">
@@ -143,19 +135,12 @@
                   <a href="#"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
-
             </table>
           </div>
-
         </div>
-
-
       </section>
       <!-- END connection  -->
-
-
-
-
+    </div>
   </main>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

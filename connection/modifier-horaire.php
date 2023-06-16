@@ -25,13 +25,11 @@
       <div class="user-connection">
         <span>Vicent</span>
         <i class="fa-solid fa-user"></i>
-
       </div>
       <nav class="nav">
         <a class="logo" href="/">
           <img src="../assets/images/logo_car_title.png" alt="logo garage parrot">
         </a>
-
         <ul class="nav-list">
           <li>
             <a class="nav-link" aria-current="page" href="#">Employés</a>
@@ -52,23 +50,19 @@
             <a href="#" class="btn-wire">Deconnecter</a>
           </li>
         </ul>
-
-
+        <!-- HAMBURGER MENU  -->
         <div class="mobile-menu">
           <div class="line1"></div>
           <div class="line2"></div>
           <div class="line3"></div>
         </div>
       </nav>
-
     </header>
   </div>
 
   <main class="main">
 
-
     <div class="wrapper">
-
 
       <!-- connection  -->
       <section class="connection sections" id="connection">
@@ -77,7 +71,6 @@
 
           <form action="">
             <div class="schedule-form">
-
               <div class="form-day center">
                 <label for="day">Jour de la semaine</label>
                 <input type="text" name="day" id="day" placeholder="lundi" class="large">
@@ -97,26 +90,22 @@
                 <legend>Après-midi</legend>
                 <div class="form-group">
                   <label for="afternoon-open">Ouverture</label>
-                  <input type="text" name="afternoon-open" id="morning-open" placeholder="00:00">
+                  <input type="text" name="afternoon-open" id="afternoon-open" placeholder="00:00">
                 </div>
                 <div class="form-group">
-                  <label for="morning-close">Fermeture</label>
+                  <label for="afternoon-close">Fermeture</label>
                   <input type="text" name="afternoon-close" id="afternoon-close" placeholder="00:00">
                 </div>
               </fieldset>
             </div>
             <div class="form-btn">
-
               <button type="submit" value="modify-schedule" class="btn-fill">Modifier</button>
             </div>
           </form>
         </div>
       </section>
       <!-- END CONTACT  -->
-
-
-
-
+    </div>
   </main>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

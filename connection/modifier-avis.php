@@ -25,13 +25,11 @@
       <div class="user-connection">
         <span>Vicent</span>
         <i class="fa-solid fa-user"></i>
-
       </div>
       <nav class="nav">
         <a class="logo" href="/">
           <img src="../assets/images/logo_car_title.png" alt="logo garage parrot">
         </a>
-
         <ul class="nav-list">
           <li>
             <a class="nav-link" aria-current="page" href="#">Employés</a>
@@ -52,56 +50,44 @@
             <a href="#" class="btn-wire">Deconnecter</a>
           </li>
         </ul>
-
-
+        <!-- HAMBURGER MENU  -->
         <div class="mobile-menu">
           <div class="line1"></div>
           <div class="line2"></div>
           <div class="line3"></div>
         </div>
       </nav>
-
     </header>
   </div>
 
   <main class="main">
-
-
     <div class="wrapper">
 
       <!-- BREADCRUMB  -->
       <div class="breadcrumbs breadcrumbs-connection">
-
         <div class="go-back-list">
-          <li><a href="#">Revenir liste</a></li>
+          <a href="#">Revenir liste</a>
         </div>
       </div>
       <!-- END BREADCRUMB  -->
-
 
       <!-- connection  -->
       <section class="connection sections" id="connection">
         <h2 class="header-titles">Modifier avis client</h2>
         <div class="connection-wrapper">
-
           <form action="">
             <div class="connection-form">
-
               <div class="form-group">
                 <label for="review-name">Nom client</label>
                 <input type="text" name="review-name" id="review-name">
               </div>
-
-
               <div class="form-group">
                 <label for="review-comment">Commentaire</label>
                 <textarea name="review-comment" id="review-comment" class="service-description" cols="30"
                   rows="5"></textarea>
               </div>
-
               <div class="form-group">
                 <label for="review-note">Note client</label>
-
                 <select name="review-note" id="review-note">
                   <option value="">--Choisissez une note--</option>
                   <option value="1">1</option>
@@ -110,26 +96,16 @@
                   <option value="4">4</option>
                   <option value="5">5</option>
                 </select>
-
-
-
               </div>
-
-
-
             </div>
             <div class="form-btn">
-
               <button type="submit" value="modify-review" class="btn-fill">Modifier</button>
             </div>
           </form>
         </div>
       </section>
       <!-- END CONTACT  -->
-
-
-
-
+    </div>
   </main>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

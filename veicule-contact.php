@@ -26,6 +26,7 @@
         <a class="logo" href="/">
           <img src="./assets/images/logo_car_title.png" alt="logo garage parrot">
         </a>
+        <!-- HAMBURGER MENU  -->
         <div class="mobile-menu">
           <div class="line1"></div>
           <div class="line2"></div>
@@ -73,7 +74,7 @@
           <li><a href="#" class="isDisabled">Contact Achat</a></li>
         </ul>
         <div class="go-back-list">
-          <li><a href="#">Revenir liste</a></li>
+          <a href="#">Revenir liste</a>
         </div>
       </div>
       <!-- END BREADCRUMB  -->

@@ -25,13 +25,11 @@
       <div class="user-connection">
         <span>Vicent</span>
         <i class="fa-solid fa-user"></i>
-
       </div>
       <nav class="nav">
         <a class="logo" href="/">
           <img src="../assets/images/logo_car_title.png" alt="logo garage parrot">
         </a>
-
         <ul class="nav-list">
           <li>
             <a class="nav-link" aria-current="page" href="#">Employés</a>
@@ -52,23 +50,19 @@
             <a href="#" class="btn-wire">Deconnecter</a>
           </li>
         </ul>
-
-
+        <!-- HAMBURGER MENU  -->
         <div class="mobile-menu">
           <div class="line1"></div>
           <div class="line2"></div>
           <div class="line3"></div>
         </div>
       </nav>
-
     </header>
   </div>
 
   <main class="main">
 
-
     <div class="wrapper">
-
 
       <!-- connection  -->
       <section class="connection sections" id="connection">
@@ -90,43 +84,20 @@
                     <label for="car-title">titre</label>
                     <input type="text" name="car-title" id="car-title">
                   </div>
-
-
                 </div>
 
                 <!-- RIGHT SIDE  -->
                 <div class="car-model-bottom">
                   <div class="form-group">
-                    <label for="car-code">Marque</label>
-                    <input type="text" name="car-code" id="car-code">
+                    <label for="car-brand">Marque</label>
+                    <input type="text" name="car-brand" id="car-brand">
                   </div>
                   <div class="form-group">
                     <label for="car-model">Modèle</label>
                     <input type="text" name="car-model" id="car-model">
                   </div>
                 </div>
-
-
-
               </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
               <div class="car-description">
 
@@ -148,23 +119,19 @@
                     <label for="car-number-doors">Numéro de portes</label>
                     <input type="text" name="car-number-doors" id="car-number-doors">
                   </div>
-
                 </div>
 
                 <!-- RIGHT SIDE  -->
                 <div class="car-description-right">
                   <div class="form-group">
-
                     <label for="car-price">Prix</label>
                     <input type="text" name="car-price" id="car-price">
                   </div>
                   <div class="form-group">
-
                     <label for="car-color">Couleur</label>
                     <input type="text" name="car-color" id="car-color">
                   </div>
                   <div class="form-group">
-
                     <label for="car-fuel">Carburant</label>
                     <input type="text" name="car-fuel" id="car-fuel">
                   </div>
@@ -173,24 +140,16 @@
                     <input type="file" id="car-images" multiple>
                   </div>
                 </div>
-
-
-
               </div>
-
             </div>
             <div class="form-btn">
-
               <button type="submit" value="modify-car" class="btn-fill">Modifier</button>
             </div>
           </form>
         </div>
       </section>
       <!-- END CONTACT  -->
-
-
-
-
+    </div>
   </main>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

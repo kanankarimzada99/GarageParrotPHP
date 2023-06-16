@@ -26,6 +26,7 @@
         <a class="logo" href="/">
           <img src="../assets/images/logo_car_title.png" alt="logo garage parrot">
         </a>
+        <!-- HAMBURGER MENU  -->
         <div class="mobile-menu">
           <div class="line1"></div>
           <div class="line2"></div>
@@ -50,7 +51,6 @@
           <li>
             <a class="nav-link" aria-current="page" href="#">Contact</a>
           </li>
-
           <li>
             <a href="#" class="btn-wire">Connecter</a>
           </li>
@@ -61,9 +61,7 @@
 
   <main class="main">
 
-
     <div class="wrapper">
-
 
       <!-- connection  -->
       <section class="connection w-min sections" id="connection">
@@ -72,7 +70,6 @@
 
           <form action="">
             <div class="connection-form">
-
               <div class="form-group">
                 <label for="email">Adresse email</label>
                 <input type="text" name="email" id="email">
@@ -83,17 +80,13 @@
               </div>
             </div>
             <div class="form-btn">
-
               <input type="submit" value="connection" class="btn-fill">
             </div>
           </form>
         </div>
       </section>
       <!-- END CONTACT  -->
-
-
-
-
+    </div>
   </main>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
