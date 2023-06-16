@@ -34,7 +34,7 @@
 
         <ul class="nav-list">
           <li>
-            <a class="nav-link" aria-current="page" href="#">Employes</a>
+            <a class="nav-link" aria-current="page" href="#">Employés</a>
           </li>
           <li>
             <a class="nav-link" href="#services">Services</a>
@@ -72,36 +72,42 @@
 
       <!-- connection  -->
       <section class="connection sections" id="connection">
-        <h2 class="header-titles">Ajouter employé</h2>
-        <div class="connection-wrapper">
+        <h2 class="header-titles">Modifier Horaire</h2>
+        <div class="connection-wrapper w-max">
 
           <form action="">
-            <div class="connection-form">
+            <div class="schedule-form">
 
-              <div class="form-group">
-                <label for="name">Prénom</label>
-                <input type="text" name="name" id="name">
+              <div class="form-day center">
+                <label for="day">Jour de la semaine</label>
+                <input type="text" name="day" id="day" placeholder="lundi" class="large">
               </div>
-              <div class="form-group">
-                <label for="lastname">Nom</label>
-                <input type="text" name="lastname" id="lastname">
-              </div>
-              <div class="form-group">
-                <label for="email">Adresse email</label>
-                <input type="text" name="email" id="email">
-              </div>
-              <div class="form-group">
-                <label for="password">Mot de passe</label>
-                <input type="password" name="password" id="password">
-              </div>
-              <div class="form-group">
-                <label for="conf-password">Confirm mot de passe</label>
-                <input type="conf-password" name="conf-password" id="conf-password">
-              </div>
+              <fieldset>
+                <legend>Matin</legend>
+                <div class="form-group">
+                  <label for="morning-open">Ouverture</label>
+                  <input type="text" name="morning-open" id="morning-open" placeholder="00:00">
+                </div>
+                <div class="form-group">
+                  <label for="morning-close">Fermeture</label>
+                  <input type="text" name="morning-close" id="morning-close" placeholder="00:00">
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>Après-midi</legend>
+                <div class="form-group">
+                  <label for="afternoon-open">Ouverture</label>
+                  <input type="text" name="afternoon-open" id="morning-open" placeholder="00:00">
+                </div>
+                <div class="form-group">
+                  <label for="morning-close">Fermeture</label>
+                  <input type="text" name="afternoon-close" id="afternoon-close" placeholder="00:00">
+                </div>
+              </fieldset>
             </div>
             <div class="form-btn">
 
-              <button type="submit" value="add-employee" class="btn-fill">Ajouter</button>
+              <button type="submit" value="modify-schedule" class="btn-fill">Modifier</button>
             </div>
           </form>
         </div>

@@ -69,58 +69,39 @@
 
     <div class="wrapper">
 
-      <!-- BREADCRUMB  -->
-      <div class="breadcrumbs breadcrumbs-connection">
-
-        <div class="go-back-list">
-          <li><a href="#">Revenir liste</a></li>
-        </div>
-      </div>
-      <!-- END BREADCRUMB  -->
-
 
       <!-- connection  -->
       <section class="connection sections" id="connection">
-        <h2 class="header-titles">Ajouter un avis de client</h2>
+        <h2 class="header-titles">Ajouter employé</h2>
         <div class="connection-wrapper">
 
           <form action="">
             <div class="connection-form">
 
               <div class="form-group">
-                <label for="review-name">Nom client</label>
-                <input type="text" name="review-name" id="review-name">
+                <label for="name">Prénom</label>
+                <input type="text" name="name" id="name">
               </div>
-
-
               <div class="form-group">
-                <label for="review-comment">Commentaire</label>
-                <textarea name="review-comment" id="review-comment" class="service-description" cols="30"
-                  rows="5"></textarea>
+                <label for="lastname">Nom</label>
+                <input type="text" name="lastname" id="lastname">
               </div>
-
               <div class="form-group">
-                <label for="review-note">Note client</label>
-
-                <select name="review-note" id="review-note">
-                  <option value="">--Choisissez une note--</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-
-
-
+                <label for="email">Adresse email</label>
+                <input type="text" name="email" id="email">
               </div>
-
-
-
+              <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="password">
+              </div>
+              <div class="form-group">
+                <label for="conf-password">Confirm mot de passe</label>
+                <input type="conf-password" name="conf-password" id="conf-password">
+              </div>
             </div>
             <div class="form-btn">
 
-              <button type="submit" value="add-review" class="btn-fill">Ajouter</button>
+              <button type="submit" value="add-employee" class="btn-fill">Ajouter</button>
             </div>
           </form>
         </div>

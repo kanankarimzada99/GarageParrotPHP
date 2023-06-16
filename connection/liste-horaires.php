@@ -34,7 +34,7 @@
 
         <ul class="nav-list">
           <li>
-            <a class="nav-link" aria-current="page" href="#">Employes</a>
+            <a class="nav-link" aria-current="page" href="#">Employés</a>
           </li>
           <li>
             <a class="nav-link" href="#connections">connections</a>
@@ -76,7 +76,7 @@
       <section class="connection">
         <div class="connection-header">
           <h2 class="header-titles">Liste Horaires d'ouverture</h2>
-          <a href="add-employee.php" class="btn  btn-fill">Ajouter</a>
+          <a href="#" class="btn  btn-fill">Ajouter</a>
         </div>
 
         <div class="connection-wrapper wrapper">

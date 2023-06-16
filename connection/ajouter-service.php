@@ -34,7 +34,7 @@
 
         <ul class="nav-list">
           <li>
-            <a class="nav-link" aria-current="page" href="#">Employes</a>
+            <a class="nav-link" aria-current="page" href="#">Employés</a>
           </li>
           <li>
             <a class="nav-link" href="#services">Services</a>
@@ -99,7 +99,7 @@
             </div>
             <div class="form-btn">
 
-              <button type="submit" value="modify-employee" class="btn-fill">Ajouter</button>
+              <button type="submit" value="add-service" class="btn-fill">Ajouter</button>
             </div>
           </form>
         </div>

@@ -34,7 +34,7 @@
 
         <ul class="nav-list">
           <li>
-            <a class="nav-link" aria-current="page" href="#">Employes</a>
+            <a class="nav-link" aria-current="page" href="#">Employés</a>
           </li>
           <li>
             <a class="nav-link" href="#services">Services</a>

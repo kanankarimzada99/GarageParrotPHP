@@ -81,7 +81,7 @@
 
       <!-- connection  -->
       <section class="connection sections" id="connection">
-        <h2 class="header-titles">Ajouter un avis de client</h2>
+        <h2 class="header-titles">Modifier avis client</h2>
         <div class="connection-wrapper">
 
           <form action="">
@@ -120,7 +120,7 @@
             </div>
             <div class="form-btn">
 
-              <button type="submit" value="add-review" class="btn-fill">Ajouter</button>
+              <button type="submit" value="modify-review" class="btn-fill">Modifier</button>
             </div>
           </form>
         </div>

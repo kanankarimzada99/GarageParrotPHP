@@ -72,13 +72,11 @@
 
       <!-- connection  -->
       <section class="connection sections" id="connection">
-        <h2 class="header-titles">Ajouter veícule</h2>
+        <h2 class="header-titles">Modifier veícule</h2>
         <div class="connection-wrapper">
 
           <form action="" enctype="multipart/form-data">
             <div class="connection-form add-car">
-
-
 
               <div class="car-model">
 
@@ -183,7 +181,7 @@
             </div>
             <div class="form-btn">
 
-              <button type="submit" value="add-car" class="btn-fill">Ajouter</button>
+              <button type="submit" value="modify-car" class="btn-fill">Modifier</button>
             </div>
           </form>
         </div>
