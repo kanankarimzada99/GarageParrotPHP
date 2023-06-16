@@ -65,7 +65,7 @@
 
       <!-- connection  -->
       <section class="connection w-min sections" id="connection">
-        <h2 class="header-titles">connection</h2>
+        <h2 class="header-titles">connexion</h2>
         <div class="connection-wrapper w-min">
 
           <form action="">

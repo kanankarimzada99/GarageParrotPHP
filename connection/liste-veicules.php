@@ -68,7 +68,7 @@
       <!-- connection  -->
       <section class="connection">
         <div class="connection-header">
-          <h2 class="header-titles">Liste Voitures</h2>
+          <h2 class="header-titles">Liste Veícules</h2>
           <a href="#" class="btn  btn-fill">Ajouter</a>
         </div>
 

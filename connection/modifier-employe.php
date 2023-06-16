@@ -74,7 +74,7 @@
 
       <!-- connection  -->
       <section class="connection sections" id="connection">
-        <h2 class="header-titles">Modifier employée</h2>
+        <h2 class="header-titles">Modifier employé</h2>
         <div class="connection-wrapper">
 
           <form action="">

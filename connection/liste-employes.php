@@ -66,7 +66,7 @@
       <!-- connection  -->
       <section class="connection">
         <div class="connection-header">
-          <h2 class="header-titles">Liste Employée</h2>
+          <h2 class="header-titles">Liste Employés</h2>
           <a href="add-employee.php" class="btn  btn-fill">Ajouter</a>
         </div>
 
