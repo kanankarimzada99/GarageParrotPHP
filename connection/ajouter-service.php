@@ -87,17 +87,15 @@
           <form action="">
             <div class="connection-form">
 
-              <div>
+              <div class="form-group">
                 <label for="service">Service</label>
                 <input type="text" name="service" id="service">
               </div>
-              <div>
+              <div class="form-group">
                 <label for="service-description">Description</label>
                 <textarea name="service-description" id="service-description" class="service-description" cols="30"
                   rows="10"></textarea>
               </div>
-
-
             </div>
             <div class="form-btn">
 

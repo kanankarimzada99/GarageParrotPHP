@@ -25,7 +25,7 @@ font-family: 'Ubuntu', sans-serif; */
   /* --margin-top:40px; */
 }
 
-/* GENERAL  */
+
 /* h2,
 h3 {
   color: var(--primary);
@@ -33,6 +33,11 @@ h3 {
 
 /* END OVERWRITE BOOTSTRAP  */
 
+
+
+
+
+/* GENERAL ---------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -94,12 +99,21 @@ fieldset legend {
   margin:0;
 }
 
-/* link disabled  */
-a.isDisabled {
-  text-decoration: underline;
-  pointer-events: none;
-  opacity:0.5;
+select {
+  font-size: 0.9rem;
+  padding: 2px 5px;
+  
 }
+
+.select{
+  margin:0 0 20px;
+}
+
+textarea {
+  resize: none;
+}
+
+
 
 
 
@@ -197,6 +211,7 @@ a.isDisabled {
   padding: 0.2rem 1rem;
 }
 
+
 .btn-fill:hover{
   background-color: var(--primary);
 }
@@ -225,6 +240,11 @@ input[type="submit"]:hover{
 }
 .btn-wire.large {
   padding: 0.2rem 1rem;
+}
+
+.btn-wire.small {
+  padding: 0.2rem 1rem;
+  display:inline-block;
 }
 
 .btn-wire:hover{
@@ -265,10 +285,11 @@ input[type="submit"]:hover{
   display: inline;
   font-size: 0.8rem;
   font-weight: 500;
+ 
 }
 .breadcrumbs li+li:before {
   /* padding: 8px; */
-  color: var(--primary);
+  color: var(--font);
   content: "\00a0>\00a0";
 
 }
@@ -281,23 +302,34 @@ input[type="submit"]:hover{
   line-height: 1rem;
   font-size: 1rem;
   font-weight: 400;
+  color:var(--primary);
 }
-.breadcrumbs li a:hover {
-  color: var(--primary);
-  text-decoration: underline;
-}
+
+
+
 
 .breadcrumbs li a:hover {
   color: var(--primary);
   text-decoration: underline;
 }
+
+
 
 .breadcrumbs .go-back-list{
   width: 120px;
   padding:0;
   margin:0;
   line-height: 1rem;
-  text-align: end;}
+  text-align: end;
+}
+
+/* link disabled  */
+.breadcrumbs a.isDisabled {
+  text-decoration: none;
+  pointer-events: none;
+  opacity:0.8;
+  color:var(--grayDark);
+}
 
 @media (min-width:480px){
   .card{
@@ -1295,7 +1327,7 @@ text-align: right;
 
   width: 100%;
   padding: 10px;
-  margin-top: 30px;
+  /* margin-top: 20px; */
 }
 
 
@@ -1303,7 +1335,7 @@ text-align: right;
 .connection-form input {
   width: 100%;
   display: inline-block;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 
@@ -1337,14 +1369,16 @@ text-align: right;
     flex-direction: row;
     gap: 30px;
     align-items: flex-start;
-    margin-bottom: 30px;
-    padding:50px;
+    margin-bottom: 0;
+    padding:20px;
     }
 
-  .connection .connection-wrapper {
-    padding: 20px;
-    margin:20px auto;
-  }
+    .connection .connection-wrapper{
+      max-width: var(--max-wrapper);
+      margin:20px auto;
+      padding:40px 60px;
+      
+    } 
 
 }
 
@@ -1360,8 +1394,7 @@ text-align: right;
 
 
 
-
-/* SERVICE ------------------------------  */
+/* CONNECTION FORMS --------------  */
 
 textarea.service-description{
   width: 100%;
@@ -1369,15 +1402,7 @@ textarea.service-description{
 
 
 
-/* 
-.connection .connection-wrapper
 
-{
-  max-width: var(--max-wrapper);
-  margin:20px auto;
-  padding:10px;
-  
-} */
 
 
 .connection .connection-header
@@ -1394,8 +1419,11 @@ textarea.service-description{
 
  .connection .header-titles{
   padding:0;
-  margin:0;
+  margin:0 auto;
+  text-align:start;
+  max-width: var(--max-wrapper);
   /* flex-grow:1; */
+  text-align: center;
 }
 
  a.btn-fill{
@@ -1491,32 +1519,17 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-
-
-
-
-
-@media screen and (min-width:992px){
-  .service.sections {
-    
-    padding:20px 60px;
- 
-  }
-
-  td{
-    font-size:1rem;
-  }
-
-  .service-wrapper{
-    margin:40px auto;
-  }
-}
-
-
-/* OPENING TIME --------------  */
 .connection-wrapper.w-max{
-  max-width: 400px;
+  max-width: 700px;
   padding:20px;
+}
+.connection-wrapper.w-min{
+  max-width: 800px;
+  padding:20px;
+}
+.connection.w-min h2{
+  max-width: 800px;
+  
 }
 
 .connection-wrapper.w-max input.large{
@@ -1548,9 +1561,6 @@ tr:nth-child(even) {
 
 }
 
- 
-
-
 
 @media screen and (min-width:576px){
   .connection-wrapper.w-max{
@@ -1563,10 +1573,131 @@ tr:nth-child(even) {
   
   }
 
-  .connection-wrapper.w-max input{
+  /* .connection-wrapper.w-max input{
    margin:5px;
-  }
+  } */
 
   
 }
+
+@media screen and (min-width:992px){
+  .service.sections {
+    
+    padding:20px 60px;
+ 
+  }
+
+  td{
+    font-size:1rem;
+  }
+
+  .service-wrapper{
+    margin:40px auto;
+  }
+
+
+  .connection-wrapper{
+    padding:20px 60px;
+  }
+}
+
+
+
+/* CONNECTION ADD CAR ------------- */
+
+
+
+/* 
+.connection-form.add-car .code{
+  display:flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding:0;
+  flex-direction: column;
+  width: 100%;
+} */
+
+.car-model-top{
+  display:flex;
+  flex-direction: column;
+}
+.car-model-top .form-group:first-child{
+  width: 100%;
+
+}
+.car-model-top .form-group:last-child{
+  width: 100%;
+}
+
+.connection-form .car-model input,
+.connection-form .car-description input
+{
+  display:block;
+}
+
+.connection-form .car-description input[type=file]{
+  padding:0;
+}
+
+
+
+
+
+.connection-form .form-group.header .title{
+  flex-grow:0;
+  margin:0;
+}
+
+.connection-form .car-description{
+  display:flex;
+  flex-direction: column;
+}
+
+.connection-form .car-description .car-description-left,
+.connection-form .car-description .car-description-right{
+  width: 100%;
+}
+
+
+
+
+.connection-form.add-car .car-description{
+  display:flex;
+  align-items: center;
+  justify-content: inherit;
+  width: 100%;
+
+}
+
+ 
+
+@media screen and (min-width:576px) {
+
+  
+.car-model-top{
+  display:flex;
+  flex-direction: row;
+}
+.car-model-top .form-group:first-child{
+  width: 10%;
+
+}
+.car-model-top .form-group:last-child{
+  width: 90%;
+  margin-left:45px;
+}
+
+
+
+
+
+
+  .connection-form .car-description{
+    display:flex;
+    flex-direction: row;
+    gap:40px;
+  }
+}
+
+
 

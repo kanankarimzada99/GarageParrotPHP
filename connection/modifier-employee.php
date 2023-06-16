@@ -81,25 +81,25 @@
 
       <!-- connection  -->
       <section class="connection sections" id="connection">
-        <h2 class="header-titles">Ajouter employé</h2>
+        <h2 class="header-titles">Modifier employée</h2>
         <div class="connection-wrapper">
 
           <form action="">
             <div class="connection-form">
 
-              <div>
+              <div class="form-group">
                 <label for="name">Prénom</label>
                 <input type="text" name="name" id="name">
               </div>
-              <div>
+              <div class="form-group">
                 <label for="lastname">Nom</label>
                 <input type="text" name="lastname" id="lastname">
               </div>
-              <div>
+              <div class="form-group">
                 <label for="email">Adresse email</label>
                 <input type="text" name="email" id="email">
               </div>
-              <div>
+              <div class="form-group">
                 <label for="password">Mot de passe</label>
                 <input type="password" name="password" id="password">
               </div>

@@ -92,22 +92,28 @@
                 <input type="text" name="review-name" id="review-name">
               </div>
 
-              <div class="form-group">
-                <label for="review-note">Note</label>
-                <select name="review-note" id="review-note">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
+
               <div class="form-group">
                 <label for="review-comment">Commentaire</label>
                 <textarea name="review-comment" id="review-comment" class="service-description" cols="30"
                   rows="5"></textarea>
               </div>
 
+              <div class="form-group">
+                <label for="review-note">Note client</label>
+
+                <select name="review-note" id="review-note">
+                  <option value="">--Choisissez une note--</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+
+
+
+              </div>
 
 
 

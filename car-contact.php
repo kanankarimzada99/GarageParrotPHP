@@ -70,7 +70,7 @@
           <li><a href="#">Accueil</a></li>
           <li><a href="#">Veicules d'occasion</a></li>
           <li><a href="#">Renault Clio - 5</a></li>
-          <li><a href="#">Contact Achat</a></li>
+          <li><a href="#" class="isDisabled">Contact Achat</a></li>
         </ul>
         <div class="go-back-list">
           <li><a href="#">Revenir liste</a></li>

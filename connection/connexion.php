@@ -66,18 +66,18 @@
 
 
       <!-- connection  -->
-      <section class="connection sections" id="connection">
+      <section class="connection w-min sections" id="connection">
         <h2 class="header-titles">connection</h2>
-        <div class="connection-wrapper">
+        <div class="connection-wrapper w-min">
 
           <form action="">
             <div class="connection-form">
 
-              <div>
+              <div class="form-group">
                 <label for="email">Adresse email</label>
                 <input type="text" name="email" id="email">
               </div>
-              <div>
+              <div class="form-group">
                 <label for="password">Mot de passe</label>
                 <input type="text" name="password" id="password">
               </div>
