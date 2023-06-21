@@ -7,17 +7,7 @@ require_once __DIR__."/templates/header.php";
 <div class="wrapper">
 
   <!-- BREADCRUMB  -->
-  <div class="breadcrumbs">
-    <ul class="breadcrumb">
-      <li><a href="#">Accueil</a></li>
-      <li><a href="#">Veicules d'occasion</a></li>
-      <li><a href="#">Renault Clio - 5</a></li>
-      <li><a href="#" class="isDisabled">Contact Achat</a></li>
-    </ul>
-    <div class="go-back-list">
-      <a href="#">Revenir liste</a>
-    </div>
-  </div>
+  <?php require __DIR__ . "/templates/breadcrumb-part.php" ?>
   <!-- END BREADCRUMB  -->
 
 

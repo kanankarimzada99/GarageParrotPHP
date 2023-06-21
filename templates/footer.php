@@ -1,6 +1,6 @@
 </main>
 <!-- FOOTER   -->
-<footer id="footer" class="footer">
+<footer id="schedules" class="footer">
   <div class="footer-logo">
     <img src="./assets/images/logo_white.png" alt="logo garage parrot">
   </div>
@@ -111,7 +111,17 @@
       <i class="fa-brands fa-square-twitter"></i>
     </div>
   </div>
+
+  <!-- <div class="footer go-top">
+    <a href="#">
+      <i class="fa-solid fa-arrow-up"></i>
+    </a>
+  </div> -->
+
+
 </footer>
+
+
 
 <!-- END FOOTER   -->
 

@@ -33,7 +33,7 @@
           <div class="line3"></div>
         </div>
         <ul class="nav-list">
-          <li>
+          <!-- <li>
             <a class="nav-link" aria-current="page" href="#">Accueil</a>
           </li>
           <li>
@@ -50,10 +50,10 @@
           </li>
           <li>
             <a class="nav-link" aria-current="page" href="#">Contact</a>
-          </li>
+          </li> -->
 
           <li>
-            <a href="#" class="btn-wire">Connecter</a>
+            <a href="/index.php" class="btn-wire">Retour</a>
           </li>
         </ul>
       </nav>

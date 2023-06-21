@@ -1,6 +1,15 @@
 <?php
- require_once __DIR__."/templates/header.php";
+
+// require_once __DIR__ . "/lib/pdo.php";
+// require_once __DIR__ . "/lib/services.php";
+// require_once __DIR__ . "/lib/cars.php";
+require_once __DIR__ . "/templates/header.php";
+
+
+
 ?>
+
+
 
 <!-- HERO  -->
 <section class="hero">
@@ -19,42 +28,10 @@
   <section id="services" class="services sections">
     <h2 class="header-titles">Services</h2>
     <article class="cards">
-      <div class="card">
-        <div class="card-header">
-          <i class="fa-solid fa-wrench"></i>
-        </div>
-        <div class="card-body">
-          <h4 class="card-title center">Reparation</h4>
-          <p class="card-text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Nesciunt, quidem.
-          </p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <i class="fa-solid fa-wrench"></i>
-        </div>
-        <div class="card-body">
-          <h4 class="card-title center">Reparation</h4>
-          <p class="card-text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Nesciunt, quidem.
-          </p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <i class="fa-solid fa-wrench"></i>
-        </div>
-        <div class="card-body">
-          <h4 class="card-title center">Reparation</h4>
-          <p class="card-text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Nesciunt, quidem.
-          </p>
-        </div>
-      </div>
+      <?php foreach ($services as $key => $service) { ?>
+      <?php require __DIR__ . "/templates/service-part.php" ?>
+      <?php }
+      ?>
     </article>
   </section>
   <!-- END SERVICES  -->
@@ -63,51 +40,12 @@
   <section id="cars" class="used-cars sections">
     <h2 class="header-titles">Nos voitures d'occasion</h2>
     <article class="cards">
-      <div class="card">
-        <div class="card-header">
-          <img class="card-img-top" src="./assets/images/car_card.png" alt="voiture marque X">
-        </div>
-        <div class="card-body">
-          <h4 class="card-title">Title</h4>
-          <p class="card-text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Nesciunt, quidem.
-          </p>
-          <hr>
-          <p class="price">4444€</p>
-          <a href="#" class="btn-wire large">Details</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <img class="card-img-top" src="./assets/images/car_card.png" alt="voiture marque Y">
-        </div>
-        <div class="card-body">
-          <h4 class="card-title">Title</h4>
-          <p class="card-text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Nesciunt, quidem.
-          </p>
-          <hr>
-          <p class="price">4444€</p>
-          <a href="#" class="btn-wire large">Details</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <img class="card-img-top" src="./assets/images/car_card.png" alt="voiture marque D">
-        </div>
-        <div class="card-body">
-          <h4 class="card-title">Title</h4>
-          <p class="card-text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Nesciunt, quidem.
-          </p>
-          <hr>
-          <p class="price">4444€</p>
-          <a href="#" class="btn-wire large">Details</a>
-        </div>
-      </div>
+
+      <?php foreach ($cars as $key => $car) { ?>
+      <?php require __DIR__ . "/templates/car-part.php" ?>
+      <?php }
+      ?>
+
     </article>
   </section>
   <!-- END CARS  -->
@@ -235,5 +173,5 @@
 <!-- END CONTACT  -->
 
 <?php
- require_once __DIR__."/templates/footer.php";
+require_once __DIR__ . "/templates/footer.php";
 ?>

@@ -33,19 +33,19 @@
 
         <ul class="nav-list">
           <li>
-            <a class="nav-link" aria-current="page" href="#">Employés</a>
+            <a class="nav-link" aria-current="page" href="/connexion/liste-employes.php">Employés</a>
           </li>
           <li>
-            <a class="nav-link" href="#services">Services</a>
+            <a class="nav-link" href="/connexion/liste-services.php">Services</a>
           </li>
           <li>
-            <a class="nav-link" href="#cars">Horaires</a>
+            <a class="nav-link" href="/connexion/liste-horaires.php">Horaires</a>
           </li>
           <li>
-            <a class="nav-link" href="#">Veicules</a>
+            <a class="nav-link" href="/connexion/liste-veicules.php">Veicules</a>
           </li>
           <li>
-            <a class="nav-link" href="#">Avis</a>
+            <a class="nav-link" href="/connexion/liste-avis.php">Avis</a>
           </li>
           <li>
             <a href="#" class="btn-wire">Deconnecter</a>

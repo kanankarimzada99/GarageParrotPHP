@@ -6,7 +6,7 @@ require_once __DIR__."/../templates/header-connexion.php";
 
   <!-- connection  -->
   <section class="connection w-min sections" id="connection">
-    <h2 class="header-titles">connexion</h2>
+    <h2 class="header-titles">Connexion</h2>
     <div class="connection-wrapper w-min">
 
       <form action="">

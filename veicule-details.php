@@ -1,31 +1,41 @@
 <?php
+  
+ require_once __DIR__."/lib/cars.php";
  require_once __DIR__."/templates/header.php";
+
+ //verify if id is on the URL
+ $error = false;
+if(isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    $car = getCarById($cars, $id);
+
+    //verify if car is on db
+    if(!$car) {
+      $error = true;
+    }
+}else{
+  $error = true;
+}
 ?>
 
-
+<?php if(!$error) {?>
 <div class="wrapper">
 
   <!-- BREADCRUMB  -->
-  <div class="breadcrumbs">
-    <ul class="breadcrumb">
-      <li><a href="#">Accueil</a></li>
-      <li><a href="#">Veicules d'occasion</a></li>
-      <li><a href="#" class="isDisabled">Renault Clio - 5</a></li>
-    </ul>
-    <div class="go-back-list">
-      <a href="#">Revenir liste</a>
-    </div>
-  </div>
+  <?php require __DIR__ . "/templates/breadcrumb-part.php" ?>
   <!-- END BREADCRUMB  -->
+
+
 
 
   <!-- CARS  -->
   <section id="cars" class="used-cars sections filtering">
-    <h2 class="header-titles">Renault Clio - 5</h2>
+    <h2 class="header-titles"><span><?=$car['brand'];?></span> - <span><?=$car['model'];?></h2>
     <div class="car">
       <div class="car-images">
         <div class="car-img">
-          <img src="./assets/images/car_card.png" alt="clio 5">
+          <img class="card-img-top" src="./uploads/images/<?=$car['image']?>" alt="<?=$car['model'];?>">
         </div>
         <div class="car-thumbnails">
           <img src="./assets/images/car_card.png" alt="view frontal">
@@ -37,44 +47,44 @@
       <div class="car-descriptions">
         <div class="car-accessories">
           <div class="car-accessories-description">
-            <span>Modele:</span>
-            <span>Clio -5</span>
+            <span>Marque:</span>
+            <span><?=$car['brand'];?></span>
           </div>
           <div class="car-accessories-description">
-            <span>Marque:</span>
-            <span>Renault</span>
+            <span>Modele:</span>
+            <span><?=$car['model'];?></span>
           </div>
 
           <div class="car-accessories-description">
             <span>Année:</span>
-            <span>2018</span>
+            <span><?=$car['year'];?></span>
           </div>
           <div class="car-accessories-description">
-            <span>Kilométrage</span>
-            <span>34866</span>
+            <span>Kilométrage:</span>
+            <span><?=$car['kilometers'];?></span>
           </div>
 
           <br>
 
           <div class="car-accessories-description">
             <span>Color:</span>
-            <span>bleue</span>
+            <span><?=$car['color'];?></span>
           </div>
           <div class="car-accessories-description">
             <span>Nombre place:</span>
-            <span>5</span>
+            <span><?=$car['number_doors'];?></span>
           </div>
           <div class="car-accessories-description">
             <span>Boite vitesse:</span>
-            <span>manuel</span>
+            <span><?=$car['gearbox'];?></span>
           </div>
           <div class="car-accessories-description">
             <span>CO2:</span>
-            <span>95 g/km</span>
+            <span><?=$car['co'];?> g/km</span>
           </div>
 
         </div>
-        <div class="car-price">4500€</div>
+        <div class="car-price"><?=$car['price'];?> €</div>
         <div class="car-contact">
           <hr>
           <p>Pour acheter cette voiture, contactez-nous
@@ -90,8 +100,17 @@
   <!-- END CARS  -->
 </div>
 
-
-
 <?php
  require_once __DIR__."/templates/footer.php";
 ?>
+
+<?php } else {?>
+<div class="not-found">
+  <h1 class="not-found-text">Veícule introuvable</h1>
+  <div class="go-back-page">
+    <a href="javascript:history.back(1)" class="btn-wire">Retour page précédante</a>
+
+  </div>
+</div>
+
+<?php } ?>

@@ -1,5 +1,6 @@
 <?php
  require_once __DIR__."/templates/header.php";
+ require_once __DIR__ . "/lib/cars.php";
 ?>
 
 
@@ -8,8 +9,8 @@
   <!-- BREADCRUMB  -->
   <div class="breadcrumbs">
     <ul class="breadcrumb">
-      <li><a href="#">Accueil</a></li>
-      <li><a href="#">Veicules d'occasion</a></li>
+      <li><a href="/">Accueil</a></li>
+      <li><a href="#" class="isDisabled">Veicules d'occasion</a></li>
     </ul>
     <div class="go-back-list">
       <a href="#">Revenir liste</a>
@@ -49,7 +50,7 @@
       </article>
       <hr class="filters-diivision">
       <article class="cards">
-        <div class="card">
+        <!-- <div class="card">
           <div class="card-header">
             <img class="card-img-top" src="./assets/images/car_card.png" alt="voiture marque X">
           </div>
@@ -93,7 +94,11 @@
             <p class="price">4444€</p>
             <a href="#" class="btn-wire large">Details</a>
           </div>
-        </div>
+        </div> -->
+        <?php foreach ($cars as $key => $car) { ?>
+        <?php require __DIR__ . "/templates/car-part.php" ?>
+        <?php }
+      ?>
       </article>
     </div>
 
