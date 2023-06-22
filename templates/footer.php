@@ -91,18 +91,19 @@
           <a class="footer-nav-link" aria-current="page" href="#cars">Voitures</a>
         </li>
         <li>
-          <a class="footer-nav-link" aria-current="page" href="#">Avis</a>
+          <a class="footer-nav-link" aria-current="page" href="#testimonial">Avis</a>
         </li>
         <li>
-          <a class="footer-nav-link" aria-current="page" href="#">Horaires</a>
+          <a class="footer-nav-link" aria-current="page" href="#contact">Contact</a>
         </li>
         <li>
-          <a class="footer-nav-link" aria-current="page" href="#">Contact</a>
+          <a class="footer-nav-link" aria-current="page" href="#schedules">Horaires</a>
         </li>
 
-        <li>
+
+        <!-- <li>
           <a href="#" class="footer-nav-link">Connecter</a>
-        </li>
+        </li> -->
       </ul>
     </nav>
     <div class="footer-social-network">

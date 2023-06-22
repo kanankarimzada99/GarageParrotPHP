@@ -1,6 +1,30 @@
 <?php
-require_once __DIR__."/templates/header.php";
+  
+  require_once __DIR__ . "/lib/pdo.php";
+  require_once __DIR__ . "/lib/services.php";
+  require_once __DIR__ . "/lib/cars.php";
+   require_once __DIR__."/templates/header-navigation.php";
+  
+   $cars = getAllCars($pdo);
+
+ //verify if id is on the URL
+ $error = false;
+if(isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    $car = getCarById($cars, $id);
+
+    //verify if car is on db
+    if(!$car) {
+      $error = true;
+    }
+}else{
+  $error = true;
+}
+
 ?>
+
+<?php if(!$error) {?>
 
 
 
@@ -42,7 +66,10 @@ require_once __DIR__."/templates/header.php";
           <div class="contact-form-right">
             <div>
               <label for="subject">Sujet</label>
-              <input type="text" name="subject" id="subject" value="Annonce numero 34 Renault Clio 5">
+              <input type="text" name="subject" id="subject"
+                value="<?=$car['code']." ".$car['brand']." ".$car['model'];?>">
+
+
             </div>
             <div>
               <label for="message">Message</label>
@@ -65,3 +92,5 @@ require_once __DIR__."/templates/header.php";
 <?php
  require_once __DIR__."/templates/footer.php";
 ?>
+
+<?php } ?>

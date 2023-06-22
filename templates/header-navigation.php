@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -17,7 +16,7 @@
 
   <!-- CSS  -->
   <!-- <link rel="stylesheet" href="./assets/css/override-bootstrap.css"> -->
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
@@ -38,19 +37,19 @@
             <a class="nav-link" aria-current="page" href="/">Accueil</a>
           </li>
           <li>
-            <a class="nav-link" aria-current="page" href="#services">Services</a>
+            <a class="nav-link" aria-current="page" href="/index.php#services">Services</a>
           </li>
           <li>
-            <a class="nav-link" aria-current="page" href="#cars">Voitures</a>
+            <a class="nav-link" aria-current="page" href="/index.php#cars">Voitures</a>
           </li>
           <li>
-            <a class="nav-link" aria-current="page" href="#testimonial">Avis</a>
+            <a class="nav-link" aria-current="page" href="/index.php#testimonial">Avis</a>
           </li>
           <li>
-            <a class="nav-link" aria-current="page" href="#contact">Contact</a>
+            <a class="nav-link" aria-current="page" href="/index.php#contact">Contact</a>
           </li>
           <li>
-            <a class="nav-link" aria-current="page" href="#schedules">Horaires</a>
+            <a class="nav-link" aria-current="page" href="/index.php#schedules">Horaires</a>
           </li>
 
           <!-- 

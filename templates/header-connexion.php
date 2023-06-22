@@ -53,7 +53,7 @@
           </li> -->
 
           <li>
-            <a href="/index.php" class="btn-wire">Retour</a>
+            <a href="/index.php" class="btn-wire">Accueil</a>
           </li>
         </ul>
       </nav>

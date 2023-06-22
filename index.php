@@ -1,57 +1,63 @@
 <?php
 
-// require_once __DIR__ . "/lib/pdo.php";
-// require_once __DIR__ . "/lib/services.php";
-// require_once __DIR__ . "/lib/cars.php";
+require_once __DIR__ . "/lib/pdo.php";
+require_once __DIR__ . "/lib/services.php";
+require_once __DIR__ . "/lib/cars.php";
 require_once __DIR__ . "/templates/header.php";
 
-
+$cars = getAllCars($pdo);
+$services = getAllServices($pdo);
 
 ?>
 
 
-
 <!-- HERO  -->
+
 <section class="hero">
   <div class="hero-text">
     <h1 class="hero-text-title">La confiance avant tout!</h1>
     <p class="hero-text-description">
-      Avec 15 d'experience, nous avont une large gamme de services et
+      Avec 15 ans d'experience, nous avont une large gamme de services et
       voitures d'occasion à vous offrir.
     </p>
   </div>
 </section>
+
+
 <!-- END HERO  -->
 
-<div class="wrapper">
-  <!-- SERVICES  -->
-  <section id="services" class="services sections">
-    <h2 class="header-titles">Services</h2>
-    <article class="cards">
-      <?php foreach ($services as $key => $service) { ?>
-      <?php require __DIR__ . "/templates/service-part.php" ?>
-      <?php }
+
+<!-- SERVICES  -->
+<section id="services" class="services sections">
+  <h2 class="header-titles">Services</h2>
+  <article class="cards">
+    <?php foreach ($services as $key => $service) { ?>
+    <?php require __DIR__ . "/templates/service-part.php" ?>
+    <?php }
       ?>
-    </article>
-  </section>
-  <!-- END SERVICES  -->
+  </article>
+</section>
+<!-- END SERVICES  -->
 
-  <!-- CARS  -->
-  <section id="cars" class="used-cars sections">
-    <h2 class="header-titles">Nos voitures d'occasion</h2>
-    <article class="cards">
+<!-- CARS  -->
+<section id="cars" class="used-cars sections">
+  <h2 class="header-titles">Nos voitures d'occasion</h2>
+  <article class="cards">
 
-      <?php foreach ($cars as $key => $car) { ?>
-      <?php require __DIR__ . "/templates/car-part.php" ?>
-      <?php }
+    <?php foreach ($cars as $key => $car) { ?>
+    <?php require __DIR__ . "/templates/car-part.php" ?>
+    <?php }
       ?>
 
-    </article>
-  </section>
-  <!-- END CARS  -->
-</div>
+  </article>
+</section>
+<!-- END CARS  -->
+
 
 <!-- testimonial  -->
+
+
+
 <section class="testimonial sections" id="testimonial">
   <h2 class="header-titles">Les avis</h2>
   <div id="demo" class="carousel slide" data-ride="carousel">
@@ -123,9 +129,11 @@ require_once __DIR__ . "/templates/header.php";
     </a>
   </div>
 </section>
+
 <!-- END TESTIMONIAL  -->
 
 <!-- CONTACT  -->
+
 <section class="contact sections" id="contact">
   <h2 class="header-titles">Contact</h2>
   <div class="contact-wrapper">
@@ -170,6 +178,8 @@ require_once __DIR__ . "/templates/header.php";
     </form>
   </div>
 </section>
+
+
 <!-- END CONTACT  -->
 
 <?php

@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 348 348" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g id="g10273">
+<svg width="100%" height="100%" viewBox="0 0 600 384" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(0.648254,0,0,0.648254,229.093,264.712)">
+        <text x="0px" y="0px" style="font-family:'Ubuntu-Regular', 'Ubuntu', sans-serif;font-size:48px;">Image non</text>
+        <g transform="matrix(1,0,0,1,0,48)">
+            <text x="0px" y="0px" style="font-family:'Ubuntu-Regular', 'Ubuntu', sans-serif;font-size:48px;">disponible</text>
+        </g>
     </g>
-    <g id="text2778" transform="matrix(0.761352,0,0,0.761352,-42.3082,-8.2771)">
-        <g transform="matrix(1,0,0,1,281.119,180.565)">
-            <text x="-43.418px" y="0px" style="font-family:'Roboto-Regular', 'Roboto';font-size:48px;">P<tspan x="-16.371px " y="0px ">A</tspan>S</text>
-        </g>
-        <g transform="matrix(1,0,0,1,281.119,241.033)">
-            <text x="-93.129px" y="0px" style="font-family:'Roboto-Regular', 'Roboto';font-size:48px;">D&apos;IM<tspan x="2.098px 33.152px " y="0px 0px ">AG</tspan>E</text>
-        </g>
-        <g transform="matrix(1,0,0,1,281.119,301.502)">
-            <text x="-133.277px" y="0px" style="font-family:'Roboto-Regular', 'Roboto';font-size:48px;">DISPONIBLE</text>
-        </g>
+    <g transform="matrix(0.321794,0,0,0.321794,218.12,70.3709)">
+        <path d="M448,80C456.8,80 464,87.2 464,96L464,415.8L459,409.3L323,233.3C318.5,227.4 311.4,224 304,224C296.6,224 289.6,227.4 285,233.3L202,340.7L171.5,298C167,291.7 159.8,288 152,288C144.2,288 137,291.7 132.5,298.1L52.5,410.1L48,416.3L48,96C48,87.2 55.2,80 64,80L448,80ZM62.448,37.43C27.148,37.43 -1.552,66.13 -1.552,101.43L-1.552,421.43C-1.552,456.73 27.148,485.43 62.448,485.43L446.448,485.43C481.748,485.43 510.448,456.73 510.448,421.43L510.448,101.43C510.448,66.13 481.748,37.43 446.448,37.43L62.448,37.43ZM144,224C170.332,224 192,202.332 192,176C192,149.668 170.332,128 144,128C117.668,128 96,149.668 96,176C96,202.332 117.668,224 144,224Z" style="fill:rgb(0,23,6);fill-opacity:0.31;fill-rule:nonzero;"/>
     </g>
 </svg>

@@ -1,7 +1,15 @@
 <?php
-  
- require_once __DIR__."/lib/cars.php";
- require_once __DIR__."/templates/header.php";
+
+
+
+
+
+require_once __DIR__ . "/lib/pdo.php";
+require_once __DIR__ . "/lib/services.php";
+require_once __DIR__ . "/lib/cars.php";
+ require_once __DIR__."/templates/header-navigation.php";
+
+ $cars = getAllCars($pdo);
 
  //verify if id is on the URL
  $error = false;
@@ -17,7 +25,16 @@ if(isset($_GET['id'])) {
 }else{
   $error = true;
 }
+
+  if($car['image'] === null){
+    $imagePath = 'assets/images/no-image.svg';
+  }else {
+    $imagePath = 'uploads/images/'.$car['image'];
+  }
 ?>
+
+
+
 
 <?php if(!$error) {?>
 <div class="wrapper">
@@ -35,7 +52,7 @@ if(isset($_GET['id'])) {
     <div class="car">
       <div class="car-images">
         <div class="car-img">
-          <img class="card-img-top" src="./uploads/images/<?=$car['image']?>" alt="<?=$car['model'];?>">
+          <img class="card-img-top" src="<?=$imagePath;?>" alt="<?=$car['model'];?>">
         </div>
         <div class="car-thumbnails">
           <img src="./assets/images/car_card.png" alt="view frontal">
@@ -89,9 +106,8 @@ if(isset($_GET['id'])) {
           <hr>
           <p>Pour acheter cette voiture, contactez-nous
             au 555-554555 ou avec le formulaire de contact
-            en clicant <a href="#" class="car-link-contact">ici</a></p>
+            en clicant <a href="veicule-contact.php?id=<?=$_GET['id'];?>" class="car-link-contact">ici</a></p>
         </div>
-
       </div>
     </div>
 
