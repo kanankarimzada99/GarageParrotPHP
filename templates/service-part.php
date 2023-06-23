@@ -1,6 +1,6 @@
 <!-- if image service doesn't exist  -->
 <?php
-  if($service['image'] == null){
+  if($service['image'] === ""){
     $imagePath = 'assets/images/no-image.svg';
   }else {
     $imagePath = 'uploads/images/'.$service['image'];

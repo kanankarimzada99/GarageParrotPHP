@@ -1,9 +1,4 @@
 <?php
-
-
-
-
-
 require_once __DIR__ . "/lib/pdo.php";
 require_once __DIR__ . "/lib/services.php";
 require_once __DIR__ . "/lib/cars.php";
@@ -16,8 +11,15 @@ require_once __DIR__ . "/lib/cars.php";
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    $car = getCarById($cars, $id);
+    $car = getCarById($pdo, $id);
 
+    // verify if image id exist 
+       if($car['image'] === ""){
+      $imagePath = 'assets/images/no-image.svg';
+    }else {
+      $imagePath = 'uploads/images/'.$car['image'];
+    }
+ 
     //verify if car is on db
     if(!$car) {
       $error = true;
@@ -25,26 +27,15 @@ if(isset($_GET['id'])) {
 }else{
   $error = true;
 }
-
-  if($car['image'] === null){
-    $imagePath = 'assets/images/no-image.svg';
-  }else {
-    $imagePath = 'uploads/images/'.$car['image'];
-  }
 ?>
 
-
-
-
-<?php if(!$error) {?>
+<?php if(!$error)
+{?>
 <div class="wrapper">
 
   <!-- BREADCRUMB  -->
-  <?php require __DIR__ . "/templates/breadcrumb-part.php" ?>
+  <?php require __DIR__ . "/templates/breadcrumb-part.php"; ?>
   <!-- END BREADCRUMB  -->
-
-
-
 
   <!-- CARS  -->
   <section id="cars" class="used-cars sections filtering">
@@ -106,12 +97,10 @@ if(isset($_GET['id'])) {
           <hr>
           <p>Pour acheter cette voiture, contactez-nous
             au 555-554555 ou avec le formulaire de contact
-            en clicant <a href="veicule-contact.php?id=<?=$_GET['id'];?>" class="car-link-contact">ici</a></p>
+            en clicant <a href="veicule-contact.php?id=<?=$car['id'];?>" class="car-link-contact">ici</a></p>
         </div>
       </div>
     </div>
-
-
   </section>
   <!-- END CARS  -->
 </div>
@@ -125,8 +114,6 @@ if(isset($_GET['id'])) {
   <h1 class="not-found-text">Veícule introuvable</h1>
   <div class="go-back-page">
     <a href="javascript:history.back(1)" class="btn-wire">Retour page précédante</a>
-
   </div>
 </div>
-
 <?php } ?>

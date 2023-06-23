@@ -1,6 +1,15 @@
 <?php
- require_once __DIR__."/templates/header.php";
- require_once __DIR__ . "/lib/cars.php";
+
+require_once __DIR__ . "/lib/pdo.php";
+require_once __DIR__ . "/lib/services.php";
+require_once __DIR__ . "/lib/cars.php";
+require_once __DIR__ . "/templates/header.php";
+
+
+
+$cars = getAllCars($pdo);
+
+
 ?>
 
 
@@ -95,7 +104,7 @@
             <a href="#" class="btn-wire large">Details</a>
           </div>
         </div> -->
-        <?php foreach ($cars as $key => $car) { ?>
+        <?php foreach ($cars as  $car) { ?>
         <?php require __DIR__ . "/templates/car-part.php" ?>
         <?php }
       ?>

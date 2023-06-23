@@ -5,7 +5,9 @@ require_once __DIR__ . "/lib/services.php";
 require_once __DIR__ . "/lib/cars.php";
 require_once __DIR__ . "/templates/header.php";
 
-$cars = getAllCars($pdo);
+
+//to show only 3
+$cars = getAllCars($pdo, 3);
 $services = getAllServices($pdo);
 
 ?>
@@ -41,13 +43,17 @@ $services = getAllServices($pdo);
 
 <!-- CARS  -->
 <section id="cars" class="used-cars sections">
-  <h2 class="header-titles">Nos voitures d'occasion</h2>
+  <h2 class="header-titles">Nos derniers voitures d'occasion</h2>
   <article class="cards">
 
-    <?php foreach ($cars as $key => $car) { ?>
+    <?php foreach ($cars as  $car) { ?>
     <?php require __DIR__ . "/templates/car-part.php" ?>
     <?php }
       ?>
+
+    <div class="more-cars">
+      <a href="veicules.php" class="btn-fill center">Plus de voiture</a>
+    </div>
 
   </article>
 </section>

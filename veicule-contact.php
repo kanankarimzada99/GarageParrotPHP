@@ -12,7 +12,7 @@
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    $car = getCarById($cars, $id);
+    $car = getCarById($pdo, $id);
 
     //verify if car is on db
     if(!$car) {

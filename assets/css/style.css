@@ -227,6 +227,14 @@ textarea {
   border-radius: 10px;
   padding: 10px;
   max-width: calc(100% - 1em);
+  transition: 0.4s ease;
+  transform: scale(1);
+}
+
+.card:hover{
+  -webkit-box-shadow: 0px 0px 32px 7px rgba(0,0,0,0.3); 
+box-shadow: 0px 0px 32px 7px rgba(0,0,0,0.3);
+transform: scale(1.01);
 }
 
 .card .card-header {
@@ -719,11 +727,11 @@ input[type="submit"]:hover{
 /* .services .card-header i {
   font-size: 4rem;
 } */
-/* .services .card-header img {
+.services .card-header img {
   height: 180px;
-  width: 100%;  
-  object-fit: cover;
-} */
+   width: 100%;  
+ object-fit: cover;
+}
 
 .card-title.center {
   text-align: center;
@@ -758,18 +766,23 @@ input[type="submit"]:hover{
   background-color: var(--grayLight);
 }
 
+.used-cars .more-cars{
+  width: 100%;
+  text-align: center;
+}
+
 /* TESTIMONIAL  CAROUSEL*/
 
 .testimonial {
   width: 80%;
   margin: 0 auto 40px;
   /* padding: 0; */
-  height: 550px;
+  height: 600px;
 }
 
 .carousel {
   max-width: 600px;
-  margin: 50px auto 0;
+  margin: 20px auto 0;
   padding-top: 3rem;
 }
 

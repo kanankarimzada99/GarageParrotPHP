@@ -1,6 +1,6 @@
 <!-- if image car doesn't exist  -->
 <?php
-  if($car['image'] == null){
+  if($car['image'] === ""){
     $imagePath = 'assets/images/no-image.svg';
   }else {
     $imagePath = 'uploads/images/'.$car['image'];
@@ -22,7 +22,7 @@
       <span><?=$car['gearbox'];?></span> | <span><?=$car['fuel'];?></span> |
     </p>
     <hr>
-    <p class="price"><?=$car['price'];?></p>
-    <a href="veicule-details.php?id=<?=$key;?>" class=" btn-wire large">Details</a>
+    <p class="price"><?=$car['price'];?> €</p>
+    <a href="veicule-details.php?id=<?=$car['id'];?>" class=" btn-wire large">Details</a>
   </div>
 </div>
