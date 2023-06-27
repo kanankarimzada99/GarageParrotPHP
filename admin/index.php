@@ -2,32 +2,25 @@
 //ob_start() function will turn output buffering on. While output buffering is active no output is sent from the script (other than headers)
 ob_start();
 
-
-require_once __DIR__ . "/lib/config.php";
-require_once __DIR__ . "/lib/session.php";
-require_once __DIR__ . "/lib/pdo.php";
-require_once __DIR__ . "/lib/employees.php";
-
-require_once __DIR__ . "/templates/header-connexion.php";
+require_once __DIR__ . "/../lib/config.php";
+require_once __DIR__ . "/../lib/session.php";
+require_once __DIR__ . "/../lib/pdo.php";
+require_once __DIR__ . "/../lib/employees.php";
+require_once __DIR__ . "/../templates/header-connexion.php";
 
 $errors = [];
 $messages = [];
-
 
 if (isset($_POST['login'])) {
   $user = verifyUserLogin($pdo, $_POST['email'], $_POST['password']);
 
   if ($user) {
-
     //replace the current session ID with a new one to stop session hijacking and session fixation.
     session_regenerate_id(true);
     $_SESSION['user'] = $user;
 
-
     //crypt POST password
     $password_hash = sha1($_POST['password']);
-
-    
 
 //verify if email and password correspond to the user
     if ($_POST['email'] !== $user['email'] || $password_hash !== $user['password']) {
@@ -81,7 +74,7 @@ if (isset($_POST['login'])) {
           </div>
         </div>
         <div class="form-btn">
-          <input type="submit" name="login" value="connection" class="btn-fill">
+          <input type="submit" name="login" value="connexion" class="btn-fill">
         </div>
       </form>
     </div>

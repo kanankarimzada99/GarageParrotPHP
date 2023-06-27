@@ -1,13 +1,7 @@
 <?php
 
-// $cars =[
-//   ['title'=>'Clio','brand'=>'Renault','year'=>'2017','kilometers'=>20500,'gearbox'=>'manuelle','fuel'=>'essence','price'=>3400,'image'=>'car-card.png'],
-//   ['title'=>'Palio','brand'=>'Fiat','year'=>'2012','kilometers'=>20500,'gearbox'=>'manuelle','fuel'=>'diesel','price'=>17000,'image'=>'car-card.png'],
-//   ['title'=>'Tesla','brand'=>'Tesla','year'=>'2022','kilometers'=>45000,'gearbox'=>'manuelle','fuel'=>'essence','price'=>28400,'image'=>'car-card.png'],
-//   ['title'=>'Clio','brand'=>'Renault','year'=>'2014','kilometers'=>35467,'gearbox'=>'manuelle','fuel'=>'essence','price'=>4000,'image'=>'car-card.png'],
-// ];
 
-function getCarById(PDO $pdo, int $id){
+function getCarById(PDO $pdo, int $id):array|bool{
  $query = $pdo->prepare('SELECT * FROM cars WHERE id=:id');
  $query->bindValue(":id",$id, PDO::PARAM_INT);
  $query->execute();
@@ -15,17 +9,20 @@ function getCarById(PDO $pdo, int $id){
  return $result;
 }
 
-function getAllCars(PDO $pdo, int $limit = null) {
+function getCars(PDO $pdo, int $limit = null, int $page= null):array|bool {
 
   //order cars by descending order.
   $sql = "SELECT * FROM cars ORDER BY id DESC";
 
-  if($limit){
-
-    //add LIMIT at the end $sql request
-    $sql.= " LIMIT :limit";
+  if ($limit && !$page){
+    $sql .= " LIMIT :limit";
   }
 
+  if($limit && $page){
+
+    //add LIMIT at the end $sql request
+    $sql.= " LIMIT :offset, :limit";
+  }
 
   $query = $pdo->prepare($sql);
   
@@ -34,7 +31,69 @@ function getAllCars(PDO $pdo, int $limit = null) {
     $query->bindValue(":limit",$limit, PDO::PARAM_INT);
   }
 
+  if ($page) {
+    $offset = ($page -1) * $limit;
+    $query->bindValue(":offset", $offset, PDO::PARAM_INT);
+  }
+
   $query->execute();
   $result = $query->fetchAll(PDO::FETCH_ASSOC);
   return $result;
+}
+
+function getTotalCars(PDO $pdo):int|bool
+{
+  //return total of rows in car table
+  $sql = "SELECT COUNT(*) as total FROM cars";
+  $query = $pdo->prepare($sql);
+  $query->execute();
+
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  return $result['total'];
+}
+
+function saveCar(PDO $pdo,int $id = null, int $code, string $brand, string $model, int $year, float $price, int $kilometers, string $color, string $gearbox, int $number_doors, string $fuel, string $co, string|null $image):bool
+{
+  //if id car doesnt exist INSERT
+  if ($id === null){
+    $query = $pdo->prepare("INSERT INTO cars (code, brand, model, year, price, kilometers, color, gearbox, number_doors, fuel, co, image)"
+    . "VALUES(:code, :brand, :model, :year, :price, :kilometers, :color, :gearbox, :number_doors, :fuel, :co, :image)");
+  }
+
+  //if id car exist UPDATE
+  else {
+    $query = $pdo->prepare("UPDATE `cars` SET `code`=:code, ". "`brand`=:brand, "."`model`=:model, ". "`year`=:year, "."`price`=:price,". "`kilometers`=:kilometers, ". "`color`=:color, "."`gearbox`=:gearbox, "."`number_doors`=:number_doors, "."`fuel`=:fuel, "."`co`=:co, "."`image`=:image WHERE `id`=:id;");
+
+    $query->bindValue(':id', $id,$pdo::PARAM_INT);
+  }
+
+  $query->bindValue(':code', $code, $pdo::PARAM_STR);
+  $query->bindValue(':brand', $brand, $pdo::PARAM_STR);
+  $query->bindValue(':model', $model, $pdo::PARAM_STR);
+  $query->bindValue(':year', $year, $pdo::PARAM_INT);
+  $query->bindValue(':price', $year, $pdo::PARAM_INT);
+  $query->bindValue(':kilometers', $kilometers, $pdo::PARAM_INT);
+  $query->bindValue(':color', $color, $pdo::PARAM_STR);
+  $query->bindValue(':gearbox', $gearbox, $pdo::PARAM_STR);
+  $query->bindValue(':number_doors', $number_doors, $pdo::PARAM_INT);
+  $query->bindValue(':fuel', $fuel, $pdo::PARAM_STR);
+  $query->bindValue(':co', $co, $pdo::PARAM_STR);
+  $query->bindValue(':image', $image, $pdo::PARAM_STR);
+
+  return $query->execute();
+}
+
+//delete car
+function deleteCar(PDO $pdo, int $id):bool
+{
+  $query = $pdo->prepare('DELETE FROM cars WHERE id = :id');
+  $query->bindValue(':id', $id, $pdo::PARAM_INT);
+  $query->execute();
+
+  //Returns the number of rows affected by the SQL statement 
+  if($query->rowCount()>0){
+    return true;
+  }else {
+    return false;
+  }
 }

@@ -1,20 +1,18 @@
 <?php
 
+require_once __DIR__ . "/lib/config.php";
+require_once __DIR__ . "/lib/session.php";
 require_once __DIR__ . "/lib/pdo.php";
 require_once __DIR__ . "/lib/services.php";
 require_once __DIR__ . "/lib/cars.php";
 require_once __DIR__ . "/templates/header.php";
 
-
-//to show only 3
-$cars = getAllCars($pdo, 3);
+//to show only 3 cars
+$cars = getCars($pdo, 3);
 $services = getAllServices($pdo);
-
 ?>
 
-
 <!-- HERO  -->
-
 <section class="hero">
   <div class="hero-text">
     <h1 class="hero-text-title">La confiance avant tout!</h1>
@@ -24,8 +22,6 @@ $services = getAllServices($pdo);
     </p>
   </div>
 </section>
-
-
 <!-- END HERO  -->
 
 
@@ -52,7 +48,7 @@ $services = getAllServices($pdo);
       ?>
 
     <div class="more-cars">
-      <a href="veicules.php" class="btn-fill center">Plus de voiture</a>
+      <a href="veicules.php" class="btn-fill center">Voir plus</a>
     </div>
 
   </article>
@@ -61,9 +57,6 @@ $services = getAllServices($pdo);
 
 
 <!-- testimonial  -->
-
-
-
 <section class="testimonial sections" id="testimonial">
   <h2 class="header-titles">Les avis</h2>
   <div id="demo" class="carousel slide" data-ride="carousel">
