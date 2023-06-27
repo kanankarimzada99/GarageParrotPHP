@@ -1,13 +1,15 @@
 <?php
 
+require_once __DIR__ . "/lib/config.php";
+require_once __DIR__ . "/lib/session.php";
 require_once __DIR__ . "/lib/pdo.php";
-require_once __DIR__ . "/lib/services.php";
+// require_once __DIR__ . "/lib/services.php";
 require_once __DIR__ . "/lib/cars.php";
-require_once __DIR__ . "/templates/header.php";
+require_once __DIR__ . "/templates/header-navigation.php";
 
 
 
-$cars = getAllCars($pdo);
+$cars = getCars($pdo);
 
 
 ?>

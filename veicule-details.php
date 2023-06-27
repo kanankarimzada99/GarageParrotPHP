@@ -1,10 +1,14 @@
 <?php
-require_once __DIR__ . "/lib/pdo.php";
-require_once __DIR__ . "/lib/services.php";
-require_once __DIR__ . "/lib/cars.php";
- require_once __DIR__."/templates/header-navigation.php";
 
- $cars = getAllCars($pdo);
+require_once __DIR__ . "/lib/config.php";
+require_once __DIR__ . "/lib/session.php";
+require_once __DIR__ . "/lib/pdo.php";
+// require_once __DIR__ . "/lib/services.php";
+require_once __DIR__ . "/lib/cars.php";
+require_once __DIR__ . "/templates/header-navigation.php";
+
+
+ $cars = getCars($pdo);
 
  //verify if id is on the URL
  $error = false;
@@ -92,7 +96,9 @@ if(isset($_GET['id'])) {
           </div>
 
         </div>
-        <div class="car-price"><?=$car['price'];?> €</div>
+
+        <!-- number format 2 000,00 €  -->
+        <div class="car-price"><?=number_format($car['price'], 2, ',', ' ');?> €</div>
         <div class="car-contact">
           <hr>
           <p>Pour acheter cette voiture, contactez-nous

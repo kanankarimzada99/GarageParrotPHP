@@ -1,30 +1,32 @@
 <?php
-  
-  require_once __DIR__ . "/lib/pdo.php";
-  require_once __DIR__ . "/lib/services.php";
-  require_once __DIR__ . "/lib/cars.php";
-   require_once __DIR__."/templates/header-navigation.php";
-  
-   $cars = getAllCars($pdo);
 
- //verify if id is on the URL
- $error = false;
-if(isset($_GET['id'])) {
-    $id = $_GET['id'];
+require_once __DIR__ . "/lib/config.php";
+require_once __DIR__ . "/lib/session.php";
+require_once __DIR__ . "/lib/pdo.php";
+// require_once __DIR__ . "/lib/services.php";
+require_once __DIR__ . "/lib/cars.php";
+require_once __DIR__ . "/templates/header-navigation.php";
 
-    $car = getCarById($pdo, $id);
+$cars = getCars($pdo);
 
-    //verify if car is on db
-    if(!$car) {
-      $error = true;
-    }
-}else{
+//verify if id is on the URL
+$error = false;
+if (isset($_GET['id'])) {
+  $id = $_GET['id'];
+
+  $car = getCarById($pdo, $id);
+
+  //verify if car is on db
+  if (!$car) {
+    $error = true;
+  }
+} else {
   $error = true;
 }
 
 ?>
 
-<?php if(!$error) {?>
+<?php if (!$error) { ?>
 
 
 
@@ -67,7 +69,7 @@ if(isset($_GET['id'])) {
             <div>
               <label for="subject">Sujet</label>
               <input type="text" name="subject" id="subject"
-                value="<?=$car['code']." ".$car['brand']." ".$car['model'];?>">
+                value="<?= $car['code'] . " " . $car['brand'] . " " . $car['model']; ?>">
 
 
             </div>
@@ -90,7 +92,7 @@ if(isset($_GET['id'])) {
 
 
 <?php
- require_once __DIR__."/templates/footer.php";
-?>
+  require_once __DIR__ . "/templates/footer.php";
+  ?>
 
 <?php } ?>
