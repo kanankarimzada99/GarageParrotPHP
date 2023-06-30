@@ -131,7 +131,7 @@ textarea {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  padding:40px;
   color:var(--primary);
 }
 
@@ -1817,7 +1817,7 @@ table{
 
 td, th {
   border: 1px solid var(--grayDark);
-  text-align: left;
+  text-align: center;
   padding: 8px;
   
 }

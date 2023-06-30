@@ -48,14 +48,14 @@ if (isset($_POST['login'])) {
 
     <!-- success messages  -->
     <!-- <?php foreach ($messages as $message) { ?>
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-success mt-4" role="alert">
     <?= $message; ?>
     </div>
     <?php } ?> -->
 
     <!-- error messages  -->
     <?php foreach ($errors as $error) { ?>
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-danger mt-4" role="alert">
       <?= $error; ?>
     </div>
     <?php } ?>

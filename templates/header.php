@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -52,11 +51,9 @@
           <li>
             <a class="nav-link" aria-current="page" href="#schedules">Horaires</a>
           </li>
-
-          <!-- 
           <li>
-            <a href="/connexion/connexion.php" class="btn-wire">Connecter</a>
-          </li> -->
+            <a href="/admin/index.php" class="btn-wire">Connecter</a>
+          </li>
         </ul>
       </nav>
     </header>

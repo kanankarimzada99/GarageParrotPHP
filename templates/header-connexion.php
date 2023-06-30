@@ -1,3 +1,22 @@
+<?php
+require_once __DIR__ . "/../lib/config.php";
+require_once __DIR__ . "/../lib/session.php";
+
+//prevent user to back to login page if is already connected
+if(!empty($_SESSION)){
+
+  if($_SESSION['user']['role'] === 'admin'){
+    header('location:/admin/liste-employes.php');
+  }else if($_SESSION['user']['role'] === 'employee'){
+    header('location:/admin/liste-veicules.php');
+  } else {
+    header('location:/admin/index.php');
+  }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -33,25 +52,6 @@
           <div class="line3"></div>
         </div>
         <ul class="nav-list">
-          <!-- <li>
-            <a class="nav-link" aria-current="page" href="#">Accueil</a>
-          </li>
-          <li>
-            <a class="nav-link" aria-current="page" href="#services">Services</a>
-          </li>
-          <li>
-            <a class="nav-link" aria-current="page" href="#cars">Voitures</a>
-          </li>
-          <li>
-            <a class="nav-link" aria-current="page" href="#">Avis</a>
-          </li>
-          <li>
-            <a class="nav-link" aria-current="page" href="#">Horaires</a>
-          </li>
-          <li>
-            <a class="nav-link" aria-current="page" href="#">Contact</a>
-          </li> -->
-
           <li>
             <a href="/index.php" class="btn-wire">Accueil</a>
           </li>

@@ -1,3 +1,15 @@
+<?php
+//ob_start() function will turn output buffering on. While output buffering is active no output is sent from the script (other than headers)
+ob_start();
+require_once __DIR__ . "../../../lib/config.php";
+require_once __DIR__ . "../../../lib/session.php";
+// adminOnly();
+require_once __DIR__ . "../../../lib/pdo.php";
+require_once __DIR__ . "../../../lib/not-connected.php";
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -22,8 +34,8 @@
 <body>
   <div class="wrapper">
     <header class="connection-header header">
-      <div class="user-connection">
-        <span>Vicent</span>
+      <div class="user-connexion">
+        <span><?=$_SESSION['user']['name']?></span>
         <i class="fa-solid fa-user"></i>
       </div>
       <nav class="nav">
@@ -32,25 +44,36 @@
         </a>
 
         <ul class="nav-list">
+          <?php if($_SESSION['user']['role'] === 'admin'):?>
           <li>
-            <a class="nav-link" aria-current="page" href="/connexion/liste-employes.php">Employés</a>
+            <a class="nav-link" aria-current="page" href="/admin/liste-employes.php">Employés</a>
           </li>
           <li>
-            <a class="nav-link" href="/connexion/liste-services.php">Services</a>
+            <a class="nav-link" href="/admin/liste-services.php">Services</a>
           </li>
           <li>
-            <a class="nav-link" href="/connexion/liste-horaires.php">Horaires</a>
+            <a class="nav-link" href="/admin/liste-horaires.php">Horaires</a>
           </li>
           <li>
-            <a class="nav-link" href="/connexion/liste-veicules.php">Veicules</a>
+            <a class="nav-link" href="/admin/liste-veicules.php">Veicules</a>
           </li>
           <li>
-            <a class="nav-link" href="/connexion/liste-avis.php">Avis</a>
+            <a class="nav-link" href="/admin/liste-avis.php">Avis</a>
+          </li>
+
+          <?php else: ?>
+          <li>
+            <a class="nav-link" href="/admin/liste-veicules.php">Veicules</a>
           </li>
           <li>
-            <a href="#" class="btn-wire">Deconnecter</a>
+            <a class="nav-link" href="/admin/liste-avis.php">Avis</a>
+          </li>
+          <?php endif ?>
+          <li>
+            <a href="/admin/logout.php" class="btn-wire">Déconnecter</a>
           </li>
         </ul>
+
         <!-- HAMBURGER MENU  -->
         <div class="mobile-menu">
           <div class="line1"></div>
@@ -60,5 +83,4 @@
       </nav>
     </header>
   </div>
-
   <main class="main">

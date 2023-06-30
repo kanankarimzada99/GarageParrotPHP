@@ -22,7 +22,8 @@
       <span><?=$car['gearbox'];?></span> | <span><?=$car['fuel'];?></span> |
     </p>
     <hr>
-    <p class="price"><?=$car['price'];?> €</p>
+    <!-- number format 2 000,00 €  -->
+    <p class="price"><?=number_format($car['price'], 2, ',', ' ');?> €</p>
     <a href="veicule-details.php?id=<?=$car['id'];?>" class=" btn-wire large">Details</a>
   </div>
 </div>
