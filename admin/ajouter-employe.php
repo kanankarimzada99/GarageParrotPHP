@@ -10,7 +10,7 @@ require_once __DIR__ . "/templates/header-admin.php";
 
 //employees don't have permission to visit this page
 if ($_SESSION['user']['role'] === 'employee') {
-  header("location: /admin/liste-veicules.php");
+  header("location: /admin/liste-voitures.php");
 }
 
 
@@ -45,7 +45,7 @@ if (isset($_POST['add-employee'])) {
 
     //all data will be saved at saveEmployee function
   
-    $res = changeEmployee($pdo, $_POST["lastname"], $_POST["name"], $_POST["email"], $_POST["password"], $id);
+    $res = saveEmployee($pdo, $_POST["lastname"], $_POST["name"], $_POST["email"], $_POST["password"], $id);
 
 
     if ($res) {

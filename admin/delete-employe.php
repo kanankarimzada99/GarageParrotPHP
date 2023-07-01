@@ -10,7 +10,7 @@ require_once __DIR__ . "/templates/header-admin.php";
 
 //employees don't have permission to visit this page
 if ($_SESSION['user']['role'] === 'employee') {
-  header("location: /admin/liste-veicules.php");
+  header("location: /admin/liste-voitures.php");
 }
 
 $employee = false;

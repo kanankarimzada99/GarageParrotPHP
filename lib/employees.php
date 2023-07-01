@@ -28,7 +28,7 @@ function getEmployees(PDO $pdo, int $limit = null, int $page = null): array|bool
 {
 
   //order employees by descending order
-  $sql = "SELECT * FROM employees ORDER BY id";
+  $sql = "SELECT * FROM employees WHERE role = 'employee' ORDER BY id";
 
   if ($limit && !$page) {
     $sql .= " LIMIT :limit";
@@ -69,7 +69,7 @@ function getTotalEmployees(PDO $pdo): int|bool
 
 
 
-function changeEmployee(PDO $pdo, string $lastname, string $name, string $email, string $password, int|null $id, string $role="employee"): bool
+function saveEmployee(PDO $pdo, string $lastname, string $name, string $email, string|null $password, int|null $id, string $role="employee"): bool
 {
 
 if($id === null){
@@ -81,7 +81,7 @@ if($id === null){
   $query->bindValue(':id', $id, $pdo::PARAM_INT);
 }
 
-  $password = password_hash($password, PASSWORD_DEFAULT);
+  $password = sha1($password);
   $query->bindValue(':lastname', $lastname, PDO::PARAM_STR);
   $query->bindValue(':name', $name, PDO::PARAM_STR);
   $query->bindValue(':email', $email, PDO::PARAM_STR);

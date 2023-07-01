@@ -13,6 +13,16 @@ if ($_SESSION['user']['role'] === 'employee') {
   header("location: /admin/liste-veicules.php");
 }
 
+//we cant change admin
+
+if (isset($_GET['id'])){
+  if ($_GET['id'] === "1"){
+    header("location:/admin/liste-employes.php");
+   }
+}
+
+
+
 
 $errors = [];
 $messages = [];
@@ -23,7 +33,10 @@ $formEmployee = [
   'password' => ''
 ];
 $id = null;
-
+$regexName = '/^[a-zA-Z]{1,25}$/';
+$regexEmail = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
+$regexPassword = '/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{10,}$/';
+$sha1= null;
 
 
 
@@ -32,7 +45,11 @@ if (isset($_GET['id'])) {
   $id = $_GET['id'];
   $_SESSION['user']['id'] = $id;
 
+
+
   $employee = getEmployeesById($pdo, $_GET['id']);
+
+
 
   if ($employee === false) {
     $errors[] = "Cet employé n'existe pas";
@@ -40,15 +57,45 @@ if (isset($_GET['id'])) {
 }
 
 
-if (isset($_POST['saveEmployee'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-//put information from form to formEmployee
+  //to validate lastname
+  if (empty($_POST["lastname"])) {
+    $errors[] = "Le nom est requis.";
+  } elseif (!preg_match($regexName, $_POST["lastname"])) {
+    $errors[] = "Le nom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.";
+  }
+  //to validate name
+  if (empty($_POST["name"])) {
+    $errors[] = "Le prénom est requis.";
+  } elseif (!preg_match($regexName, $_POST["name"])) {
+    $errors[] = "Le prénom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.";
+  }
+
+   // to validate email
+   if (empty($_POST["email"])) {
+    $errors[] = "L'e-mail est requis.";
+} elseif (!preg_match($regexEmail, $_POST["email"])) {
+  $errors[] = "L'e-mail n'est pas valide.";
+}
+
+// Valider le mot de passe
+if (empty($_POST["password"])) {
+  
+  $_POST['password'] = $_SESSION['user']['password'];
+} elseif (!preg_match($regexPassword, $_POST["password"])) {
+  $errors[] = "Le mot de passe doit contenir au moins 10 caractères, incluant au moins une lettre minuscule, une lettre majuscule, un chiffre et un symbole.";
+}
+
+
+
   $formEmployee = [
     'lastname' => $_POST['lastname'],
     'name' => $_POST['name'],
     'email' => $_POST['email'],
     'password' => $_POST['password']
   ];
+
 
 
   //if no errors we save all information
@@ -62,7 +109,9 @@ if (isset($_POST['saveEmployee'])) {
 
     //all data will be saved at saveEmployee function
     $id = $_SESSION['user']['id'];
-    $res = changeEmployee($pdo, $_POST["lastname"], $_POST["name"], $_POST["email"], $_POST["password"], $id);
+
+    $res = saveEmployee($pdo, $_POST["lastname"], $_POST["name"], $_POST["email"], $_POST["password"], $id);
+
 
 
     if ($res) {
@@ -118,6 +167,7 @@ if (isset($_POST['saveEmployee'])) {
     </div>
 
 
+
     <?php } ?>
     <?php if ($formEmployee !== false) { ?>
     <div class="connection-wrapper">
@@ -126,15 +176,18 @@ if (isset($_POST['saveEmployee'])) {
         <div class="connection-form">
           <div class="form-group">
             <label for="name">Prénom</label>
-            <input type="text" name="name" id="name" value=<?= htmlspecialchars($employee['name'] ?? '') ?>>
+            <input type="text" name="name" id="name"
+              value=<?= htmlspecialchars($employee['name'] ?? $formEmployee['name']) ; ?>>
           </div>
           <div class="form-group">
             <label for="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname" value=<?= htmlspecialchars($employee['lastname'] ?? '') ?>>
+            <input type="text" name="lastname" id="lastname"
+              value=<?= htmlspecialchars($employee['lastname'] ?? $formEmployee['lastname']) ; ?>>
           </div>
           <div class="form-group">
             <label for="email">Adresse email</label>
-            <input type="text" name="email" id="email" value=<?= htmlspecialchars($employee['email'] ?? '') ?>>
+            <input type="text" name="email" id="email"
+              value=<?= htmlspecialchars($employee['email'] ?? $formEmployee['email']) ; ?>>
           </div>
           <div class="form-group">
             <label for="password">Mot de passe</label>
@@ -153,17 +206,15 @@ if (isset($_POST['saveEmployee'])) {
   </section>
   <!-- END CONTACT  -->
 </div>
-
-
-
 <?php } else { ?>
 <div class="not-found">
-  <!-- <h1 class="not-found-text">Employé non trouvé</h1> -->
+  <!-- <h2 class="not-found-text">Employé non trouvé</h2> -->
   <div class="go-back-page">
     <a href="javascript:history.back(1)" class="btn-wire">Retour page précédante</a>
   </div>
 </div>
 <?php } ?>
+
 
 <?php
       require_once __DIR__ . "/templates/footer-admin.php";
