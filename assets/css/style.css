@@ -151,6 +151,10 @@ textarea {
   background-color: var(--primary);
 }
 
+.not-found-img{
+  background-color:var(--secondary);
+}
+
 /* STOP SCROLL ON MOBILE  */
 .noscroll {
   margin: 0;
@@ -561,19 +565,25 @@ input[type="submit"]:hover{
   }
 
   .nav-list li {
-    margin-left: 50px;
+    margin-left: 40px;
     opacity: 1;
     font-size: 1.2rem;
     
   }
 
-  .logo img {
-    max-width: 140px;
-    display: block;
-  }
+  
 
   .mobile-menu {
     display: none;
+  }
+}
+
+@media (min-width:1200px){
+  .nav-list li {
+    margin-left: 70px;
+    opacity: 1;
+    font-size: 1.2rem;
+    
   }
 }
 
@@ -1066,6 +1076,7 @@ input[type="submit"]:hover{
 .contact-form textarea {
   resize: none;
   height: 180px;
+  padding:10px;
 }
 
 .contact-form label {
@@ -1653,8 +1664,13 @@ CONNECTION BOSS EMPLOYE ALL PAGES---------------------------
 */
 
 /* NAVIGATION  */ 
-.user-connexion{
+.user-connection{
   text-align: right;
+  margin-bottom:10px;
+}
+.user-connection span {
+  font-weight: 600;
+font-style: italic;
 }
 
 /* connection FORM---------------------  */
@@ -1821,17 +1837,13 @@ td, th {
   padding: 8px;
   
 }
-th:last-child{
-  text-align: center;
-}
+
 
 td{
   font-size:1rem;
 }
 
-td:last-child{
-  text-align: center;
-}
+
 
 td a:first-child i{
   color:var(--font);

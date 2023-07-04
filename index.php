@@ -5,11 +5,14 @@ require_once __DIR__ . "/lib/session.php";
 require_once __DIR__ . "/lib/pdo.php";
 require_once __DIR__ . "/lib/services.php";
 require_once __DIR__ . "/lib/cars.php";
+// require_once __DIR__ . "/lib/schedules.php";
 require_once __DIR__ . "/templates/header.php";
 
 //to show only 3 cars
 $cars = getCars($pdo, 3);
-$services = getAllServices($pdo);
+$services = getServices($pdo, 6);
+// $schedules = getSchedules($pdo);
+// var_dump($schedules);
 ?>
 
 <!-- HERO  -->
@@ -29,7 +32,7 @@ $services = getAllServices($pdo);
 <section id="services" class="services sections">
   <h2 class="header-titles">Services</h2>
   <article class="cards">
-    <?php foreach ($services as $key => $service) { ?>
+    <?php foreach ($services as  $service) { ?>
     <?php require __DIR__ . "/templates/service-part.php" ?>
     <?php }
       ?>
@@ -48,7 +51,7 @@ $services = getAllServices($pdo);
       ?>
 
     <div class="more-cars">
-      <a href="veicules.php" class="btn-fill center">Voir plus</a>
+      <a href="voitures.php" class="btn-fill center">Voir plus</a>
     </div>
 
   </article>
@@ -166,7 +169,7 @@ $services = getAllServices($pdo);
           </div>
           <div>
             <label for="message">Message</label>
-            <textarea name="message" id="message" cols="30" rows="10"></textarea>
+            <textarea name="message" id="message" cols="30" rows="5"></textarea>
           </div>
         </div>
       </div>

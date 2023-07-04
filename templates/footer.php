@@ -1,3 +1,15 @@
+<?php
+
+require_once __DIR__ . "/../lib/pdo.php";
+require_once __DIR__ . "/../lib/schedules.php";
+
+// get schedules information 
+$schedules = getSchedules($pdo);
+
+?>
+
+
+
 </main>
 <!-- FOOTER   -->
 <footer id="schedules" class="footer">
@@ -21,7 +33,7 @@
     </div>
     <div class="footer-days">
       <h5 class="footer-days-title">Horaires d'ouverture</h5>
-      <div class="footer-day-week">
+      <!-- <div class="footer-day-week">
         <span class="footer-day">lun:</span>
         <span class="morning-start">08:45</span>
         <span class="morning-end">12:00</span>
@@ -73,7 +85,12 @@
         <span class="footer-day">dim:</span>
         <span class="morning-start">ferme</span>
 
-      </div>
+      </div> -->
+
+      <?php foreach ($schedules as  $schedule) { ?>
+      <?php require __DIR__ . "/footer-part.php" ?>
+      <?php }
+      ?>
 
     </div>
   </div>
