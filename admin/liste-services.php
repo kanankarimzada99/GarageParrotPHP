@@ -44,7 +44,7 @@ $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
   <!-- connection  -->
   <section class="connection">
     <div class="connection-header">
-      <h2 class="header-titles">Liste Services</h2>
+      <h1 class="header-titles">Liste Services</h1>
       <a href="ajouter-service.php" class="btn  btn-fill">Ajouter</a>
     </div>
 
@@ -56,7 +56,7 @@ $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
             <th>Service</th>
             <th class="w-50">Description</th>
             <th>image</th>
-            <th style="min-width:100px">action</th>
+            <th class="size100">action</th>
           </tr>
           <!-- <tr>
             <td>Alfreds Futterkiste</td>

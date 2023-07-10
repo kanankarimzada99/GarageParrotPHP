@@ -6,8 +6,6 @@ require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/reviews.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
-
-
 $reviews = false;
 $errors = [];
 $messages = [];
@@ -24,7 +22,6 @@ if($reviews){
 }else {
   $errors[] = "L'avis n'existe pas";
 }
-
 ?>
 
 <div class="wrapper">
@@ -52,23 +49,13 @@ if($reviews){
       <?= $error; ?>
     </div>
 
-
     <?php } ?>
     <div class="w-100 text-center mt-5">
       <a href="javascript:history.back(1)" class="btn-fill ">Page precedante</a>
     </div>
-
-
   </section>
   <!-- END CONTACT  -->
 </div>
-
-
-
-
-
-
-
 
 <?php
       require_once __DIR__ . "/templates/footer-admin.php";

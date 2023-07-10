@@ -12,7 +12,7 @@ function getServicesById(PDO $pdo, int|string $id): array|bool
 
 function getServices(PDO $pdo, int $limit = null, int $page = null): array|bool
 {
-  //order services by descending order
+  //order services by id
   $sql = "SELECT * FROM services ORDER BY id";
 
   if ($limit && !$page) {
@@ -57,10 +57,13 @@ function saveService(PDO $pdo, string $service, string $description, string $ima
   if ($id === null) {
     $query = $pdo->prepare("INSERT INTO services (service, description, image)"
       . "VALUES(:service, :description, :image)");
-  } else {
+}
+   
+      //if id car exist UPDATE
+   else {
     $query = $pdo->prepare("UPDATE `services` SET `service` = :service, "
       . "`description` = :description, "
-      . "image =:image WHERE `id` =:id;");
+      . "`image` = :image WHERE `id` =:id;");
 
     $query->bindValue(':id', $id, $pdo::PARAM_INT);
   }

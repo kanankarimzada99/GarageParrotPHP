@@ -39,20 +39,18 @@ $totalPages = ceil($totalreviews / _ADMIN_ITEM_PER_PAGE_);
             <th class="w-75">Commentaire</th>
             <th>Note</th>
             <th class="size100">action</th>
+          </tr>
             <tbody>
               <?php foreach ($reviews as $review) { ?>
-              <tr>
+                <tr>
 
-                <td><?= $review["client"]; ?></td>
-                <td><?= $review["comment"]; ?></td>
-                <td><?= $review["note"]; ?></td>
-                <td><a href="modifier-avis.php?id=<?= $review['id'] ?>"><i class="fa-solid fa-pencil"></i></a>
-                  | <a href="delete-review.php?id=<?= $review['id'] ?>"
-                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet avis ?')"><i
-                      class="fa-solid fa-trash-can"></i></a>
-                </td>
-
-              </tr>
+                  <td><?= $review["client"]; ?></td>
+                  <td><?= $review["comment"]; ?></td>
+                  <td><?= $review["note"]; ?></td>
+                  <td><a href="modifier-avis.php?id=<?= $review['id'] ?>"><i class="fa-solid fa-pencil"></i></a>
+                    | <a href="delete-review.php?id=<?= $review['id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet avis ?')"><i class="fa-solid fa-trash-can"></i></a>
+                  </td>
+                </tr>
               <?php } ?>
             </tbody>
         </table>

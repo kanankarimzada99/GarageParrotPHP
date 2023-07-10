@@ -8,7 +8,7 @@ if(!empty($_SESSION)){
   if($_SESSION['user']['role'] === 'admin'){
     header('location:/admin/liste-employes.php');
   }else if($_SESSION['user']['role'] === 'employee'){
-    header('location:/admin/liste-veicules.php');
+    header('location:/admin/liste-voitures.php');
   } else {
     header('location:/admin/index.php');
   }

@@ -32,7 +32,7 @@ $regexTime = '/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/'; //00:00
 
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
-  $_SESSION['schedule']['id'] = $id;
+  $_SESSION['user']['id'] = $id;
 
 
   $schedule = getSchedulesById($pdo, $_GET['id']);
@@ -135,7 +135,7 @@ $day = strtolower($_POST["day"]);
   <!-- BREADCRUMB  -->
   <div class="breadcrumbs breadcrumbs-connection">
     <div class="go-back-list">
-      <a href="/admin/liste-horaires.php">Revenir liste</a>
+      <a href="/admin/liste-horaires.php">Revenir liste horaires</a>
     </div>
   </div>
   <!-- END BREADCRUMB  -->
@@ -168,6 +168,10 @@ $day = strtolower($_POST["day"]);
             <label for="day">Jour de la semaine</label>
             <input type="text" name="day" id="day" placeholder="lundi" class="large"
               value=<?= htmlspecialchars($schedule['day'] ?? $formSchedule['day']); ?>>
+
+          </div>
+          <div class="class-group text-center">
+            <p class="time-message">&gt;&gt; L'horaire 00:00 = fermé &lt;&lt;</p>
           </div>
           <fieldset>
             <legend>Matin</legend>
@@ -175,11 +179,13 @@ $day = strtolower($_POST["day"]);
               <label for="morning-open">Ouverture</label>
               <input type="text" name="morning-open" id="morning-open" placeholder="00:00" minlength="3" maxlength="5"
                 value=<?= htmlspecialchars($schedule['morningOpen'] ?? $formSchedule['morning-open']); ?>>
+
             </div>
             <div class="form-group">
               <label for="morning-close">Fermeture</label>
               <input type="text" name="morning-close" id="morning-close" placeholder="00:00" minlength="3" maxlength="5"
                 value=<?= htmlspecialchars($schedule['morningClose'] ?? $formSchedule['morning-close']); ?>>
+
             </div>
           </fieldset>
           <fieldset>
@@ -189,14 +195,17 @@ $day = strtolower($_POST["day"]);
               <input type="text" name="afternoon-open" id="afternoon-open" placeholder="00:00" minlength="3"
                 maxlength="5"
                 value=<?= htmlspecialchars($schedule['afternoonOpen'] ?? $formSchedule['afternoon-open']); ?>>
+
             </div>
             <div class="form-group">
               <label for="afternoon-close">Fermeture</label>
               <input type="text" name="afternoon-close" id="afternoon-close" placeholder="00:00" minlength="3"
                 maxlength="5"
                 value=<?= htmlspecialchars($schedule['afternoonClose'] ?? $formSchedule['afternoon-close']); ?>>
+
             </div>
           </fieldset>
+
         </div>
         <div class="form-btn">
           <button type="submit" value="modify-schedule" class="btn-fill">Modifier</button>

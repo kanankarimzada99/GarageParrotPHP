@@ -34,7 +34,8 @@ require_once __DIR__ . "../../../lib/not-connected.php";
 <body>
   <div class="wrapper">
     <header class="connection-header header">
-      <div class="user-connexion">
+      <div class="user-connection">
+        <span>Bonjour</span>
         <span><?=$_SESSION['user']['name']?></span>
         <i class="fa-solid fa-user"></i>
       </div>
@@ -55,7 +56,7 @@ require_once __DIR__ . "../../../lib/not-connected.php";
             <a class="nav-link" href="/admin/liste-horaires.php">Horaires</a>
           </li>
           <li>
-            <a class="nav-link" href="/admin/liste-veicules.php">Veicules</a>
+            <a class="nav-link" href="/admin/liste-voitures.php">Voitures</a>
           </li>
           <li>
             <a class="nav-link" href="/admin/liste-avis.php">Avis</a>
@@ -63,7 +64,7 @@ require_once __DIR__ . "../../../lib/not-connected.php";
 
           <?php else: ?>
           <li>
-            <a class="nav-link" href="/admin/liste-veicules.php">Veicules</a>
+            <a class="nav-link" href="/admin/liste-voitures.php">Voitures</a>
           </li>
           <li>
             <a class="nav-link" href="/admin/liste-avis.php">Avis</a>

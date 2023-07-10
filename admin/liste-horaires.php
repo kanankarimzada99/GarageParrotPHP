@@ -44,7 +44,7 @@ $totalSchedules = getTotalSchedules($pdo);
             <th>Midi début</th>
             <th>Midi fin</th>
             <th>Action</th>
-
+          </tr>
             <tbody>
               <?php foreach ($schedules as $schedule) { ?>
               <tr>

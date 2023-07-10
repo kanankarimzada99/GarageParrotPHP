@@ -12,7 +12,7 @@ function getSchedulesById(PDO $pdo, int|string $id): array|bool
 
 function getSchedules(PDO $pdo): array|bool
 {
-  //order schedules by descending order
+  //order schedules by id
   $sql = "SELECT * FROM schedules ORDER BY id";
   $query = $pdo->prepare($sql);
   $query->execute();

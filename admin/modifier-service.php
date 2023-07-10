@@ -8,8 +8,6 @@ require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/services.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
-
-
 //employees don't have permission to visit this page
 if ($_SESSION['user']['role'] === 'employee') {
   header("location: /admin/liste-veicules.php");
@@ -23,22 +21,16 @@ $formService = [
   'image' => ''
 ];
 $id = null;
+$fileName = null;
+
 $regexService = '/^[a-zA-Z\s\p{P}]{5,25}$/u';
 $regexDescription = '/^[a-zA-Z\s\p{P}]{5,250}$/u';
 
-$fileName = null;
-
-
-
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
-  $_SESSION['service']['id'] = $id;
+  $_SESSION['user']['id'] = $id;
 
-
-
-  $service = getServicesById($pdo, $_GET['id']);
-
-
+  $service = getServicesById($pdo, $id);
 
   if ($service === false) {
     $errors[] = "Cet service n'existe pas";
@@ -46,6 +38,7 @@ if (isset($_GET['id'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  
   //to validate service
   if (empty($_POST["service"])) {
     $errors[] = "Le service est requis.";
@@ -59,7 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors[] = "La description doit contenir uniquement des lettres et avoir une longueur maximale de 250 caractères.";
   }
 
-
+  // if (!preg_match('/[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/', $_POST['image'])) {
+  //   $errors[] = "Le format d'image n'est pas valide.";
+  // }
 
   //verify if a file is sent
   if (isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != '') {
@@ -72,7 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       //generate unique ID for a file
       $fileName = uniqid() . '-' . $fileName;
   
-  
       //move file image into new location (uploads images folder)  
   
       if (move_uploaded_file($_FILES['file']['tmp_name'], dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $fileName)) {
@@ -81,15 +75,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   
           // $service = getServicesById($pdo, $_SESSION['service']['id']);
   
-
           if(file_exists(dirname(__DIR__) . _GARAGE_UPLOADS_. $_FILES['file']['name'])){
             //delete old image if new one is uploaded
           unlink(dirname(__DIR__) . _GARAGE_UPLOADS_ . $_FILES['file']['name']);
           }else{
            $messages[]= "image remplace avec success";
           }
-          
-         
         }
       } else {
         $errors[] = "Le fichier n'a pas été uploadé";
@@ -110,53 +101,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
   
-  //to validate service
-  if (empty($_POST['service'])){
-    $errors[] = "Le services est requis.";
-  }elseif(!preg_match($regexService, $_POST['service'])){
-    $errors[] = "Le service doit contenir uniquement des lettres et chiffres avoir une longueur maximale de 20 caractères.";
-  }
-  
-  //to validate description
-  if(empty($_POST['service-description'])){
-    $errors[] = "La description est requis.";
-  }elseif(!preg_match($regexDescription, $_POST['service-description'])){
-    $errors[]="La description doit contenir uniquement des lettres et chiffres et avoir une longueur maximale de 200 caractères.";
-  }
   //to validate image
   if(empty($_FILES['file']['name'])){
     $errors[] = "L'image pour le service est requis.";
   }
   
-  
-
-
-
-
-
   $formService = [
     'service' => $_POST['service'],
     'description' => $_POST['service-description'],
     'image' => $_POST['image']
   ];
 
-
-
   //if no errors we save all information
   if (!$errors) {
-    if (isset($_SESSION['service']['id'])) {
+    if (isset($_SESSION['user']['id'])) {
       //the id will be int
-      $id = (int)$_SESSION['service']['id'];
+      $id = (int)$_SESSION['user']['id'];
     } else {
       $id = null;
     }
 
     //all data will be saved at saveEmployee function
-    $id = $_SESSION['service']['id'];
+    $id = $_SESSION['user']['id'];
 
     $res = saveService($pdo, $_POST["service"], $_POST["service-description"], $fileName, $id);
-
-
 
     if ($res) {
       $messages[] = "Le service a bien été sauvegardé";
@@ -174,28 +142,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 }
-
-
-
-
 ?>
-
-
 
 <div class="wrapper">
 
   <!-- BREADCRUMB  -->
   <div class="breadcrumbs breadcrumbs-connection">
     <div class="go-back-list">
-      <a href="/admin/liste-services.php">Revenir liste</a>
+      <a href="/admin/liste-services.php">Revenir liste services</a>
     </div>
   </div>
   <!-- END BREADCRUMB  -->
 
   <!-- connection  -->
   <section class="connection sections" id="connection">
-    <h2 class="header-titles">Modifier service</h2>
-
+    <h1 class="header-titles">Modifier service</h1>
 
     <!-- messages  -->
     <?php foreach ($messages as $message) { ?>
@@ -208,8 +169,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="alert alert-danger mt-4" role="alert">
       <?= $error; ?>
     </div>
-
-
 
     <?php } ?>
     <?php if ($formService !== false) { ?>
@@ -228,18 +187,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               rows="5"><?= htmlspecialchars($service['description'] ?? $formService['description']) ; ?></textarea>
           </div>
 
-
-
           <div class="form-group">
             <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars($service['image'] ?? $formService['image'])?>"
               alt="<?= $formService['service'] ?>" class="w-25">
             <!-- <label for="delete_image">Supprimer l'image</label>
           <input type="checkbox" name="delete_image" id="delete_image"> -->
-            <input type="hidden" name="image" <?= htmlspecialchars($service['image'] ?? $formService['image']) ; ?>>
+            <input type="hidden" name="image"
+              value="<?= htmlspecialchars($service['image'] ?? $formService['image']) ; ?>">
           </div>
-
-
-
           <p>
             <input type="file" name="file" id="file">
           </p>
@@ -260,7 +215,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </div>
 </div>
 <?php } ?>
-
 
 <?php
       require_once __DIR__ . "/templates/footer-admin.php";

@@ -201,6 +201,13 @@ textarea {
 
   object-fit: contain;
 }
+.card-img-top.heigth-200{
+height: 200px;
+  object-fit:contain;
+}
+.card-body.heigth-280{
+height: 280px;
+}
 
 /* CARDS  */
 .cards {
@@ -377,7 +384,7 @@ input[type="submit"]:hover{
 }
 
 .breadcrumbs .go-back-list{
-  width: 120px;
+  /* width: 120px; */
   padding:0;
   margin:0;
   line-height: 1rem;
@@ -471,7 +478,7 @@ input[type="submit"]:hover{
   position: absolute;
   top: 0;
   right: 0;
-  /* width: 100vw; */
+  width: 100vw;
   height: 100vh;
   background-color: #fff;
   display: -webkit-box;
@@ -550,7 +557,7 @@ input[type="submit"]:hover{
   .nav-list {
     position: relative;
     right: 0;
-    /* width: 70vw; */
+    width: 70vw;
     height: 100%;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -1375,6 +1382,14 @@ input[type="submit"]:hover{
   font-size: 2rem;
   margin: 30px auto 20px;
   max-width: 300px;
+ 
+}
+
+.footer-social-network a{
+  color:var(--grayDark);
+}
+.footer-social-network a:hover{
+  color:var(--font);
 }
 
 /* .footer .go-top{
@@ -1768,7 +1783,8 @@ font-style: italic;
 
 /* CONNECTION FORMS --------------  */
 
-textarea.service-description{
+textarea.service-description,
+textarea.comment{
   width: 100%;
 }
 
@@ -1860,6 +1876,13 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
+th.size50 {
+  min-width:50px;
+}
+th.size100 {
+  min-width:100px;
+}
+
 .connection-wrapper.w-max{
   max-width: 700px;
   padding:20px;
@@ -1895,6 +1918,14 @@ tr:nth-child(even) {
 .schedule-form .form-group{
   width: 100%;
   margin:10px auto 20px;
+}
+
+.schedule-form .time-message{
+  font-size: 0.9rem;
+  font-weight: 500;
+  color:var(--primary);
+  margin:5px;
+  display: inline-block;
 }
 
 @media screen and (min-width:576px){
@@ -1971,6 +2002,7 @@ tr:nth-child(even) {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  
 }
 
 .connection-form .car-description .car-description-left,
@@ -1982,9 +2014,9 @@ tr:nth-child(even) {
   display:-webkit-box;
   display:-ms-flexbox;
   display:flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
   -webkit-box-pack: inherit;
   -ms-flex-pack: inherit;
   justify-content: inherit;

@@ -12,6 +12,6 @@ session_start();
 
 function adminOnly() {
   if($_SESSION['user']['role'] === 'employee'){
-    header("location: /admin/liste-veicules.php");
+    header("location: /admin/liste-voitures.php");
   }
 }

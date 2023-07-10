@@ -27,7 +27,6 @@ $regexService = '/^[a-zA-Z0-9\s]{3,20}$/';
 $regexDescription = '/^[a-zA-Z0-9\s]{3,250}$/';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
  
   //verify errors inside the form
 
@@ -44,14 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors[] = "La description doit contenir uniquement des lettres, espaces et chiffres et avoir une longueur maximale de 200 caractères.";
   }
 
-
   //to verify image format
   if (!preg_match('/\.(jpg|jpeg|png|gif)$/', $_POST['image'])) {
     $errors[] = "Le format d'image n'est pas valide.";
   }
-
-
-var_dump($_FILES);
 
   $fileName = null;
   //verify if a file is sent
@@ -65,9 +60,7 @@ var_dump($_FILES);
       //generate unique ID for a file
       $fileName = uniqid() . '-' . $fileName;
 
-var_dump($fileName);
       //move file image into new location (uploads images folder)  
-
       if (move_uploaded_file($_FILES['file']['tmp_name'], dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $fileName)) {
 
         if (isset($_POST['image'])) {
@@ -93,13 +86,6 @@ var_dump($fileName);
     }
   }
 
-
-
-
-
-
-
-
   //put information from form to formEmployee
   $formService = [
     'service' => $_POST['service'],
@@ -107,19 +93,11 @@ var_dump($fileName);
     'image' => $fileName
   ];
 
- 
-var_dump($formService);
-
   //if no errors we save all information
   if (!$errors) {
 
-
-
-
     //all data will be saved at saveEmployee function
-
     $res = saveService($pdo, $_POST["service"], $_POST["service-description"], $_POST["image"], $id);
-
 
     if ($res) {
       $messages[] = "Le service a bien été sauvegardé";
@@ -137,24 +115,20 @@ var_dump($formService);
     }
   }
 }
-
-
-
-
 ?>
 <div class="wrapper">
 
   <!-- BREADCRUMB  -->
   <div class="breadcrumbs breadcrumbs-connection">
     <div class="go-back-list">
-      <a href="/admin/liste-services.php">Revenir liste</a>
+      <a href="/admin/liste-services.php">Revenir liste service</a>
     </div>
   </div>
   <!-- END BREADCRUMB  -->
 
   <!-- connection  -->
   <section class="connection sections" id="connection">
-    <h2 class="header-titles">Ajouter Service</h2>
+    <h1 class="header-titles">Ajouter Service</h1>
 
     <!-- messages  -->
     <?php foreach ($messages as $message) { ?>
@@ -171,10 +145,7 @@ var_dump($formService);
 
     <?php if ($formService !== false) { ?>
 
-
-
-
-    <div class="connection-wrapper">
+      <div class="connection-wrapper">
       <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
         <div class="connection-form">
           <div class="form-group">
@@ -187,7 +158,7 @@ var_dump($formService);
               rows="5"><?= htmlspecialchars($formService['description']); ?></textarea>
           </div>
           <div class="form-group">
-            Choisissez une image de voiture:
+            <label for="image">Choisissez une image de service:</label>
             <input type="file" name="image" id="image">
           </div>
         </div>
@@ -209,11 +180,6 @@ var_dump($formService);
 </div>
 <?php } ?>
 
-
-
-
 <?php
 require_once __DIR__ . "/templates/footer-admin.php";
-require_once __DIR__ . "/../lib/session.php";
-adminOnly();
 ?>

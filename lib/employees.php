@@ -27,8 +27,8 @@ function getEmployeesById(PDO $pdo, int|string $id): array|bool
 function getEmployees(PDO $pdo, int $limit = null, int $page = null): array|bool
 {
 
-  //order employees by descending order
-  $sql = "SELECT * FROM employees WHERE role = 'employee' ORDER BY id";
+  //order employees by id
+  $sql = "SELECT * FROM employees ORDER BY id";
 
   if ($limit && !$page) {
     $sql .= " LIMIT :limit";
@@ -86,7 +86,6 @@ if($id === null){
   $query->bindValue(':name', $name, PDO::PARAM_STR);
   $query->bindValue(':email', $email, PDO::PARAM_STR);
   $query->bindValue(':password', $password, PDO::PARAM_STR);
- 
   return $query->execute();
 }
 

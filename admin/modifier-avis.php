@@ -15,21 +15,15 @@ $formReview = [
 ];
 $id=null;
 
-
 //regex
 $regexClient = '/^[a-zA-Z\s\p{P}]{5,50}$/u';
 $regexComment = '/^[a-zA-Z\s\p{P}]{5,250}$/u';
-
 
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
   $_SESSION['user']['id'] = $id;
 
-
-
   $review = getReviewsById($pdo, $id);
-
-
 
   if ($review === false) {
     $errors[] = "Cette avis n'existe pas";
@@ -58,16 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors[] = "La note est requis.";
   }
 
-
   //put information from form to formReview
   $formReview = [
     'client' => $_POST['client'],
     'comment' => $_POST['comment'],
     'note'=>$_POST['note']
   ];
-
- 
-
 
   //if no errors we save all information
   if (!$errors) {
@@ -79,9 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     //all data will be saved at saveReview function
-
     $res = saveReview($pdo, $_POST["client"], $_POST["comment"], $_POST["note"], $id);
-
 
     if ($res) {
       $messages[] = "L'avis du client a bien été sauvegardé";
@@ -114,7 +102,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <!-- connection  -->
   <section class="connection sections" id="connection">
     <h1 class="header-titles">Modifier avis client</h1>
-
 
     <!-- messages  -->
     <?php foreach ($messages as $message) { ?>

@@ -24,12 +24,11 @@ if($service){
   if(deleteService($pdo, $_GET["id"])){
     $messages[]= "Le service a bien été supprimé";
   }else {
-    $errors[]= "Une erreur s'eest produite lors de la suppression";
+    $errors[]= "Une erreur s'est produite lors de la suppression";
   }
 }else {
   $errors[] = "Le service n'existe pas";
 }
-
 ?>
 
 <div class="wrapper">
@@ -37,15 +36,13 @@ if($service){
   <!-- BREADCRUMB  -->
   <div class="breadcrumbs breadcrumbs-connection">
     <div class="go-back-list">
-      <a href="/admin/liste-employes.php">Revenir liste</a>
+      <a href="/admin/liste-employes.php">Revenir liste service</a>
     </div>
   </div>
   <!-- END BREADCRUMB  -->
 
   <!-- connection  -->
   <section class="connection sections" id="connection ">
-
-
 
     <!-- messages  -->
     <?php foreach ($messages as $message) { ?>
@@ -58,8 +55,6 @@ if($service){
     <div class="alert alert-danger mt-4" role="alert">
       <?= $error; ?>
     </div>
-
-
     <?php } ?>
     <div class="w-100 text-center mt-5">
       <a href="javascript:history.back(1)" class="btn-fill ">Page precedante</a>

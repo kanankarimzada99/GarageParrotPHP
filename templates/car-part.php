@@ -1,9 +1,9 @@
 <!-- if image car doesn't exist  -->
 <?php
-  if($car['image'] === ""){
-    $imagePath = 'assets/images/no-image.svg';
+  if($car['image'] === "" ||$car['image'] === null){
+    $imagePath = '/assets/images/no-image.svg';
   }else {
-    $imagePath = 'uploads/images/'.$car['image'];
+    $imagePath = '/uploads/images/'.$car['image'];
   }
 ?>
 
@@ -12,9 +12,10 @@
 
 <div class="card">
   <div class="card-header">
-    <img class="card-img-top" src="<?=$imagePath;?>" alt="voiture marque X">
+    <img class="card-img-top heigth-200" src="<?=$imagePath;?>"
+      alt="<?=$car['brand']." ".$car['model']." ".$car['year'];?>">
   </div>
-  <div class="card-body">
+  <div class="card-body heigth-280">
     <h4 class="card-title"><?=$car['brand'];?></h4>
     <p><?=$car['model'];?></p>
     <p class="card-text">
@@ -24,6 +25,6 @@
     <hr>
     <!-- number format 2 000,00 €  -->
     <p class="price"><?=number_format($car['price'], 2, ',', ' ');?> €</p>
-    <a href="veicule-details.php?id=<?=$car['id'];?>" class=" btn-wire large">Details</a>
+    <a href="voiture-details.php?id=<?=$car['id'];?>" class=" btn-wire large">Details</a>
   </div>
 </div>

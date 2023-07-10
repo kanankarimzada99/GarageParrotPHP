@@ -3,16 +3,77 @@
 require_once __DIR__ . "/lib/config.php";
 require_once __DIR__ . "/lib/session.php";
 require_once __DIR__ . "/lib/pdo.php";
-require_once __DIR__ . "/lib/services.php";
 require_once __DIR__ . "/lib/cars.php";
-// require_once __DIR__ . "/lib/schedules.php";
+require_once __DIR__ . "/lib/services.php";
+require_once __DIR__ . "/lib/reviews.php";
+require_once __DIR__ . "/lib/starRating.php";
 require_once __DIR__ . "/templates/header.php";
 
-//to show only 3 cars
+$errors = [];
+$messages = [];
+
+
+
+
 $cars = getCars($pdo, 3);
 $services = getServices($pdo, 6);
-// $schedules = getSchedules($pdo);
-// var_dump($schedules);
+$reviews = getReviews($pdo, 3);
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+  if (!isset($_POST['lastname']) || $_POST['lastname'] == '') {
+    $errors[] = "Le prénom ne doit pas être vide  ";
+  }
+  if (!isset($_POST['name']) || $_POST['name'] == '') {
+    $errors[] = "Le nom ne doit pas être vide  ";
+  }
+
+  if (!isset($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    $errors[] = "L'adresse e-mail n'est pas valide";
+  }
+
+
+
+  if (!isset($_POST['phone']) || $_POST['phone'] == '') {
+    $errors[] = "Le téléphone ne doit pas être vide  ";
+  }
+  if (!isset($_POST['subject']) || $_POST['subject'] == '') {
+    $errors[] = "Le subjet ne doit pas être vide  ";
+  }
+
+  if(!$errors){
+    $to= _APP_EMAIL_;
+    $email = filter_var($_POST['email'] , FILTER_SANITIZE_EMAIL);
+    $subject = '[Garage Parrot] Formulaire de contact';
+    $emailContent = "Email : $email<br>"
+    ."Prénom: <br>"
+    .nl2br(htmlentities($_POST['name']))
+    ."Nom: <br>"
+    .nl2br(htmlentities($_POST['lastname']))
+    ."téléphone: <br>"
+    .nl2br(htmlentities($_POST['phone']))
+    ."Adresse e-mail: <br>"
+    .nl2br(htmlentities($_POST['email']))
+    ."Message : <br>"
+    .nl2br(htmlentities($_POST['message']));
+    $headers = "From: "._APP_EMAIL_ . 
+    "\r\n"."MIME-Version: 1.0" . "\r\n".
+    "Content-type: text/html; charset=utf-8";
+    
+
+
+    if(mail($to, $subject, $emailContent, $headers)) {
+      $messages[]="Votre email a bien été envoyé";
+    }else {
+      $errors[]="Une erreur s'est produite durant l'envoi";
+    }
+  }
+
+ 
+}
+
+
+
 ?>
 
 <!-- HERO  -->
@@ -35,7 +96,7 @@ $services = getServices($pdo, 6);
     <?php foreach ($services as  $service) { ?>
     <?php require __DIR__ . "/templates/service-part.php" ?>
     <?php }
-      ?>
+    ?>
   </article>
 </section>
 <!-- END SERVICES  -->
@@ -44,16 +105,14 @@ $services = getServices($pdo, 6);
 <section id="cars" class="used-cars sections">
   <h2 class="header-titles">Nos derniers voitures d'occasion</h2>
   <article class="cards">
-
     <?php foreach ($cars as  $car) { ?>
     <?php require __DIR__ . "/templates/car-part.php" ?>
     <?php }
-      ?>
+    ?>
 
     <div class="more-cars">
       <a href="voitures.php" class="btn-fill center">Voir plus</a>
     </div>
-
   </article>
 </section>
 <!-- END CARS  -->
@@ -65,62 +124,31 @@ $services = getServices($pdo, 6);
   <div id="demo" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
 
+
+      <!-- the last reviews  -->
       <div class="carousel-item active">
 
         <div class="carousel-caption">
           <div class="stars">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
+            <?php
+            echo starRating($reviews[0]['note']); ?>
           </div>
           <i class="fa-sharp fa-solid fa-quote-left quote-left"></i>
           <p>
-            hubsopot offers a powerr full suite of tools that every marketing team must have. And if you get stuck,
-            their suppor tteam will help out. Im using hubsotpo to mage the entire inboud process. In one houre i
-            can have a complet leag generation campaing set up.
-            tteam will help out. Im using because.
+            <?php echo $reviews[0]['comment']; ?>
           </p>
           <i class="fa-sharp fa-solid fa-quote-right quote-right"></i>
-          <div class="name-caption">Daysi</div>
+          <div class="name-caption"><?php echo $reviews[0]['client']; ?></div>
         </div>
       </div>
-      <div class="carousel-item ">
-        <div class="carousel-caption">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-          </div>
-          <i class="fa-sharp fa-solid fa-quote-left quote-left"></i>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quas perferendis impedit iusto ipsa.
-          </p>
-          <i class="fa-sharp fa-solid fa-quote-right quote-right"></i>
-          <div class="name-caption">Sophia</div>
-        </div>
-      </div>
-      <div class="carousel-item ">
-        <div class="carousel-caption">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-          </div>
-          <i class="fa-sharp fa-solid fa-quote-left quote-left"></i>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and
-            typesetting industry.
-          </p>
-          <i class="fa-sharp fa-solid fa-quote-right quote-right"></i>
-          <div class="name-caption">Jorge</div>
-        </div>
-      </div>
+
+
+      <!-- foreach to start from 1  -->
+      <?php foreach ($reviews as $key =>  $review) :
+        if ($key < 1) continue;
+        require __DIR__ . "/templates/review-part.php";
+      endforeach;
+      ?>
 
     </div>
     <a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -138,11 +166,32 @@ $services = getServices($pdo, 6);
 
 <section class="contact sections" id="contact">
   <h2 class="header-titles">Contact</h2>
+
+
+  <!-- messages  -->
+  <?php foreach ($messages as $message) { ?>
+  <div class="alert alert-success mt-4" role="alert">
+    <?= $message; ?>
+  </div>
+  <?php } ?>
+
+  <?php foreach ($errors as $error) { ?>
+  <div class="alert alert-danger mt-4" role="alert">
+    <?= $error; ?>
+  </div>
+  <?php } ?>
+
+
+
+
+
+
   <div class="contact-wrapper">
     <h3>Comment pouvons-nous vous aider?</h3>
     <p>Service? Rendez-vous? Voiture d'occasion?</p>
     <p>N'hésitez pas à nous rejoindre.</p>
-    <form action="">
+
+    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">
       <div class="contact-form">
         <div class="contact-form-left">
           <div>
@@ -150,11 +199,11 @@ $services = getServices($pdo, 6);
             <input type="text" name="lastname" id="lastname">
           </div>
           <div>
-            <label for="name">Prenom</label>
+            <label for="name">Prénom</label>
             <input type="text" name="name" id="name">
           </div>
           <div>
-            <label for="email">Adresse email</label>
+            <label for="email">Adresse e-mail</label>
             <input type="text" name="email" id="email">
           </div>
           <div>
@@ -175,7 +224,7 @@ $services = getServices($pdo, 6);
       </div>
       <div class="form-btn">
 
-        <input type="submit" value="Envoyer" class="btn-fill">
+        <input type="submit" value="Envoyer" name='sendContact' class="btn-fill">
       </div>
     </form>
   </div>

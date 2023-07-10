@@ -124,9 +124,9 @@ $schedules = getSchedules($pdo);
       </ul>
     </nav>
     <div class="footer-social-network">
-      <i class="fa-brands fa-square-facebook"></i>
-      <i class="fa-brands fa-square-instagram"></i>
-      <i class="fa-brands fa-square-twitter"></i>
+      <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+      <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
     </div>
   </div>
 

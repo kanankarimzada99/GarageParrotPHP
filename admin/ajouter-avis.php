@@ -22,7 +22,6 @@ $regexComment = '/^\w.{20,250}$/';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
- 
   //verify errors inside the form
 
   //to validate nom client
@@ -42,14 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors[] = "La note est requis.";
   }
 
-
   //put information from form to formReview
   $formReview = [
     'client' => $_POST['client'],
     'description' => $_POST['comment'],
     'note'=>$_POST['note']
   ];
-
 
   //if no errors we save all information
   if (!$errors) {

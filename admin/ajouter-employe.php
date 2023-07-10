@@ -4,7 +4,7 @@ require_once __DIR__ . "/../lib/session.php";
 //only admin has permission to visit this page
 adminOnly();
 require_once __DIR__ . "/../lib/pdo.php";
-require_once __DIR__ . "/../lib/tools.php";
+// require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/employees.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
@@ -25,10 +25,7 @@ $formEmployee = [
 $id = null;
 $employee ='employee';
 
-
-
-
-if (isset($_POST['add-employee'])) {
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   //put information from form to formEmployee
   $formEmployee = [
@@ -38,15 +35,12 @@ if (isset($_POST['add-employee'])) {
     'password' => $_POST['password']
   ];
 
-
   //if no errors we save all information
   if (!$errors) {
   
 
     //all data will be saved at saveEmployee function
-  
     $res = saveEmployee($pdo, $_POST["lastname"], $_POST["name"], $_POST["email"], $_POST["password"], $id);
-
 
     if ($res) {
       $messages[] = "L'employé a bien été sauvegardé";
@@ -65,28 +59,21 @@ if (isset($_POST['add-employee'])) {
     }
   }
 }
-
-
-
-
 ?>
-
-
 
 <div class="wrapper">
 
   <!-- BREADCRUMB  -->
   <div class="breadcrumbs breadcrumbs-connection">
     <div class="go-back-list">
-      <a href="/admin/liste-employes.php">Revenir liste</a>
+      <a href="/admin/liste-employes.php">Revenir liste employé</a>
     </div>
   </div>
   <!-- END BREADCRUMB  -->
 
   <!-- connection  -->
   <section class="connection sections" id="connection">
-    <h2 class="header-titles">Ajouter employé</h2>
-
+    <h1 class="header-titles">Ajouter employé</h1>
 
     <!-- messages  -->
     <?php foreach ($messages as $message) { ?>
@@ -99,9 +86,8 @@ if (isset($_POST['add-employee'])) {
     <div class="alert alert-danger mt-4" role="alert">
       <?= $error; ?>
     </div>
-
-
     <?php } ?>
+
     <?php if ($formEmployee !== false) { ?>
     <div class="connection-wrapper">
 
@@ -136,8 +122,6 @@ if (isset($_POST['add-employee'])) {
   </section>
   <!-- END CONTACT  -->
 </div>
-
-
 
 <?php } else { ?>
 <div class="not-found">

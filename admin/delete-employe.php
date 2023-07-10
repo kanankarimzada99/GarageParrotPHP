@@ -24,12 +24,11 @@ if($employee){
   if(deleteEmployee($pdo, $_GET["id"])){
     $messages[]= "L'employé a bien été supprimé";
   }else {
-    $errors[]= "Une erreur s'eest produite lors de la suppression";
+    $errors[]= "Une erreur s'est produite lors de la suppression";
   }
 }else {
   $errors[] = "L'employé n'existe pas";
 }
-
 ?>
 
 <div class="wrapper">
@@ -37,7 +36,7 @@ if($employee){
   <!-- BREADCRUMB  -->
   <div class="breadcrumbs breadcrumbs-connection">
     <div class="go-back-list">
-      <a href="/admin/liste-employes.php">Revenir liste</a>
+      <a href="/admin/liste-employes.php">Revenir liste employé</a>
     </div>
   </div>
   <!-- END BREADCRUMB  -->

@@ -14,14 +14,11 @@ if ($_SESSION['user']['role'] === 'employee') {
 }
 
 //we cant change admin
-
 if (isset($_GET['id'])){
   if ($_GET['id'] === "1"){
     header("location:/admin/liste-employes.php");
    }
 }
-
-
 
 
 $errors = [];
@@ -33,11 +30,11 @@ $formEmployee = [
   'password' => ''
 ];
 $id = null;
+
+//regex
 $regexName = '/^[a-zA-Z]{1,25}$/';
 $regexEmail = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
 $regexPassword = '/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{10,}$/';
-$sha1= null;
-
 
 
 
@@ -151,7 +148,7 @@ if (empty($_POST["password"])) {
 
   <!-- connection  -->
   <section class="connection sections" id="connection">
-    <h2 class="header-titles">Modifier employé</h2>
+    <h1 class="header-titles">Modifier employé</h1>
 
 
     <!-- messages  -->

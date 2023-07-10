@@ -8,6 +8,7 @@ require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/employees.php";
 require_once __DIR__ . "/../templates/header-connexion.php";
 
+
 $errors = [];
 $messages = [];
 
@@ -29,7 +30,7 @@ if (isset($_POST['login'])) {
       if ($user['role'] === 'admin') {
         header('location: /admin/liste-employes.php');
       } else if ($user['role'] === 'employee') {
-        header('location: /admin/liste-veicules.php');
+        header('location: /admin/liste-voitures.php');
       } else {
         header('location: index.php');
       }
@@ -44,7 +45,7 @@ if (isset($_POST['login'])) {
 
   <!-- connection  -->
   <section class="connection w-min sections" id="connection">
-    <h2 class="header-titles">Connexion</h2>
+    <h1 class="header-titles">Connexion</h1>
 
     <!-- success messages  -->
     <!-- <?php foreach ($messages as $message) { ?>
@@ -83,5 +84,5 @@ if (isset($_POST['login'])) {
 </div>
 
 <?php
-require_once __DIR__ . "/templates/footer-connexion.php";
+require_once __DIR__ . "/../templates/footer-connexion.php";
 ?>

@@ -7,7 +7,7 @@ require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/employees.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
-
+//only admin can visit this page
 if ($_SESSION['user']['role'] === 'employee') {
   header("location: /admin/liste-voitures.php");
 }
@@ -21,27 +21,18 @@ if (isset($_GET['page'])) {
 //get employees
 $employees = getEmployees($pdo, 600, $page);
 
-
-
-
 //get total number of employees
 $totalEmployees = getTotalEmployees($pdo);
 
-
-
 //total pages according to total employees
 $totalPages = ceil($totalEmployees / _ADMIN_ITEM_PER_PAGE_);
-
-
-
-
-
 ?>
+
 <div class="wrapper">
   <!-- connection  -->
   <section class="connection">
     <div class="connection-header">
-      <h2 class="header-titles">Liste Employés</h2>
+      <h1 class="header-titles">Liste Employés</h1>
       <a href="ajouter-employe.php" class="btn  btn-fill">Ajouter</a>
     </div>
 
@@ -49,7 +40,7 @@ $totalPages = ceil($totalEmployees / _ADMIN_ITEM_PER_PAGE_);
       <div class="connection-table">
         <table>
           <tr>
-            <th>#</th>
+            <!-- <th>#</th> -->
             <th>Nom</th>
             <th>Prénom</th>
             <th>Email</th>
@@ -115,7 +106,7 @@ $totalPages = ceil($totalEmployees / _ADMIN_ITEM_PER_PAGE_);
           <tbody>
             <?php foreach ($employees as $employee) { ?>
             <tr>
-              <th scope="row"><?= $employee["id"]; ?></th>
+              <!-- <th scope="row"><?= $employee["id"]; ?></th> -->
               <td><?= $employee["lastname"]; ?></td>
               <td><?= $employee["name"]; ?></td>
               <td><?= $employee["email"]; ?></td>
