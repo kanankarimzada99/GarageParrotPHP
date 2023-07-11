@@ -1425,10 +1425,13 @@ input[type="submit"]:hover{
 }
 
 #loading {
-  text-align: center;
+  /* text-align: center; */
   background: url('../images/loader.gif') no-repeat center;
-  background-size: 10%;
+  background-size: 100%;
   height: 150px;
+  width: 150px;
+  font-size:1rem;
+  margin:40px auto;
 }
 
 
