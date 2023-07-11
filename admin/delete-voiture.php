@@ -6,7 +6,6 @@ require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/cars.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
-
 $service = false;
 $errors = [];
 $messages = [];
@@ -23,7 +22,6 @@ if($service){
 }else {
   $errors[] = "la voiture n'existe pas";
 }
-
 ?>
 
 <div class="wrapper">
@@ -39,9 +37,7 @@ if($service){
   <!-- connection  -->
   <section class="connection sections" id="connection ">
 
-
-
-    <!-- messages  -->
+  <!-- messages  -->
     <?php foreach ($messages as $message) { ?>
     <div class="alert alert-success mt-4" role="alert">
       <?= $message; ?>
@@ -53,23 +49,13 @@ if($service){
       <?= $error; ?>
     </div>
 
-
     <?php } ?>
     <div class="w-100 text-center mt-5">
       <a href="javascript:history.back(1)" class="btn-fill ">Page precedante</a>
     </div>
-
-
   </section>
   <!-- END CONTACT  -->
 </div>
-
-
-
-
-
-
-
 
 <?php
       require_once __DIR__ . "/templates/footer-admin.php";

@@ -32,7 +32,6 @@ if (isset($_GET['id'])) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
- 
   //verify errors inside the form
 
   //to validate nom client
@@ -115,7 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <?= $error; ?>
     </div>
     <?php } ?>
-
 
     <?php if ($formReview !== false) { ?>
     <div class="connection-wrapper">

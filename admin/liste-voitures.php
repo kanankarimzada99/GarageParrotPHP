@@ -5,7 +5,6 @@ require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/cars.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
-
 if (isset($_GET['page'])) {
   $page = (int)$_GET['page'];
 } else {
@@ -35,8 +34,6 @@ $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
       <div class="connection-table">
         <table>
           <tr>
-            <!-- <th>Code</th> -->
-            <!-- <th>Titre</th> -->
             <th>Code</th>
             <th>Marque</th>
             <th>Modèle</th>
@@ -51,176 +48,6 @@ $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
             <th>Images</th>
             <th class="size100">action</th>
           </tr>
-          <!-- <tr>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>Lorem</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr> -->
           <tbody>
             <?php foreach ($cars as $car) { ?>
             <tr>
@@ -238,13 +65,11 @@ $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
               <td><?= $car["co"]; ?></td>
               <td><?= $car["image"]; ?></td>
 
-
               <td><a href="modifier-voiture.php?id=<?= $car['id'] ?>"><i class="fa-solid fa-pencil"></i></a>
                 | <a href="delete-voiture.php?id=<?= $car['id'] ?>"
                   onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet employé ?')"><i
                     class="fa-solid fa-trash-can"></i></a>
               </td>
-
             </tr>
             <?php } ?>
           </tbody>

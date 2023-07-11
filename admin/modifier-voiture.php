@@ -11,7 +11,6 @@ if ($_SESSION['user']['role'] === 'employee') {
   header("location: /admin/liste-voitures.php");
 }
 
-
 $id = null;
 $car = null;
 $errors = [];
@@ -30,7 +29,6 @@ $formCar = [
   'co2' => ''
 ];
 
-
 //regex
 $regexCode = '/^[a-zA-Z0-9\s]{1,20}$/';
 $regexBrand = '/^[a-zA-Z0-9\s]{1,20}$/';
@@ -44,21 +42,16 @@ $regexColor = '/^[a-zA-Z\s]{3,20}$/';
 $regexFuel = '/^[a-zA-Z\s]{3,20}$/';
 $regexCo2 = '/^[0-9\s]{3,20}$/';
 
-
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
   $_SESSION['user']['id'] = $id;
 
-
   $car = getCarsById($pdo, $id);
-
 
   if ($car === false) {
     $errors[] = "Cette voiture n'existe pas";
   }
 }
-
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -207,10 +200,6 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
     $errors[]= 'Erro ao enviar a imagem.';
   }
 
-
-  
-  
-
   //put information from form to formEmployee
   $formCar = [
     'code'=> $_POST['code'],
@@ -268,7 +257,6 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
     }
   }
 }
-
 ?>
 
 <div class="wrapper">
@@ -300,7 +288,6 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
     <?php } ?>
 
     <?php if ($formCar !== false) { ?>
-
 
     <div class="connection-wrapper">
       <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">

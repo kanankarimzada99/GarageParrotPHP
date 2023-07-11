@@ -7,9 +7,6 @@
   }
 ?>
 
-
-
-
 <div class="card">
   <div class="card-header">
     <img class="card-img-top heigth-200" src="<?=$imagePath;?>"

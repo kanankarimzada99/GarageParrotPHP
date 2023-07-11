@@ -13,9 +13,7 @@ if(!empty($_SESSION)){
     header('location:/admin/index.php');
   }
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -59,5 +57,4 @@ if(!empty($_SESSION)){
       </nav>
     </header>
   </div>
-
   <main class="main">

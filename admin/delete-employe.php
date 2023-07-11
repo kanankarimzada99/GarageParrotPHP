@@ -44,8 +44,6 @@ if($employee){
   <!-- connection  -->
   <section class="connection sections" id="connection ">
 
-
-
     <!-- messages  -->
     <?php foreach ($messages as $message) { ?>
     <div class="alert alert-success mt-4" role="alert">
@@ -58,24 +56,13 @@ if($employee){
       <?= $error; ?>
     </div>
 
-
     <?php } ?>
     <div class="w-100 text-center mt-5">
       <a href="javascript:history.back(1)" class="btn-fill ">Page precedante</a>
     </div>
-
-
   </section>
   <!-- END CONTACT  -->
 </div>
-
-
-
-
-
-
-
-
 <?php
       require_once __DIR__ . "/templates/footer-admin.php";
 ?>

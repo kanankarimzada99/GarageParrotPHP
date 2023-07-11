@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . "/lib/config.php";
 require_once __DIR__ . "/lib/session.php";
 require_once __DIR__ . "/lib/pdo.php";
@@ -7,7 +6,6 @@ require_once __DIR__ . "/lib/cars.php";
 require_once __DIR__ . "/templates/header-navigation.php";
 
 $cars = getCars($pdo);
-
 ?>
 
 <div class="wrapper">
@@ -61,7 +59,6 @@ $cars = getCars($pdo);
       ?>
       </article>
     </div>
-
   </section>
   <!-- END CARS  -->
 </div>

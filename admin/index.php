@@ -8,7 +8,6 @@ require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/employees.php";
 require_once __DIR__ . "/../templates/header-connexion.php";
 
-
 $errors = [];
 $messages = [];
 

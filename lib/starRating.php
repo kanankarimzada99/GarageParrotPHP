@@ -18,7 +18,6 @@ function starRating($rating)
   $emptyStars = 5 - $rating;
   for ($i = 0; $i < $emptyStars; $i++){
     $output .= $emptyStar;
-
   }
 
   //return concatenated stars (full + empty star)

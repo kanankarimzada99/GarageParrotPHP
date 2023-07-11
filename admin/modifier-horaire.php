@@ -34,7 +34,6 @@ if (isset($_GET['id'])) {
   $id = $_GET['id'];
   $_SESSION['user']['id'] = $id;
 
-
   $schedule = getSchedulesById($pdo, $_GET['id']);
 
   if ($schedule === false) {
@@ -156,7 +155,6 @@ $day = strtolower($_POST["day"]);
       <?= $error; ?>
     </div>
     <?php } ?>
-
 
     <?php if ($formSchedule !== false) { ?>
 

@@ -7,7 +7,6 @@ require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/services.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
-
 if ($_SESSION['user']['role'] === 'employee') {
   header("location: /admin/liste-voitures.php");
 }
@@ -21,24 +20,12 @@ if (isset($_GET['page'])) {
 //get employees
 $services = getServices($pdo, 600, $page);
 
-
-
-
 //get total number of employees
 $totalServices = getTotalServices($pdo);
 
-
-
 //total pages according to total employees
 $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
-
-
-
-
-
 ?>
-
-
 
 <div class="wrapper">
   <!-- connection  -->
@@ -58,62 +45,6 @@ $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
             <th>image</th>
             <th class="size100">action</th>
           </tr>
-          <!-- <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr> -->
           <tbody>
             <?php foreach ($services as $service) { ?>
             <tr>
@@ -127,11 +58,9 @@ $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
                   onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet employé ?')"><i
                     class="fa-solid fa-trash-can"></i></a>
               </td>
-
             </tr>
             <?php } ?>
           </tbody>
-
         </table>
       </div>
     </div>

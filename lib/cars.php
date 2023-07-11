@@ -1,6 +1,5 @@
 <?php
 
-
 function getCarsById(PDO $pdo, int $id): array|bool
 {
   $query = $pdo->prepare('SELECT * FROM cars WHERE id=:id');
@@ -12,7 +11,6 @@ function getCarsById(PDO $pdo, int $id): array|bool
 
 function getCars(PDO $pdo, int $limit = null, int $page = null): array|bool
 {
-
   //order cars by descending order.
   $sql = "SELECT * FROM cars ORDER BY id DESC";
 
@@ -80,7 +78,6 @@ function saveCar(PDO $pdo, string $code, string $brand, string $model, int $year
   $query->bindValue(':fuel', $fuel, $pdo::PARAM_STR);
   $query->bindValue(':co', $co, $pdo::PARAM_STR);
   $query->bindValue(':image', $image, $pdo::PARAM_STR);
-
   return $query->execute();
 }
 

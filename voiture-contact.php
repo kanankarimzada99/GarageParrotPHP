@@ -5,25 +5,14 @@ require_once __DIR__ . "/lib/pdo.php";
 require_once __DIR__ . "/lib/cars.php";
 require_once __DIR__ . "/templates/header-navigation.php";
 
-// $cars = getCars($pdo);
-
-
-
 //verify if id is on the URL
 $error = false;
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
 
-
-
-    // $_SESSION['car']['id'] = $id;
-    // $_SESSION['car']['id'] = $id;
-
-
   $car = getCarsById($pdo, $id);
 
   $_SESSION['car'] = $car;
-
 
   //verify if car is on db
   if (!$car) {
@@ -69,8 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors[] = "L'adresse e-mail n'est pas valide";
   }
 
-
-
   if (!isset($_POST['phone']) || $_POST['phone'] == '') {
     $errors[] = "Le téléphone ne doit pas être vide  ";
   }elseif (!preg_match($regexPhone, $_POST['phone'])) {
@@ -112,8 +99,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     "\r\n"."MIME-Version: 1.0" . "\r\n".
     "Content-type: text/html; charset=utf-8";
     
-
-
     if(mail($to, $subject, $emailContent, $headers)) {
       $messages[]="Votre email a bien été envoyé";
     }else {
@@ -132,21 +117,9 @@ if (!isset($_GET["id"])) {
 } else {
   $errors[] = "Votre messag n'a pas été sauvegardé";
 }
-
-
-
-
   }
-
- 
 }
-
-
-
-
 ?>
-
-
 
 <div class="wrapper">
 

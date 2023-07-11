@@ -59,18 +59,9 @@ if($service){
     <div class="w-100 text-center mt-5">
       <a href="javascript:history.back(1)" class="btn-fill ">Page precedante</a>
     </div>
-
-
   </section>
   <!-- END CONTACT  -->
 </div>
-
-
-
-
-
-
-
 
 <?php
       require_once __DIR__ . "/templates/footer-admin.php";

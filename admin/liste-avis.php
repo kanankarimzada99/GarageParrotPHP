@@ -5,7 +5,6 @@ require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/reviews.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
-
 if (isset($_GET['page'])) {
   $page = (int)$_GET['page'];
 } else {
@@ -20,7 +19,6 @@ $totalreviews = getTotalReviews($pdo);
 
 //total pages according to total reviews
 $totalPages = ceil($totalreviews / _ADMIN_ITEM_PER_PAGE_);
-
 ?>
 
 <div class="wrapper">
@@ -43,7 +41,6 @@ $totalPages = ceil($totalreviews / _ADMIN_ITEM_PER_PAGE_);
             <tbody>
               <?php foreach ($reviews as $review) { ?>
                 <tr>
-
                   <td><?= $review["client"]; ?></td>
                   <td><?= $review["comment"]; ?></td>
                   <td><?= $review["note"]; ?></td>

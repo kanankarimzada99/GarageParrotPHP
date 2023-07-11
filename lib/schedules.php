@@ -9,7 +9,6 @@ function getSchedulesById(PDO $pdo, int|string $id): array|bool
   return $result;
 }
 
-
 function getSchedules(PDO $pdo): array|bool
 {
   //order schedules by id

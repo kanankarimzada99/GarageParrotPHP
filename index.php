@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . "/lib/config.php";
 require_once __DIR__ . "/lib/session.php";
 require_once __DIR__ . "/lib/pdo.php";
@@ -11,9 +10,6 @@ require_once __DIR__ . "/templates/header.php";
 
 $errors = [];
 $messages = [];
-
-
-
 
 $cars = getCars($pdo, 3);
 $services = getServices($pdo, 6);
@@ -31,8 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (!isset($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $errors[] = "L'adresse e-mail n'est pas valide";
   }
-
-
 
   if (!isset($_POST['phone']) || $_POST['phone'] == '') {
     $errors[] = "Le téléphone ne doit pas être vide  ";
@@ -60,20 +54,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     "\r\n"."MIME-Version: 1.0" . "\r\n".
     "Content-type: text/html; charset=utf-8";
     
-
-
     if(mail($to, $subject, $emailContent, $headers)) {
       $messages[]="Votre email a bien été envoyé";
     }else {
       $errors[]="Une erreur s'est produite durant l'envoi";
     }
   }
-
- 
 }
-
-
-
 ?>
 
 <!-- HERO  -->
@@ -87,7 +74,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </div>
 </section>
 <!-- END HERO  -->
-
 
 <!-- SERVICES  -->
 <section id="services" class="services sections">
@@ -117,13 +103,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </section>
 <!-- END CARS  -->
 
-
 <!-- testimonial  -->
 <section class="testimonial sections" id="testimonial">
   <h2 class="header-titles">Les avis</h2>
   <div id="demo" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-
 
       <!-- the last reviews  -->
       <div class="carousel-item active">
@@ -141,7 +125,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <div class="name-caption"><?php echo $reviews[0]['client']; ?></div>
         </div>
       </div>
-
 
       <!-- foreach to start from 1  -->
       <?php foreach ($reviews as $key =>  $review) :
@@ -167,7 +150,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <section class="contact sections" id="contact">
   <h2 class="header-titles">Contact</h2>
 
-
   <!-- messages  -->
   <?php foreach ($messages as $message) { ?>
   <div class="alert alert-success mt-4" role="alert">
@@ -180,11 +162,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <?= $error; ?>
   </div>
   <?php } ?>
-
-
-
-
-
 
   <div class="contact-wrapper">
     <h3>Comment pouvons-nous vous aider?</h3>
@@ -229,7 +206,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
   </div>
 </section>
-
 
 <!-- END CONTACT  -->
 

@@ -9,7 +9,6 @@ function getReviewsById(PDO $pdo, int|string $id): array|bool
   return $result;
 }
 
-
 function getReviews(PDO $pdo, int $limit = null, int $page = null): array|bool
 {
   //order services by id
@@ -20,7 +19,6 @@ function getReviews(PDO $pdo, int $limit = null, int $page = null): array|bool
   }
 
   if ($limit && $page) {
-
 
     //add mit at end request
     $sql .= " LIMIT :offset, :limit";

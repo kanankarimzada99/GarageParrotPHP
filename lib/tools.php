@@ -4,7 +4,6 @@ function linesToArray(string $string) {
     return explode(PHP_EOL, $string);
 }
 
-
 function slugify($text, string $divider = '-')
 {
   // replace non letter or digits by divider
@@ -28,6 +27,5 @@ function slugify($text, string $divider = '-')
   if (empty($text)) {
     return 'n-a';
   }
-
   return $text;
 }

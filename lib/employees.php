@@ -67,8 +67,6 @@ function getTotalEmployees(PDO $pdo): int|bool
   return $result['total'];
 }
 
-
-
 function saveEmployee(PDO $pdo, string $lastname, string $name, string $email, string|null $password, int|null $id, string $role="employee"): bool
 {
 

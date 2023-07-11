@@ -6,10 +6,7 @@ require_once __DIR__ . "/lib/pdo.php";
 require_once __DIR__ . "/lib/cars.php";
 require_once __DIR__ . "/templates/header-navigation.php";
 
-
 $cars = getCars($pdo);
-
-
 
  //verify if id is on the URL
  $error = false;

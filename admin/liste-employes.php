@@ -47,62 +47,6 @@ $totalPages = ceil($totalEmployees / _ADMIN_ITEM_PER_PAGE_);
             <th>role</th>
             <th>Action</th>
           </tr>
-          <!-- <tr>
-            <td>1</td>
-            <td>Alfred</td>
-            <td>Anders</td>
-            <td>andresd@sdf.ff</td>
-            <td>asdf234sdf</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Alfred</td>
-            <td>Anders</td>
-            <td>andresd@sdf.ff</td>
-            <td>asdf234sdf</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Alfred</td>
-            <td>Anders</td>
-            <td>andresd@sdf.ff</td>
-            <td>asdf234sdf</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Alfred</td>
-            <td>Anders</td>
-            <td>andresd@sdf.ff</td>
-            <td>asdf234sdf</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Alfred</td>
-            <td>Anders</td>
-            <td>andresd@sdf.ff</td>
-            <td>asdf234sdf</td>
-            <td>
-              <a href=""><i class="fa-solid fa-pencil"></i></a>
-              <a href="#"><i class="fa-solid fa-trash-can"></i></a>
-            </td>
-          </tr> -->
-
           <tbody>
             <?php foreach ($employees as $employee) { ?>
             <tr>
@@ -113,7 +57,6 @@ $totalPages = ceil($totalEmployees / _ADMIN_ITEM_PER_PAGE_);
               <td><?= $employee["role"]; ?></td>
               <?php if($employee["role"] === 'employee'){?>
 
-
               <td><a href="modifier-employe.php?id=<?= $employee['id'] ?>"><i class="fa-solid fa-pencil"></i></a>
                 | <a href="delete-employe.php?id=<?= $employee['id'] ?>"
                   onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet employé ?')"><i
@@ -123,7 +66,6 @@ $totalPages = ceil($totalEmployees / _ADMIN_ITEM_PER_PAGE_);
             </tr>
             <?php } ?>
           </tbody>
-
         </table>
       </div>
     </div>

@@ -1,11 +1,9 @@
 <?php
-
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/schedules.php";
 
 // get schedules information 
 $schedules = getSchedules($pdo);
-
 ?>
 
 
@@ -33,65 +31,11 @@ $schedules = getSchedules($pdo);
     </div>
     <div class="footer-days">
       <h5 class="footer-days-title">Horaires d'ouverture</h5>
-      <!-- <div class="footer-day-week">
-        <span class="footer-day">lun:</span>
-        <span class="morning-start">08:45</span>
-        <span class="morning-end">12:00</span>
-        <span> -</span>
-        <span class="afternoon-start">14:00</span>
-        <span class="afternoon-end">18:00</span>
-      </div>
-      <div class="footer-day-week">
-        <span class="footer-day">mar:</span>
-        <span class="morning-start">08:45</span>
-        <span class="morning-end">12:00</span>
-        <span> -</span>
-        <span class="afternoon-start">14:00</span>
-        <span class="afternoon-end">18:00</span>
-      </div>
-      <div class="footer-day-week">
-        <span class="footer-day">mer:</span>
-        <span class="morning-start">08:45</span>
-        <span class="morning-end">12:00</span>
-        <span> -</span>
-        <span class="afternoon-start">14:00</span>
-        <span class="afternoon-end">18:00</span>
-      </div>
-      <div class="footer-day-week">
-        <span class="footer-day">jeu:</span>
-        <span class="morning-start">08:45</span>
-        <span class="morning-end">12:00</span>
-        <span> -</span>
-        <span class="afternoon-start">14:00</span>
-        <span class="afternoon-end">18:00</span>
-      </div>
-      <div class="footer-day-week">
-        <span class="footer-day">ven:</span>
-        <span class="morning-start">08:45</span>
-        <span class="morning-end">12:00</span>
-        <span> -</span>
-        <span class="afternoon-start">14:00</span>
-        <span class="afternoon-end">18:00</span>
-      </div>
-      <div class="footer-day-week">
-        <span class="footer-day">sam:</span>
-        <span class="morning-start">08:45</span>
-        <span class="morning-end">12:00</span>
-        <span> -</span>
-        <span class="afternoon-start">14:00</span>
-        <span class="afternoon-end">18:00</span>
-      </div>
-      <div class="footer-day-week">
-        <span class="footer-day">dim:</span>
-        <span class="morning-start">ferme</span>
-
-      </div> -->
-
+     
       <?php foreach ($schedules as  $schedule) { ?>
       <?php require __DIR__ . "/footer-part.php" ?>
       <?php }
       ?>
-
     </div>
   </div>
   <div class="footer-navigation">
@@ -116,11 +60,6 @@ $schedules = getSchedules($pdo);
         <li>
           <a class="footer-nav-link" aria-current="page" href="#schedules">Horaires</a>
         </li>
-
-
-        <!-- <li>
-          <a href="#" class="footer-nav-link">Connecter</a>
-        </li> -->
       </ul>
     </nav>
     <div class="footer-social-network">
@@ -129,21 +68,10 @@ $schedules = getSchedules($pdo);
       <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
     </div>
   </div>
-
-  <!-- <div class="footer go-top">
-    <a href="#">
-      <i class="fa-solid fa-arrow-up"></i>
-    </a>
-  </div> -->
-
-
 </footer>
 
 
-
 <!-- END FOOTER   -->
-
-
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -157,5 +85,4 @@ $schedules = getSchedules($pdo);
 </script>
 <script src="./assets/scripts/scripts.js"></script>
 </body>
-
 </html>

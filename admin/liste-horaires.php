@@ -7,7 +7,6 @@ require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/schedules.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
-
 if ($_SESSION['user']['role'] === 'employee') {
   header("location: /admin/liste-voitures.php");
 }
@@ -17,7 +16,6 @@ if (isset($_GET['page'])) {
 } else {
   $page = 1;
 }
-
 
 //get schedules
 $schedules = getSchedules($pdo);
@@ -89,6 +87,6 @@ $totalSchedules = getTotalSchedules($pdo);
 </div>
 <?php
 require_once __DIR__."/templates/footer-admin.php";
-require_once __DIR__."/../lib/session.php";
-adminOnly();
+// require_once __DIR__."/../lib/session.php";
+// adminOnly();
 ?>

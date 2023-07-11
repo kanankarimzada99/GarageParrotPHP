@@ -9,7 +9,6 @@ function getServicesById(PDO $pdo, int|string $id): array|bool
   return $result;
 }
 
-
 function getServices(PDO $pdo, int $limit = null, int $page = null): array|bool
 {
   //order services by id
@@ -20,7 +19,6 @@ function getServices(PDO $pdo, int $limit = null, int $page = null): array|bool
   }
 
   if ($limit && $page) {
-
 
     //add mit at end request
     $sql .= " LIMIT :offset, :limit";
@@ -86,14 +84,3 @@ function deleteService(PDO $pdo, int $id): bool
     return false;
   }
 }
-
-
-
-
-
-// function getAllServices(PDO $pdo) {
-//   $query = $pdo->prepare("SELECT * FROM services");
-//   $query->execute();
-//   $result = $query->fetchAll(PDO::FETCH_ASSOC);
-//   return $result;
-// }

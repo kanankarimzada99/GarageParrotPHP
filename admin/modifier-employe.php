@@ -42,17 +42,12 @@ if (isset($_GET['id'])) {
   $id = $_GET['id'];
   $_SESSION['user']['id'] = $id;
 
-
-
   $employee = getEmployeesById($pdo, $_GET['id']);
-
-
 
   if ($employee === false) {
     $errors[] = "Cet employé n'existe pas";
   }
 }
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -84,16 +79,12 @@ if (empty($_POST["password"])) {
   $errors[] = "Le mot de passe doit contenir au moins 10 caractères, incluant au moins une lettre minuscule, une lettre majuscule, un chiffre et un symbole.";
 }
 
-
-
   $formEmployee = [
     'lastname' => $_POST['lastname'],
     'name' => $_POST['name'],
     'email' => $_POST['email'],
     'password' => $_POST['password']
   ];
-
-
 
   //if no errors we save all information
   if (!$errors) {
@@ -108,8 +99,6 @@ if (empty($_POST["password"])) {
     $id = $_SESSION['user']['id'];
 
     $res = saveEmployee($pdo, $_POST["lastname"], $_POST["name"], $_POST["email"], $_POST["password"], $id);
-
-
 
     if ($res) {
       $messages[] = "L'employé a bien été sauvegardé";
@@ -128,13 +117,7 @@ if (empty($_POST["password"])) {
     }
   }
 }
-
-
-
-
 ?>
-
-
 
 <div class="wrapper">
 
@@ -150,7 +133,6 @@ if (empty($_POST["password"])) {
   <section class="connection sections" id="connection">
     <h1 class="header-titles">Modifier employé</h1>
 
-
     <!-- messages  -->
     <?php foreach ($messages as $message) { ?>
     <div class="alert alert-success mt-4" role="alert">
@@ -162,8 +144,6 @@ if (empty($_POST["password"])) {
     <div class="alert alert-danger mt-4" role="alert">
       <?= $error; ?>
     </div>
-
-
 
     <?php } ?>
     <?php if ($formEmployee !== false) { ?>
@@ -211,8 +191,6 @@ if (empty($_POST["password"])) {
   </div>
 </div>
 <?php } ?>
-
-
 <?php
       require_once __DIR__ . "/templates/footer-admin.php";
 ?>

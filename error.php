@@ -9,7 +9,6 @@ $error_message ='';
 if($error === '404')
 {
   $error_title = "La page que vous recherchez semble introuvable.";
-  
 }
 ?>
 
