@@ -41,44 +41,44 @@ $totalSchedules = getTotalSchedules($pdo);
             <th>Matin fin</th>
             <th>Midi début</th>
             <th>Midi fin</th>
-            <th>Action</th>
+            <th class="size100">action</th>
           </tr>
-            <tbody>
-              <?php foreach ($schedules as $schedule) { ?>
-              <tr>
-                <!-- <th scope="row"><?= $schedule["id"]; ?></th> -->
-                <td><?= $schedule["day"]; ?></td>
+          <tbody>
+            <?php foreach ($schedules as $schedule) { ?>
+            <tr>
+              <!-- <th scope="row"><?= $schedule["id"]; ?></th> -->
+              <td><?= $schedule["day"]; ?></td>
 
-                <?php if($schedule["morningOpen"] !== "00:00"){?>
-                <td><?= $schedule["morningOpen"]; ?></td>
-                <?php } else { ?>
-                <td><?= "fermé" ?></td>
-                <?php } ?>
-
-                <?php if($schedule["morningClose"] !== "00:00"){?>
-                <td><?= $schedule["morningClose"]; ?></td>
-                <?php } else { ?>
-                <td><?= "fermé" ?></td>
-                <?php } ?>
-
-                <?php if($schedule["afternoonOpen"] !== "00:00"){?>
-                <td><?= $schedule["afternoonOpen"]; ?></td>
-                <?php } else { ?>
-                <td><?= "fermé" ?></td>
-                <?php } ?>
-
-                <?php if($schedule["afternoonClose"] !== "00:00"){?>
-                <td><?= $schedule["afternoonClose"]; ?></td>
-                <?php } else { ?>
-                <td><?= "fermé" ?></td>
-                <?php } ?>
-
-                <td><a href="modifier-horaire.php?id=<?= $schedule['id'] ?>"><i class="fa-solid fa-pencil"></i></a>
-                </td>
-
-              </tr>
+              <?php if($schedule["morningOpen"] !== "00:00"){?>
+              <td><?= $schedule["morningOpen"]; ?></td>
+              <?php } else { ?>
+              <td><?= "fermé" ?></td>
               <?php } ?>
-            </tbody>
+
+              <?php if($schedule["morningClose"] !== "00:00"){?>
+              <td><?= $schedule["morningClose"]; ?></td>
+              <?php } else { ?>
+              <td><?= "fermé" ?></td>
+              <?php } ?>
+
+              <?php if($schedule["afternoonOpen"] !== "00:00"){?>
+              <td><?= $schedule["afternoonOpen"]; ?></td>
+              <?php } else { ?>
+              <td><?= "fermé" ?></td>
+              <?php } ?>
+
+              <?php if($schedule["afternoonClose"] !== "00:00"){?>
+              <td><?= $schedule["afternoonClose"]; ?></td>
+              <?php } else { ?>
+              <td><?= "fermé" ?></td>
+              <?php } ?>
+
+              <td><a href="modifier-horaire.php?id=<?= $schedule['id'] ?>"><i class="fa-solid fa-pencil"></i></a>
+              </td>
+
+            </tr>
+            <?php } ?>
+          </tbody>
         </table>
       </div>
     </div>

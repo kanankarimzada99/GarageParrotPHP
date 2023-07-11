@@ -318,6 +318,28 @@ input[type="submit"]:hover{
   font-size: 1.5rem;
 }
 
+.pagination{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin-top:30px;
+}
+
+/* PAGINATION  */
+.page-link{
+  /* margin:auto ; */
+  background-color: var(--grayLight);
+  color:var(--primary);
+}
+.page-link:hover{
+  /* margin: 20px auto; */
+  background-color: var(--grayLight);
+  color:var(--primary);
+}
+.page-link.active{
+  background-color: var(--primary);
+  color:var(--grayLight);
+}
 
 /* BREADCRUMB  */
 
