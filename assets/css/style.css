@@ -227,6 +227,12 @@ height: 280px;
   margin:0 auto;
 }
 
+h3.no-cars{
+  color:var(--primary);
+  font-size: 2rem;
+  margin:40px auto;
+}
+
 .card {
   -webkit-box-flex: 1;
   -ms-flex: 1 0 400px;
@@ -242,17 +248,10 @@ height: 280px;
   transform: scale(1);
 }
 
-/* .card:hover{
-  -webkit-box-shadow: 0px 0px 32px 7px rgba(0,0,0,0.3); 
-box-shadow: 0px 0px 32px 7px rgba(0,0,0,0.3);
-transform: scale(1.01);
-} */
-
 .card .card-header {
   border: none;
   padding:0;
 }
-
 
 .card-body .card-title {
   color: var(--primary);
@@ -267,7 +266,6 @@ transform: scale(1.01);
   padding: 0.2rem 0.4rem;
   border-radius: 0.5rem;
   background-color: var(--primary);
-  /* margin: 0 10px; */
   color: #fff;
   display: inline-block;
   cursor: pointer;
@@ -277,17 +275,12 @@ transform: scale(1.01);
   padding: 0.2rem 1rem;
 }
 
-/* .btn-fill:hover{
-  background-color: var(--grayLight);
-  color:var(--font);
-} */
 input[type="submit"]{
   background-color: var(--primary);
   border:2px solid transparent;
 }
 
 input[type="submit"]:hover{
- 
   border:2px solid var(--primary);
   background-color: #fff;
   color:var(--font);
@@ -322,7 +315,6 @@ input[type="submit"]:hover{
 }
 
 .header-titles {
-  
   font-size: 1.5rem;
 }
 
@@ -353,19 +345,19 @@ input[type="submit"]:hover{
   width: 60%;
   border-radius:0;
   background-color: inherit;
-  
 }
+
 .breadcrumbs li {
   display: inline;
   font-size: 0.8rem;
   font-weight: 500;
- 
 }
+
 .breadcrumbs li+li:before {
   color: var(--font);
   content: "\00a0>\00a0";
-
 }
+
 .breadcrumbs li a,
 .go-back-list  a {
   padding:0;
@@ -384,7 +376,6 @@ input[type="submit"]:hover{
 }
 
 .breadcrumbs .go-back-list{
-  /* width: 120px; */
   padding:0;
   margin:0;
   line-height: 1rem;
@@ -431,8 +422,6 @@ input[type="submit"]:hover{
   }
 
   /* NOT FOUND ----- */
- 
-  
   .not-found-text{
     font-size: 4rem;
   }
@@ -441,10 +430,7 @@ input[type="submit"]:hover{
     font-size: 1.2rem;
     padding:5px 10px;
   }
-  
 }
-
-
 /* END GENERAL -------------------------- */
 
 
@@ -522,7 +508,6 @@ input[type="submit"]:hover{
   -o-transition: 0.3s;
   transition: 0.3s;
   padding:0;
- 
 }
 
 .nav-list .nav-link:hover {
@@ -575,10 +560,7 @@ input[type="submit"]:hover{
     margin-left: 40px;
     opacity: 1;
     font-size: 1.2rem;
-    
   }
-
-  
 
   .mobile-menu {
     display: none;
@@ -590,7 +572,6 @@ input[type="submit"]:hover{
     margin-left: 70px;
     opacity: 1;
     font-size: 1.2rem;
-    
   }
 }
 
@@ -676,7 +657,6 @@ input[type="submit"]:hover{
 .hero-404, .hero{
   width: 100%;
   height: 90vh;
-  
   color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -768,7 +748,6 @@ input[type="submit"]:hover{
 
 
 
-
 /* SERVICES ----------------------------------- */
 
 .services .card-header {
@@ -782,12 +761,8 @@ input[type="submit"]:hover{
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  /* padding: 10px 0; */
 }
 
-/* .services .card-header i {
-  font-size: 4rem;
-} */
 .services .card-header img {
   height: 180px;
   width: 100%;  
@@ -998,9 +973,7 @@ input[type="submit"]:hover{
 
 
 
-
 /* CONTACT ---------------------  */
-
 .contact {
   background-color: var(--grayLight);
   padding:20px;
@@ -1176,7 +1149,6 @@ input[type="submit"]:hover{
 /* FOOTER  */
 
 .footer {
-  /* position:relative; */
   background-color: var(--grayDark);
   color: var(--grayLight);
   font-size: 1rem;
@@ -1274,7 +1246,6 @@ input[type="submit"]:hover{
 
 .footer-address p {
   font-weight: 400;
-  /* font-size: 1.2rem; */
 }
 
 .footer-days {
@@ -1292,7 +1263,6 @@ input[type="submit"]:hover{
   -ms-flex-direction: column;
   flex-direction: column;
   margin: 30px 0;
-  /* background-color: var(--grayLight); */
   padding: 10px 30px;
   border-radius: 10px;
   max-width: 900px;
@@ -1392,35 +1362,6 @@ input[type="submit"]:hover{
   color:var(--font);
 }
 
-/* .footer .go-top{
-  width: 30px;
-  height: 30px;
-  position:fixed;
-  bottom:60px;
-  right:60px;
-  background-color: var(--grayLight);
-  color:var(--primary);
-  border:2px solid var(--primary);
-  padding:0;
-  margin:0;
-  border-radius:10px;
-} 
-
-.footer .go-top a{
-  padding:0;
-  margin:0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-
-}
-.footer .go-top i{
-  padding:0;
-  margin:0;
-
-} */
 
 @media screen and (min-width: 768px) {
   .footer {
@@ -1468,29 +1409,28 @@ input[type="submit"]:hover{
 }
 
 .filters{
-  display:-webkit-box;
-  display:-ms-flexbox;
-  display:flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+ display:flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: column;
   width: 100%;
   max-width: var(--max-wrapper);
   margin:0 auto;
 }
 
-hr.filters-diivision{
-  border-bottom:2px solid var(--primary);
-  width: 50%;
-  margin:20px auto;
+#kilometer_range,
+#year_range,
+#price_range{
+  width: 200px;
 }
+
+#loading {
+  text-align: center;
+  background: url('../images/loader.gif') no-repeat center;
+  background-size: 10%;
+  height: 150px;
+}
+
 
 .filter-group{
   margin:10px 0;
@@ -1813,21 +1753,6 @@ textarea.comment{
   text-align: center;
 }
 
-/* a.btn-fill{
-  background-color: var(--primary);
-  color:var(--grayLight);
-  border: 2px solid var(--primary);
-  transition: ;
-}
-
-
- a.btn-fill:hover{
-  background-color: var(--grayLight);
-  color:var(--primary);
-  outline: 0;
-  border: 2px solid var(--primary);
-} */
-
 .connection .header-titles .btn-wire{
   margin-left:auto;
 }
@@ -1839,7 +1764,6 @@ textarea.comment{
 
 
 /* connection TABLE  */
-
 table{
   border-collapse: collapse;
   border-spacing: 0;
@@ -1851,21 +1775,17 @@ td, th {
   border: 1px solid var(--grayDark);
   text-align: center;
   padding: 8px;
-  
 }
-
-
 td{
   font-size:1rem;
 }
-
-
 
 td a:first-child i{
   color:var(--font);
   margin:5px;
   font-size:1.2rem;
 }
+
 td a:last-child i{
   color:var(--primary);
   margin:5px;
@@ -1955,7 +1875,6 @@ th.size100 {
     padding:20px 60px;
   }
 }
-
 
 
 /* CONNECTION ADD CAR ------------- */

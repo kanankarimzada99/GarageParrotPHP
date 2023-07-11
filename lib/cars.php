@@ -95,3 +95,64 @@ function deleteCar(PDO $pdo, int $id): bool
     return false;
   }
 }
+
+
+//GET min value kilometers cars
+function getCarMinKilometer(PDO $pdo): array|bool
+{
+  $query = $pdo->prepare('SELECT MIN(kilometers) as kilometers
+  FROM cars');
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  return $result;
+}
+
+//GET max value kilometers cars
+function getCarMaxKilometer(PDO $pdo): array|bool
+{
+  $query = $pdo->prepare('SELECT MAX(kilometers) as kilometers
+  FROM cars');
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  return $result;
+}
+
+//GET min value price cars
+function getCarMinPrice(PDO $pdo): array|bool
+{
+  $query = $pdo->prepare('SELECT MIN(price) as price
+  FROM cars');
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  return $result;
+}
+
+//GET max value price cars
+function getCarMaxPrice(PDO $pdo): array|bool
+{
+  $query = $pdo->prepare('SELECT MAX(price) as price
+  FROM cars');
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  return $result;
+}
+
+//GET min value year cars
+function getCarMinYear(PDO $pdo): array|bool
+{
+  $query = $pdo->prepare('SELECT MIN(year) as years
+  FROM cars');
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  return $result;
+}
+
+//GET max value year cars
+function getCarMaxYear(PDO $pdo): array|bool
+{
+  $query = $pdo->prepare('SELECT MAX(year) as years
+  FROM cars');
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  return $result;
+}
