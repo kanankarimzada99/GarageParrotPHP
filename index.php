@@ -173,25 +173,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="contact-form-left">
           <div>
             <label for="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname">
+            <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont">
           </div>
           <div>
             <label for="name">Prénom</label>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume">
           </div>
           <div>
             <label for="email">Adresse e-mail</label>
-            <input type="text" name="email" id="email">
+            <input type="text" name="email" id="email" maxlength="40" placeholder="email@example.fr">
           </div>
           <div>
             <label for="phone">Téléphone</label>
-            <input type="text" name="phone" id="phone">
+            <input type="text" name="phone" id="phone" minlength="9" maxlength="15" placeholder="0105456789">
           </div>
         </div>
         <div class="contact-form-right">
           <div>
             <label for="subject">Sujet</label>
-            <input type="text" name="subject" id="subject">
+            <input type="text" name="subject" id="subject" minlength="10" maxlength="60">
           </div>
           <div>
             <label for="message">Message</label>

@@ -145,17 +145,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <?php if ($formService !== false) { ?>
 
-      <div class="connection-wrapper">
+    <div class="connection-wrapper">
       <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
         <div class="connection-form">
           <div class="form-group">
             <label for="service">Service</label>
-            <input type="text" name="service" id="service" value=<?= htmlspecialchars($formService['service']); ?>>
+            <input type="text" name="service" id="service" minlength="5" maxlength="30" placeholder="Reparation motor"
+              value=<?= htmlspecialchars($formService['service']); ?>>
           </div>
           <div class="form-group">
             <label for="service-description">Description</label>
-            <textarea name="service-description" id="service-description" class="service-description" cols="30"
-              rows="5"><?= htmlspecialchars($formService['description']); ?></textarea>
+            <textarea name="service-description" id="service-description" class="service-description" cols="30" rows="5"
+              minlength="50" maxlength="150"><?= htmlspecialchars($formService['description']); ?></textarea>
           </div>
           <div class="form-group">
             <label for="image">Choisissez une image de service:</label>

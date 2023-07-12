@@ -61,10 +61,6 @@ a:hover {
   text-decoration: none;
 }
 
-/* html,
-body {
-  min-height: 100vh;
-} */
 
 img {
   width: 100%;
@@ -79,10 +75,6 @@ input::-moz-placeholder{
   color:var(--grayDark);
 }
 
-input:-ms-input-placeholder{
-  color:var(--grayDark);
-}
-
 input::-ms-input-placeholder{
   color:var(--grayDark);
 }
@@ -90,6 +82,20 @@ input::-ms-input-placeholder{
 input::placeholder{
   color:var(--grayDark);
 }
+
+textarea::-webkit-input-placeholder{
+  color:var(--grayDark);
+}
+textarea::-moz-placeholder{
+  color:var(--grayDark);
+}
+textarea::-ms-input-placeholder{
+  color:var(--grayDark);
+}
+textarea::placeholder{
+  color:var(--grayDark);
+}
+
 
 fieldset {
   margin:20px 0 60px;

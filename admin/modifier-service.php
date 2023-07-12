@@ -178,12 +178,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="connection-form">
           <div class="form-group">
             <label for="service">Service</label>
-            <input type="text" name="service" id="service"
+            <input type="text" name="service" id="service" minlength="5" maxlength="30" placeholder="Reparation motor"
               value=<?= htmlspecialchars($service['service'] ?? $formService['service']) ; ?>>
           </div>
           <div class="form-group">
             <label for="service-description">Description</label>
-            <textarea name="service-description" id="service-description" class="service-description" cols="30"
+            <textarea name="service-description" id="service-description" minlength="50" maxlength="150"
+              class="service-description" cols="30"
               rows="5"><?= htmlspecialchars($service['description'] ?? $formService['description']) ; ?></textarea>
           </div>
 

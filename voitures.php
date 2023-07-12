@@ -30,13 +30,11 @@ $carMaxYear = implode(getCarMaxYear($pdo));
   </div>
   <!-- END BREADCRUMB  -->
 
-
   <!-- CARS  -->
   <section id="cars" class="used-cars sections filtering">
     <h2 class="header-titles">Nos voitures d'occasions</h2>
     <div class="filter-cars">
       <article class="filters">
-
 
         <div class="filter-group">
           <h3 class="filter-group-title">Kilométrage</h3>
@@ -59,15 +57,17 @@ $carMaxYear = implode(getCarMaxYear($pdo));
           <p id="year_show" class="mb-2"><?=$carMinYear." - ".$carMaxYear ?></p>
           <div id="year_range"></div>
         </div>
-
       </article>
 
+      <!-- list cars  -->
       <article class="filter_data cards"></article>
     </div>
   </section>
   <!-- END CARS  -->
 </div>
 
+
+<!-- script to filter cars  -->
 <script>
 $(document).ready(function() {
 
@@ -90,7 +90,6 @@ $(document).ready(function() {
     let maximum_year = $('#hidden_maximum_year').val();
 
 
-
     $.ajax({
       url: "fetch_data.php",
       method: "POST",
@@ -104,7 +103,6 @@ $(document).ready(function() {
         maximum_price: maximum_price,
         mininum_year: mininum_year,
         maximum_year: maximum_year
-
       },
 
       //if ajax request success, il will receive data from server
@@ -113,8 +111,6 @@ $(document).ready(function() {
       }
     })
   }
-
-
 
   function get_filter(class_name) {
     let filter = [];
@@ -131,17 +127,13 @@ $(document).ready(function() {
 
   //slider kilometers
   $('#kilometer_range').slider({
-
     //range of the slider
     range: true,
-
     //minimum and max values of slider
     min: <?= $carMinKilometer?>,
     max: <?= $carMaxKilometer?>,
-
     //array of min and max value of slider
     values: [<?= $carMinKilometer?>, <?= $carMaxKilometer?>],
-
     //step of slider on left or right
     step: 1,
 
@@ -162,17 +154,13 @@ $(document).ready(function() {
 
   //slider price
   $('#price_range').slider({
-
     //range of the slider
     range: true,
-
     //minimum and max values of slider
     min: <?= $carMinPrice?>,
     max: <?= $carMaxPrice?>,
-
     //array of min and max value of slider
     values: [<?= $carMinPrice?>, <?= $carMaxPrice?>],
-
     //step of slider on left or right
     step: 1,
 
@@ -191,21 +179,15 @@ $(document).ready(function() {
     }
   })
 
-
-
   //slider year
   $('#year_range').slider({
-
     //range of the slider
     range: true,
-
     //minimum and max values of slider
     min: <?= $carMinYear?>,
     max: <?= $carMaxYear?>,
-
     //array of min and max value of slider
     values: [<?= $carMinYear?>, <?= $carMaxYear?>],
-
     //step of slider on left or right
     step: 1,
 

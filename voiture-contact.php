@@ -154,25 +154,29 @@ if (!isset($_GET["id"])) {
           <div class="contact-form-left">
             <div>
               <label for="lastname">Nom</label>
-              <input type="text" name="lastname" id="lastname" value=<?= htmlspecialchars($formCar['lastname']); ?>>
+              <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont"
+                value=<?= htmlspecialchars($formCar['lastname']); ?>>
             </div>
             <div>
-              <label for="name">Prenom</label>
-              <input type="text" name="name" id="name" value=<?= htmlspecialchars($formCar['name']); ?>>
+              <label for="name">Prénom</label>
+              <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume"
+                value=<?= htmlspecialchars($formCar['name']); ?>>
             </div>
             <div>
               <label for="email">Adresse email</label>
-              <input type="text" name="email" id="email" value=<?= htmlspecialchars($formCar['email']); ?>>
+              <input type="text" name="email" id="email" maxlength="40" placeholder="email@example.fr"
+                value=<?= htmlspecialchars($formCar['email']); ?>>
             </div>
             <div>
               <label for="phone">Téléphone</label>
-              <input type="text" name="phone" id="phone" value=<?= htmlspecialchars($formCar['phone']); ?>>
+              <input type="text" name="phone" id="phone" minlength="9" maxlength="15" placeholder="0105456789"
+                value=<?= htmlspecialchars($formCar['phone']); ?>>
             </div>
           </div>
           <div class="contact-form-right">
             <div>
               <label for="subject">Sujet</label>
-              <input type="text" name="subject" id="subject"
+              <input type="text" name="subject" id="subject" minlength="10" maxlength="60"
                 value="<?= $_SESSION['car']['code']  . " " . $_SESSION['car']['brand'] . " " . $_SESSION['car']['model']; ?>">
 
             </div>

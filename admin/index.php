@@ -66,11 +66,13 @@ if (isset($_POST['login'])) {
         <div class="connection-form">
           <div class="form-group">
             <label for="email">Adresse email</label>
-            <input type="text" name="email" id="email" value=<?= htmlspecialchars($_POST['email'] ?? '')?>>
+            <input type="text" name="email" maxlength="40" placeholder="email@example.fr"
+              value=<?= htmlspecialchars($_POST['email'] ?? '')?>>
           </div>
           <div class="form-group">
             <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password" value=<?= htmlspecialchars($_POST['password'] ?? '')?>>
+            <input type="password" name="password" minlength="8" maxlength="20" id="password"
+              value=<?= htmlspecialchars($_POST['password'] ?? '')?>>
           </div>
         </div>
         <div class="form-btn">

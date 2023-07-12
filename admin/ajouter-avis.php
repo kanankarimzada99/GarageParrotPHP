@@ -108,11 +108,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="connection-form">
           <div class="form-group">
             <label for="client">Nom client</label>
-            <input type="text" name="client" id="client">
+            <input type="text" name="client" id="client" minlength="3" maxlength="50" placeholder="Dupont Jean-Charles">
           </div>
           <div class="form-group">
             <label for="comment">Commentaire</label>
-            <textarea name="comment" id="comment" class="comment" cols="30" rows="5"></textarea>
+            <textarea name="comment" id="comment" class="comment" cols="30" rows="5" minlength="5"
+              maxlength="300"></textarea>
           </div>
 
           <div class="form-group">

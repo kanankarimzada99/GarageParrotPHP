@@ -93,25 +93,27 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
         <div class="connection-form">
-          <div class="form-group">
-            <label for="name">Prénom</label>
-            <input type="text" name="name" id="name">
-          </div>
+
           <div class="form-group">
             <label for="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname">
+            <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont">
           </div>
           <div class="form-group">
+            <label for="name">Prénom</label>
+            <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume">
+          </div>
+
+          <div class="form-group">
             <label for="email">Adresse email</label>
-            <input type="text" name="email" id="email">
+            <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr">
           </div>
           <div class="form-group">
             <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" minlength="8" maxlength="20">
           </div>
           <div class="form-group">
             <label for="conf-password">Confirm mot de passe</label>
-            <input type="password" name="conf-password" id="conf-password">
+            <input type="password" name="conf-password" id="conf-password" minlength="8" maxlength="20">
           </div>
         </div>
         <div class="form-btn">
