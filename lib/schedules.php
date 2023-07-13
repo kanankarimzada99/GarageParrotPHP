@@ -28,13 +28,13 @@ function getTotalSchedules(PDO $pdo):int|bool
   return $result['total'];
 }
 
-function saveSchedule(PDO $pdo, string $day, string $morningOpen, string $morningClose,string $afternoonOpen, string $afternoonClose,  int $id = null): bool
+function saveSchedule(PDO $pdo,  string $morningOpen, string $morningClose,string $afternoonOpen, string $afternoonClose,  int $id = null): bool
 {
   if ($id === null) {
-    $query = $pdo->prepare("INSERT INTO schedules (day, morningOpen, morningClose, afternoonOpen, afternoonClose)"
-      . "VALUES(:day, :morningOpen, :morningClose, :afternoonOpen, afternoonClose)");
+    $query = $pdo->prepare("INSERT INTO schedules ( morningOpen, morningClose, afternoonOpen, afternoonClose)"
+      . "VALUES( :morningOpen, :morningClose, :afternoonOpen, afternoonClose)");
   } else {
-    $query = $pdo->prepare("UPDATE `schedules` SET `day` = :day, "
+    $query = $pdo->prepare("UPDATE `schedules` SET `id` = :id, "
       . "`morningOpen` = :morningOpen, "
       . "`morningClose` = :morningClose, "
       . "`afternoonOpen` = :afternoonOpen, "
@@ -43,7 +43,7 @@ function saveSchedule(PDO $pdo, string $day, string $morningOpen, string $mornin
     $query->bindValue(':id', $id, $pdo::PARAM_INT);
   }
 
-  $query->bindValue(':day', $day, $pdo::PARAM_STR);
+  // $query->bindValue(':day', $day, $pdo::PARAM_STR);
   $query->bindValue(':morningOpen', $morningOpen, $pdo::PARAM_STR);
   $query->bindValue(':morningClose', $morningClose, $pdo::PARAM_STR);
   $query->bindValue(':afternoonOpen', $afternoonOpen, $pdo::PARAM_STR);
