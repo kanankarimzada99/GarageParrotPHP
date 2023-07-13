@@ -11,7 +11,7 @@
   <div class="card-header">
     <img class="card-img-top" src="<?=$imagePath;?>" alt="voiture marque X">
   </div>
-  <div class="card-body">
+  <div class="card-body height-230">
     <h4 class="card-title center"><?=$service['service']?></h4>
     <p class="card-text">
       <?=$service['description']?>

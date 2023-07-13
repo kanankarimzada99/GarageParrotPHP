@@ -148,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="connection-form">
           <div class="form-group">
             <label for="service">Service</label>
-            <input type="text" name="service" id="service" minlength="5" maxlength="30" placeholder="Reparation motor"
+            <input type="text" name="service" id="service" minlength="5" maxlength="30" placeholder="Reparation motor" autocomplete="off"
               value=<?= htmlspecialchars($formService['service']); ?>>
           </div>
           <div class="form-group">

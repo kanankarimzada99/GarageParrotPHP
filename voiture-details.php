@@ -17,8 +17,6 @@ if (isset($_GET['id'])) {
 //Get the integer value of $_GET['id']. 
     $id = intval($_GET['id']);
 
-    var_dump($id);
-
   $car = getCarsById($pdo, $id);
 
   if (isset($car["image"])) {
@@ -52,13 +50,7 @@ if (isset($_GET['id'])) {
             <div class="car-img">
               <img class="card-img-top" src="<?= $imagePath; ?>" alt="<?= $car['model']; ?>">
             </div>
-            <!-- <div class="car-thumbnails">
-                  <img src="./uploads/images/car-card.png" alt="view frontal">
-                  <img src="./uploads/images/car-card.png" alt="view frontal">
-                  <img src="./uploads/images/car-card.png" alt="view frontal">
-                  <img src="./uploads/images/car-card.png" alt="view frontal">
-                </div> -->
-          </div>
+             </div>
           <div class="car-descriptions">
             <div class="car-accessories">
               <div class="car-accessories-description">

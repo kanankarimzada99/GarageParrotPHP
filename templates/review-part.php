@@ -1,4 +1,3 @@
-
 <div class="carousel-item">
 
   <div class="carousel-caption">

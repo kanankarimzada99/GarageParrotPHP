@@ -20,5 +20,3 @@ const handleClick = () => {
 }
 
 mobileMenu.addEventListener('click', handleClick)
-
-// SLIDERS ------------------------

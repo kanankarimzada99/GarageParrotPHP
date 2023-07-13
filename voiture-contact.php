@@ -161,42 +161,41 @@ if (!isset($_GET["id"])) {
             <div>
               <label for="lastname">Nom</label>
               <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont"
-                value=<?= htmlspecialchars($formCar['lastname']); ?>>
+                autocomplete="off" value=<?= htmlspecialchars($formCar['lastname']); ?>>
             </div>
             <div>
               <label for="name">Prénom</label>
               <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume"
-                value=<?= htmlspecialchars($formCar['name']); ?>>
+                autocomplete="off" value=<?= htmlspecialchars($formCar['name']); ?>>
             </div>
             <div>
               <label for="email">Adresse email</label>
               <input type="text" name="email" id="email" maxlength="40" placeholder="email@example.fr"
-                value=<?= htmlspecialchars($formCar['email']); ?>>
+                autocomplete="off" value=<?= htmlspecialchars($formCar['email']); ?>>
             </div>
             <div>
               <label for="phone">Téléphone</label>
               <input type="text" name="phone" id="phone" minlength="9" maxlength="15" placeholder="0105456789"
-                value=<?= htmlspecialchars($formCar['phone']); ?>>
+                autocomplete="off" value=<?= htmlspecialchars($formCar['phone']); ?>>
             </div>
           </div>
           <div class="contact-form-right">
             <div>
               <label for="subject">Sujet</label>
-              <input type="text" name="subject" id="subject"
+              <input type="text" name="subject" id="subject" autocomplete="off"
                 value="<?= $_SESSION['car']['code']  . " " . $_SESSION['car']['brand'] . " " . $_SESSION['car']['model']; ?>">
 
             </div>
             <div>
               <label for="message">Message</label>
-              <textarea name="message" id="message" cols="30"
-                rows="5"><?= htmlspecialchars($formCar['message']); ?></textarea>
+              <textarea name="message" id="message" cols="30" rows="5"
+                autocomplete="off"><?= htmlspecialchars($formCar['message']); ?></textarea>
             </div>
           </div>
         </div>
         <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars($_SESSION['car']['image'])?>"
           alt="<?= $_SESSION['car']['brand']." ". $_SESSION['car']['model']?>" class="w-25">
         <div class="form-btn">
-
           <input type="submit" value="Envoyer" class="btn-fill">
         </div>
       </form>

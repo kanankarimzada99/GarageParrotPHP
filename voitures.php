@@ -22,10 +22,10 @@ $carMaxYear = implode(getCarMaxYear($pdo));
   <div class="breadcrumbs">
     <ul class="breadcrumb">
       <li><a href="/">Accueil</a></li>
-      <li><a href="#" class="isDisabled">Voitures d'occasion</a></li>
+      <li><a href="/voitures.php" class="isDisabled">Voitures d'occasion</a></li>
     </ul>
     <div class="go-back-list">
-      <a href="#">Revenir liste</a>
+      <a href="javascript:history.back(1)">Revenir à la page précédente</a>
     </div>
   </div>
   <!-- END BREADCRUMB  -->

@@ -64,6 +64,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <!-- HERO  -->
+
+<!-- Back to top button -->
+
+
 <section class="hero">
   <div class="hero-text">
     <h1 class="hero-text-title">La confiance avant tout!</h1>
@@ -176,29 +180,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="contact-form-left">
           <div>
             <label for="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont">
+            <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont"
+              autocomplete="off">
           </div>
           <div>
             <label for="name">Prénom</label>
-            <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume">
+            <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume"
+              autocomplete="off">
           </div>
           <div>
             <label for="email">Adresse e-mail</label>
-            <input type="text" name="email" id="email" maxlength="40" placeholder="email@example.fr">
+            <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr"
+              autocomplete="off">
           </div>
           <div>
             <label for="phone">Téléphone</label>
-            <input type="text" name="phone" id="phone" minlength="9" maxlength="15" placeholder="0105456789">
+            <input type="text" name="phone" id="phone" minlength="9" maxlength="15" placeholder="0105456789"
+              autocomplete="off">
           </div>
         </div>
         <div class="contact-form-right">
           <div>
             <label for="subject">Sujet</label>
-            <input type="text" name="subject" id="subject" minlength="10" maxlength="60">
+            <input type="text" name="subject" id="subject" minlength="10" maxlength="60" autocomplete="off">
           </div>
           <div>
             <label for="message">Message</label>
-            <textarea name="message" id="message" cols="30" rows="5"></textarea>
+            <textarea name="message" id="message" cols="30" rows="5" autocomplete="off"></textarea>
           </div>
         </div>
       </div>
@@ -207,8 +215,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="submit" value="Envoyer" name='sendContact' class="btn-fill">
       </div>
     </form>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
   </div>
 </section>
+
+
+
 
 <!-- END CONTACT  -->
 

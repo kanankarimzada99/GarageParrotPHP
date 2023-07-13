@@ -165,12 +165,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
         <div class="schedule-form">
-          <!-- <div class="form-day center">
-            <label for="day">Jour de la semaine</label>
-            <input type="text" name="day" id="day" placeholder="lundi" minlength="5" maxlength="8" class="large"
-              value=<?= htmlspecialchars($schedule['day'] ?? $formSchedule['day']); ?>>
-
-          </div> -->
           <div class="class-group text-center">
             <p class="time-message">&gt;&gt; L'horaire 00:00 = fermé &lt;&lt;</p>
           </div>
@@ -179,12 +173,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="form-group">
               <label for="morning-open">Ouverture</label>
               <input type="text" name="morning-open" id="morning-open" placeholder="00:00" minlength="5" maxlength="5"
+                autocomplete="off"
                 value=<?= htmlspecialchars($schedule['morningOpen'] ?? $formSchedule['morning-open']); ?>>
 
             </div>
             <div class="form-group">
               <label for="morning-close">Fermeture</label>
               <input type="text" name="morning-close" id="morning-close" placeholder="00:00" minlength="5" maxlength="5"
+                autocomplete="off"
                 value=<?= htmlspecialchars($schedule['morningClose'] ?? $formSchedule['morning-close']); ?>>
 
             </div>
@@ -194,14 +190,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="form-group">
               <label for="afternoon-open">Ouverture</label>
               <input type="text" name="afternoon-open" id="afternoon-open" placeholder="00:00" minlength="5"
-                maxlength="5"
+                maxlength="5" autocomplete="off"
                 value=<?= htmlspecialchars($schedule['afternoonOpen'] ?? $formSchedule['afternoon-open']); ?>>
 
             </div>
             <div class="form-group">
               <label for="afternoon-close">Fermeture</label>
               <input type="text" name="afternoon-close" id="afternoon-close" placeholder="00:00" minlength="5"
-                maxlength="5"
+                maxlength="5" autocomplete="off"
                 value=<?= htmlspecialchars($schedule['afternoonClose'] ?? $formSchedule['afternoon-close']); ?>>
 
             </div>

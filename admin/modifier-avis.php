@@ -120,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="connection-form">
           <div class="form-group">
             <label for="client">Nom client</label>
-            <input type="text" name="client" id="client" minlength="3" maxlength="50" placeholder="Dupont Jean-Charles"
+            <input type="text" name="client" id="client" minlength="3" maxlength="50" placeholder="Dupont Jean-Charles" autocomplete="off"
               value="<?= htmlspecialchars($review['client'] ?? $formReview['client']); ?>">
           </div>
           <div class="form-group">

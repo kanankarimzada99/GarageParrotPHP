@@ -9,10 +9,10 @@
 
 <div class="card">
   <div class="card-header">
-    <img class="card-img-top heigth-200" src="<?=$imagePath;?>"
+    <img class="card-img-top height-200" src="<?=$imagePath;?>"
       alt="<?=$car['brand']." ".$car['model']." ".$car['year'];?>">
   </div>
-  <div class="card-body heigth-280">
+  <div class="card-body ">
     <h4 class="card-title"><?=$car['brand'];?></h4>
     <p><?=$car['model'];?></p>
     <p class="card-text">

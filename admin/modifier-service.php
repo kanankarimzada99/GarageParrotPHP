@@ -179,20 +179,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <div class="form-group">
             <label for="service">Service</label>
             <input type="text" name="service" id="service" minlength="5" maxlength="30" placeholder="Reparation motor"
-              value=<?= htmlspecialchars($service['service'] ?? $formService['service']) ; ?>>
+              autocomplete="off" value=<?= htmlspecialchars($service['service'] ?? $formService['service']) ; ?>>
           </div>
           <div class="form-group">
             <label for="service-description">Description</label>
             <textarea name="service-description" id="service-description" minlength="50" maxlength="150"
-              class="service-description" cols="30"
+              autocomplete="off" class="service-description" cols="30"
               rows="5"><?= htmlspecialchars($service['description'] ?? $formService['description']) ; ?></textarea>
           </div>
 
           <div class="form-group">
             <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars($service['image'] ?? $formService['image'])?>"
               alt="<?= $formService['service'] ?>" class="w-25">
-            <!-- <label for="delete_image">Supprimer l'image</label>
-          <input type="checkbox" name="delete_image" id="delete_image"> -->
             <input type="hidden" name="image"
               value="<?= htmlspecialchars($service['image'] ?? $formService['image']) ; ?>">
           </div>

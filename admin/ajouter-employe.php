@@ -96,24 +96,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
           <div class="form-group">
             <label for="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont">
+            <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont"
+              autocomplete="off" value=<?= htmlspecialchars($formEmployee['lastname']); ?>>
           </div>
           <div class="form-group">
             <label for="name">Prénom</label>
-            <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume">
+            <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume"
+              autocomplete="off" value=<?= htmlspecialchars($formEmployee['name']); ?>>
           </div>
 
           <div class="form-group">
             <label for="email">Adresse email</label>
-            <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr">
+            <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr"
+              autocomplete="off" value=<?= htmlspecialchars($formEmployee['email']); ?>>
           </div>
           <div class="form-group">
             <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password" minlength="8" maxlength="20">
+            <input type="password" name="password" id="password" minlength="8" maxlength="16" autocomplete="off">
           </div>
           <div class="form-group">
             <label for="conf-password">Confirm mot de passe</label>
-            <input type="password" name="conf-password" id="conf-password" minlength="8" maxlength="20">
+            <input type="password" name="conf-password" id="conf-password" minlength="8" maxlength="16"
+              autocomplete="off">
           </div>
         </div>
         <div class="form-btn">

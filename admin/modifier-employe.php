@@ -151,19 +151,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div class="form-group">
               <label for="lastname">Nom</label>
-              <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont" value=<?= htmlspecialchars($employee['lastname'] ?? $formEmployee['lastname']); ?>>
+              <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont" autocomplete="off" value=<?= htmlspecialchars($employee['lastname'] ?? $formEmployee['lastname']); ?>>
             </div>
             <div class="form-group">
               <label for="name">Prénom</label>
-              <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume" value=<?= htmlspecialchars($employee['name'] ?? $formEmployee['name']); ?>>
+              <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume" autocomplete="off" value=<?= htmlspecialchars($employee['name'] ?? $formEmployee['name']); ?>>
             </div>
             <div class="form-group">
               <label for="email">Adresse email</label>
-              <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr" value=<?= htmlspecialchars($employee['email'] ?? $formEmployee['email']); ?>>
+              <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr" autocomplete="off" value=<?= htmlspecialchars($employee['email'] ?? $formEmployee['email']); ?>>
             </div>
             <div class="form-group">
               <label for="password">Mot de passe</label>
-              <input type="password" name="password" id="password" minlength="8" maxlength="20">
+              <input type="password" name="password" id="password" minlength="8" maxlength="16" autocomplete="off">
             </div>
           </div>
           <div class="form-btn">

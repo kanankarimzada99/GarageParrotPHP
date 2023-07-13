@@ -11,7 +11,7 @@ require_once __DIR__ . "/../templates/header-connexion.php";
 $errors = [];
 $messages = [];
 
-if (isset($_POST['login'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $user = verifyUserLogin($pdo, $_POST['email'], $_POST['password']);
 
   if ($user) {
@@ -66,12 +66,12 @@ if (isset($_POST['login'])) {
         <div class="connection-form">
           <div class="form-group">
             <label for="email">Adresse email</label>
-            <input type="text" name="email" maxlength="40" placeholder="email@example.fr"
+            <input type="text" name="email" maxlength="40" placeholder="email@example.fr" autocomplete="off"
               value=<?= htmlspecialchars($_POST['email'] ?? '')?>>
           </div>
           <div class="form-group">
             <label for="password">Mot de passe</label>
-            <input type="password" name="password" minlength="8" maxlength="20" id="password"
+            <input type="password" name="password" minlength="8" maxlength="16" id="password" autocomplete="off"
               value=<?= htmlspecialchars($_POST['password'] ?? '')?>>
           </div>
         </div>

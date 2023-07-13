@@ -29,7 +29,6 @@ $totalSchedules = getTotalSchedules($pdo);
   <section class="connection">
     <div class="connection-header">
       <h2 class="header-titles">Liste Horaires d'ouverture</h2>
-      <!-- <a href="#" class="btn  btn-fill">Ajouter</a> -->
     </div>
 
     <div class="connection-wrapper wrapper">
