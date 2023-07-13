@@ -195,7 +195,7 @@ textarea {
 
 .sections {
   margin: 10px 0 0;
-  padding: 20px 20px 60px;
+  padding: 20px 20px 40px;
 }
 
 .services,
@@ -834,15 +834,17 @@ input[type="submit"]:hover{
 .used-cars .more-cars{
   width: 100%;
   text-align: center;
+  margin:20px 0 0;
+
 }
 
 /* TESTIMONIAL  CAROUSEL*/
 
 .testimonial {
   width: 80%;
-  margin: 0 auto 40px;
+  margin: 0 auto;
   /* padding: 0; */
-  height: 600px;
+  /* height: 600px; */
 }
 
 .carousel {
@@ -859,16 +861,19 @@ input[type="submit"]:hover{
 .carousel-caption {
   position: initial;
   z-index: 10;
-  padding: 2rem;
+  padding: 1rem;
   font-size: 1.2rem;
   font-style: italic;
   font-weight: bold;
   line-height: 2rem;
   font-family: 'Roboto', sans-serif;
   border: 2px solid var(--grayLight);
-  height: 100%;
+  height: 300px;
   margin: 0 auto;
   border-radius: 30px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .carousel-caption .quote-left,
@@ -918,12 +923,18 @@ input[type="submit"]:hover{
   padding: 0.4rem;
 }
 
+.add-review {
+  width: 100%;
+  text-align: center;
+  margin:20px 0 0;
+}
+
 @media (max-width: 768px) {
   .testimonial {
     width: 80%;
     margin: 0 auto;
     padding: 0;
-    height: 550px;
+    /* height: 550px; */
   }
 
   .carousel-caption {
@@ -998,6 +1009,14 @@ input[type="submit"]:hover{
   transition: none;
   opacity: unset;
 }
+
+/* avis client  */
+
+
+
+
+
+
 /* END TESTIMONIAL --------------------------- */
 
 

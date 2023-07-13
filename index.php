@@ -13,7 +13,7 @@ $messages = [];
 
 $cars = getCars($pdo, 3);
 $services = getServices($pdo, 6);
-$reviews = getReviews($pdo, 3);
+$reviews = getReviews($pdo, 4);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -140,6 +140,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <a class="carousel-control-next" href="#demo" data-slide="next">
       <i class="fas fa-arrow-right"> </i>
     </a>
+  </div>
+  <div class="add-review">
+    <a href="donner-avis.php" class="btn-fill center">Donnez votre avis</a>
   </div>
 </section>
 
