@@ -29,18 +29,7 @@ $formCar = [
   'co2' => ''
 ];
 
-//regex
-$regexCode = '/^[a-zA-Z0-9\s]{1,20}$/';
-$regexBrand = '/^[a-zA-Z0-9\s]{1,20}$/';
-$regexModel = '/^[a-zA-Z0-9-\s]{1,20}$/';
-$regexYear = '/^[0-9\s]{4,20}$/';
-$regexKilometers = '/^[0-9]{3,20}$/';
-$regexGearbox = '/^[a-zA-Z\s]{3,20}$/';
-$regexDoors = '/^[0-9]{1,20}$/';
-$regexPrice = '/^[0-9]{4,20}$/';
-$regexColor = '/^[a-zA-Z\s]{3,20}$/';
-$regexFuel = '/^[a-zA-Z\s]{3,20}$/';
-$regexCo2 = '/^[0-9\s]{3,20}$/';
+
 
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
@@ -60,68 +49,68 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    //to validate code
    if (empty($_POST['code'])) {
     $errors[] = "Le code est requis.";
-  } elseif (!preg_match($regexCode, $_POST['code'])) {
+  } elseif (!preg_match(_REGEX_CODE_, $_POST['code'])) {
     $errors[] = "Le code doit contenir uniquement des lettres et chiffres et avoir une longueur maximale de 5 caractères.";
   }
 
   //to validate brand
   if (empty($_POST['brand'])) {
     $errors[] = "La marque est requis.";
-  } elseif (!preg_match($regexBrand, $_POST['brand'])) {
+  } elseif (!preg_match(_REGEX_BRAND_, $_POST['brand'])) {
     $errors[] = "La marque doit contenir uniquement des lettres et chiffres et avoir une longueur maximale de 25 caractères.";
   }
   //to validate model
   if (empty($_POST['model'])) {
     $errors[] = "Le modèle est requis.";
-  } elseif (!preg_match($regexModel, $_POST['model'])) {
+  } elseif (!preg_match(_REGEX_MODEL_, $_POST['model'])) {
     $errors[] = "Le modèle doit contenir uniquement des lettres, espaces et chiffres et avoir une longueur maximale de 25 caractères.";
   }
   //to validate year
   if (empty($_POST['year'])) {
     $errors[] = "L'anneé est requis.";
-  } elseif (!preg_match($regexYear, $_POST['year'])) {
+  } elseif (!preg_match(_REGEX_YEAR_, $_POST['year'])) {
     $errors[] = "L'anneé doit contenir uniquement des chiffres et avoir une longueur maximale de 4 caractères.";
   }
   //to validate kilometer
   if (empty($_POST['kilometer'])) {
     $errors[] = "La Kilométrage est requis.";
-  } elseif (!preg_match($regexKilometers, $_POST['kilometer'])) {
+  } elseif (!preg_match(_REGEX_KILOMETERS_, $_POST['kilometer'])) {
     $errors[] = "La Kilométrage doit contenir uniquement des chiffres et avoir une longueur maximale de 6 caractères.";
   }
   //to validate gearbox
   if (empty($_POST['gearbox'])) {
     $errors[] = "La boîte de vitesses est requis.";
-  } elseif (!preg_match($regexGearbox, $_POST['gearbox'])) {
+  } elseif (!preg_match(_REGEX_GEARBOX_, $_POST['gearbox'])) {
     $errors[] = "La boîte de vitesses doit contenir uniquement des lettres et avoir une longueur maximale de 15 caractères.";
   }
   //to validate doors
   if (empty($_POST['doors'])) {
     $errors[] = "Le numéro de portes est requis.";
-  } elseif (!preg_match($regexDoors, $_POST['doors'])) {
+  } elseif (!preg_match(_REGEX_DOORS_, $_POST['doors'])) {
     $errors[] = "Le numéro de portes doit contenir uniquement des chiffres et avoir une longueur maximale de 2 caractères.";
   }
   //to validate price
   if (empty($_POST['price'])) {
     $errors[] = "Le prix est requis.";
-  } elseif (!preg_match($regexPrice, $_POST['price'])) {
+  } elseif (!preg_match(_REGEX_PRICE_, $_POST['price'])) {
     $errors[] = "Le prix doit contenir uniquement des chiffres et avoir une longueur maximale de 10 caractères.";
   }
   //to validate color
   if (empty($_POST['color'])) {
     $errors[] = "La couleur est requis.";
-  } elseif (!preg_match($regexColor, $_POST['color'])) {
+  } elseif (!preg_match(_REGEX_COLOR_, $_POST['color'])) {
     $errors[] = "La couleur doit contenir uniquement des lettres et espaceset avoir une longueur maximale de 15 caractères.";
   }
   //to validate fuel
   if (empty($_POST['fuel'])) {
     $errors[] = "Le carburant est requis.";
-  } elseif (!preg_match($regexFuel, $_POST['fuel'])) {
+  } elseif (!preg_match(_REGEX_FUEL_, $_POST['fuel'])) {
     $errors[] = "Le carburant doit contenir uniquement des lettres et avoir une longueur maximale de 15 caractères.";
   }
   //to validate c02
   if (empty($_POST['co2'])) {
     $errors[] = "Le CO2 est requis.";
-  } elseif (!preg_match($regexCo2, $_POST['co2'])) {
+  } elseif (!preg_match(_REGEX_CO2_, $_POST['co2'])) {
     $errors[] = "Le CO2 doit contenir uniquement des chiffres et avoir une longueur maximale de 3 caractères.";
   }
 

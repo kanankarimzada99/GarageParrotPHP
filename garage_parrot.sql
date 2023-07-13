@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS employees;
 DROP TABLE IF EXISTS cars;
 DROP TABLE IF EXISTS services;
 DROP TABLE IF EXISTS schedules;
+DROP TABLE IF EXISTS reviews;
 
 -- create the database for all tables of garage parrot
 CREATE DATABASE garageparrot;

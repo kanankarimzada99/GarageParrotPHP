@@ -56,6 +56,7 @@ if (isset($_POST["action"])) {
   </p>
   <hr>
   <p class="price">' . $numberPrice . ' €</p>
+  <a href="voiture-details.php?id='.$row['id'].'" class=" btn-wire large">Details</a>
 
 </div>
 </div>

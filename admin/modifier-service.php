@@ -42,13 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   //to validate service
   if (empty($_POST["service"])) {
     $errors[] = "Le service est requis.";
-  } elseif (!preg_match($regexService, $_POST["service"])) {
+  } elseif (!preg_match(_REGEX_SERVICE_, $_POST["service"])) {
     $errors[] = "Le service doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.";
   }
   //to validate description
   if (empty($_POST["service-description"])) {
     $errors[] = "La description du service est requis.";
-  } elseif (!preg_match($regexDescription, $_POST["service-description"])) {
+  } elseif (!preg_match(_REGEX_DESCRIPTION_, $_POST["service-description"])) {
     $errors[] = "La description doit contenir uniquement des lettres et avoir une longueur maximale de 250 caractères.";
   }
 
@@ -75,9 +75,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   
           // $service = getServicesById($pdo, $_SESSION['service']['id']);
   
-          if(file_exists(dirname(__DIR__) . _GARAGE_UPLOADS_. $_FILES['file']['name'])){
+          if(file_exists(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_. $_FILES['file']['name'])){
             //delete old image if new one is uploaded
-          unlink(dirname(__DIR__) . _GARAGE_UPLOADS_ . $_FILES['file']['name']);
+          unlink(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_FILES['file']['name']);
           }else{
            $messages[]= "image remplace avec success";
           }

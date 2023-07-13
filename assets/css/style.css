@@ -137,12 +137,13 @@ textarea {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding:40px;
+  padding:80px 40px;
   color:var(--primary);
 }
 
 .not-found-text{
   font-size: 2rem;
+  text-align: center;
 }
 
 .not-found .go-back-page button{

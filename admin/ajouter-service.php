@@ -22,9 +22,7 @@ $formService = [
   'description' => ''
 ];
 
-//regex
-$regexService = '/^[a-zA-Z0-9\s]{3,20}$/';
-$regexDescription = '/^[a-zA-Z0-9\s]{3,250}$/';
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
  
@@ -33,13 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   //to validate service
   if (empty($_POST['service'])) {
     $errors[] = "Le service est requis.";
-  } elseif (!preg_match($regexService, $_POST['service'])) {
+  } elseif (!preg_match(_REGEX_SERVICE_, $_POST['service'])) {
     $errors[] = "Le service doit contenir uniquement des lettres et chiffres et avoir une longueur maximale de 25 caractères.";
   }
   //to validate description
   if (empty($_POST['service-description'])) {
     $errors[] = "La description est requis.";
-  } elseif (!preg_match($regexDescription, $_POST['service-description'])) {
+  } elseif (!preg_match(_REGEX_DESCRIPTION_, $_POST['service-description'])) {
     $errors[] = "La description doit contenir uniquement des lettres, espaces et chiffres et avoir une longueur maximale de 200 caractères.";
   }
 

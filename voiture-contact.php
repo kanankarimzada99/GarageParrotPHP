@@ -30,27 +30,22 @@ $formCar = [
   'lastname' => '',
   'email' => '',
   'phone' => '',
+  'subject'=>'',
   'message' => ''
 ];
 
 
-//regex
-
-$regexPhone = '/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/';
-$regexName = '/[a-zA-Z]{3,30}$/';
-$regexSubject = '/[a-zA-Z0-9-_]{3,30}$/';
-$regexMessage = '/[a-zA-Z]{3,300}$/';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if (!isset($_POST['lastname']) || $_POST['lastname'] == '') {
     $errors[] = "Le nom ne doit pas être vide";
-  }elseif (!preg_match($regexName, $_POST['lastname'])) {
+  }elseif (!preg_match(_REGEX_LAST_NAME_, $_POST['lastname'])) {
     $errors[] = "Le nom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.";
   }
   if (!isset($_POST['name']) || $_POST['name'] == '') {
     $errors[] = "Le prénom ne doit pas être vide";
-  }elseif (!preg_match($regexName, $_POST['name'])) {
+  }elseif (!preg_match(_REGEX_FIRST_NAME_, $_POST['name'])) {
     $errors[] = "Le prénom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.";
   }
 
@@ -60,14 +55,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if (!isset($_POST['phone']) || $_POST['phone'] == '') {
     $errors[] = "Le téléphone ne doit pas être vide  ";
-  }elseif (!preg_match($regexPhone, $_POST['phone'])) {
-    $errors[] = "Le téléphone doit contenir uniquement des chiffres,le \"()\" , le signal \"+\" et avoir une longueur maximale de 16 caractères.";
+  }elseif (!preg_match(_REGEX_PHONE_, $_POST['phone'])) {
+    $errors[] = "Le téléphone doit contenir uniquement des chiffres et avoir une longueur maximale de 16 caractères. Pour appel internationale, le signal \"+\" et le \"()\".";
   }
+
+  if (!isset($_POST['subject']) || $_POST['subject'] == '') {
+    $errors[] = "Le sujet ne doit pas être vide  ";
+  }elseif (!preg_match(_REGEX_SUBJECT_, $_POST['subject'])) {
+    $errors[] = "Le sujet doit contenir uniquement des lettres et avoir une longueur maximale de 60 caractères.";
+  }
+
+
  
   if (!isset($_POST['message']) || $_POST['message'] == '') {
-    $errors[] = "Le subjet ne doit pas être vide  ";
-  }elseif (!preg_match($regexMessage, $_POST['message'])) {
-    $errors[] = "Le téléphone doit contenir uniquement des chiffres, () ou + et avoir une longueur maximale de 16 caractères.";
+    $errors[] = "Le message ne doit pas être vide  ";
+  }elseif (!preg_match(_REGEX_MESSAGE_, $_POST['message'])) {
+    $errors[] = "Le message doit contenir uniquement des chiffres, () ou + et avoir une longueur maximale de 16 caractères.";
   }
 
   $formCar = [
@@ -75,6 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     'lastname' => $_POST['lastname'],
     'email' => $_POST['email'],
     'phone' => $_POST['phone'],
+    'subject'=>$_POST['subject'],
     'message' => $_POST['message']
   ];
 
@@ -101,6 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     if(mail($to, $subject, $emailContent, $headers)) {
       $messages[]="Votre email a bien été envoyé";
+      unset($_SESSION['car']);
     }else {
       $errors[]="Une erreur s'est produite durant l'envoi";
     }
@@ -112,6 +117,7 @@ if (!isset($_GET["id"])) {
     'lastname' => '',
     'email' => '',
     'phone' => '',
+    'subject'=>'',
     'message' => ''
   ];
 } else {
@@ -176,7 +182,7 @@ if (!isset($_GET["id"])) {
           <div class="contact-form-right">
             <div>
               <label for="subject">Sujet</label>
-              <input type="text" name="subject" id="subject" minlength="10" maxlength="60"
+              <input type="text" name="subject" id="subject"
                 value="<?= $_SESSION['car']['code']  . " " . $_SESSION['car']['brand'] . " " . $_SESSION['car']['model']; ?>">
 
             </div>

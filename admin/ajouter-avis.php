@@ -16,9 +16,6 @@ $formReview = [
 ];
 
 
-//regex
-$regexClient = '/^\w.{3,50}$/';
-$regexComment = '/^\w.{20,250}$/';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -27,13 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   //to validate nom client
   if (empty($_POST['client'])) {
     $errors[] = "Le nom du client est requis.";
-  } elseif (!preg_match($regexClient, $_POST['client'])) {
+  } elseif (!preg_match(_REGEX_CLIENT_, $_POST['client'])) {
     $errors[] = "Le nom du client doit contenir uniquement des lettres et espaces et avoir une longueur maximale de 50 caractères.";
   }
   //to validate comment client
   if (empty($_POST['comment'])) {
     $errors[] = "Le commentaire est requis.";
-  } elseif (!preg_match($regexComment, $_POST['comment'])) {
+  } elseif (!preg_match(_REGEX_COMMENT_, $_POST['comment'])) {
     $errors[] = "Le commentaire doit contenir uniquement des lettres, espaces et chiffres et avoir une longueur maximale de 200 caractères.";
   }
   //to validate note

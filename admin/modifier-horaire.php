@@ -51,8 +51,8 @@ $day = strtolower($_POST["day"]);
   //to validate day
   if (empty($_POST["day"])) {
     $errors[] = "Le jour de la semaine est requis.";
-  } elseif (!preg_match($regexDay, $_POST["day"])) {
-    $errors[] = "Le nom doit contenir uniquement des lettres et avoir une longueur maximale de 8 caractères.";
+  } elseif (!preg_match(_REGEX_DAY_, $_POST["day"])) {
+    $errors[] = "Le jour de la semaine doit contenir uniquement des lettres et avoir une longueur maximale de 8 caractères.";
   } 
 
   if ($day != 'lundi' && $day != 'mardi' && $day != 'mercredi' && $day != 'jeudi' && $day != 'vendredi' && $day != 'samedi' && $day != 'dimanche') {
@@ -61,28 +61,28 @@ $day = strtolower($_POST["day"]);
   //to validate morning start
   if (empty($_POST["morning-open"])) {
     $errors[] = "L'horaire d'ouverture du matin est requis.";
-  } elseif (!preg_match($regexTime, $_POST["morning-open"])) {
+  } elseif (!preg_match(_REGEX_TIME_, $_POST["morning-open"])) {
     $errors[] = "Le format d'horaire doit être 00:00. Les lettres ne sont pas accepté.";
   }
 
   //to validate morning end
   if (empty($_POST["morning-close"])) {
     $errors[] = "L'horaire fermeture du matin est requis.";
-  } elseif (!preg_match($regexTime, $_POST["morning-close"])) {
+  } elseif (!preg_match(_REGEX_TIME_, $_POST["morning-close"])) {
     $errors[] = "Le format d'horaire doit être 00:00. Les lettres ne sont pas accepté.";
   }
 
   //to validate afternoon start
   if (empty($_POST["afternoon-open"])) {
     $errors[] = "L'horaire d'ouverture de l'après-midi est requis.";
-  } elseif (!preg_match($regexTime, $_POST["afternoon-open"])) {
+  } elseif (!preg_match(_REGEX_TIME_, $_POST["afternoon-open"])) {
     $errors[] = "Le format d'horaire doit être 00:00. Les lettres ne sont pas accepté.";
   }
 
   //to validate afternoon end
   if (empty($_POST["afternoon-close"])) {
     $errors[] = "L'horaire de fermeture de l'après-midi est requis.";
-  } elseif (!preg_match($regexTime, $_POST["afternoon-close"])) {
+  } elseif (!preg_match(_REGEX_TIME_, $_POST["afternoon-close"])) {
     $errors[] = "Le format d'horaire doit être 00:00. Les lettres ne sont pas accepté.";
   }
 
