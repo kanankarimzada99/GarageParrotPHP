@@ -18,7 +18,7 @@ if($car['image'] === "" || $car['image'] === null){
     <p><?=$car['model'];?></p>
     <p class="card-text">
       <span><?=$car['year'];?></span> | <span><?=$car['kilometers']?></span> |
-      <span><?=$car['gearbox'];?></span> | <span><?=$car['fuel'];?></span> |
+      <span><?=$car['gearbox'];?></span> | <span><?=$car['fuel'];?></span> 
     </p>
     <hr>
     <!-- number format 2 000,00 €  -->

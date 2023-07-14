@@ -62,7 +62,7 @@ if (isset($_POST["action"])) {
   <p>' . $row['model'] . '</p>
   <p class="card-text">
     <span>' . $row['year'] . '</span> | <span>' . $numberKilometers . '</span> km |
-    <span>' . $row['gearbox'] . '</span> | <span>' . $row['fuel'] . '</span> |
+    <span>' . $row['gearbox'] . '</span> | <span>' . $row['fuel'] . '</span> 
   </p>
   <hr>
   <p class="price">' . $numberPrice . ' €</p>

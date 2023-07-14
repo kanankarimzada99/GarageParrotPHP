@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <!-- connection  -->
   <section class="contact contact-buy-car sections" id="contact">
     <h1 class="header-titles">Donner votre avis</h1>
-    <p class="text-center active">Votre avis est très important pour nous.</p>
+
 
     <!-- messages  -->
     <?php foreach ($messages as $message) { ?>
@@ -102,7 +102,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     <?php if ($formReview !== false) { ?>
-    <div class="wrapper">
+    <div class="contact-wrapper">
+      <p class="text-center active">Votre avis est très important pour nous.</p>
 
       <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
         <div class="connection-form">
@@ -130,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           </div>
         </div>
         <div class="form-btn">
-          <button type="submit" value="add-review" class="btn-fill">Ajouter</button>
+          <button type="submit" value="add-review" class="btn-fill">Envoyez</button>
         </div>
       </form>
     </div>
