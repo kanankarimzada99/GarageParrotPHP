@@ -66,7 +66,6 @@ $carMaxYear = implode(getCarMaxYear($pdo));
   <!-- END CARS  -->
 </div>
 
-
 <!-- script to filter cars  -->
 <script>
 $(document).ready(function() {
@@ -80,7 +79,6 @@ $(document).ready(function() {
     $('.filter_data').html('<div id="loading"></div>');
     let action = 'fetch_data';
 
-
     // get val of mininum and maximum  from sliders
     let mininum_kilometer = $('#hidden_mininum_kilometer').val();
     let maximum_kilometer = $('#hidden_maximum_kilometer').val();
@@ -88,7 +86,6 @@ $(document).ready(function() {
     let maximum_price = $('#hidden_maximum_price').val();
     let mininum_year = $('#hidden_mininum_year').val();
     let maximum_year = $('#hidden_maximum_year').val();
-
 
     $.ajax({
       url: "fetch_data.php",

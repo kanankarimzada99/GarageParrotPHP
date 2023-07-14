@@ -1,10 +1,11 @@
 <!-- if image car doesn't exist  -->
 <?php
-  if($car['image'] === "" ||$car['image'] === null){
-    $imagePath = '/assets/images/no-image.svg';
-  }else {
-    $imagePath = '/uploads/images/'.$car['image'];
-  }
+
+if($car['image'] === "" || $car['image'] === null){
+  $imagePath = _ASSETS_IMAGES_FOLDER_."no-image.svg";
+}else {
+  $imagePath = _GARAGE_IMAGES_FOLDER_.$car['image'];
+}
 ?>
 
 <div class="card">

@@ -12,6 +12,12 @@ if (isset($_GET['id'])) {
 
   $car = getCarsById($pdo, $id);
 
+  if($car['image'] === "" || $car['image'] === null){
+    $imagePath = "/assets/images/no-image.svg";
+  } else {
+    $imagePath =  '/uploads/images/'.$car["image"];
+  }
+
   $_SESSION['car'] = $car;
 
   //verify if car is on db
@@ -33,7 +39,6 @@ $formCar = [
   'subject'=>'',
   'message' => ''
 ];
-
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -65,7 +70,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors[] = "Le sujet doit contenir uniquement des lettres et avoir une longueur maximale de 60 caractères.";
   }
 
-
  
   if (!isset($_POST['message']) || $_POST['message'] == '') {
     $errors[] = "Le message ne doit pas être vide  ";
@@ -81,7 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     'subject'=>$_POST['subject'],
     'message' => $_POST['message']
   ];
-
 
 
   if(!$errors){
@@ -193,8 +196,7 @@ if (!isset($_GET["id"])) {
             </div>
           </div>
         </div>
-        <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars($_SESSION['car']['image'])?>"
-          alt="<?= $_SESSION['car']['brand']." ". $_SESSION['car']['model']?>" class="w-25">
+        <img src="<?= $imagePath; ?>" alt="<?= $_SESSION['car']['brand']." ". $_SESSION['car']['model']?>" class="w-25">
         <div class="form-btn">
           <input type="submit" value="Envoyer" class="btn-fill">
         </div>

@@ -6,9 +6,7 @@ require_once __DIR__ . "/lib/pdo.php";
 require_once __DIR__ . "/lib/cars.php";
 require_once __DIR__ . "/templates/header-navigation.php";
 
-
 $cars = getCars($pdo);
-
 
 //verify if id is on the URL
 $error = false;
@@ -19,11 +17,11 @@ if (isset($_GET['id'])) {
 
   $car = getCarsById($pdo, $id);
 
-  if (isset($car["image"])) {
+  if (isset($car["image"]) && $car['image'] !== "" && $car['image'] !== null) {
     $imagePath =  _GARAGE_IMAGES_FOLDER_.$car["image"];
-  } else {
-       $imagePath = _ASSETS_IMAGES_FOLDER_."no-image.svg";
-  }
+  }  else  {
+    $imagePath = _ASSETS_IMAGES_FOLDER_ . "no-image.svg";
+  } 
 
   if (!$car) {
       $error = true;
@@ -32,8 +30,6 @@ if (isset($_GET['id'])) {
   $error = false;
 }
 ?>
-
-
 
 <?php if (!$error) { ?>
 <div class="wrapper">
@@ -50,7 +46,7 @@ if (isset($_GET['id'])) {
             <div class="car-img">
               <img class="card-img-top" src="<?= $imagePath; ?>" alt="<?= $car['model']; ?>">
             </div>
-             </div>
+          </div>
           <div class="car-descriptions">
             <div class="car-accessories">
               <div class="car-accessories-description">
@@ -104,8 +100,6 @@ if (isset($_GET['id'])) {
   </section>
   <!-- END CARS  -->
 </div>
-
-
 
 <?php } else { ?>
 <div class="not-found">
