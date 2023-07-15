@@ -97,6 +97,31 @@ textarea::placeholder{
 }
 
 
+
+.form-message{
+  display:flex;
+  justify-content: center;
+  margin:10px;
+
+  
+}
+.form-message span{
+font-size:1.3rem;
+font-weight: 500;
+  text-align: center;
+}
+
+.form-error {
+    color: var(--primary);
+}
+.form-success{
+    color: green;
+}
+.input-error{
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+
 fieldset {
   margin:20px 0 60px;
   background: var(--grayLight);
@@ -1107,6 +1132,14 @@ input[type="submit"]:hover{
   text-align: center;
 }
 
+.contact-wrapper p.active{
+  color:var(--primary);
+  font-size: 1.1rem;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  }
+
 .contact-form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1163,6 +1196,10 @@ input[type="submit"]:hover{
   text-align: center;
 }
 
+.hide{
+  display:none;
+}
+
 @media (min-width: 992px) {
 
   .contact {
@@ -1178,7 +1215,7 @@ input[type="submit"]:hover{
     -webkit-box-align: start;
     -ms-flex-align: start;
     align-items: flex-start;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
   }
 
   .contact-wrapper {

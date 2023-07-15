@@ -57,7 +57,7 @@ if (isset($_POST["action"])) {
         <img class="card-img-top height-200" loading="lazy" src="' . $imagePath . '" alt="' . $row['brand'] . '" "' . $row['model'] . '" "' . $row['year'] . '>
 </div>
 
-<div class="card-body heigth-280">
+<div class="card-body height-280">
   <h4 class="card-title">' . $row['brand'] . '</h4>
   <p>' . $row['model'] . '</p>
   <p class="card-text">

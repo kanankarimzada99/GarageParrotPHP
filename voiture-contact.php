@@ -129,6 +129,30 @@ if (!isset($_GET["id"])) {
   }
 }
 ?>
+<!-- send message by form  -->
+<script>
+$(document).ready(function() {
+  $("form").submit(function(event) {
+    event.preventDefault();
+    var lastname = $("#lastname").val();
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var phone = $("#phone").val();
+    var subject = $("#subject").val();
+    var message = $("#message").val();
+    var submit = $("#submit").val();
+    $(".form-message").load('mail.php', {
+      lastname: lastname,
+      name: name,
+      email: email,
+      phone: phone,
+      subject: subject,
+      message: message,
+      submit: submit
+    });
+  })
+})
+</script>
 
 <div class="wrapper">
 
@@ -142,7 +166,7 @@ if (!isset($_GET["id"])) {
     <p class="contact-buy-car-txt">Service? Rendez-vous? Voiture d'occasion? N'hésitez pas à nous rejoindre.</p>
 
     <!-- messages  -->
-    <?php foreach ($messages as $message) { ?>
+    <!-- <?php foreach ($messages as $message) { ?>
     <div class="alert alert-success mt-4" role="alert">
       <?= $message; ?>
     </div>
@@ -154,11 +178,13 @@ if (!isset($_GET["id"])) {
     </div>
     <?php } ?>
 
-    <?php if ($formCar !== false) { ?>
+    <?php if ($formCar !== false) { ?> -->
+
+
 
     <div class="contact-wrapper">
 
-      <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+      <form action="mail.php" method="POST">
         <div class="contact-form">
           <div class="contact-form-left">
             <div>
@@ -196,10 +222,15 @@ if (!isset($_GET["id"])) {
             </div>
           </div>
         </div>
-        <img src="<?= $imagePath; ?>" alt="<?= $_SESSION['car']['brand']." ". $_SESSION['car']['model']?>" class="w-25">
+
+        <!-- messages  -->
+        <div class="form-message"></div>
+        <img src="<?= $imagePath; ?>" alt="<?= $_SESSION['car']['brand']." ". $_SESSION['car']['model']?>"
+          class="w-25 image-car">
         <div class="form-btn">
-          <input type="submit" value="Envoyer" class="btn-fill">
+          <input type="submit" value="Envoyer" id="submit" name="submit" class="btn-fill">
         </div>
+
       </form>
     </div>
   </section>

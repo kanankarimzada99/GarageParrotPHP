@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if(!$errors){
     $to= _APP_EMAIL_;
     $email = filter_var($_POST['email'] , FILTER_SANITIZE_EMAIL);
-    $subject = '[Garage Parrot] Formulaire de contact';
+    $subject = '[Garage Parrot] Formulaire de contact'.$_POST['subject'];
     $emailContent = "Email : $email<br>"
     ."Prénom: <br>"
     .nl2br(htmlentities($_POST['name']))
@@ -62,6 +62,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 }
 ?>
+<!-- send message by form  -->
+<script>
+$(document).ready(function() {
+  $("form").submit(function(event) {
+    event.preventDefault();
+    var lastname = $("#lastname").val();
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var phone = $("#phone").val();
+    var subject = $("#subject").val();
+    var message = $("#message").val();
+    var submit = $("#submit").val();
+    $(".form-message").load('mail.php', {
+      lastname: lastname,
+      name: name,
+      email: email,
+      phone: phone,
+      subject: subject,
+      message: message,
+      submit: submit
+    });
+  })
+})
+</script>
 
 <!-- HERO  -->
 
@@ -158,7 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <h2 class="header-titles">Contact</h2>
 
   <!-- messages  -->
-  <?php foreach ($messages as $message) { ?>
+  <!-- <?php foreach ($messages as $message) { ?>
   <div class="alert alert-success mt-4" role="alert">
     <?= $message; ?>
   </div>
@@ -168,14 +192,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <div class="alert alert-danger mt-4" role="alert">
     <?= $error; ?>
   </div>
-  <?php } ?>
+  <?php } ?> -->
 
   <div class="contact-wrapper">
     <h3>Comment pouvons-nous vous aider?</h3>
     <p>Service? Rendez-vous? Voiture d'occasion?</p>
     <p>N'hésitez pas à nous rejoindre.</p>
 
-    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">
+    <form action="mail.php" method="POST">
       <div class="contact-form">
         <div class="contact-form-left">
           <div>
@@ -210,9 +234,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           </div>
         </div>
       </div>
+      <!-- messages  -->
+      <div class="form-message"></div>
       <div class="form-btn">
-
-        <input type="submit" value="Envoyer" name='sendContact' class="btn-fill">
+        <input type="submit" value="Envoyer" id="submit" name="submit" class="btn-fill">
       </div>
     </form>
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
