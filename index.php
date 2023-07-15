@@ -90,6 +90,7 @@ $(document).ready(function() {
 <!-- HERO  -->
 
 <!-- Back to top button -->
+<a href="#" id="button"></i></a>
 
 
 <section class="hero">
@@ -194,6 +195,8 @@ $(document).ready(function() {
   </div>
   <?php } ?> -->
 
+
+
   <div class="contact-wrapper">
     <h3>Comment pouvons-nous vous aider?</h3>
     <p>Service? Rendez-vous? Voiture d'occasion?</p>
@@ -240,7 +243,7 @@ $(document).ready(function() {
         <input type="submit" value="Envoyer" id="submit" name="submit" class="btn-fill">
       </div>
     </form>
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
   </div>
 </section>
 

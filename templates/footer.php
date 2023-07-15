@@ -81,6 +81,7 @@ $schedules = getSchedules($pdo);
   integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
 <script src="../assets/scripts/scripts.js"></script>
+<script src="../assets/scripts/topbutton.js"></script>
 </body>
 
 </html>

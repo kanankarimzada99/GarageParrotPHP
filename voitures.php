@@ -14,6 +14,8 @@ $carMinPrice = implode(getCarMinPrice($pdo));
 $carMaxPrice = implode(getCarMaxPrice($pdo));
 $carMinYear = implode(getCarMinYear($pdo));
 $carMaxYear = implode(getCarMaxYear($pdo));
+
+var_dump($carMinKilometer);
 ?>
 
 <div class="wrapper">
