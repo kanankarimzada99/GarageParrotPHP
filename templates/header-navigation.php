@@ -40,30 +40,31 @@
           <div class="line2"></div>
           <div class="line3"></div>
         </div>
-        <ul class="nav-list">
-          <li>
-            <a class="nav-link" aria-current="page" href="/">Accueil</a>
-          </li>
-          <li>
-            <a class="nav-link" aria-current="page" href="/index.php#services">Services</a>
-          </li>
-          <li>
-            <a class="nav-link" aria-current="page" href="/index.php#cars">Voitures</a>
-          </li>
-          <li>
-            <a class="nav-link" aria-current="page" href="/index.php#testimonial">Avis</a>
-          </li>
-          <li>
-            <a class="nav-link" aria-current="page" href="/index.php#contact">Contact</a>
-          </li>
-          <li>
-            <a class="nav-link" aria-current="page" href="/index.php#schedules">Horaires</a>
-          </li>
-
-          <li>
-            <a href="/admin/index.php" class="btn-wire">Connecter</a>
-          </li>
-        </ul>
+        <div class="nav-list-wrappper">
+          <ul class="nav-list">
+            <li>
+              <a class="nav-link" aria-current="page" href="/">Accueil</a>
+            </li>
+            <li>
+              <a class="nav-link" aria-current="page" href="#services">Services</a>
+            </li>
+            <li>
+              <a class="nav-link" aria-current="page" href="#cars">Voitures</a>
+            </li>
+            <li>
+              <a class="nav-link" aria-current="page" href="#testimonial">Avis</a>
+            </li>
+            <li>
+              <a class="nav-link" aria-current="page" href="#contact">Contact</a>
+            </li>
+            <li>
+              <a class="nav-link" aria-current="page" href="#schedules">Horaires</a>
+            </li>
+            <li>
+              <a href="/admin/index.php" class="btn-wire">Connecter</a>
+            </li>
+          </ul>
+        </div>
       </nav>
     </header>
   </div>

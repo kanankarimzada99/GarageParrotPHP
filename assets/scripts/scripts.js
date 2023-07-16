@@ -1,6 +1,9 @@
 const mobileMenu = document.querySelector('.mobile-menu')
 const navList = document.querySelector('.nav-list')
 const navLinks = document.querySelectorAll('.nav-list li')
+const navLinksRef = document.querySelectorAll('.nav-list li a')
+
+console.log(navLinksRef)
 
 const animateLinks = () => {
   navLinks.forEach((link, index) => {
@@ -17,6 +20,19 @@ const handleClick = () => {
   mobileMenu.classList.toggle('active')
   document.body.classList.toggle('noscroll')
   animateLinks()
+  console.log('click')
+}
+const exitMenu = () => {
+  navList.classList.toggle('active')
+  mobileMenu.classList.toggle('active')
+  document.body.classList.toggle('noscroll')
+  animateLinks()
+  console.log('hjeee')
+}
+
+for (let i = 0; i < navLinksRef.length; i++) {
+  navLinksRef[i].addEventListener('click', exitMenu)
 }
 
 mobileMenu.addEventListener('click', handleClick)
+// navLinks.addEventListener('click', hideMenu)

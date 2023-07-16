@@ -40,6 +40,8 @@
           <div class="line2"></div>
           <div class="line3"></div>
         </div>
+
+
         <ul class="nav-list">
           <li>
             <a class="nav-link" aria-current="page" href="/">Accueil</a>
