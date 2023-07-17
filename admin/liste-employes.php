@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../lib/config.php";
+
 require_once __DIR__ . "/../lib/session.php";
 //only admin has permission to visit this page
 adminOnly();
@@ -7,10 +8,11 @@ require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/employees.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
-//only admin can visit this page
-if ($_SESSION['user']['role'] === 'employee') {
-  header("location: /admin/liste-voitures.php");
-}
+// //only admin can visit this page
+// if ($_SESSION['user']['role'] === 'employee') {
+//   header("location: /admin/liste-voitures.php");
+// }
+
 
 if (isset($_GET['page'])) {
   $page = (int)$_GET['page'];
@@ -68,20 +70,20 @@ $totalPages = ceil($totalEmployees / _ADMIN_ITEM_PER_PAGE_);
           </tbody>
         </table>
 
-        <nav aria-label="Page navigation employes">
-          <ul class="pagination">
-            <?php if ($totalPages > 1) { ?>
-            <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
-            <li class="page-item">
-              <a class="page-link <?php if ($i == $page) { echo " active";} ?>" href="?page=<?php echo $i; ?>">
-                <?php echo $i; ?>
-              </a>
-            </li>
-            <?php } ?>
-            <?php } ?>
-          </ul>
-        </nav>
       </div>
+      <nav aria-label="Page navigation employes">
+        <ul class="pagination">
+          <?php if ($totalPages > 1) { ?>
+          <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
+          <li class="page-item">
+            <a class="page-link <?php if ($i == $page) { echo " active";} ?>" href="?page=<?php echo $i; ?>">
+              <?php echo $i; ?>
+            </a>
+          </li>
+          <?php } ?>
+          <?php } ?>
+        </ul>
+      </nav>
     </div>
   </section>
   <!-- END connection  -->

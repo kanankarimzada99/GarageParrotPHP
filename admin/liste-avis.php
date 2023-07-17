@@ -10,7 +10,6 @@ if (isset($_GET['page'])) {
 } else {
   $page = 1;
 }
-
 //get reviews
 $reviews = getReviews($pdo, _ADMIN_ITEM_PER_PAGE_, $page);
 
@@ -53,20 +52,20 @@ $totalPages = ceil($totalreviews / _ADMIN_ITEM_PER_PAGE_);
             <?php } ?>
           </tbody>
         </table>
-        <nav aria-label="Page navigation reviews">
-          <ul class="pagination">
-            <?php if ($totalPages > 1) { ?>
-            <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
-            <li class="page-item">
-              <a class="page-link <?php if ($i == $page) { echo " active";} ?>" href="?page=<?php echo $i; ?>">
-                <?php echo $i; ?>
-              </a>
-            </li>
-            <?php } ?>
-            <?php } ?>
-          </ul>
-        </nav>
       </div>
+      <nav aria-label="Page navigation reviews">
+        <ul class="pagination">
+          <?php if ($totalPages > 1) { ?>
+          <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
+          <li class="page-item">
+            <a class="page-link <?php if ($i == $page) { echo " active";} ?>" href="?page=<?php echo $i; ?>">
+              <?php echo $i; ?>
+            </a>
+          </li>
+          <?php } ?>
+          <?php } ?>
+        </ul>
+      </nav>
     </div>
   </section>
   <!-- END connection  -->

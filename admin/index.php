@@ -3,6 +3,7 @@
 ob_start();
 
 require_once __DIR__ . "/../lib/config.php";
+
 require_once __DIR__ . "/../lib/session.php";
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/employees.php";
@@ -32,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('location: /admin/liste-voitures.php');
       } else {
         header('location: index.php');
+        exit();
       }
     }
   } else {
