@@ -80,6 +80,7 @@ if (errorEmpty == false && errorEmail == false) {
   //hide message after 9 seconds
   setTimeout(function() {
     $('.form-message').fadeOut('fast');
+    window.location = '/';
   }, 5000); // <-- time in milliseconds
 }
 </script>

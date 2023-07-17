@@ -22,7 +22,7 @@ const handleClick = () => {
 const exitMenu = () => {
   navList.classList.toggle('active')
   mobileMenu.classList.toggle('active')
-  document.body.classList.toggle('noscroll')
+  document.body.classList.remove('noscroll')
   animateLinks()
 }
 
@@ -31,4 +31,3 @@ for (let i = 0; i < navLinksRef.length; i++) {
 }
 
 mobileMenu.addEventListener('click', handleClick)
-// navLinks.addEventListener('click', hideMenu)

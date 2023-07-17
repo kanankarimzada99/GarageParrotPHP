@@ -90,17 +90,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if(!$errors){
     $to= _APP_EMAIL_;
     $email = filter_var($_POST['email'] , FILTER_SANITIZE_EMAIL);
-    $subject = '[Garage Parrot] Formulaire de contact';
-    $emailContent = "Email : $email<br>"
-    ."Prénom: <br>"
+    $subject = '[Garage Parrot] Formulaire de contact:'.' '.nl2br(htmlentities($_POST['subject']));
+    $emailContent = "Email : $email"
+    ."<br>"
+    ."Prénom:"
     .nl2br(htmlentities($_POST['name']))
-    ."Nom: <br>"
+    ."<br>"
+    ."Nom:"
     .nl2br(htmlentities($_POST['lastname']))
-    ."téléphone: <br>"
+    ."<br>"
+    ."téléphone:"
     .nl2br(htmlentities($_POST['phone']))
-    ."Adresse e-mail: <br>"
+    ."<br>"
+    ."Adresse e-mail:"
     .nl2br(htmlentities($_POST['email']))
-    ."Message : <br>"
+    ."<br>"
+    ."Message :"
     .nl2br(htmlentities($_POST['message']));
     $headers = "From: "._APP_EMAIL_ . 
     "\r\n"."MIME-Version: 1.0" . "\r\n".
@@ -141,7 +146,7 @@ $(document).ready(function() {
     var subject = $("#subject").val();
     var message = $("#message").val();
     var submit = $("#submit").val();
-    $(".form-message").load('mail.php', {
+    $(".form-message").load('mailVoiture.php', {
       lastname: lastname,
       name: name,
       email: email,
@@ -184,7 +189,7 @@ $(document).ready(function() {
 
     <div class="contact-wrapper">
 
-      <form action="mail.php" method="POST">
+      <form action="mailVoiture.php" method="POST">
         <div class="contact-form">
           <div class="contact-form-left">
             <div>
