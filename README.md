@@ -2,7 +2,7 @@
 
 ## Projet Garage Parrot
 
-Le Projet Garage Parrot (PEP) c'est un page internet d'une garage fictif dévélopé comme projet d’études du cours Graduate Fullstack de la formation Studi.
+Le Projet Garage Parrot (PEP) c'est un page internet d'une garage fictif développé comme projet d’études du cours Graduate Fullstack de la formation Studi. La page est totalement dynamique. Dans la partie connexion, l'administrateur du site peut ajouter, modifier ou supprimer les informations du site.
 
 ## Le client
 
@@ -36,26 +36,57 @@ Créer une application web vitrine pour le Garage V. Parrot en mettant en avant 
 
 - PHP 8.2.4 sous PDO
 - MYSQL
+
   <br>
 
-### LE SITE INTERNET
+  ### LE SITE INTERNET \*\*
 
-https://garageparrot.net/
+  https://garageparrot.net/
+
+## Pour travailler en local
+
+1.  <u>Cloner le projet</u>
+    <br>
+2.  <u>Communiquer avec le backend</u>
+    Pour travailler avec la base de donnée (bdd), vous devez faire un petit configuration dans le fichier gparrot.sql
+
+    - changer **lemotutilisateur** pour votre mot d'utilisateur de la bdd.
+    - changer **votremotdepasse** si vous avez un pour la bdd.
+    - changer **votreemail**. (en local il n'envoie pas des e-mails)
+      <br>
+
+          define("_DOMAIN_", "localhost");
+          define("_GARAGE_IMAGES_FOLDER_", '/uploads/images/');
+          define("_ASSETS_IMAGES_FOLDER_", '/assets/images/');
+          define("_ADMIN_ITEM_PER_PAGE_",5);
+          define("_DB_NAME_",'garageparrot');
+          define("_DB_USER_",'lemotutilisateur');
+          define("_DB_PASSWORD_",'votremotdepasse');
+          define("_APP_EMAIL_",'votreemail');
+
+3.  Dans xampp, wamp ou mamp activez Apache et Mysql
+4.  Importer dans phpAdmin le fichier gparrot.sql
+
+5.  Pour lancer votre projet en local, ecrivez dans le terminal de votre IDE:
+
+    - php -S localhost:3000
+
+6.  Cliquez sur le lien localhost:3000 pour ouvrir le projet dans votre navigateur.
 
 ## Les diagrammes
 
 Si vous avez VSCode comme IDE, vous pouvez téléchargé l'extension **Draw.io integration** et voir les fichiers dans les dossiers diagrammes du projet. Dans le cas de n'est pas avoir cette extension, vous pouvez aller sur le site https://app.diagrams.net/ et ouvrir les fichiers .drawio
 
 <hr>
-
 ## Se connecter
-
 **Utilisateurs concernés:** <u>Administrateur</u> (Vincent Parrot) et <u>employés du garage</u> . Seulement ces deux on le droit de se connecter sur le site.
 
 1- **Vincent Parrot**
-Vincent comme cheffe de l'entreprise, gère absolument tous les informations du site web (services, voitures, employés, avis client et les horaires du garage).
+Vincent comme cheffe de l'entreprise, gère absolument tous les informations du site web (services, voitures, employés, avis client et les horaires du garage). Il peut ajouter, modifier ou supprimer des informations du garage.
 
 2- **Les employés**
-Les employés du garage on aussi accès à la connexion du site, mais seulement les voitures et les avis des client.
+Les employés du garage on aussi accès à la connexion du site, mais seulement les voitures et les avis des client. Ils peuvent ajouter, modifier ou même supprimer des voitures ou des avis client.
 
-##### ps. Pour question de securité, les codes d'accès au site internet garage parrot et le fichier gparrot.sql pour la base de donnée seront disponibles seulement dans la documentation officiel du projet.
+<hr>
+
+##### \*\* Attention, pour question de securité, les codes d'accès au site internet garage parrot ne sont pas le même que dans le fichier gparrot.sql. Les codes d'accès seront disponible seulement dans le fichier officiel du projet pour Studi.
