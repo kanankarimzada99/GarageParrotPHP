@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <img src='./assets/images/logo_car_title.png' width="80">
 
 ## Projet Garage Parrot
@@ -87,7 +86,4 @@ Vincent comme cheffe de l'entreprise, gère absolument tous les informations du 
 2- **Les employés**
 Les employés du garage on aussi accès à la connexion du site, mais seulement les voitures et les avis des client.
 
-**ps. Pour question de securité, les codes d'accès au site internet garage parrot sera disponible seulement dans le fichier officiel du projet.**
-=======
-
->>>>>>> bcd273fb8dbc212f186fa35ff5f43cb698d7bd85
+**### ps. Pour question de securité, les codes d'accès au site internet garage parrot sera disponible seulement dans le fichier officiel du projet.**
