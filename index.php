@@ -90,7 +90,7 @@ $(document).ready(function() {
 <!-- HERO  -->
 
 <!-- Back to top button -->
-<a href="#" id="button"></i></a>
+<a href="#" id="button"></a>
 
 
 <section class="hero">
