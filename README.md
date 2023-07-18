@@ -42,42 +42,13 @@ Créer une application web vitrine pour le Garage V. Parrot en mettant en avant 
 
 https://garageparrot.net/
 
-## Pour travailler en local
-
-1.  <u>Cloner le projet</u>
-    <br>
-2.  <u>Communiquer avec le backend</u>
-    Pour travailler avec la base de donnée (bdd), vous devez faire un petit configuration dans le fichier gparrot.sql
-
-    - changer **lemotutilisateur** pour votre mot d'utilisateur de la bdd.
-    - changer **votremotdepasse** si vous avez un pour la bdd.
-    - changer **votreemail**. (en local il n'envoie pas des e-mails)
-      <br>
-
-          define("_DOMAIN_", "localhost");
-          define("_GARAGE_IMAGES_FOLDER_", '/uploads/images/');
-          define("_ASSETS_IMAGES_FOLDER_", '/assets/images/');
-          define("_ADMIN_ITEM_PER_PAGE_",5);
-          define("_DB_NAME_",'garageparrot');
-          define("_DB_USER_",'**lemotutilisateur**');
-          define("_DB_PASSWORD_",'**votremotdepasse**');
-          define("_APP_EMAIL_",'**votreemail**');
-
-3.  <u>Importer dans phpAdmin le fichier gparrot.sql</u>
-    <br>
-4.  <u>Dans xampp, wamp ou mamp activez Apache et Mysql</u>
-    <br>
-5.  <u>Pour lancer votre projet en local, ecrivez dans le terminal de votre IDE:</u>
-
-    - php -S localhost:3000
-      <br>
-
 ## Les diagrammes
 
 Si vous avez VSCode comme IDE, vous pouvez téléchargé l'extension **Draw.io integration** et voir les fichiers dans les dossiers diagrammes du projet. Dans le cas de n'est pas avoir cette extension, vous pouvez aller sur le site https://app.diagrams.net/ et ouvrir les fichiers .drawio
 
 <hr>
 ## Se connecter
+
 **Utilisateurs concernés:** <u>Administrateur</u> (Vincent Parrot) et <u>employés du garage</u> . Seulement ces deux on le droit de se connecter sur le site.
 
 1- **Vincent Parrot**
@@ -86,4 +57,4 @@ Vincent comme cheffe de l'entreprise, gère absolument tous les informations du 
 2- **Les employés**
 Les employés du garage on aussi accès à la connexion du site, mais seulement les voitures et les avis des client.
 
-**### ps. Pour question de securité, les codes d'accès au site internet garage parrot sera disponible seulement dans le fichier officiel du projet.**
+##### ps. Pour question de securité, les codes d'accès au site internet garage parrot et le fichier gparrot.sql pour la base de donnée seront disponibles seulement dans la documentation officiel du projet.
