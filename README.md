@@ -78,7 +78,9 @@ Créer une application web vitrine pour le Garage V. Parrot en mettant en avant 
 Si vous avez VSCode comme IDE, vous pouvez téléchargé l'extension **Draw.io integration** et voir les fichiers dans les dossiers diagrammes du projet. Dans le cas de n'est pas avoir cette extension, vous pouvez aller sur le site https://app.diagrams.net/ et ouvrir les fichiers .drawio
 
 <hr>
+
 ## Se connecter
+
 **Utilisateurs concernés:** <u>Administrateur</u> (Vincent Parrot) et <u>employés du garage</u> . Seulement ces deux on le droit de se connecter sur le site.
 
 1- **Vincent Parrot**

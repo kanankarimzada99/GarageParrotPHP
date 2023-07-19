@@ -44,7 +44,7 @@
 
         <ul class="nav-list">
           <li>
-            <a class="nav-link" aria-current="page" href="/">Accueil</a>
+            <a class="nav-link" aria-current="page" href="#">Accueil</a>
           </li>
           <li>
             <a class="nav-link" aria-current="page" href="#services">Services</a>
@@ -62,7 +62,7 @@
             <a class="nav-link" aria-current="page" href="#schedules">Horaires</a>
           </li>
           <li>
-            <a href="/admin/index.php" class="btn-wire">Connecter</a>
+            <a href="../admin/index.php" class="btn-wire">Connecter</a>
           </li>
         </ul>
       </nav>

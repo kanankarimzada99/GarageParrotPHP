@@ -61,7 +61,7 @@ if(!empty($_SESSION)){
         </div>
         <ul class="nav-list">
           <li>
-            <a href="/index.php" class="btn-wire">Accueil</a>
+            <a href="/" class="btn-wire">Accueil</a>
           </li>
         </ul>
       </nav>

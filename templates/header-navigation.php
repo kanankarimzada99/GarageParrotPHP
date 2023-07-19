@@ -46,22 +46,22 @@
               <a class="nav-link" aria-current="page" href="/">Accueil</a>
             </li>
             <li>
-              <a class="nav-link" aria-current="page" href="#services">Services</a>
+              <a class="nav-link" aria-current="page" href="/#services">Services</a>
             </li>
             <li>
-              <a class="nav-link" aria-current="page" href="#cars">Voitures</a>
+              <a class="nav-link" aria-current="page" href="/#cars">Voitures</a>
             </li>
             <li>
-              <a class="nav-link" aria-current="page" href="#testimonial">Avis</a>
+              <a class="nav-link" aria-current="page" href="/#testimonial">Avis</a>
             </li>
             <li>
-              <a class="nav-link" aria-current="page" href="#contact">Contact</a>
+              <a class="nav-link" aria-current="page" href="/#contact">Contact</a>
             </li>
             <li>
               <a class="nav-link" aria-current="page" href="#schedules">Horaires</a>
             </li>
             <li>
-              <a href="/admin/index.php" class="btn-wire">Connecter</a>
+              <a href="../admin/index.php" class="btn-wire">Connecter</a>
             </li>
           </ul>
         </div>
