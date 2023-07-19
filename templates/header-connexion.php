@@ -10,7 +10,7 @@ if(!empty($_SESSION)){
   }else if($_SESSION['user']['role'] === 'employee'){
     header('location:/admin/liste-voitures.php');
   } else {
-    header('location:/admin/index.php');
+    header('location:/admin/');
   }
 }
 ?>

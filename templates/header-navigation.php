@@ -61,7 +61,7 @@
               <a class="nav-link" aria-current="page" href="#schedules">Horaires</a>
             </li>
             <li>
-              <a href="../admin/index.php" class="btn-wire">Connecter</a>
+              <a href="../admin/" class="btn-wire">Connecter</a>
             </li>
           </ul>
         </div>
