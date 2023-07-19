@@ -23,7 +23,7 @@ require_once __DIR__ . "../../../lib/not-connected.php";
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png">
-  <link rel="manifest" href="../assets/images/favicon/site.webmanifest">
+  <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
 
   <!-- BOOTSTRAP  -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
