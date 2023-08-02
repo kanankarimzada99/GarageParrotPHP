@@ -7,12 +7,14 @@ const handleClick = () => {
   navList.classList.toggle('active')
   mobileMenu.classList.toggle('active')
   document.body.classList.toggle('noscroll')
+
   // animateLinks()
 }
 const exitMenu = () => {
   navList.classList.remove('active')
   mobileMenu.classList.remove('active')
   document.body.classList.remove('noscroll')
+
   // animateLinks()
 }
 

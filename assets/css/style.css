@@ -21,6 +21,8 @@ font-family: 'Ubuntu', sans-serif;
   --max-wrapper: 1200px;
 
 }
+/* button bootstrap */
+
 
 
 /* GENERAL ---------------------- */
@@ -64,6 +66,10 @@ img {
   display: block;
 }
 
+.img-maxwidth{
+  width: 200px;
+}
+
 input::-webkit-input-placeholder{
   color:var(--grayDark);
 }
@@ -78,6 +84,10 @@ input::-ms-input-placeholder{
 
 input::placeholder{
   color:var(--grayDark);
+}
+
+input[type=checkbox]{
+  cursor:pointer;
 }
 
 textarea::-webkit-input-placeholder{
@@ -296,7 +306,7 @@ h3.no-cars{
 }
 
 .btn-fill {
-  border: none;
+  border:2px solid transparent;
   padding: 0.2rem 0.4rem;
   border-radius: 0.5rem;
   background-color: var(--primary);
@@ -304,6 +314,12 @@ h3.no-cars{
   display: inline-block;
   cursor: pointer;
   font-family: 'Roboto', sans-serif;
+}
+
+.btn-fill:hover{
+  background-color: var(--grayLight);
+    color:var(--font);
+    border:2px solid var(--primary);
 }
 .btn-fill.large {
   padding: 0.2rem 1rem;
@@ -346,6 +362,7 @@ input[type="submit"]:hover{
 
 .btn-wire:hover{
   background-color: var(--primary);
+  color: #fff;
 }
 
 
@@ -467,11 +484,11 @@ input[type="submit"]:hover{
     transition: all 0.2s ease;
   }
 
-  .btn-fill:hover{
+  /* .btn-fill:hover{
     background-color: var(--grayLight);
     color:var(--font);
     border:2px solid var(--primary);
-  }
+  } */
 
   /* NOT FOUND ----- */
   .not-found-text{
@@ -589,15 +606,16 @@ input[type="submit"]:hover{
   -webkit-transform: translateX(-100%);
   -ms-transform: translateX(-100%);
   transform: translateX(-100%);
-  -webkit-transition: -webkit-transform 0.3s ease-in;
-  transition: -webkit-transform 0.3s ease-in;
-  -o-transition: transform 0.3s ease-in;
-  transition: transform 0.3s ease-in;
-  transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
+  /* -webkit-transition: -webkit-transform 0.3s, visibility 0.3s ease-in;
+  transition: -webkit-transform 0.3s, visibility 0.3s ease-in;
+  -o-transition: transform 0.3s, visibility 0.3s ease-in;
+  transition: transform 0.3s, visibility 0.3s ease-in;
+  transition: transform 0.3s, visibility 0.3s ease-in; */
   list-style: none;
   z-index: 3;
   margin: 0;
   max-width: var(--max-wrapper);
+
 }
 
 .nav-list li {
@@ -644,7 +662,8 @@ input[type="submit"]:hover{
   -webkit-transform: translateX(0);
   -ms-transform: translateX(0);
   transform: translateX(0);
-  width:70vw;
+  width:100vw;
+  
 }
 
 .mobile-menu.active .line1 {
@@ -705,6 +724,8 @@ input[type="submit"]:hover{
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
     transform: translateX(0);
+    opacity:1;
+  visibility: visible;
   }
 
   .nav-list li {
@@ -884,6 +905,11 @@ input[type="submit"]:hover{
 .card-title.center {
   text-align: center;
 }
+
+.inputFile {
+  display:none;
+}
+
 
 @media screen and (min-width: 480px) {
   .services .card,

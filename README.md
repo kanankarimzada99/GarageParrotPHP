@@ -48,9 +48,11 @@ Créer une application web vitrine pour le Garage V. Parrot en mettant en avant 
 1.  <u>Cloner le projet</u>
     <br>
 2.  <u>Communiquer avec le backend</u>
-    Pour travailler avec la base de donnée (bdd), vous devez faire un petit configuration dans le fichier gparrot.sql
+    Pour travailler avec la base de donnée (bdd), vous devez faire un petit configuration dans le fichier configGarage.php dans le dossier lib.
+    <br>
 
-    - changer **lemotutilisateur** pour votre mot d'utilisateur de la bdd.
+    - changer le nom du fichier configGarage.php par config.php
+    - changer **lemotutilisateur** pour votre mot d'utilisateur de la bdd si vous avez.
     - changer **votremotdepasse** si vous avez un pour la bdd.
     - changer **votreemail**. (en local il n'envoie pas des e-mails)
       <br>
@@ -64,14 +66,13 @@ Créer une application web vitrine pour le Garage V. Parrot en mettant en avant 
           define("_DB_PASSWORD_",'votremotdepasse');
           define("_APP_EMAIL_",'votreemail');
 
-3.  Dans xampp, wamp ou mamp activez Apache et Mysql
+3.  Dans xampp, wamp ou mamp activez Apache et Mysql.
 4.  Importer dans phpAdmin le fichier gparrot.sql
-
 5.  Pour lancer votre projet en local, ecrivez dans le terminal de votre IDE:
 
     - php -S localhost:3000
 
-6.  Cliquez sur le lien localhost:3000 pour ouvrir le projet dans votre navigateur.
+6.  Cliquez sur le lien localhost:3000 pour ouvrir le projet dans votre navigateur ou ecrivez localhost:3000 dans votre navigateur.
 
 ## Les diagrammes
 

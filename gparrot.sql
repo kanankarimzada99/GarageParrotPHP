@@ -16,9 +16,10 @@ CREATE TABLE IF NOT EXISTS employees (
 
 -- create table Cars 
 DROP TABLE IF EXISTS cars;
+-- create table Cars 
 CREATE TABLE IF NOT EXISTS cars (
   id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  code VARCHAR(5) NOT NULL,
+  code VARCHAR(6) NOT NULL,
   brand VARCHAR(60) NOT NULL,
   model VARCHAR(60) NOT NULL,
   year int NOT NULL,

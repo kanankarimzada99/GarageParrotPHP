@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (empty($_POST['code'])) {
     $errors[] = "Le code est requis.";
   } elseif (!preg_match(_REGEX_CODE_, $_POST['code'])) {
-    $errors[] = "Le code doit contenir uniquement des lettres et chiffres et avoir une longueur maximale de 5 caractères.";
+    $errors[] = "Le code doit contenir uniquement 3 lettres et 3 chiffres et avoir une longueur maximale de 6 caractères.";
   }
   //to validate brand
   if (empty($_POST['brand'])) {
@@ -96,18 +96,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors[] = "Le CO2 doit contenir uniquement des chiffres et avoir une longueur maximale de 3 caractères.";
   }
 
-  //  //to verify image format
-  //  if (!preg_match('/\.(jpg|jpeg|png|gif)$/', $_POST['image'])) {
-  //   $errors[] = "Le format d'image n'est pas valide.";
-  // }
-
-  $fileName = null;
+ 
+  $imageId = null;
   //verify if a file is sent
-  // Verifica se um arquivo foi enviado
+
 if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
   $image = $_FILES['image'];
 
-  // Obtém informações sobre a imagem
+  // get info about image
   $imageName = $image['name'];
   $imageTmpPath = $image['tmp_name'];
 
@@ -115,16 +111,26 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
    $imageId = slugify(basename($_FILES['image']['name']));
 
 
-  // Gera um ID único para a imagem
+  // generate uniq id to the image
   $imageId = uniqid(). '-'.$imageId;
-  // Move a imagem para uma pasta permanente
-  $imagePath = dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $imageId . '_' . $imageName;
-  move_uploaded_file($imageTmpPath, $imagePath);
 
- $messages[]= 'Imagem enviada com sucesso! ID: ' . $imageId;
+  //regex to image format
+  $fileExtensionPattern = '/\.(jpg|jpeg|png|webp)$/i';
+  if (preg_match($fileExtensionPattern, $imageId)) {
+// move image to the uploads folder
+$imagePath = dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $imageId;
+move_uploaded_file($imageTmpPath, $imagePath);
+
+$messages[]= 'Votre image ete bien envoyé';
 } else {
-  $errors[]= 'Erro ao enviar a imagem.';
+$errors[]= "Le format d'image n'est pas valide. Seulement jpg, jpeg, png ou webp sont permit.";
 }
+
+} else {
+$errors[]= 'Erro ao enviar a imagem.';
+}
+
+  
 
   //put information from form to formEmployee
   $formCar = [
@@ -139,7 +145,7 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
     'color' => $_POST['color'],
     'fuel' => $_POST['fuel'],
     'co2' => $_POST['co2'],
-    'image' => $fileName
+    'image' => $imageId
   ];
 
   //if no errors we save all information
@@ -212,19 +218,19 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             <div class="car-model-bottom">
               <div class="form-group" style="width: 100px;">
                 <label for="code">Code</label>
-                <input type="text" name="code" id="code" minlength="5" maxlength="6" placeholder="BMW033"  autocomplete="off"
-                  value=<?= htmlspecialchars($formCar['code']); ?>>
+                <input type="text" name="code" id="code" minlength="6" maxlength="6" placeholder="BMW033"
+                  autocomplete="off" value=<?= htmlspecialchars($formCar['code']); ?>>
               </div>
               <div class="car-model-bottom">
                 <div class="form-group">
                   <label for="brand">Marque</label>
-                  <input type="text" name="brand" id="brand" minlength="3" maxlength="15" placeholder="Tesla" autocomplete="off"
-                    value=<?= htmlspecialchars($formCar['brand']); ?>>
+                  <input type="text" name="brand" id="brand" minlength="3" maxlength="15" placeholder="Tesla"
+                    autocomplete="off" value=<?= htmlspecialchars($formCar['brand']); ?>>
                 </div>
                 <div class="form-group">
                   <label for="model">Modèle</label>
-                  <input type="text" name="model" id="model" minlength="3" maxlength="15" placeholder="Max 5" autocomplete="off"
-                    value=<?= htmlspecialchars($formCar['model']); ?>>
+                  <input type="text" name="model" id="model" minlength="3" maxlength="15" placeholder="Max 5"
+                    autocomplete="off" value=<?= htmlspecialchars($formCar['model']); ?>>
                 </div>
               </div>
             </div>
@@ -235,23 +241,23 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
               <div class="car-description-left">
                 <div class="form-group">
                   <label for="year">Année</label>
-                  <input type="text" name="year" id="year" minlength="4" maxlength="4" placeholder="2002" autocomplete="off"
-                    value=<?= htmlspecialchars($formCar['year']); ?>>
+                  <input type="text" name="year" id="year" minlength="4" maxlength="4" placeholder="2002"
+                    autocomplete="off" value=<?= htmlspecialchars($formCar['year']); ?>>
                 </div>
                 <div class="form-group">
                   <label for="kilometer">Kilométrage</label>
-                  <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="092233" autocomplete="off"
-                    value=<?= htmlspecialchars($formCar['kilometer']); ?>>
+                  <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="092233"
+                    autocomplete="off" value=<?= htmlspecialchars($formCar['kilometer']); ?>>
                 </div>
                 <div class="form-group">
                   <label for="gearbox">Boîte de vitesses</label>
-                  <input type="text" name="gearbox" id="gearbox" minlength="6" maxlength="12" placeholder="manuelle" autocomplete="off"
-                    value=<?= htmlspecialchars($formCar['gearbox']); ?>>
+                  <input type="text" name="gearbox" id="gearbox" minlength="6" maxlength="12" placeholder="manuelle"
+                    autocomplete="off" value=<?= htmlspecialchars($formCar['gearbox']); ?>>
                 </div>
                 <div class="form-group">
                   <label for="doors">Numéro de portes</label>
-                  <input type="text" name="doors" id="doors" minlength="1" maxlength="1" placeholder="2" autocomplete="off"
-                    value=<?= htmlspecialchars($formCar['doors']); ?>>
+                  <input type="text" name="doors" id="doors" minlength="1" maxlength="1" placeholder="2"
+                    autocomplete="off" value=<?= htmlspecialchars($formCar['doors']); ?>>
                 </div>
               </div>
 
@@ -259,23 +265,23 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
               <div class="car-description-right">
                 <div class="form-group">
                   <label for="price">Prix</label>
-                  <input type="text" name="price" id="price" minlength="4" maxlength="6" placeholder="12768" autocomplete="off"
-                    value=<?= htmlspecialchars($formCar['price']); ?>>
+                  <input type="text" name="price" id="price" minlength="4" maxlength="6" placeholder="12768"
+                    autocomplete="off" value=<?= htmlspecialchars($formCar['price']); ?>>
                 </div>
                 <div class="form-group">
                   <label for="color">Couleur</label>
-                  <input type="text" name="color" id="color" minlength="5" maxlength="10" placeholder="rouge" autocomplete="off"
-                    value=<?= htmlspecialchars($formCar['color']); ?>>
+                  <input type="text" name="color" id="color" minlength="5" maxlength="10" placeholder="rouge"
+                    autocomplete="off" value=<?= htmlspecialchars($formCar['color']); ?>>
                 </div>
                 <div class="form-group">
                   <label for="fuel">Carburant</label>
-                  <input type="text" name="fuel" id="fuel" minlength="5" maxlength="12" placeholder="életrique" autocomplete="off"
-                    value=<?= htmlspecialchars($formCar['fuel']); ?>>
+                  <input type="text" name="fuel" id="fuel" minlength="5" maxlength="12" placeholder="életrique"
+                    autocomplete="off" value=<?= htmlspecialchars($formCar['fuel']); ?>>
                 </div>
                 <div class="form-group">
                   <label for="co2">CO2</label>
-                  <input type="text" name="co2" id="co2" minlength="1" maxlength="4" placeholder="123" autocomplete="off"
-                    value=<?= htmlspecialchars($formCar['co2']); ?>>
+                  <input type="text" name="co2" id="co2" minlength="1" maxlength="4" placeholder="123"
+                    autocomplete="off" value=<?= htmlspecialchars($formCar['co2']); ?>>
                 </div>
                 <div class="form-group">
                   <label for="image">Choisissez une image de service:</label>

@@ -32,7 +32,7 @@ $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
   <section class="connection">
     <div class="connection-header">
       <h1 class="header-titles">Liste Services</h1>
-      <a href="ajouter-service.php" class="btn  btn-fill">Ajouter</a>
+      <a href="ajouter-service.php" class="btn btn-fill">Ajouter</a>
     </div>
 
     <div class="connection-wrapper wrapper">
@@ -47,18 +47,16 @@ $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
           </tr>
           <tbody>
             <?php foreach ($services as $service) { ?>
-            <tr>
-              <!-- <th scope="row"><?= $service["id"]; ?></th> -->
-              <td><?= $service["service"]; ?></td>
-              <td><?= $service["description"]; ?></td>
-              <td><?= $service["image"]; ?></td>
+              <tr>
+                <!-- <th scope="row"><?= $service["id"]; ?></th> -->
+                <td><?= $service["service"]; ?></td>
+                <td><?= $service["description"]; ?></td>
+                <td><?= $service["image"]; ?></td>
 
-              <td><a href="modifier-service.php?id=<?= $service['id'] ?>"><i class="fa-solid fa-pencil"></i></a>
-                | <a href="delete-service.php?id=<?= $service['id'] ?>"
-                  onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet employé ?')"><i
-                    class="fa-solid fa-trash-can"></i></a>
-              </td>
-            </tr>
+                <td><a href="modifier-service.php?id=<?= $service['id'] ?>"><i class="fa-solid fa-pencil"></i></a>
+                  | <a href="delete-service.php?id=<?= $service['id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet employé ?')"><i class="fa-solid fa-trash-can"></i></a>
+                </td>
+              </tr>
             <?php } ?>
           </tbody>
         </table>
@@ -66,13 +64,15 @@ $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
       <nav aria-label="Page navigation employes">
         <ul class="pagination">
           <?php if ($totalPages > 1) { ?>
-          <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
-          <li class="page-item">
-            <a class="page-link <?php if ($i == $page) { echo " active";} ?>" href="?page=<?php echo $i; ?>">
-              <?php echo $i; ?>
-            </a>
-          </li>
-          <?php } ?>
+            <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
+              <li class="page-item">
+                <a class="page-link <?php if ($i == $page) {
+                                      echo " active";
+                                    } ?>" href="?page=<?php echo $i; ?>">
+                  <?php echo $i; ?>
+                </a>
+              </li>
+            <?php } ?>
           <?php } ?>
         </ul>
       </nav>
@@ -81,5 +81,5 @@ $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
   <!-- END connection  -->
 </div>
 <?php
-require_once __DIR__."/templates/footer-admin.php";
+require_once __DIR__ . "/templates/footer-admin.php";
 ?>
