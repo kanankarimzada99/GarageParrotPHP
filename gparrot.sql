@@ -33,6 +33,14 @@ CREATE TABLE IF NOT EXISTS cars (
   image VARCHAR(255) NOT NULL
 );
 
+-- create table Cars images
+CREATE TABLE IF NOT EXISTS carimages (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  product_id INT NOT NULL,
+  image_path VARCHAR(255) NOT NULL,
+  FOREIGN KEY (product_id) REFERENCES cars(id)
+);
+
 
 -- create table Reviews 
 DROP TABLE IF EXISTS reviews;

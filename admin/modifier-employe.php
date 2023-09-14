@@ -1,17 +1,11 @@
 <?php
 require_once __DIR__ . "/../lib/config.php";
 require_once __DIR__ . "/../lib/session.php";
-//only admin has permission to visit this page
 adminOnly();
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/employees.php";
 require_once __DIR__ . "/templates/header-admin.php";
-
-//employees don't have permission to visit this page
-if ($_SESSION['user']['role'] === 'employee') {
-  header("location: /admin/liste-veicules.php");
-}
 
 //we cant change admin
 if (isset($_GET['id'])) {
@@ -21,8 +15,7 @@ if (isset($_GET['id'])) {
 }
 
 
-$errors = [];
-$messages = [];
+$errors = '';
 $formEmployee = [
   'lastname' => '',
   'name' => '',
@@ -31,97 +24,46 @@ $formEmployee = [
 ];
 $id = null;
 
-
-
-
-
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
-  $_SESSION['user']['id'] = $id;
+  $_SESSION['employee']['id'] = $id;
 
-  $employee = getEmployeesById($pdo, $_GET['id']);
+
+  $employee = getEmployeesById($pdo, $id);
 
   if ($employee === false) {
-    $errors[] = "Cet employé n'existe pas";
+    $errors =  "<div class='alert alert-danger m-0' role='alert'>Cet employé n'existe pas</div>";
   }
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-  //to validate lastname
-  if (empty($_POST["lastname"])) {
-    $errors[] = "Le nom est requis.";
-  } elseif (!preg_match(_REGEX_LAST_NAME_, $_POST["lastname"])) {
-    $errors[] = "Le nom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.";
-  }
-  //to validate name
-  if (empty($_POST["name"])) {
-    $errors[] = "Le prénom est requis.";
-  } elseif (!preg_match(_REGEX_FIRST_NAME_, $_POST["name"])) {
-    $errors[] = "Le prénom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.";
-  }
-
-  // to validate email
-  if (empty($_POST["email"])) {
-    $errors[] = "L'e-mail est requis.";
-  } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-    $errors[] = "L'e-mail n'est pas valide.";
-  }
-
-  // Valider le mot de passe
-  if (empty($_POST["password"])) {
-
-    $_POST['password'] = $_SESSION['user']['password'];
-  } elseif (!preg_match(_REGEX_PASSWORD_, $_POST["password"])) {
-    $errors[] = "Le mot de passe doit contenir au moins 10 caractères, incluant au moins une lettre minuscule, une lettre majuscule, un chiffre et un symbole.";
-  }
-
-  $formEmployee = [
-    'lastname' => $_POST['lastname'],
-    'name' => $_POST['name'],
-    'email' => $_POST['email'],
-    'password' => $_POST['password']
-  ];
-
-  //if no errors we save all information
-  if (!$errors) {
-    if (isset($_SESSION['user']['id'])) {
-      //the id will be int
-      $id = (int)$_SESSION['user']['id'];
-    } else {
-      $id = null;
-    }
-
-    //all data will be saved at saveEmployee function
-    $id = $_SESSION['user']['id'];
-
-    $res = saveEmployee($pdo, $_POST["lastname"], $_POST["name"], $_POST["email"], $_POST["password"], $id);
-
-    if ($res) {
-      $messages[] = "L'employé a bien été sauvegardé";
-
-      //all information at formEmployee will be deleted
-      if (!isset($_GET["id"])) {
-        $formEmployee = [
-          'lastname' => '',
-          'name' => '',
-          'email' => '',
-          'password' => ''
-        ];
-      } else {
-        $errors[] = "L'employé n'a pas été sauvegardé";
-      }
-    }
-  }
-}
 ?>
+<!-- send message by form  -->
+<script>
+  $(document).ready(function() {
+    $("form").submit(function(event) {
+      event.preventDefault();
+      var lastname = $("#lastname").val();
+      var name = $("#name").val();
+      var email = $("#email").val();
+      var password = $("#password").val();
+      var submit = $("#submit").val();
+      $(".form-message").load('modifierEmployeForm.php', {
+        lastname: lastname,
+        name: name,
+        email: email,
+        password: password,
+        submit: submit
+      });
+    })
+  })
+</script>
 
 <div class="wrapper">
 
   <!-- BREADCRUMB  -->
   <div class="breadcrumbs breadcrumbs-connection">
     <div class="go-back-list">
-      <a href="/admin/liste-employes.php">Revenir liste</a>
+      <a href="/admin/liste-employes.php">Revenir liste employées</a>
     </div>
   </div>
   <!-- END BREADCRUMB  -->
@@ -131,48 +73,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <h1 class="header-titles">Modifier employé</h1>
 
     <!-- messages  -->
-    <?php foreach ($messages as $message) { ?>
-      <div class="alert alert-success mt-4" role="alert">
-        <?= $message; ?>
-      </div>
-    <?php } ?>
 
-    <?php foreach ($errors as $error) { ?>
-      <div class="alert alert-danger mt-4" role="alert">
-        <?= $error; ?>
-      </div>
+    <div class="form-message">
+      <?= $errors; ?>
+    </div>
 
-    <?php } ?>
     <?php if ($formEmployee !== false) { ?>
       <div class="connection-wrapper">
 
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+        <form action="modifierEmployeForm.php" method="POST">
           <div class="connection-form">
 
             <div class="form-group">
               <label for="lastname">Nom</label>
-              <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont" autocomplete="off" value=<?= htmlspecialchars($employee['lastname'] ?? $formEmployee['lastname']); ?>>
+              <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont" autocomplete="off" value="<?= htmlspecialchars($employee['lastname'] ?? ""); ?>">
             </div>
             <div class="form-group">
               <label for="name">Prénom</label>
-              <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume" autocomplete="off" value=<?= htmlspecialchars($employee['name'] ?? $formEmployee['name']); ?>>
+              <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume" autocomplete="off" value=<?= htmlspecialchars($employee['name'] ?? ""); ?>>
             </div>
             <div class="form-group">
               <label for="email">Adresse email</label>
-              <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr" autocomplete="off" value=<?= htmlspecialchars($employee['email'] ?? $formEmployee['email']); ?>>
+              <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr" autocomplete="off" value=<?= htmlspecialchars($employee['email'] ?? ""); ?>>
             </div>
             <div class="form-group">
-              <label for="password">Mot de passe</label>
+              <label for="password">Mot de passe <span class="red-message">*</span> </label>
               <input type="password" name="password" id="password" minlength="8" maxlength="16" autocomplete="off">
+              <p class="red-message">* Optionnel. Si vous remplissez le mot de passe, il remplacera l'ancien!</p>
             </div>
           </div>
           <div class="form-btn">
-            <button type="submit" name="saveEmployee" class="btn-fill">Modifier</button>
+            <input type="submit" value="Modifier" id="submit" name="submit" class="btn-fill">
           </div>
         </form>
       </div>
   </section>
-  <!-- END CONTACT  -->
 </div>
 <?php } else { ?>
   <div class="not-found">

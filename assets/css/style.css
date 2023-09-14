@@ -16,13 +16,11 @@ font-family: 'Ubuntu', sans-serif;
   --grayLight: #f3f3f3;
   --grayDark: #898989;
   --font: #26273c;
-  --overlay: rgba(28, 28, 28, 0.7);
+  --overlay: #1c1c1cb3;
   --max-width: 2000px;
   --max-wrapper: 1200px;
 
 }
-/* button bootstrap */
-
 
 
 /* GENERAL ---------------------- */
@@ -35,9 +33,8 @@ font-family: 'Ubuntu', sans-serif;
 
 html,
 body {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
-
 
 body {
   font-family: 'Ubuntu', sans-serif;
@@ -47,7 +44,6 @@ body {
   display:flex;
   flex-direction: column;
   min-height: 100vh;
-  
 }
 
 a {
@@ -55,11 +51,11 @@ a {
   text-decoration: none;
   outline:none;
 }
+
 a:hover {
   color: #fff;
   text-decoration: none;
 }
-
 
 img {
   width: 100%;
@@ -103,31 +99,40 @@ textarea::placeholder{
   color:var(--grayDark);
 }
 
+.red-message {
+  color:var(--primary);
+}
+p.red-message{
+  font-size: .9rem;
+}
 
+.message-password{
+  font-size: .8rem;
+  margin-top:-10px;
+}
 
 .form-message{
   display:flex;
   justify-content: center;
   margin:10px;
-
-  
 }
+
 .form-message span{
-font-size:1.3rem;
-font-weight: 500;
+  font-size:1.3rem;
+  font-weight: 500;
   text-align: center;
 }
 
 .form-error {
-    color: var(--primary);
-}
-.form-success{
-    color: green;
-}
-.input-error{
-    box-shadow: 0 0 0 2px var(--primary);
+  color: var(--primary);
 }
 
+.form-success{
+  color: green;
+}
+.input-error{
+  box-shadow: 0 0 0 2px var(--primary);
+}
 
 fieldset {
   margin:20px 0 60px;
@@ -223,8 +228,6 @@ textarea {
   font-family: 'Roboto', sans-serif;
   font-size: 1.4rem;
   position: relative;
-
-  /* color:var(--primary); */
 }
 
 .sections {
@@ -252,23 +255,28 @@ textarea {
 .card-body.height-280{
   height: 280px;
 }
+.card-body.height-310{
+  height: 310px;
+}
 
 /* CARDS  */
+
 .cards {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   align-items: flex-start;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   max-width: var(--max-wrapper);
   margin:0 auto;
+  gap:10px;
 }
 
 h3.no-cars{
@@ -318,8 +326,8 @@ h3.no-cars{
 
 .btn-fill:hover{
   background-color: var(--grayLight);
-    color:var(--font);
-    border:2px solid var(--primary);
+  color:var(--font);
+  border:2px solid var(--primary);
 }
 .btn-fill.large {
   padding: 0.2rem 1rem;
@@ -351,6 +359,7 @@ input[type="submit"]:hover{
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
+
 .btn-wire.large {
   padding: 0.2rem 1rem;
 }
@@ -364,8 +373,6 @@ input[type="submit"]:hover{
   background-color: var(--primary);
   color: #fff;
 }
-
-
 
 .pagination{
   display:flex;
@@ -484,15 +491,9 @@ input[type="submit"]:hover{
     transition: all 0.2s ease;
   }
 
-  /* .btn-fill:hover{
-    background-color: var(--grayLight);
-    color:var(--font);
-    border:2px solid var(--primary);
-  } */
-
   /* NOT FOUND ----- */
   .not-found-text{
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
   
   .not-found .go-back-page button{
@@ -582,7 +583,6 @@ input[type="submit"]:hover{
   background-color: #fff;
 }
 
-
 .nav-list {
   position: absolute;
   top: 0;
@@ -606,16 +606,10 @@ input[type="submit"]:hover{
   -webkit-transform: translateX(-100%);
   -ms-transform: translateX(-100%);
   transform: translateX(-100%);
-  /* -webkit-transition: -webkit-transform 0.3s, visibility 0.3s ease-in;
-  transition: -webkit-transform 0.3s, visibility 0.3s ease-in;
-  -o-transition: transform 0.3s, visibility 0.3s ease-in;
-  transition: transform 0.3s, visibility 0.3s ease-in;
-  transition: transform 0.3s, visibility 0.3s ease-in; */
   list-style: none;
   z-index: 3;
   margin: 0;
   max-width: var(--max-wrapper);
-
 }
 
 .nav-list li {
@@ -634,6 +628,11 @@ input[type="submit"]:hover{
 }
 
 .nav-list .nav-link:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.navl-list .nav-link.active{
   color: var(--primary);
   text-decoration: underline;
 }
@@ -663,7 +662,6 @@ input[type="submit"]:hover{
   -ms-transform: translateX(0);
   transform: translateX(0);
   width:100vw;
-  
 }
 
 .mobile-menu.active .line1 {
@@ -671,9 +669,11 @@ input[type="submit"]:hover{
   -ms-transform: rotate(-45deg) translate(-8px, 8px);
   transform: rotate(-45deg) translate(-8px, 8px);
 }
+
 .mobile-menu.active .line2 {
   opacity: 0;
 }
+
 .mobile-menu.active .line3 {
   -webkit-transform: rotate(45deg) translate(-5px, -7px);
   -ms-transform: rotate(45deg) translate(-5px, -7px);
@@ -696,7 +696,6 @@ input[type="submit"]:hover{
   cursor: pointer;
   padding: 15px;
   border-radius: 50%;
-  
 }
 
 #myBtn:hover {
@@ -725,7 +724,7 @@ input[type="submit"]:hover{
     -ms-transform: translateX(0);
     transform: translateX(0);
     opacity:1;
-  visibility: visible;
+    visibility: visible;
   }
 
   .nav-list li {
@@ -740,7 +739,6 @@ input[type="submit"]:hover{
 }
 
 @media (min-width:1200px){
-
   
   .nav-list li {
     margin-left: 70px;
@@ -748,8 +746,6 @@ input[type="submit"]:hover{
     font-size: 1.2rem;
   }
 }
-
-
 /* END HEADER ---------------------------------- */
 
 
@@ -767,7 +763,6 @@ input[type="submit"]:hover{
   /* background-position: 50% 50%; */
   background-size: cover;
   background-repeat: no-repeat;
-  
 }
 
 .hero-404{
@@ -838,7 +833,7 @@ input[type="submit"]:hover{
   .hero-text-title,
   .hero-404-text-title
   {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 }
 
@@ -919,6 +914,11 @@ input[type="submit"]:hover{
   }
 }
 @media screen and (min-width: 576px) {
+
+  .services .card-body {
+    height: 310px;
+  }
+
   .services .card,
   .used-cars .card
     {
@@ -927,6 +927,10 @@ input[type="submit"]:hover{
 }
 
 @media screen and (min-width: 992px) {
+
+  .services .card-body {
+    height: 250px;
+  }
   
   .services .card,
   .used-cars .card {
@@ -944,7 +948,6 @@ input[type="submit"]:hover{
   width: 100%;
   text-align: center;
   margin:20px 0 0;
-
 }
 
 /* TESTIMONIAL  CAROUSEL*/
@@ -1095,6 +1098,7 @@ input[type="submit"]:hover{
   height: 50px;
   width: 50px;
 }
+
 .carousel-control-prev i,
 .carousel-control-next i {
   color: #000;
@@ -1102,6 +1106,7 @@ input[type="submit"]:hover{
   border-radius: 50%;
   padding: 0.8rem;
 }
+
 .carousel-control-prev {
   -webkit-transition: none;
   -o-transition: none;
@@ -1175,7 +1180,7 @@ input[type="submit"]:hover{
   font-weight: 500;
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  }
+}
 
 .contact-form {
   display: -webkit-box;
@@ -1244,14 +1249,11 @@ input[type="submit"]:hover{
   }
 
   .contact-form {
-    
     flex-direction: row;
     gap: 70px;
     align-items: flex-start;
     justify-content: space-between;
   }
-
- 
 
   .contact-wrapper {
     padding: 40px;
@@ -1299,9 +1301,9 @@ input[type="submit"]:hover{
   }
 
   .contact-form-left,
-.contact-form-right {
-  width: 48%;
-}
+  .contact-form-right {
+    width: 48%;
+  }
    
 
 }
@@ -1444,7 +1446,6 @@ input[type="submit"]:hover{
 
 .footer-day {
   font-weight: 500;
- 
 }
 
 /* FOOTER NAVIGATION  */
@@ -1547,7 +1548,6 @@ input[type="submit"]:hover{
   }
 
   .footer-nav-list {
-   
     max-width: 800px;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -1733,9 +1733,13 @@ input[type="submit"]:hover{
   font-weight: 500;
 }
 
-.car-link-contact{
+.car-contact p{
   color:var(--primary);
-  font-weight: 500;
+}
+
+.car-link-contact{
+  color:var(--font);
+  font-weight: 700;
   text-transform: uppercase;
 }
 .car-link-contact:hover{
@@ -1869,6 +1873,9 @@ CONNECTION BOSS EMPLOYE ALL PAGES---------------------------
   } 
 }
 
+.note{
+  width: 190px;
+}
 
 /* EMPLOYEE ------------------------------  */
 
@@ -1944,13 +1951,13 @@ td{
   font-size:1rem;
 }
 
-td a:first-child i{
+td a i.fa-pencil{
   color:var(--font);
   margin:5px;
   font-size:1.2rem;
 }
 
-td a:last-child i{
+td a .fa-trash-can{
   color:var(--primary);
   margin:5px;
   font-size:1.2rem;
@@ -1984,6 +1991,7 @@ th.size100 {
   max-width:150px;
   padding:0 10px;
 }
+
 .connection-wrapper.w-max input{
   width: 100%;
   max-width:80px;
@@ -2052,6 +2060,7 @@ th.size100 {
   -ms-flex-direction: column;
   flex-direction: column;
 }
+
 .car-model-top .form-group:first-child{
   width: 100%;
 
@@ -2085,7 +2094,6 @@ th.size100 {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  
 }
 
 .connection-form .car-description .car-description-left,

@@ -4,8 +4,6 @@
 require_once __DIR__ . "/lib/config.php";
 require_once __DIR__ . "/lib/pdo.php";
 
-
-
 //check if POST['action'] has value
 if (isset($_POST["action"])) {
   $query = "SELECT * FROM cars WHERE id >= 0 ";
@@ -35,19 +33,14 @@ if (isset($_POST["action"])) {
   $output = '';
   $numberPrice = null;
 
-
-
-
   if ($total_row > 0) {
 
     foreach ($result as $row) {
-
       if ($row['image'] === "" || $row['image'] === null) {
         $imagePath = _ASSETS_IMAGES_FOLDER_ . "no-image.svg";
       } else {
         $imagePath = _GARAGE_IMAGES_FOLDER_ . $row['image'];
       }
-
 
       $numberPrice = number_format($row['price'], 0, ',', ' ');
       $numberKilometers = number_format($row['kilometers'], 0, ',', ' ');

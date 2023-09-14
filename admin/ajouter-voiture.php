@@ -5,182 +5,305 @@ require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/cars.php";
 require_once __DIR__ . "/templates/header-admin.php";
-
-$id = null;
-$errors = [];
-$messages = [];
-$formCar = [
-  'code'=>'',
-  'brand' => '',
-  'model' => '',
-  'year' => '',
-  'kilometer' => '',
-  'gearbox' => '',
-  'doors' => '',
-  'price' => '',
-  'color' => '',
-  'fuel' => '',
-  'co2' => ''
-];
-
-
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-  //verify errors inside the form
-
-  //to validate code
-  if (empty($_POST['code'])) {
-    $errors[] = "Le code est requis.";
-  } elseif (!preg_match(_REGEX_CODE_, $_POST['code'])) {
-    $errors[] = "Le code doit contenir uniquement 3 lettres et 3 chiffres et avoir une longueur maximale de 6 caractères.";
-  }
-  //to validate brand
-  if (empty($_POST['brand'])) {
-    $errors[] = "La marque est requis.";
-  } elseif (!preg_match(_REGEX_BRAND_, $_POST['brand'])) {
-    $errors[] = "La marque doit contenir uniquement des lettres et chiffres et avoir une longueur maximale de 15 caractères.";
-  }
-  //to validate model
-  if (empty($_POST['model'])) {
-    $errors[] = "Le modèle est requis.";
-  } elseif (!preg_match(_REGEX_MODEL_, $_POST['model'])) {
-    $errors[] = "Le modèle doit contenir uniquement des lettres, espaces et chiffres et avoir une longueur maximale de 25 caractères.";
-  }
-  //to validate year
-  if (empty($_POST['year'])) {
-    $errors[] = "L'anneé est requis.";
-  } elseif (!preg_match(_REGEX_YEAR_, $_POST['year'])) {
-    $errors[] = "L'anneé doit contenir uniquement des chiffres et avoir une longueur maximale de 4 caractères.";
-  }
-  //to validate kilometer
-  if (empty($_POST['kilometer'])) {
-    $errors[] = "La Kilométrage est requis.";
-  } elseif (!preg_match(_REGEX_KILOMETERS_, $_POST['kilometer'])) {
-    $errors[] = "La Kilométrage doit contenir uniquement des chiffres et avoir une longueur maximale de 6 caractères.";
-  }
-  //to validate gearbox
-  if (empty($_POST['gearbox'])) {
-    $errors[] = "La boîte de vitesses est requis.";
-  } elseif (!preg_match(_REGEX_GEARBOX_, $_POST['gearbox'])) {
-    $errors[] = "La boîte de vitesses doit contenir uniquement des lettres et avoir une longueur maximale de 15 caractères.";
-  }
-  //to validate doors
-  if (empty($_POST['doors'])) {
-    $errors[] = "Le numéro de portes est requis.";
-  } elseif (!preg_match(_REGEX_DOORS_, $_POST['doors'])) {
-    $errors[] = "Le numéro de portes doit contenir uniquement des chiffres et avoir une longueur maximale de 2 caractères.";
-  }
-  //to validate price
-  if (empty($_POST['price'])) {
-    $errors[] = "Le prix est requis.";
-  } elseif (!preg_match(_REGEX_PRICE_, $_POST['price'])) {
-    $errors[] = "Le prix doit contenir uniquement des chiffres et avoir une longueur maximale de 10 caractères.";
-  }
-  //to validate color
-  if (empty($_POST['color'])) {
-    $errors[] = "La couleur est requis.";
-  } elseif (!preg_match(_REGEX_COLOR_, $_POST['color'])) {
-    $errors[] = "La couleur doit contenir uniquement des lettres et espaceset avoir une longueur maximale de 15 caractères.";
-  }
-  //to validate fuel
-  if (empty($_POST['fuel'])) {
-    $errors[] = "Le carburant est requis.";
-  } elseif (!preg_match(_REGEX_FUEL_, $_POST['fuel'])) {
-    $errors[] = "Le carburant doit contenir uniquement des lettres et avoir une longueur maximale de 15 caractères.";
-  }
-  //to validate c02
-  if (empty($_POST['co2'])) {
-    $errors[] = "Le CO2 est requis.";
-  } elseif (!preg_match(_REGEX_CO2_, $_POST['co2'])) {
-    $errors[] = "Le CO2 doit contenir uniquement des chiffres et avoir une longueur maximale de 3 caractères.";
-  }
-
- 
-  $imageId = null;
-  //verify if a file is sent
-
-if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-  $image = $_FILES['image'];
-
-  // get info about image
-  $imageName = $image['name'];
-  $imageTmpPath = $image['tmp_name'];
-
-   //delete spaces into the name and make name file with lowercase letters
-   $imageId = slugify(basename($_FILES['image']['name']));
-
-
-  // generate uniq id to the image
-  $imageId = uniqid(). '-'.$imageId;
-
-  //regex to image format
-  $fileExtensionPattern = '/\.(jpg|jpeg|png|webp)$/i';
-  if (preg_match($fileExtensionPattern, $imageId)) {
-// move image to the uploads folder
-$imagePath = dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $imageId;
-move_uploaded_file($imageTmpPath, $imagePath);
-
-$messages[]= 'Votre image ete bien envoyé';
-} else {
-$errors[]= "Le format d'image n'est pas valide. Seulement jpg, jpeg, png ou webp sont permit.";
-}
-
-} else {
-$errors[]= 'Erro ao enviar a imagem.';
-}
-
-  
-
-  //put information from form to formEmployee
-  $formCar = [
-    'code' => $_POST['code'],
-    'brand' => $_POST['brand'],
-    'model' => $_POST['model'],
-    'year' => $_POST['year'],
-    'kilometer' => $_POST['kilometer'],
-    'gearbox' => $_POST['gearbox'],
-    'doors' => $_POST['doors'],
-    'price' => $_POST['price'],
-    'color' => $_POST['color'],
-    'fuel' => $_POST['fuel'],
-    'co2' => $_POST['co2'],
-    'image' => $imageId
-  ];
-
-  //if no errors we save all information
-  if (!$errors) {
-
-    //all data will be saved at saveEmployee function
-
-    $res = saveCar($pdo, $_POST['code'], $_POST['brand'], $_POST['model'], $_POST['year'], $_POST['kilometer'], $_POST['gearbox'], $_POST['doors'], $_POST['price'], $_POST['color'], $_POST['fuel'], $_POST['co2'],  $imageId, $id);
-
-    if ($res) {
-      $messages[] = "Le service a bien été sauvegardé";
-
-      //all information at formService will be deleted
-      if (!isset($_GET["id"])) {
-        $formCar = [
-          'code'=>'',
-          'brand' => '',
-          'model' => '',
-          'year' => '',
-          'kilometer' => '',
-          'gearbox' => '',
-          'doors' => '',
-          'price' => '',
-          'color' => '',
-          'fuel' => '',
-          'co2' => '',
-          'image' => ''
-        ];
-      } else {
-        $errors[] = "La voiture n'a pas été sauvegardé";
-      }
-    }
-  }
-}
 ?>
+
+<script>
+  $(document).ready(function() {
+    $('#addCar').submit(function(e) {
+      e.preventDefault()
+      $("#message-error").removeClass("d-none");
+      $("#message-error").empty();
+
+      let code = $("#code").val();
+      let brand = $("#brand").val();
+      let model = $("#model").val();
+      let year = $("#year").val();
+      let kilometer = $("#kilometer").val();
+      let gearbox = $("#gearbox").val();
+      let doors = $("#doors").val();
+      let price = $("#price").val();
+      let color = $("#color").val();
+      let fuel = $("#fuel").val();
+      let co2 = $("#co2").val();
+      let fileInput = $("#image")[0].files[0];
+
+      //regexs
+      let codePattern = new RegExp("^[A-Za-z]{3}\\d{3}$")
+      let brandPattern = new RegExp("^[a-zA-Z\\s+]{3,15}$")
+      let modelPattern = new RegExp("^[a-zA-Z0-9 ]{3,15}$")
+      let yearPattern = new RegExp("^[0-9]*$")
+      let kilometerPattern = new RegExp("^[0-9^[1-9]\\d{5}")
+      let gearboxPattern = new RegExp("^[a-zA-ZÀ-ÿ-]{6,12}$")
+      let doorsPattern = new RegExp("^[0-9]{0,1}$")
+      let pricePattern = new RegExp("^\\D*(?:\\d\\D*){4,}$")
+      let colorPattern = new RegExp("^[a-zA-ZÀ-ÿ\\s]{3,20}$")
+      let fuelPattern = new RegExp("^[a-zA-ZÀ-ÿ-]{6,12}$")
+      let co2Pattern = new RegExp("^[0-9]{0,4}$")
+
+      //get today date
+      let today = new Date();
+      //today less one year
+      let LessOneYear = today.getFullYear()
+      let lessTwentyYear = today.getFullYear() - 20
+
+
+      let valid = true;
+
+      if (!fileInput && !code && !brand && !model && !year && !kilometer && !gearbox && !doors && !price && !
+        color && !fuel && !co2) {
+        valid = false
+
+        $("#code").addClass("input-error");
+        $("#brand").addClass("input-error");
+        $("#model").addClass("input-error");
+        $("#year").addClass("input-error");
+        $("#kilometer").addClass("input-error");
+        $("#gearbox").addClass("input-error");
+        $("#doors").addClass("input-error");
+        $("#price").addClass("input-error");
+        $("#color").addClass("input-error");
+        $("#fuel").addClass("input-error");
+        $("#co2").addClass("input-error");
+        $("#image").addClass("input-error");
+        $("#message-error").text("Vous devez remplir tous les champs");
+        $("#message-error").removeClass("d-none")
+        return;
+
+      } else {
+        $("#code").removeClass("input-error");
+        $("#brand").removeClass("input-error");
+        $("#model").removeClass("input-error");
+        $("#year").removeClass("input-error");
+        $("#kilometer").removeClass("input-error");
+        $("#gearbox").removeClass("input-error");
+        $("#doors").removeClass("input-error");
+        $("#price").removeClass("input-error");
+        $("#color").removeClass("input-error");
+        $("#fuel").removeClass("input-error");
+        $("#co2").removeClass("input-error");
+        $("#image").removeClass("input-error");
+        $("#message-error").removeClass("d-none")
+      }
+
+      //validate inputs
+      if (code.trim() === "") {
+        valid = false;
+        $("#code").addClass("input-error");
+        $("#message-error").removeClass("d-none");
+        $("#message-error").text('Le code est requis.');
+        return;
+      } else if (code != codePattern.exec(code)) {
+        $('#code').addClass('input-error');
+        $("#message-error").text(
+          'Le code doit contenir uniquement 3 lettres et 3 chiffres.'
+        );
+        valid = false;
+        return;
+      } else if (brand.trim() === "") {
+        valid = false;
+        $("#brand").addClass("input-error");
+        $("#message-error").removeClass("d-none");
+        $("#message-error").text('Le brand est requis.');
+        return;
+      } else if (brand != brandPattern.exec(brand)) {
+        $('#brand').addClass('input-error');
+        $("#message-error").text(
+          'La marque doit contenir uniquement des lettres et spaces et avoir une longueur maximale de 15 caractères.'
+        );
+        valid = false;
+        return;
+      } else if (model.trim() === "") {
+        valid = false;
+        $("#model").addClass("input-error");
+        $("#message-error").removeClass("d-none")
+        $("#message-error").text('Le modèle est requis.')
+        return
+      } else if (model != modelPattern.exec(model)) {
+        $('#model').addClass('input-error');
+        $("#message-error").text(
+          'Le modèle doit contenir uniquement des lettres, espaces et chiffres et avoir une longueur maximale de 25 caractères.'
+        )
+        valid = false;
+        return
+      } else if (year.trim() === "") {
+        valid = false;
+        $("#year").addClass("input-error");
+        $("#message-error").removeClass("d-none")
+        $("#message-error").text("L'anneé est requis.")
+        return
+      } else if (year != yearPattern.exec(year)) {
+        $('#year').addClass('input-error');
+        $("#message-error").text(
+          "L'anneé doit contenir uniquement des chiffres et avoir une longueur de 4 caractères."
+        )
+        valid = false;
+        return
+      } else if (year >= LessOneYear || year <= lessTwentyYear) {
+        $("#year").addClass("input-error");
+        $("#message-error").removeClass("d-none")
+        $("#message-error").text(
+          "L'anneé doit être plus petit que l'année current et ne doit pas être plus petit que année moins 20 ans."
+        )
+        valid = false;
+        return
+      } else if (kilometer.trim() === "") {
+        valid = false;
+        $("#kilometer").addClass("input-error");
+        $("#message-error").removeClass("d-none")
+        $("#message-error").text('La Kilométrage est requis.')
+        return
+      } else if (kilometer != kilometerPattern.exec(kilometer)) {
+        $('#kilometer').addClass('input-error');
+        $("#message-error").text(
+          'La Kilométrage doit contenir uniquement des chiffres et avoir une longueur de 6 caractères.'
+        )
+        valid = false;
+        return
+      } else if (gearbox.trim() === "") {
+        valid = false;
+        $("#gearbox").addClass("input-error");
+        $("#message-error").removeClass("d-none")
+        $("#message-error").text('La boîte de vitesses est requis.')
+        return
+      } else if (gearbox != gearboxPattern.exec(gearbox)) {
+        $('#gearbox').addClass('input-error');
+        $("#message-error").text(
+          'La boîte de vitesses doit contenir uniquement des lettres et avoir une longueur maximale de 15 caractères.'
+        )
+        valid = false;
+        return
+      } else if (doors.trim() === "") {
+        valid = false;
+        $("#doors").addClass("input-error");
+        $("#message-error").removeClass("d-none")
+        $("#message-error").text('Le numéro de portes est requis.')
+        return
+      } else if (doors != doorsPattern.exec(doors)) {
+        $('#doors').addClass('input-error');
+        $("#message-error").text(
+          'Le numéro de portes doit contenir uniquement des chiffres et avoir une longueur maximale de 2 caractères.'
+        )
+        valid = false;
+        return
+      } else if (price.trim() === "") {
+        valid = false;
+        $("#price").addClass("input-error");
+        $("#message-error").removeClass("d-none")
+        $("#message-error").text('Le prix est requis.')
+        return
+      } else if (price != pricePattern.exec(price)) {
+        $('#price').addClass('input-error');
+        $("#message-error").text(
+          'Le prix doit contenir uniquement des chiffres et avoir une longueur minimum de 6 chiffres et maximale de 10 chiffres.'
+        )
+        valid = false;
+        return
+      } else if (color.trim() === "") {
+        valid = false;
+        $("#color").addClass("input-error");
+        $("#message-error").removeClass("d-none")
+        $("#message-error").text('La couleur est requis.')
+        return
+      } else if (color != colorPattern.exec(color)) {
+        $('#color').addClass('input-error');
+        $("#message-error").text(
+          'La couleur doit contenir uniquement des lettres et espaces et avoir une longueur maximale de 15 caractères.'
+        )
+        valid = false;
+        return
+      } else if (fuel.trim() === "") {
+        valid = false;
+        $("#fuel").addClass("input-error");
+        $("#message-error").removeClass("d-none")
+        $("#message-error").text('Le carburant est requis.')
+        return
+      } else if (fuel != fuelPattern.exec(fuel)) {
+        $('#fuel').addClass('input-error');
+        $("#message-error").text(
+          "Le carburant doit contenir uniquement des lettres et avoir une longueur maximale de 15 caractères."
+        )
+        valid = false;
+        return
+      } else if (co2.trim() === "") {
+        valid = false;
+        $("#co2").addClass("input-error");
+        $("#message-error").removeClass("d-none")
+        $("#message-error").text('Le CO2 est requis.')
+        return
+      } else if (co2 != co2Pattern.exec(co2)) {
+        $('#co2').addClass('input-error');
+        $("#message-error").text(
+          "Le CO2 doit contenir uniquement des chiffres et avoir une longueur maximale de 3 caractères."
+        )
+        valid = false;
+        return
+      }
+
+      //image validation
+      if (!fileInput) {
+        valid = false;
+        $("#image").addClass("input-error");
+        $("#message-error").removeClass("d-none")
+        $("#message-error").text("L'image est requis.")
+        return
+      }
+
+      $(fileInput).on("change", function() {
+        if (this.files[0].size > 2000000) {
+          valid = false;
+          $("#image").addClass("input-error");
+          $("#message-error").removeClass("d-none")
+          $("#message-error").text("L'image ne peut pas depasser 2MG.")
+          $(this).val('');
+          return
+        }
+      });
+
+      if (!fileInput.type.match('image/jpeg|image/jpg|image/png|image/webp')) {
+        valid = false;
+        $("#image").addClass("input-error");
+        $("#message-error").removeClass("d-none")
+        $("#message-error").text("Seulement jpg, jpeg, png ou webp sont accepté")
+        return
+      }
+
+      let formData = new FormData(this);
+
+      if (valid) {
+        $("#message-error").addClass("d-none")
+        $("#message-success").removeClass("d-none")
+        $("#message-success").text("La voiture été bien sauvegardé")
+
+        $.ajax({
+          type: 'POST',
+          url: 'ajouterVoitureForm.php',
+          data: formData,
+          contentType: false,
+          processData: false,
+          success: function(response) {
+            $('#addCar')[0].reset();
+          },
+          cache: false,
+          contentType: false,
+          processData: false
+        });
+
+        //hide form
+        $(".connection-wrapper").hide();
+        // hide message after 3 seconds
+        setTimeout(function() {
+          // $('.form-message').hide();
+          window.location = '/admin/liste-voitures.php';
+        }, 3000);
+
+      } else {
+        $('#message-error').removeClass('d-none')
+        $('#message-error').text("La voiture n'été pas sauvegardé");
+      }
+
+    });
+  });
+</script>
 
 <div class="wrapper">
 
@@ -197,40 +320,35 @@ $errors[]= 'Erro ao enviar a imagem.';
     <h1 class="header-titles">Ajouter voiture</h1>
 
     <!-- messages  -->
-    <?php foreach ($messages as $message) { ?>
-    <div class="alert alert-success mt-4" role="alert">
-      <?= $message; ?>
-    </div>
-    <?php } ?>
 
-    <?php foreach ($errors as $error) { ?>
-    <div class="alert alert-danger mt-4" role="alert">
-      <?= $error; ?>
-    </div>
-    <?php } ?>
+    <div id="message" class="alert alert-success mt-4 d-none" role="alert"></div>
 
-    <?php if ($formCar !== false) { ?>
+    <div class="form-message">
+      <div id="message-success" class="alert alert-success mt-4 d-none" role="alert">
+      </div>
+
+      <div id="message-error" class="alert alert-danger mt-4 d-none" role="alert">
+      </div>
+    </div>
+
     <div class="connection-wrapper">
-      <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">
+      <form id="addCar" method="POST" enctype="multipart/form-data">
         <div class="connection-form add-car">
 
           <div class="car-model">
             <div class="car-model-bottom">
               <div class="form-group" style="width: 100px;">
                 <label for="code">Code</label>
-                <input type="text" name="code" id="code" minlength="6" maxlength="6" placeholder="BMW033"
-                  autocomplete="off" value=<?= htmlspecialchars($formCar['code']); ?>>
+                <input type="text" name="code" id="code" minlength="6" maxlength="6" placeholder="BMW033" autocomplete="off">
               </div>
               <div class="car-model-bottom">
                 <div class="form-group">
                   <label for="brand">Marque</label>
-                  <input type="text" name="brand" id="brand" minlength="3" maxlength="15" placeholder="Tesla"
-                    autocomplete="off" value=<?= htmlspecialchars($formCar['brand']); ?>>
+                  <input type="text" name="brand" id="brand" maxlength="15" placeholder="Tesla" autocomplete="off">
                 </div>
                 <div class="form-group">
                   <label for="model">Modèle</label>
-                  <input type="text" name="model" id="model" minlength="3" maxlength="15" placeholder="Max 5"
-                    autocomplete="off" value=<?= htmlspecialchars($formCar['model']); ?>>
+                  <input type="text" name="model" id="model" minlength="3" maxlength="15" placeholder="Max 5" autocomplete="off">
                 </div>
               </div>
             </div>
@@ -241,23 +359,19 @@ $errors[]= 'Erro ao enviar a imagem.';
               <div class="car-description-left">
                 <div class="form-group">
                   <label for="year">Année</label>
-                  <input type="text" name="year" id="year" minlength="4" maxlength="4" placeholder="2002"
-                    autocomplete="off" value=<?= htmlspecialchars($formCar['year']); ?>>
+                  <input type="text" name="year" id="year" minlength="4" maxlength="4" placeholder="2002" autocomplete="off">
                 </div>
                 <div class="form-group">
                   <label for="kilometer">Kilométrage</label>
-                  <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="092233"
-                    autocomplete="off" value=<?= htmlspecialchars($formCar['kilometer']); ?>>
+                  <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="092233" autocomplete="off">
                 </div>
                 <div class="form-group">
                   <label for="gearbox">Boîte de vitesses</label>
-                  <input type="text" name="gearbox" id="gearbox" minlength="6" maxlength="12" placeholder="manuelle"
-                    autocomplete="off" value=<?= htmlspecialchars($formCar['gearbox']); ?>>
+                  <input type="text" name="gearbox" id="gearbox" minlength="6" maxlength="12" placeholder="manuelle" autocomplete="off">
                 </div>
                 <div class="form-group">
                   <label for="doors">Numéro de portes</label>
-                  <input type="text" name="doors" id="doors" minlength="1" maxlength="1" placeholder="2"
-                    autocomplete="off" value=<?= htmlspecialchars($formCar['doors']); ?>>
+                  <input type="text" name="doors" id="doors" minlength="1" maxlength="1" placeholder="2" autocomplete="off">
                 </div>
               </div>
 
@@ -265,48 +379,34 @@ $errors[]= 'Erro ao enviar a imagem.';
               <div class="car-description-right">
                 <div class="form-group">
                   <label for="price">Prix</label>
-                  <input type="text" name="price" id="price" minlength="4" maxlength="6" placeholder="12768"
-                    autocomplete="off" value=<?= htmlspecialchars($formCar['price']); ?>>
+                  <input type="text" name="price" id="price" minlength="4" maxlength="6" placeholder="12768" autocomplete="off">
                 </div>
                 <div class="form-group">
                   <label for="color">Couleur</label>
-                  <input type="text" name="color" id="color" minlength="5" maxlength="10" placeholder="rouge"
-                    autocomplete="off" value=<?= htmlspecialchars($formCar['color']); ?>>
+                  <input type="text" name="color" id="color" minlength="5" maxlength="10" placeholder="rouge" autocomplete="off">
                 </div>
                 <div class="form-group">
                   <label for="fuel">Carburant</label>
-                  <input type="text" name="fuel" id="fuel" minlength="5" maxlength="12" placeholder="életrique"
-                    autocomplete="off" value=<?= htmlspecialchars($formCar['fuel']); ?>>
+                  <input type="text" name="fuel" id="fuel" minlength="5" maxlength="12" placeholder="életrique" autocomplete="off">
                 </div>
                 <div class="form-group">
                   <label for="co2">CO2</label>
-                  <input type="text" name="co2" id="co2" minlength="1" maxlength="4" placeholder="123"
-                    autocomplete="off" value=<?= htmlspecialchars($formCar['co2']); ?>>
+                  <input type="text" name="co2" id="co2" minlength="1" maxlength="3" placeholder="123" autocomplete="off">
                 </div>
-                <div class="form-group">
-                  <label for="image">Choisissez une image de service:</label>
-                  <input type="file" name="image" id="image">
-                </div>
+                <p class="form-group">
+                  <label for="image" class="btn btn-wire d-inline-flex px-2">Choisissez une image</label>
+                  <input type="file" name="image" id="image" accept=".jpeg, .jpg, .png, .webp" hidden>
+                </p>
               </div>
             </div>
           </div>
           <div class="form-btn">
-            <button type="submit" class="btn-fill">Ajouter</button>
+            <button type="submit" id="submitBtn" class="btn-fill">Ajouter</button>
           </div>
       </form>
     </div>
   </section>
-  <!-- END CONTACT  -->
 </div>
-<?php } else { ?>
-<div class="not-found">
-  <!-- <h1 class="not-found-text">Employé non trouvé</h1> -->
-  <div class="go-back-page">
-    <a href="javascript:history.back(1)" class="btn-wire">Retour page précédante</a>
-  </div>
-</div>
-<?php } ?>
-
 <?php
 require_once __DIR__ . "/templates/footer-admin.php";
 ?>

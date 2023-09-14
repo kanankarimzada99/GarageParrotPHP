@@ -3,11 +3,11 @@ require_once __DIR__ . "/../lib/config.php";
 require_once __DIR__ . "/../lib/session.php";
 
 //prevent user to back to login page if is already connected
-if(!empty($_SESSION)){
+if (!empty($_SESSION)) {
 
-  if($_SESSION['user']['role'] === 'admin'){
+  if ($_SESSION['user']['role'] === 'admin') {
     header('location:/admin/liste-employes.php');
-  }else if($_SESSION['user']['role'] === 'employee'){
+  } else if ($_SESSION['user']['role'] === 'employee') {
     header('location:/admin/liste-voitures.php');
   } else {
     header('location:/admin/');
@@ -30,19 +30,14 @@ if(!empty($_SESSION)){
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png">
   <link rel="manifest" href="../assets/images/favicon/site.webmanifest">
 
-  <!-- jquery  -->
-  <!-- <link rel="stylesheet" href="../assets/scripts/jquery-ui.min.css">
-  <script src="../assets/scripts/jquery-3.7.0.min.js"></script> -->
 
   <!-- BOOTSTRAP  -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <!-- FONT AWESOME  -->
   <script src="https://kit.fontawesome.com/1a0b88a9d7.js" crossorigin="anonymous"></script>
 
   <!-- CSS  -->
-  <!-- <link rel="stylesheet" href="./assets/css/override-bootstrap.css"> -->
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 

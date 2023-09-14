@@ -1,20 +1,20 @@
 <!-- if image service doesn't exist  -->
 <?php
-  if($service['image'] === ""){
-    $imagePath = 'assets/images/no-image.svg';
-  }else {
-    $imagePath = 'uploads/images/'.$service['image'];
-  }
+if ($service['image'] === "") {
+  $imagePath = 'assets/images/no-image.svg';
+} else {
+  $imagePath = 'uploads/images/' . $service['image'];
+}
 ?>
 
 <div class="card">
   <div class="card-header">
-    <img class="card-img-top" src="<?=$imagePath;?>" alt="voiture marque X">
+    <img class="card-img-top" src="<?= $imagePath; ?>" alt="voiture marque X">
   </div>
-  <div class="card-body height-230">
-    <h4 class="card-title center"><?=$service['service']?></h4>
+  <div class="card-body ">
+    <h4 class="card-title center"><?= $service['service'] ?></h4>
     <p class="card-text">
-      <?=$service['description']?>
+      <?= $service['description'] ?>
     </p>
   </div>
 </div>

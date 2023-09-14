@@ -3,7 +3,6 @@
 ob_start();
 
 require_once __DIR__ . "/../lib/config.php";
-
 require_once __DIR__ . "/../lib/session.php";
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/employees.php";
@@ -23,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //crypt POST password
     $password_hash = sha1($_POST['password']);
 
-//verify if email and password correspond to the user
+    //verify if email and password correspond to the user
     if ($_POST['email'] !== $user['email'] || $password_hash !== $user['password']) {
       $errors[] = 'Email ou mot de passe incorrect';
     } else {
@@ -48,19 +47,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <section class="connection w-min sections" id="connection">
     <h1 class="header-titles">Connexion</h1>
 
-    <!-- success messages  -->
-    <!-- <?php foreach ($messages as $message) { ?>
-    <div class="alert alert-success mt-4" role="alert">
-    <?= $message; ?>
-    </div>
-    <?php } ?> -->
 
     <!-- error messages  -->
-    <?php foreach ($errors as $error) { ?>
-    <div class="alert alert-danger mt-4" role="alert">
-      <?= $error; ?>
+    <div class="form-message">
+      <?php foreach ($errors as $error) { ?>
+      <div class="alert alert-danger m-0" role="alert">
+        <?= $error; ?>
+      </div>
+      <?php } ?>
     </div>
-    <?php } ?>
+
 
     <div class="connection-wrapper w-min">
 
@@ -69,12 +65,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <div class="form-group">
             <label for="email">Adresse email</label>
             <input type="text" name="email" maxlength="40" placeholder="email@example.fr" autocomplete="off"
-              value=<?= htmlspecialchars($_POST['email'] ?? '')?>>
+              value=<?= htmlspecialchars($_POST['email'] ?? '') ?>>
           </div>
           <div class="form-group">
             <label for="password">Mot de passe</label>
             <input type="password" name="password" minlength="8" maxlength="16" id="password" autocomplete="off"
-              value=<?= htmlspecialchars($_POST['password'] ?? '')?>>
+              value=<?= htmlspecialchars($_POST['password'] ?? '') ?>>
           </div>
         </div>
         <div class="form-btn">
@@ -83,7 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       </form>
     </div>
   </section>
-  <!-- END CONTACT  -->
 </div>
 
 <?php

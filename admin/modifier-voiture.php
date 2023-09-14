@@ -6,10 +6,7 @@ require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/cars.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
-//employees don't have permission to visit this page
-if ($_SESSION['user']['role'] === 'employee') {
-  header("location: /admin/liste-voitures.php");
-}
+
 
 $id = null;
 $car = null;
@@ -118,54 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors[] = "Le CO2 doit contenir uniquement des chiffres et avoir une longueur maximale de 3 caractères.";
   }
 
-
-  // //to verify image format
-  // if (!preg_match('/\.(jpg|jpeg|png|gif)$/', $_POST['car-image'])) {
-  //   $errors[] = "Le format d'image n'est pas valide.";
-  // }
-
-
-
-
   $imagePath = null;
-  //verify if a file is sent
-  // if (isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != '') {
-  //   $sizeImage = getimagesize($_FILES['file']['tmp_name']);
-  //   if ($sizeImage !== false) {
-
-  //     //delete spaces into the name and make name file with lowercase letters
-  //     $fileName = slugify(basename($_FILES['file']['name']));
-
-  //     //generate unique ID for a file
-  //     $fileName = uniqid() . '-' . $fileName;
-
-
-  //     //move file image into new location (uploads images folder)  
-
-  //     if (move_uploaded_file($_FILES['file']['tmp_name'], dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $fileName)) {
-
-  //       if (isset($_POST['car-image'])) {
-  //         //delete old image if new one is uploaded
-  //         unlink(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_POST['car-image']);
-  //       }
-  //     } else {
-  //       $errors[] = "Le fichier n'a pas été uploadé";
-  //     }
-  //   } else {
-  //     $errors[] = "Le fichier doit être une image";
-  //   }
-  // } else {
-  //   //if any image was sent
-  //   if (isset($_GET['id'])) {
-  //     // if (isset($_POST['delete_image'])) {
-  //     //   // delete image if checkbox is checked
-  //     //   unlink(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_POST['image']);
-  //     // } 
-  //     // else {
-  //     $fileName = $_POST['car-image'];
-  //     // }
-  //   }
-  // }
 
   //verify if a file is sent
   if (isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != '') {
@@ -198,17 +148,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       }
     } else {
       $errors[] = "Le format d'image n'est pas valide. Seulement jpg, jpeg, png ou webp sont permit.";
-    }
-  } else {
-    //if any image was sent
-    if (isset($_GET['id'])) {
-      // if (isset($_POST['delete_image'])) {
-      //   // delete image if checkbox is checked
-      //   unlink(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_POST['image']);
-      // } 
-      // else {
-      $fileName = $_POST['image'];
-      // }
     }
   }
 
@@ -255,8 +194,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $res = saveCar($pdo, $_POST['code'], $_POST['brand'], $_POST['model'], $_POST['year'], $_POST['kilometer'], $_POST['gearbox'], $_POST['doors'], $_POST['price'], $_POST['color'], $_POST['fuel'], $_POST['co2'],  $_SESSION['car']['image'], $id);
     }
 
-
-
     if ($res) {
       $messages[] = "Le service a bien été sauvegardé";
 
@@ -295,20 +232,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </div>
   <!-- END BREADCRUMB  -->
 
-
   <!-- connection  -->
   <section class="connection sections" id="connection">
     <h1 class="header-titles">Modifier voiture</h1>
 
     <!-- messages  -->
     <?php foreach ($messages as $message) { ?>
-      <div class="alert alert-success mt-4" role="alert">
+      <div class="alert alert-success m-0" role="alert">
         <?= $message; ?>
       </div>
     <?php } ?>
 
     <?php foreach ($errors as $error) { ?>
-      <div class="alert alert-danger mt-4" role="alert">
+      <div class="alert alert-danger m-0" role="alert">
         <?= $error; ?>
       </div>
     <?php } ?>
@@ -323,15 +259,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <div class="model-bottom">
                 <div class="form-group" style="width: 100px;">
                   <label for="code">Code</label>
-                  <input type="text" name="code" id="code" minlength="6" maxlength="6" placeholder="BMW033" autocomplete="off" value=<?= htmlspecialchars($car['code'] ?? $formCar['code']); ?>>
+                  <input type="text" name="code" id="code" minlength="6" maxlength="6" placeholder="BMW033" autocomplete="off" value=<?= htmlspecialchars_decode($car['code'] ?? $formCar['code'], ENT_NOQUOTES); ?>>
                 </div>
                 <div class="form-group">
                   <label for="brand">Marque</label>
-                  <input type="text" name="brand" id="brand" minlength="3" maxlength="15" placeholder="Tesla" autocomplete="off" value=<?= htmlspecialchars($car['brand'] ?? $formCar['brand']); ?>>
+                  <input type="text" name="brand" id="brand" minlength="3" maxlength="15" placeholder="Tesla" autocomplete="off" value=<?= htmlspecialchars_decode($car['brand'] ?? $formCar['brand'], ENT_NOQUOTES); ?>>
                 </div>
                 <div class="form-group">
                   <label for="model">Modèle</label>
-                  <input type="text" name="model" id="model" minlength="3" maxlength="15" placeholder="Max 5" autocomplete="off" value=<?= htmlspecialchars($car['model'] ?? $formCar['model']); ?>>
+                  <input type="text" name="model" id="model" minlength="3" maxlength="15" placeholder="Max 5" autocomplete="off" value=<?= htmlspecialchars_decode($car['model'] ?? $formCar['model'], ENT_NOQUOTES); ?>>
                 </div>
               </div>
             </div>
@@ -342,19 +278,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <div class="car-description-left">
                 <div class="form-group">
                   <label for="year">Année</label>
-                  <input type="text" name="year" id="year" minlength="4" maxlength="4" placeholder="2002" autocomplete="off" value=<?= htmlspecialchars($car['year'] ?? $formCar['year']); ?>>
+                  <input type="text" name="year" id="year" minlength="4" maxlength="4" placeholder="2002" autocomplete="off" value=<?= htmlspecialchars_decode($car['year'] ?? $formCar['year'], ENT_NOQUOTES); ?>>
                 </div>
                 <div class="form-group">
                   <label for="kilometer">Kilométrage</label>
-                  <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="092233" autocomplete="off" value=<?= htmlspecialchars($car['kilometers'] ?? $formCar['kilometer']); ?>>
+                  <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="092233" autocomplete="off" value=<?= htmlspecialchars_decode($car['kilometers'] ?? $formCar['kilometer'], ENT_NOQUOTES); ?>>
                 </div>
                 <div class="form-group">
                   <label for="gearbox">Boîte de vitesses</label>
-                  <input type="text" name="gearbox" id="gearbox" minlength="6" maxlength="12" placeholder="manuelle" autocomplete="off" value=<?= htmlspecialchars($car['gearbox'] ?? $formCar['gearbox']); ?>>
+                  <input type="text" name="gearbox" id="gearbox" minlength="6" maxlength="12" placeholder="manuelle" autocomplete="off" value=<?= htmlspecialchars_decode($car['gearbox'] ?? $formCar['gearbox'], ENT_NOQUOTES); ?>>
                 </div>
                 <div class="form-group">
                   <label for="doors">Numéro de portes</label>
-                  <input type="text" name="doors" id="doors" minlength="1" maxlength="1" placeholder="2" autocomplete="off" value=<?= htmlspecialchars($car['number_doors'] ?? $formCar['doors']); ?>>
+                  <input type="text" name="doors" id="doors" minlength="1" maxlength="1" placeholder="2" autocomplete="off" value=<?= htmlspecialchars_decode($car['number_doors'] ?? $formCar['doors'], ENT_NOQUOTES); ?>>
                 </div>
               </div>
 
@@ -362,24 +298,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <div class="car-description-right">
                 <div class="form-group">
                   <label for="price">Prix</label>
-                  <input type="text" name="price" id="price" minlength="4" maxlength="6" placeholder="12768" autocomplete="off" value=<?= htmlspecialchars($car['price'] ?? $formCar['price']); ?>>
+                  <input type="text" name="price" id="price" minlength="4" maxlength="6" placeholder="12768" autocomplete="off" value=<?= htmlspecialchars_decode($car['price'] ?? $formCar['price'], ENT_NOQUOTES); ?>>
                 </div>
                 <div class="form-group">
                   <label for="color">Couleur</label>
-                  <input type="text" name="color" id="color" minlength="5" maxlength="10" placeholder="rouge" autocomplete="off" value=<?= htmlspecialchars($car['color'] ?? $formCar['color']); ?>>
+                  <input type="text" name="color" id="color" minlength="5" maxlength="10" placeholder="rouge" autocomplete="off" value=<?= htmlspecialchars_decode($car['color'] ?? $formCar['color'], ENT_NOQUOTES); ?>>
                 </div>
                 <div class="form-group">
                   <label for="fuel">Carburant</label>
-                  <input type="text" name="fuel" id="fuel" minlength="5" maxlength="12" placeholder="életrique" autocomplete="off" value=<?= htmlspecialchars($car['fuel'] ?? $formCar['fuel']); ?>>
+                  <input type="text" name="fuel" id="fuel" minlength="5" maxlength="12" placeholder="életrique" autocomplete="off" value=<?= htmlspecialchars_decode($car['fuel'] ?? $formCar['fuel'], ENT_NOQUOTES); ?>>
                 </div>
                 <div class="form-group">
                   <label for="co2">CO2</label>
-                  <input type="text" name="co2" id="co2" minlength="1" maxlength="4" placeholder="123" autocomplete="off" value=<?= htmlspecialchars($car['co'] ?? $formCar['co2']); ?>>
+                  <input type="text" name="co2" id="co2" minlength="1" maxlength="4" placeholder="123" autocomplete="off" value=<?= htmlspecialchars_decode($car['co'] ?? $formCar['co2'], ENT_NOQUOTES); ?>>
                 </div>
                 <div class="form-group d-flex justify-content-start">
                   <div class="w-50">
-                    <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars($car['image'] ?? $formCar['image']) ?>" alt="<?= $formCar['brand'] ?>">
-                    <input type="hidden" name="image" value="<?= htmlspecialchars($car['image'] ?? $formCar['image']); ?>">
+                    <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars_decode($car['image'] ?? $formCar['image'], ENT_NOQUOTES) ?>" alt="<?= $formCar['brand'] ?>">
+                    <input type="hidden" name="image" value="<?= htmlspecialchars_decode($car['image'] ?? $formCar['image']); ?>">
                   </div>
                   <div class="w-50 p-3">
                     <input type="checkbox" id="imgCar" name="imgCar" value="0" class="col-2">
@@ -392,10 +328,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label for="file" class="w-auto btn-wire p-2 text-center">Modifier l'image</label>
                   </div>
                 </div>
-
-
-
-
               </div>
             </div>
           </div>
@@ -405,7 +337,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
       </div>
   </section>
-  <!-- END CONTACT  -->
 </div>
 <?php } else { ?>
   <div class="not-found">

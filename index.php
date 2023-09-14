@@ -14,77 +14,30 @@ $messages = [];
 $cars = getCars($pdo, 3);
 $services = getServices($pdo, 6);
 $reviews = getReviews($pdo, 4);
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-  if (!isset($_POST['lastname']) || $_POST['lastname'] == '') {
-    $errors[] = "Le prénom ne doit pas être vide  ";
-  }
-  if (!isset($_POST['name']) || $_POST['name'] == '') {
-    $errors[] = "Le nom ne doit pas être vide  ";
-  }
-
-  if (!isset($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-    $errors[] = "L'adresse e-mail n'est pas valide";
-  }
-
-  if (!isset($_POST['phone']) || $_POST['phone'] == '') {
-    $errors[] = "Le téléphone ne doit pas être vide  ";
-  }
-  if (!isset($_POST['subject']) || $_POST['subject'] == '') {
-    $errors[] = "Le subjet ne doit pas être vide  ";
-  }
-
-  if(!$errors){
-    $to= _APP_EMAIL_;
-    $email = filter_var($_POST['email'] , FILTER_SANITIZE_EMAIL);
-    $subject = '[Garage Parrot] Formulaire de contact'.$_POST['subject'];
-    $emailContent = "Email : $email<br>"
-    ."Prénom: <br>"
-    .nl2br(htmlentities($_POST['name']))
-    ."Nom: <br>"
-    .nl2br(htmlentities($_POST['lastname']))
-    ."téléphone: <br>"
-    .nl2br(htmlentities($_POST['phone']))
-    ."Adresse e-mail: <br>"
-    .nl2br(htmlentities($_POST['email']))
-    ."Message : <br>"
-    .nl2br(htmlentities($_POST['message']));
-    $headers = "From: "._APP_EMAIL_ . 
-    "\r\n"."MIME-Version: 1.0" . "\r\n".
-    "Content-type: text/html; charset=utf-8";
-    
-    if(mail($to, $subject, $emailContent, $headers)) {
-      $messages[]="Votre email a bien été envoyé";
-    }else {
-      $errors[]="Une erreur s'est produite durant l'envoi";
-    }
-  }
-}
 ?>
 <!-- send message by form  -->
 <script>
-$(document).ready(function() {
-  $("form").submit(function(event) {
-    event.preventDefault();
-    var lastname = $("#lastname").val();
-    var name = $("#name").val();
-    var email = $("#email").val();
-    var phone = $("#phone").val();
-    var subject = $("#subject").val();
-    var message = $("#message").val();
-    var submit = $("#submit").val();
-    $(".form-message").load('mail.php', {
-      lastname: lastname,
-      name: name,
-      email: email,
-      phone: phone,
-      subject: subject,
-      message: message,
-      submit: submit
-    });
+  $(document).ready(function() {
+    $("form").submit(function(event) {
+      event.preventDefault();
+      var lastname = $("#lastname").val();
+      var name = $("#name").val();
+      var email = $("#email").val();
+      var phone = $("#phone").val();
+      var subject = $("#subject").val();
+      var message = $("#message").val();
+      var submit = $("#submit").val();
+      $(".form-message").load('mail.php', {
+        lastname: lastname,
+        name: name,
+        email: email,
+        phone: phone,
+        subject: subject,
+        message: message,
+        submit: submit
+      });
+    })
   })
-})
 </script>
 
 <!-- HERO  -->
@@ -109,7 +62,7 @@ $(document).ready(function() {
   <h2 class="header-titles">Services</h2>
   <article class="cards">
     <?php foreach ($services as  $service) { ?>
-    <?php require __DIR__ . "/templates/service-part.php" ?>
+      <?php require __DIR__ . "/templates/service-part.php" ?>
     <?php }
     ?>
   </article>
@@ -121,10 +74,9 @@ $(document).ready(function() {
   <h2 class="header-titles">Nos derniers voitures d'occasion</h2>
   <article class="cards">
     <?php foreach ($cars as  $car) { ?>
-    <?php require __DIR__ . "/templates/car-part.php" ?>
+      <?php require __DIR__ . "/templates/car-part.php" ?>
     <?php }
     ?>
-
     <div class="more-cars">
       <a href="voitures.php" class="btn-fill center">Voir plus</a>
     </div>
@@ -138,7 +90,7 @@ $(document).ready(function() {
   <div id="demo" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
 
-      <!-- the last reviews  -->
+      <!-- the first review  -->
       <div class="carousel-item active">
 
         <div class="carousel-caption">
@@ -174,7 +126,6 @@ $(document).ready(function() {
     <a href="donner-avis.php" class="btn-fill center">Donnez votre avis</a>
   </div>
 </section>
-
 <!-- END TESTIMONIAL  -->
 
 <!-- CONTACT  -->
@@ -182,48 +133,33 @@ $(document).ready(function() {
 <section class="contact sections" id="contact">
   <h2 class="header-titles">Contact</h2>
 
-  <!-- messages  -->
-  <!-- <?php foreach ($messages as $message) { ?>
-  <div class="alert alert-success mt-4" role="alert">
-    <?= $message; ?>
-  </div>
-  <?php } ?>
-
-  <?php foreach ($errors as $error) { ?>
-  <div class="alert alert-danger mt-4" role="alert">
-    <?= $error; ?>
-  </div>
-  <?php } ?> -->
-
-
 
   <div class="contact-wrapper">
     <h3>Comment pouvons-nous vous aider?</h3>
     <p>Service? Rendez-vous? Voiture d'occasion?</p>
     <p>N'hésitez pas à nous rejoindre.</p>
 
+    <!-- messages  -->
+    <div class="form-message"></div>
+
     <form action="mail.php" method="POST">
       <div class="contact-form">
         <div class="contact-form-left">
           <div>
             <label for="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont"
-              autocomplete="off">
+            <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont" autocomplete="off">
           </div>
           <div>
             <label for="name">Prénom</label>
-            <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume"
-              autocomplete="off">
+            <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume" autocomplete="off">
           </div>
           <div>
             <label for="email">Adresse e-mail</label>
-            <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr"
-              autocomplete="off">
+            <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr" autocomplete="off">
           </div>
           <div>
             <label for="phone">Téléphone</label>
-            <input type="text" name="phone" id="phone" minlength="9" maxlength="15" placeholder="0105456789"
-              autocomplete="off">
+            <input type="text" name="phone" id="phone" minlength="9" maxlength="15" placeholder="0105456789" autocomplete="off">
           </div>
         </div>
         <div class="contact-form-right">
@@ -237,8 +173,7 @@ $(document).ready(function() {
           </div>
         </div>
       </div>
-      <!-- messages  -->
-      <div class="form-message"></div>
+
       <div class="form-btn">
         <input type="submit" value="Envoyer" id="submit" name="submit" class="btn-fill">
       </div>
@@ -246,11 +181,6 @@ $(document).ready(function() {
 
   </div>
 </section>
-
-
-
-
-<!-- END CONTACT  -->
 
 <?php
 require_once __DIR__ . "/templates/footer.php";

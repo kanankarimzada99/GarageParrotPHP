@@ -1,3 +1,4 @@
+//menu hamburger
 const mobileMenu = document.querySelector('.mobile-menu')
 const navList = document.querySelector('.nav-list')
 const navLinks = document.querySelectorAll('.nav-list li')
@@ -7,19 +8,8 @@ const handleClick = () => {
   navList.classList.toggle('active')
   mobileMenu.classList.toggle('active')
   document.body.classList.toggle('noscroll')
-
-  // animateLinks()
 }
-const exitMenu = () => {
-  navList.classList.remove('active')
-  mobileMenu.classList.remove('active')
-  document.body.classList.remove('noscroll')
-
-  // animateLinks()
-}
-
 for (let i = 0; i < navLinksRef.length; i++) {
-  navLinksRef[i].addEventListener('click', exitMenu)
+  navLinksRef[i].addEventListener('click', handleClick)
 }
-
 mobileMenu.addEventListener('click', handleClick)
