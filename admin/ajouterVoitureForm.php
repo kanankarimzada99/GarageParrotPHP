@@ -4,11 +4,11 @@ require_once __DIR__ . "/../lib/session.php";
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/cars.php";
-require_once __DIR__ . "/templates/header-admin.php";
+// require_once __DIR__ . "/templates/header-admin.php";
 
 $id = null;
-$errors = '';
-$messages = '';
+$error = false;
+$fileName = null;
 
 //for security inputs
 function test_input($data)
@@ -21,54 +21,71 @@ function test_input($data)
 
 $code = $brand = $model = $year = $kilometer = $gearbox = $doors = $price = $color = $fuel = $co2 = '';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-  $code = test_input(($_POST['code']));
-  $brand = test_input(($_POST['brand']));
-  $model = test_input(($_POST['model']));
-  $year = test_input(($_POST['year']));
-  $kilometer = test_input(($_POST['kilometer']));
-  $gearbox = test_input(($_POST['gearbox']));
-  $doors = test_input(($_POST['doors']));
-  $price = test_input(($_POST['price']));
-  $color = test_input(($_POST['color']));
-  $fuel = test_input(($_POST['fuel']));
-  $co2 = test_input(($_POST['co2']));
 
-  $imageId = null;
-  $imagePath = null;
-  //verify if a file is sent
+$code = test_input($_POST['code']);
+$brand = test_input($_POST['brand']);
+$model = test_input($_POST['model']);
+$year = test_input($_POST['year']);
+$kilometer = test_input($_POST['kilometer']);
+$gearbox = test_input($_POST['gearbox']);
+$doors = test_input($_POST['doors']);
+$price = test_input($_POST['price']);
+$color = test_input($_POST['color']);
+$fuel = test_input($_POST['fuel']);
+$co2 = test_input($_POST['co2']);
+$file = $_FILES['image']['name'];
 
-  if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-    $image = $_FILES['image'];
 
-    // get info about image
-    $imageName = $image['name'];
-    $imageTmpPath = $image['tmp_name'];
+
+if (!$file) {
+  echo '<div class="alert alert-danger d-inline" role="alert">Le fichier n\'a pas été uploadé</div>';
+  $error = true;
+  exit();
+}
+
+
+//verify if a file is sent
+if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name'] != '') {
+  $sizeImage = getimagesize($_FILES['image']['tmp_name']);
+  if ($sizeImage !== false) {
 
     //delete spaces into the name and make name file with lowercase letters
-    $imageId = slugify(basename($_FILES['image']['name']));
+    $fileName = slugify(basename($_FILES['image']['name']));
 
+    //generate unique ID for a file
+    $fileName = uniqid() . '-' . $fileName;
 
-    // generate uniq id to the image
-    $imageId = uniqid() . '-' . $imageId;
+    //move file image into new location (uploads images folder)  
 
-    //regex to image format
-    $fileExtensionPattern = '/\.(jpg|jpeg|png|webp)$/i';
-    if (preg_match($fileExtensionPattern, $imageId)) {
-      // move image to the uploads folder
-      $imagePath = dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $imageId;
-      move_uploaded_file($imageTmpPath, $imagePath);
+    if (move_uploaded_file($_FILES['image']['tmp_name'], dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $fileName)) {
 
-      $messages = 'Votre image ete bien envoyé';
+      if (isset($_FILES['image']['name'])) {
+
+        // $service = getServicesById($pdo, $_SESSION['service']['id']);
+
+        if (file_exists(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_FILES['image']['name'])) {
+          //delete old image if new one is uploaded
+          unlink(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_FILES['image']['name']);
+        } else {
+          echo '<div class="alert alert-success d-inline" role="alert">image sauvegardé avec success</div>';
+        }
+      }
     } else {
-      $errors = "Le format d'image n'est pas valide. Seulement jpg, jpeg, png ou webp sont permit.";
+      echo '<div class="alert alert-danger d-inline" role="alert">Le fichier n\'a pas été uploadé</div>';
     }
-  } else {
-    $errors = "Une erreur s'est produite durant l'envoi.";
   }
+}
 
-  if (empty($errors)) {
-    $res = saveCar($pdo, $code, $brand, $model, $year, $kilometer, $gearbox, $doors, $price, $color, $fuel, $co2, $imageId, $id);
+if ($error == false) {
+  $res = saveCar($pdo, $code, $brand, $model, $year, $kilometer, $gearbox, $doors, $price, $color, $fuel, $co2, $fileName, $id);
+
+  if ($res) {
+
+    echo '<div class="alert alert-success">Le service a bien été sauvegardé.</div>';
+  } else {
+    echo '<div class="alert alert-danger">Le service n\'a pas été sauvegardé.</div>';
+
+    exit();
   }
 }

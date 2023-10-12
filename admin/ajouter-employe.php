@@ -15,33 +15,12 @@ $formEmployee = [
   'conf-password' => ''
 ];
 
-$employee = 'employee';
+
 
 ?>
 
-<!-- send message by form  -->
-<script>
-  $(document).ready(function() {
-    $("form").submit(function(event) {
-      event.preventDefault();
-      var lastName = $("#lastname").val();
-      var name = $("#name").val();
-      var email = $("#email").val();
-      var password = $("#password").val();
-      var confPassword = $("#conf-password").val();
-      var submit = $("#submit").val();
+<!-- send message by form -->
 
-      $(".form-message").load('ajouterEmployeeForm.php', {
-        lastName: lastName,
-        name: name,
-        email: email,
-        password: password,
-        confPassword: confPassword,
-        submit: submit
-      });
-    })
-  })
-</script>
 
 <div class="wrapper">
 
@@ -58,44 +37,70 @@ $employee = 'employee';
     <h1 class="header-titles">Ajouter employé</h1>
 
     <!-- messages  -->
-    <div class="form-message">
-    </div>
+    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
 
     <div class="connection-wrapper">
 
-      <form action="ajouterEmployeeForm.php" method="POST">
+      <form method="POST" id="addEmploye">
         <div class="connection-form">
 
           <div class="form-group">
             <label for="lastname">Nom</label>
             <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont" autocomplete="off">
+            <span class="error" id="lastname_err"> </span>
           </div>
           <div class="form-group">
             <label for="name">Prénom</label>
             <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume" autocomplete="off">
+            <span class="error" id="name_err"> </span>
           </div>
 
           <div class="form-group">
             <label for="email">Adresse email</label>
             <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr" autocomplete="off">
+            <span class="error" id="email_err"> </span>
           </div>
           <div class="form-group">
-            <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password" minlength="8" maxlength="16" autocomplete="off">
+            <label for="password">
+              Mot de passe
+            </label>
+            <div class="input-group">
+              <input type="password" name="password" id="password" class="form-control" minlength="8" maxlength="16" autocomplete="off">
+              <div class="input-group-append">
+                <span class="input-group-text" onclick="password_show_hide();">
+                  <i class="fas fa-eye" id="show_eye"></i>
+                  <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+                </span>
+              </div>
+            </div>
+            <span class="error" id="password_err"> </span>
           </div>
           <div class="form-group">
-            <label for="conf-password">Confirm mot de passe</label>
-            <input type="password" name="conf-password" id="conf-password" minlength="8" maxlength="16" autocomplete="off">
+            <label for="cpassword">
+              Confirm mot de passe
+            </label>
+            <div class="input-group">
+              <input type="password" name="cpassword" id="cpassword" class="form-control" minlength="8" maxlength="16" autocomplete="off">
+              <div class="input-group-append">
+                <span class="input-group-text" onclick="cpassword_show_hide();">
+                  <i class="fas fa-eye" id="cshow_eye"></i>
+                  <i class="fas fa-eye-slash d-none" id="chide_eye"></i>
+                </span>
+              </div>
+            </div>
+            <span class="error" id="cpassword_err"> </span>
           </div>
+
         </div>
         <div class="form-btn">
-          <button type="submit" name="add-employee" class="btn-fill">Ajouter</button>
+          <button type="button" id="submitbtn" class="btn-fill">Ajouter</button>
         </div>
 
       </form>
     </div>
   </section>
 </div>
+<script src="../assets/scripts/validationEmployeForm.js"></script>
 
 <?php
 require_once __DIR__ . "/templates/footer-admin.php";

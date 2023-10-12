@@ -29,7 +29,7 @@ $file = $_FILES['image']['name'];
 
 
 if (!$file) {
-  echo "error";
+  echo '<div class="alert alert-danger d-inline" role="alert">Le fichier n\'a pas été uploadé</div>';
   $error = true;
   exit();
 }
@@ -52,7 +52,7 @@ if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name'] != '') {
 
       if (isset($_FILES['image']['name'])) {
 
-        // $service = getServicesById($pdo, $_SESSION['service']['id']);
+
 
         if (file_exists(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_FILES['image']['name'])) {
           //delete old image if new one is uploaded

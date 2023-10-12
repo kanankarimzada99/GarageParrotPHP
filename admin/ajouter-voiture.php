@@ -7,7 +7,7 @@ require_once __DIR__ . "/../lib/cars.php";
 require_once __DIR__ . "/templates/header-admin.php";
 ?>
 
-<script>
+<!-- <script>
   $(document).ready(function() {
     $('#addCar').submit(function(e) {
       e.preventDefault()
@@ -303,7 +303,7 @@ require_once __DIR__ . "/templates/header-admin.php";
 
     });
   });
-</script>
+</script> -->
 
 <div class="wrapper">
 
@@ -319,17 +319,9 @@ require_once __DIR__ . "/templates/header-admin.php";
   <section class="connection sections" id="connection">
     <h1 class="header-titles">Ajouter voiture</h1>
 
+
     <!-- messages  -->
-
-    <div id="message" class="alert alert-success mt-4 d-none" role="alert"></div>
-
-    <div class="form-message">
-      <div id="message-success" class="alert alert-success mt-4 d-none" role="alert">
-      </div>
-
-      <div id="message-error" class="alert alert-danger mt-4 d-none" role="alert">
-      </div>
-    </div>
+    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
 
     <div class="connection-wrapper">
       <form id="addCar" method="POST" enctype="multipart/form-data">
@@ -337,41 +329,48 @@ require_once __DIR__ . "/templates/header-admin.php";
 
           <div class="car-model">
             <div class="car-model-bottom">
-              <div class="form-group" style="width: 100px;">
+              <div class="form-group">
                 <label for="code">Code</label>
                 <input type="text" name="code" id="code" minlength="6" maxlength="6" placeholder="BMW033" autocomplete="off">
+                <span class="error" id="code_err">
               </div>
               <div class="car-model-bottom">
                 <div class="form-group">
                   <label for="brand">Marque</label>
                   <input type="text" name="brand" id="brand" maxlength="15" placeholder="Tesla" autocomplete="off">
+                  <span class="error" id="brand_err">
                 </div>
                 <div class="form-group">
                   <label for="model">Modèle</label>
                   <input type="text" name="model" id="model" minlength="3" maxlength="15" placeholder="Max 5" autocomplete="off">
+                  <span class="error" id="model_err">
                 </div>
               </div>
             </div>
 
             <div class="car-description">
-
               <!-- LEFT SIDE  -->
               <div class="car-description-left">
                 <div class="form-group">
                   <label for="year">Année</label>
                   <input type="text" name="year" id="year" minlength="4" maxlength="4" placeholder="2002" autocomplete="off">
+                  <span class="error" id="year_err">
+
                 </div>
                 <div class="form-group">
                   <label for="kilometer">Kilométrage</label>
                   <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="092233" autocomplete="off">
+                  <span class="error" id="kilometer_err">
                 </div>
                 <div class="form-group">
                   <label for="gearbox">Boîte de vitesses</label>
                   <input type="text" name="gearbox" id="gearbox" minlength="6" maxlength="12" placeholder="manuelle" autocomplete="off">
+                  <span class="error" id="gearbox_err">
                 </div>
                 <div class="form-group">
                   <label for="doors">Numéro de portes</label>
                   <input type="text" name="doors" id="doors" minlength="1" maxlength="1" placeholder="2" autocomplete="off">
+                  <span class="error" id="doors_err">
                 </div>
               </div>
 
@@ -380,33 +379,40 @@ require_once __DIR__ . "/templates/header-admin.php";
                 <div class="form-group">
                   <label for="price">Prix</label>
                   <input type="text" name="price" id="price" minlength="4" maxlength="6" placeholder="12768" autocomplete="off">
+                  <span class="error" id="price_err">
                 </div>
                 <div class="form-group">
                   <label for="color">Couleur</label>
                   <input type="text" name="color" id="color" minlength="5" maxlength="10" placeholder="rouge" autocomplete="off">
+                  <span class="error" id="color_err">
                 </div>
                 <div class="form-group">
                   <label for="fuel">Carburant</label>
                   <input type="text" name="fuel" id="fuel" minlength="5" maxlength="12" placeholder="életrique" autocomplete="off">
+                  <span class="error" id="fuel_err">
                 </div>
                 <div class="form-group">
                   <label for="co2">CO2</label>
                   <input type="text" name="co2" id="co2" minlength="1" maxlength="3" placeholder="123" autocomplete="off">
+                  <span class="error" id="co2_err">
                 </div>
-                <p class="form-group">
+                <div class="form-group">
                   <label for="image" class="btn btn-wire d-inline-flex px-2">Choisissez une image</label>
                   <input type="file" name="image" id="image" accept=".jpeg, .jpg, .png, .webp" hidden>
-                </p>
+                  <span class="error" id="image_err"> </span>
+                </div>
               </div>
             </div>
           </div>
           <div class="form-btn">
-            <button type="submit" id="submitBtn" class="btn-fill">Ajouter</button>
+            <button type="button" id="submitbtn" value="add-service" class="btn-fill">Ajouter</button>
           </div>
       </form>
     </div>
   </section>
 </div>
+
+<script src="../assets/scripts/validationCarForm.js"></script>
 <?php
 require_once __DIR__ . "/templates/footer-admin.php";
 ?>

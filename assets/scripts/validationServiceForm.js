@@ -58,7 +58,7 @@ function checkService() {
   var service = $('#service').val()
   var validUser = patternService.test(service)
   if (service.trim() === '') {
-    $('#service_err').html("Le service n'est peut pas être vide")
+    $('#service_err').html('Le service ne peut pas être vide')
     return false
   } else if ($('#service').val().length < 4) {
     $('#service_err').html('Le service est trop court.')
@@ -78,7 +78,7 @@ function checkDescription() {
   var description = $('#description').val()
   var validateDescription = patternDescription.test(description)
   if (description.trim() == '') {
-    $('#description_err').html("La description n'est peut pas être vide")
+    $('#description_err').html('La description ne peut pas être vide')
     return false
   } else if (!validateDescription) {
     $('#description_err').html(

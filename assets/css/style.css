@@ -9,7 +9,6 @@ font-family: 'Ubuntu', sans-serif;
   --breakPExtLarge:1200px; 
   --margin-top:40px; */
 
-/* OVERWRITE BOOTSTRAP  */
 :root {
   --primary: #ee080d;
   --secondary: #fdc0c8;
@@ -554,6 +553,34 @@ input[type="submit"]:hover{
   opacity: 1;
   visibility: visible;
 }
+
+.error input {
+  border-color: 
+red;
+  border-width: 2px;
+}
+
+.success input {
+  border-color: 
+green;
+  border-width: 2px;
+}
+
+.error span {
+  color: 
+red;
+}
+
+.success span {
+  color: 
+green;
+}
+
+span.error {
+  color: 
+red;
+}
+
 /* END GENERAL -------------------------- */
 
 
@@ -738,8 +765,7 @@ input[type="submit"]:hover{
   }
 }
 
-@media (min-width:1200px){
-  
+@media screen and (min-width:1200px){
   .nav-list li {
     margin-left: 70px;
     opacity: 1;
@@ -1005,7 +1031,7 @@ input[type="submit"]:hover{
 }
 
 .carousel-caption .stars i {
-  color: var(--font);
+  /* color: var(--font); */
   font-size: 0.8rem;
   color: var(--primary);
 }
@@ -1040,7 +1066,7 @@ input[type="submit"]:hover{
   margin:20px 0 0;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .testimonial {
     width: 80%;
     margin: 20px auto 40px;
@@ -1966,6 +1992,7 @@ td a .fa-trash-can{
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
 
 th.size50 {
   min-width:50px;
