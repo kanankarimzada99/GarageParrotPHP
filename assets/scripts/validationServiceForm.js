@@ -65,7 +65,7 @@ function checkService() {
     return false
   } else if (!validUser) {
     $('#service_err').html(
-      'Le service doit avoit minimum 15 caractères et maximum 30'
+      'Le service doit avoir minimum 15 caractères et maximum 30'
     )
     return false
   } else {

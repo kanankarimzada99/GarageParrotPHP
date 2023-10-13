@@ -120,7 +120,7 @@ function checkCode() {
     return false
   } else if (!validCode) {
     $('#code_err').html(
-      'Le code doit avoit 3 majuscules et 3 chiffres seulement'
+      'Le code doit avoir 3 majuscules et 3 chiffres seulement'
     )
     return false
   } else {
@@ -141,7 +141,7 @@ function checkBrand() {
     return false
   } else if (!validBrand) {
     $('#brand_err').html(
-      'La marque doit avoit 3 caractères minimum et 15 maximum.'
+      'La marque doit avoir 3 caractères minimum et 15 maximum.'
     )
     return false
   } else {
@@ -161,7 +161,7 @@ function checkModel() {
     return false
   } else if (!validModel) {
     $('#model_err').html(
-      'Le kilométrage doit avoit 3 caractères minimum et 15 maximum.'
+      'Le kilométrage doit avoir 3 caractères minimum et 15 maximum.'
     )
     return false
   } else {

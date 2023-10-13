@@ -98,7 +98,7 @@ function checkName() {
 }
 
 function checkEmail() {
-  var patterEmail = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
+  var patterEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/
   var email = $('#email').val()
   var validEmail = patterEmail.test(email)
   if (email.trim() === '') {

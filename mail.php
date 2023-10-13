@@ -1,13 +1,28 @@
 <?php
 require_once __DIR__ . "/lib/config.php";
 
-if (isset($_POST['submit'])) {
-  $lastname = $_POST['lastname'];
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $phone = $_POST['phone'];
-  $subject = $_POST['subject'];
-  $message = $_POST['message'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+
+  //for security inputs
+  function test_input($data)
+  {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+
+  $lastname = $name = $email = $phone = $subject = $message = '';
+
+
+  $lastname = test_input($_POST['lastname']);
+  $name = test_input($_POST['name']);
+  $email = test_input($_POST['email']);
+  $phone = test_input($_POST['phone']);
+  $subject = test_input($_POST['subject']);
+  $message = test_input($_POST['message']);
 
   $errorEmpty = false;
   $errorLastname = false;
@@ -19,13 +34,13 @@ if (isset($_POST['submit'])) {
 
   if (empty($lastname) && empty($name) && empty($email) && empty($phone)   && empty($message)) {
     echo "<div class='alert alert-danger m-0' role='alert'>Vous devez remplir tous les champs</div>";
-    $errorEmpty = true;
+    $errorLastname = false;
   } elseif (!preg_match(_REGEX_LAST_NAME_, $lastname)) {
     echo "<div class='alert alert-danger m-0' role='alert'>Le nom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.</div>";
-    $errorLastname = true;
+    $errorLastname = false;
   } elseif (!preg_match(_REGEX_FIRST_NAME_, $name)) {
     echo "<div class='alert alert-danger m-0' role='alert'>Le prénom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.</div>";
-    $errorName = true;
+    $errorEmail = true;
   } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo "<div class='alert alert-danger m-0' role='alert'>Le format du e-mail address n'est pas valide</div>";
     $errorEmail = true;
@@ -83,48 +98,47 @@ if (isset($_POST['submit'])) {
 ?>
 
 <script>
-  $("#lastname, #name, #email, #phone, #subject, #message").removeClass("input-error");
+$("#lastname, #name, #email, #phone, #subject, #message").removeClass("input-error");
 
 
-  //get variable php inside js
-  var errorEmpty = "<?php echo $errorEmpty; ?>";
-  var errorLastName = "<?php echo $errorLastname; ?>";
-  var errorName = "<?php echo $errorName; ?>";
-  var errorEmail = "<?php echo $errorEmail; ?>";
-  var errorPhone = "<?php echo $errorPhone; ?>";
-  var errorSubject = "<?php echo $errorSubject; ?>";
-  var errorMessage = "<?php echo $errorMessage; ?>";
+//get variable php inside js
+var errorEmpty = "<?php echo $errorEmpty; ?>";
+var errorLastName = "<?php echo $errorLastname; ?>";
+var errorName = "<?php echo $errorName; ?>";
+var errorEmail = "<?php echo $errorEmail; ?>";
+var errorPhone = "<?php echo $errorPhone; ?>";
+var errorSubject = "<?php echo $errorSubject; ?>";
+var errorMessage = "<?php echo $errorMessage; ?>";
 
-  if (errorEmpty == true) {
-    $("#lastname, #name, #email, #phone, #subject, #message").addClass("input-error");
-  }
-  if (errorLastName == true) {
-    $("#lastname").addClass("input-error");
-  }
-  if (errorName == true) {
-    $("#name").addClass("input-error");
-  }
-  if (errorEmail == true) {
-    $("#email").addClass("input-error");
-  }
-  if (errorPhone == true) {
-    $("#phone").addClass("input-error");
-  }
-  if (errorSubject == true) {
-    $("#subject").addClass("input-error");
-  }
-  if (errorMessage == true) {
-    $("#message").addClass("input-error");
-  }
+if (errorEmpty == true) {
+  $("#lastname, #name, #email, #phone, #subject, #message").addClass("input-error");
+}
+if (errorLastName == true) {
+  $("#lastname").addClass("input-error");
+}
+if (errorName == true) {
+  $("#name").addClass("input-error");
+}
+if (errorEmail == true) {
+  $("#email").addClass("input-error");
+}
+if (errorPhone == true) {
+  $("#phone").addClass("input-error");
+}
+if (errorSubject == true) {
+  $("#subject").addClass("input-error");
+}
+if (errorMessage == true) {
+  $("#message").addClass("input-error");
+}
 
-  if (errorEmpty == false && errorLastName == false && errorName == false && errorEmail == false && errorPhone == false &&
-    errorSubject == false && errorMessage == false) {
-    $("#lastname,#name,#email,#phone,#subject,#message").val("");
-    $(".image-car").addClass("hide");
+if (errorEmpty == false && errorLastName == false && errorName == false && errorEmail == false && errorPhone == false &&
+  errorSubject == false && errorMessage == false) {
+  $("#lastname,#name,#email,#phone,#subject,#message").val("");
 
-    //hide message after 5 seconds
-    setTimeout(function() {
-      $('.form-message').fadeOut('fast');
-    }, 5000); // <-- time in milliseconds
-  }
+  //hide message after 5 seconds
+  setTimeout(function() {
+    $('.form-message').fadeOut('fast');
+  }, 5000); // <-- time in milliseconds
+}
 </script>

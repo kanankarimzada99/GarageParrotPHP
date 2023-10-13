@@ -8,37 +8,37 @@ require_once __DIR__ . "/lib/reviews.php";
 require_once __DIR__ . "/lib/starRating.php";
 require_once __DIR__ . "/templates/header.php";
 
-$errors = [];
-$messages = [];
+// $errors = [];
+// $messages = [];
 
 $cars = getCars($pdo, 3);
 $services = getServices($pdo, 6);
 $reviews = getReviews($pdo, 4);
 ?>
 <!-- send message by form  -->
-<script>
-  $(document).ready(function() {
-    $("form").submit(function(event) {
-      event.preventDefault();
-      var lastname = $("#lastname").val();
-      var name = $("#name").val();
-      var email = $("#email").val();
-      var phone = $("#phone").val();
-      var subject = $("#subject").val();
-      var message = $("#message").val();
-      var submit = $("#submit").val();
-      $(".form-message").load('mail.php', {
-        lastname: lastname,
-        name: name,
-        email: email,
-        phone: phone,
-        subject: subject,
-        message: message,
-        submit: submit
-      });
-    })
+<!-- <script>
+$(document).ready(function() {
+  $("form").submit(function(event) {
+    event.preventDefault();
+    var lastname = $("#lastname").val();
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var phone = $("#phone").val();
+    var subject = $("#subject").val();
+    var message = $("#message").val();
+    var submit = $("#submit").val();
+    $(".form-message").load('mail.php', {
+      lastname: lastname,
+      name: name,
+      email: email,
+      phone: phone,
+      subject: subject,
+      message: message,
+      submit: submit
+    });
   })
-</script>
+})
+</script> -->
 
 <!-- HERO  -->
 
@@ -62,7 +62,7 @@ $reviews = getReviews($pdo, 4);
   <h2 class="header-titles">Services</h2>
   <article class="cards">
     <?php foreach ($services as  $service) { ?>
-      <?php require __DIR__ . "/templates/service-part.php" ?>
+    <?php require __DIR__ . "/templates/service-part.php" ?>
     <?php }
     ?>
   </article>
@@ -74,7 +74,7 @@ $reviews = getReviews($pdo, 4);
   <h2 class="header-titles">Nos derniers voitures d'occasion</h2>
   <article class="cards">
     <?php foreach ($cars as  $car) { ?>
-      <?php require __DIR__ . "/templates/car-part.php" ?>
+    <?php require __DIR__ . "/templates/car-part.php" ?>
     <?php }
     ?>
     <div class="more-cars">
@@ -140,47 +140,58 @@ $reviews = getReviews($pdo, 4);
     <p>N'hésitez pas à nous rejoindre.</p>
 
     <!-- messages  -->
-    <div class="form-message"></div>
+    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
 
-    <form action="mail.php" method="POST">
+    <form method="POST" id="addContact">
       <div class="contact-form">
         <div class="contact-form-left">
-          <div>
+          <div class="form-group">
             <label for="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont" autocomplete="off">
+            <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont"
+              autocomplete="off">
+            <span class="error" id="lastname_err"> </span>
           </div>
-          <div>
+          <div class="form-group">
             <label for="name">Prénom</label>
-            <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume" autocomplete="off">
+            <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume"
+              autocomplete="off">
+            <span class="error" id="name_err"> </span>
           </div>
-          <div>
+          <div class="form-group">
             <label for="email">Adresse e-mail</label>
-            <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr" autocomplete="off">
+            <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr"
+              autocomplete="off">
+            <span class="error" id="email_err"> </span>
           </div>
-          <div>
+          <div class="form-group">
             <label for="phone">Téléphone</label>
-            <input type="text" name="phone" id="phone" minlength="9" maxlength="15" placeholder="0105456789" autocomplete="off">
+            <input type="text" name="phone" id="phone" minlength="9" maxlength="15"
+              placeholder="0105456789 / +33 123456789" autocomplete="off">
+            <span class="error" id="phone_err"> </span>
           </div>
         </div>
         <div class="contact-form-right">
-          <div>
+          <div class="form-group">
             <label for="subject">Sujet</label>
             <input type="text" name="subject" id="subject" minlength="10" maxlength="60" autocomplete="off">
+            <span class="error" id="subject_err"> </span>
           </div>
-          <div>
+          <div class="form-group">
             <label for="message">Message</label>
             <textarea name="message" id="message" cols="30" rows="5" autocomplete="off"></textarea>
+            <span class="error" id="message_err"> </span>
           </div>
         </div>
       </div>
 
       <div class="form-btn">
-        <input type="submit" value="Envoyer" id="submit" name="submit" class="btn-fill">
+        <button type="button" id="submitbtn" class="btn-fill">Envoyer</button>
       </div>
     </form>
 
   </div>
 </section>
+<script src="../assets/scripts/validationContactForm.js"></script>
 
 <?php
 require_once __DIR__ . "/templates/footer.php";

@@ -1236,7 +1236,7 @@ red;
 .contact-form textarea {
   width: 100%;
   display: inline-block;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .contact-form textarea {
