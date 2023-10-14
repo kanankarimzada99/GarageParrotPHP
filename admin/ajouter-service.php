@@ -33,22 +33,25 @@ adminOnly();
         <div class="connection-form">
           <div class="form-group">
             <label for="service">Service</label>
-            <input type="text" name="service" id="service" minlength="5" maxlength="30" placeholder="Reparation motor" autocomplete="off">
+            <input type="text" name="service" id="service" minlength="5" maxlength="30" placeholder="Reparation motor"
+              autocomplete="off">
             <span class="error" id="service_err"> </span>
           </div>
           <div class="form-group">
             <label for="description">Description</label>
-            <textarea name="description" id="description" class="service-description" cols="30" rows="5" minlength="50" maxlength="150"></textarea>
+            <textarea name="description" id="description" class="service-description" cols="30" rows="5" minlength="50"
+              maxlength="150"></textarea>
             <span class="error" id="description_err"> </span>
           </div>
           <div class="form-group">
             <label for="image" class="btn btn-wire d-inline-flex px-2">Choisissez une image</label>
-            <input class="form-control-file" type="file" name="image" id="image" accept=".jpeg, .jpg, .png, .webp" hidden>
+            <input class="form-control-file" type="file" name="image" id="image" accept=".jpeg, .jpg, .png, .webp"
+              hidden>
             <span class="error" id="image_err"> </span>
           </div>
 
           <div class="form-btn">
-            <button type="button" id="submitbtn" value="add-service" class="btn-fill">Ajouter</button>
+            <button type="button" id="submitbtn" class="btn-fill">Ajouter</button>
           </div>
       </form>
     </div>

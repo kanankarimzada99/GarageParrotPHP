@@ -11,9 +11,7 @@ $(document).ready(function () {
   $('#phone').on('input', function () {
     checkPhone()
   })
-  $('#subject').on('input', function () {
-    checkSubject()
-  })
+
   $('#message').on('input', function () {
     checkMessage()
   })
@@ -24,7 +22,6 @@ $(document).ready(function () {
       !checkName() &&
       !checkEmail() &&
       !checkPhone() &&
-      !checkSubject() &&
       !checkMessage()
     ) {
       $('#form-message').html(
@@ -35,7 +32,6 @@ $(document).ready(function () {
       !checkName() ||
       !checkEmail() ||
       !checkPhone() ||
-      !checkSubject() ||
       !checkMessage()
     ) {
       $('#form-message').html(
@@ -43,16 +39,18 @@ $(document).ready(function () {
       )
     } else {
       $('#form-message').html('')
-      var form = $('#addContact')[0]
+      var form = $('#buyContact')[0]
       var data = new FormData(form)
+      var message = $('#message').val()
       $.ajax({
         type: 'POST',
-        url: '../../mail.php',
+        url: '../../mailVoiture.php',
         data: data,
         processData: false,
         contentType: false,
         cache: false,
         async: true,
+        message: message,
 
         success: function (data) {
           $('#form-message').html(data)
@@ -140,27 +138,6 @@ function checkPhone() {
     return false
   } else {
     $('#phone_err').html('')
-    return true
-  }
-}
-
-function checkSubject() {
-  var patternSubject = /^[0-9a-zA-ZÀ-ÿ\s?\.\,\;\"\'\d]{10,60}/
-  var subject = $('#subject').val()
-  var validSubject = patternSubject.test(subject)
-  if (subject.trim() === '') {
-    $('#subject_err').html('Le sujet ne peut pas être vide')
-    return false
-  } else if ($('#subject').val().length < 4) {
-    $('#subject_err').html('Le sujet est trop court.')
-    return false
-  } else if (!validSubject) {
-    $('#subject_err').html(
-      'Le sujet doit avoir minimum 10 caractères et maximum 60'
-    )
-    return false
-  } else {
-    $('#subject_err').html('')
     return true
   }
 }

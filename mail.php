@@ -14,8 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     return $data;
   }
 
-  $lastname = $name = $email = $phone = $subject = $message = '';
-
 
   $lastname = test_input($_POST['lastname']);
   $name = test_input($_POST['name']);
@@ -32,15 +30,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $errorSubject = false;
   $errorMessage = false;
 
-  if (empty($lastname) && empty($name) && empty($email) && empty($phone)   && empty($message)) {
+  if (empty($lastname) && empty($name) && empty($email) && empty($phone) && empty($message)) {
     echo "<div class='alert alert-danger m-0' role='alert'>Vous devez remplir tous les champs</div>";
-    $errorLastname = false;
+    $errorEmpty = true;
   } elseif (!preg_match(_REGEX_LAST_NAME_, $lastname)) {
     echo "<div class='alert alert-danger m-0' role='alert'>Le nom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.</div>";
-    $errorLastname = false;
+    $errorLastname = true;
   } elseif (!preg_match(_REGEX_FIRST_NAME_, $name)) {
+    echo $name;
     echo "<div class='alert alert-danger m-0' role='alert'>Le prénom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.</div>";
-    $errorEmail = true;
+    $errorName = true;
   } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo "<div class='alert alert-danger m-0' role='alert'>Le format du e-mail address n'est pas valide</div>";
     $errorEmail = true;
@@ -73,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       . "<br>"
       . "Message :"
       . nl2br(htmlentities($_POST['message']));
-    $headers = "From: " . $email .
+    $headers = "From: " . $lastname . ' ' . $name .
       "\r\n" . "MIME-Version: 1.0" . "\r\n" .
       "Content-type: text/html; charset=utf-8";
 
@@ -98,47 +97,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <script>
-$("#lastname, #name, #email, #phone, #subject, #message").removeClass("input-error");
+  $("#lastname, #name, #email, #phone, #subject, #message").removeClass("input-error");
 
 
-//get variable php inside js
-var errorEmpty = "<?php echo $errorEmpty; ?>";
-var errorLastName = "<?php echo $errorLastname; ?>";
-var errorName = "<?php echo $errorName; ?>";
-var errorEmail = "<?php echo $errorEmail; ?>";
-var errorPhone = "<?php echo $errorPhone; ?>";
-var errorSubject = "<?php echo $errorSubject; ?>";
-var errorMessage = "<?php echo $errorMessage; ?>";
+  //get variable php inside js
+  var errorEmpty = "<?php echo $errorEmpty; ?>";
+  var errorLastName = "<?php echo $errorLastname; ?>";
+  var errorName = "<?php echo $errorName; ?>";
+  var errorEmail = "<?php echo $errorEmail; ?>";
+  var errorPhone = "<?php echo $errorPhone; ?>";
+  var errorSubject = "<?php echo $errorSubject; ?>";
+  var errorMessage = "<?php echo $errorMessage; ?>";
 
-if (errorEmpty == true) {
-  $("#lastname, #name, #email, #phone, #subject, #message").addClass("input-error");
-}
-if (errorLastName == true) {
-  $("#lastname").addClass("input-error");
-}
-if (errorName == true) {
-  $("#name").addClass("input-error");
-}
-if (errorEmail == true) {
-  $("#email").addClass("input-error");
-}
-if (errorPhone == true) {
-  $("#phone").addClass("input-error");
-}
-if (errorSubject == true) {
-  $("#subject").addClass("input-error");
-}
-if (errorMessage == true) {
-  $("#message").addClass("input-error");
-}
+  if (errorEmpty == true) {
+    $("#lastname, #name, #email, #phone, #subject, #message").addClass("input-error");
+  }
+  if (errorLastName == true) {
+    $("#lastname").addClass("input-error");
+  }
+  if (errorName == true) {
+    $("#name").addClass("input-error");
+  }
+  if (errorEmail == true) {
+    $("#email").addClass("input-error");
+  }
+  if (errorPhone == true) {
+    $("#phone").addClass("input-error");
+  }
+  if (errorSubject == true) {
+    $("#subject").addClass("input-error");
+  }
+  if (errorMessage == true) {
+    $("#message").addClass("input-error");
+  }
 
-if (errorEmpty == false && errorLastName == false && errorName == false && errorEmail == false && errorPhone == false &&
-  errorSubject == false && errorMessage == false) {
-  $("#lastname,#name,#email,#phone,#subject,#message").val("");
+  if (errorEmpty == false && errorLastName == false && errorName == false && errorEmail == false && errorPhone == false &&
+    errorSubject == false && errorMessage == false) {
+    $("#lastname,#name,#email,#phone,#subject,#message").val("");
 
-  //hide message after 5 seconds
-  setTimeout(function() {
-    $('.form-message').fadeOut('fast');
-  }, 5000); // <-- time in milliseconds
-}
+    //hide message after 4 seconds
+    setTimeout(function() {
+      $('#form-message .alert').hide();
+    }, 4000); // <-- time in milliseconds
+  }
 </script>

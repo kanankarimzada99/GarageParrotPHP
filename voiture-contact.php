@@ -20,6 +20,8 @@ if (isset($_GET['id'])) {
 
   $_SESSION['car'] = $car;
 
+
+
   //verify if car is on db
   if (!$car) {
     $error = true;
@@ -30,7 +32,7 @@ if (isset($_GET['id'])) {
 
 $id = null;
 ?>
-<!-- send message by form  -->
+<!-- send message by form 
 <script>
   $(document).ready(function() {
     $("form").submit(function(event) {
@@ -53,7 +55,7 @@ $id = null;
       });
     })
   })
-</script>
+</script> -->
 
 <div class="wrapper">
 
@@ -68,53 +70,58 @@ $id = null;
 
 
     <!-- messages  -->
-    <div class="form-message"></div>
+    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
 
     <div class="contact-wrapper">
 
-      <form action="mailVoiture.php" method="POST">
+      <form method="POST" id="buyContact">
         <div class="contact-form">
           <div class="contact-form-left">
-            <div>
+            <div class="form-group">
               <label for="lastname">Nom</label>
               <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont" autocomplete="off">
+              <span class="error" id="lastname_err"> </span>
             </div>
-            <div>
+            <div class="form-group">
               <label for="name">Prénom</label>
               <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume" autocomplete="off">
+              <span class="error" id="name_err"> </span>
             </div>
-            <div>
+            <div class="form-group">
               <label for="email">Adresse email</label>
               <input type="text" name="email" id="email" maxlength="40" placeholder="email@example.fr" autocomplete="off">
+              <span class="error" id="email_err"> </span>
             </div>
-            <div>
+            <div class="form-group">
               <label for="phone">Téléphone</label>
               <input type="text" name="phone" id="phone" minlength="9" maxlength="15" placeholder="0105456789" autocomplete="off">
+              <span class="error" id="phone_err"> </span>
             </div>
           </div>
           <div class="contact-form-right">
-            <div>
+            <div class="form-group">
               <label for="subject">Sujet</label>
-              <input type="text" name="subject" id="subject" autocomplete="off" disabled value="<?= htmlspecialchars($_SESSION['car']['code']  . " " . $_SESSION['car']['brand'] . " " . $_SESSION['car']['model']); ?>">
+              <input type="text" name="subject" id="subject" autocomplete="off" readonly value="<?= htmlspecialchars($_SESSION['car']['code']  . " " . $_SESSION['car']['brand'] . " " . $_SESSION['car']['model']); ?>">
 
             </div>
-            <div>
+            <div class="form-group">
               <label for="message">Message</label>
               <textarea name="message" id="message" cols="30" rows="5" autocomplete="off"></textarea>
+              <span class="error" id="message_err"> </span>
             </div>
           </div>
         </div>
 
         <img src="<?= $imagePath; ?>" alt="<?= $_SESSION['car']['brand'] . " " . $_SESSION['car']['model'] ?>" class="w-25 image-car">
         <div class="form-btn">
-          <input type="submit" value="Envoyer" id="submit" name="submit" class="btn-fill">
+          <button type="button" id="submitbtn" class="btn-fill">Envoyer</button>
         </div>
 
       </form>
     </div>
   </section>
 </div>
-
+<script src="../assets/scripts/validationContactBuyCar.js"></script>
 <?php
 require_once __DIR__ . "/templates/footer.php";
 ?>

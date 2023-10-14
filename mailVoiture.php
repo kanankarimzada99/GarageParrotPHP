@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       . "<br>"
       . "Message :"
       . nl2br(htmlentities($_POST['message']));
-    $headers = "From: " . $email .
+    $headers = "From: " . $lastname . ' ' . $name .
       "\r\n" . "MIME-Version: 1.0" . "\r\n" .
       "Content-type: text/html; charset=utf-8";
 
@@ -123,7 +123,7 @@ if (errorMessage == true) {
 if (errorEmpty == false && errorLastName == false && errorName == false && errorEmail == false && errorPhone == false &&
   errorMessage == false) {
   $("#lastname,#name,#email,#phone,#subject,#message").val("");
-  $(".image-car").addClass("hide");
+  $(".contact-wrapper").addClass("hide");
 
   //hide message after 5 seconds
   setTimeout(function() {

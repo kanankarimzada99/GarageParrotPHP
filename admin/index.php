@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="connection-form">
           <div class="form-group">
             <label for="email">Adresse email</label>
-            <input type="text" name="email" maxlength="40" placeholder="email@example.fr" autocomplete="off"
+            <input type="text" name="email" id="email" maxlength="40" placeholder="email@example.fr" autocomplete="off"
               value=<?= htmlspecialchars($_POST['email'] ?? '') ?>>
           </div>
           <div class="form-group">

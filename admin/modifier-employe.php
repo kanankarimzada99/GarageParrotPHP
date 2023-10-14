@@ -25,12 +25,11 @@ $formEmployee = [
 $id = null;
 
 if (isset($_GET['id'])) {
-  $id = $_GET['id'];
+  $id = (int)$_GET['id'];
   $_SESSION['employee']['id'] = $id;
 
-
+  //get employe id
   $employee = getEmployeesById($pdo, $id);
-
   if ($employee === false) {
     $errors =  "<div class='alert alert-danger m-0' role='alert'>Cet employé n'existe pas</div>";
   }
@@ -38,7 +37,7 @@ if (isset($_GET['id'])) {
 
 ?>
 <!-- send message by form  -->
-<script>
+<!-- <script>
   $(document).ready(function() {
     $("form").submit(function(event) {
       event.preventDefault();
@@ -56,7 +55,7 @@ if (isset($_GET['id'])) {
       });
     })
   })
-</script>
+</script> -->
 
 <div class="wrapper">
 
@@ -73,50 +72,59 @@ if (isset($_GET['id'])) {
     <h1 class="header-titles">Modifier employé</h1>
 
     <!-- messages  -->
+    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
 
-    <div class="form-message">
-      <?= $errors; ?>
+
+    <div class="connection-wrapper">
+
+      <form method="POST" id="modifyEmploye">
+        <div class="connection-form">
+
+          <div class="form-group">
+            <label for="lastname">Nom</label>
+            <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont"
+              autocomplete="off" value="<?= htmlspecialchars($employee['lastname'] ?? ""); ?>">
+            <span class="error" id="lastname_err"> </span>
+          </div>
+          <div class="form-group">
+            <label for="name">Prénom</label>
+            <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume"
+              autocomplete="off" value=<?= htmlspecialchars($employee['name'] ?? ""); ?>>
+            <span class="error" id="name_err"> </span>
+          </div>
+          <div class="form-group">
+            <label for="email">Adresse email</label>
+            <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr"
+              autocomplete="off" value=<?= htmlspecialchars($employee['email'] ?? ""); ?>>
+            <span class="error" id="email_err"> </span>
+          </div>
+          <div class="form-group">
+            <label for="password">
+              Mot de passe<span class="red-message mx-3">* Optionnel. Si vous remplissez le mot de passe, il remplacera
+                l'ancien!</span>
+            </label>
+            <div class="input-group">
+              <input type="password" name="password" id="password" class="form-control" minlength="8" maxlength="16"
+                autocomplete="off">
+              <div class="input-group-append">
+                <span class="input-group-text" onclick="password_show_hide();">
+                  <i class="fas fa-eye" id="show_eye"></i>
+                  <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+                </span>
+              </div>
+            </div>
+
+            <span class="error" id="password_err"> </span>
+          </div>
+        </div>
+        <div class="form-btn">
+          <button type="button" id="submitbtn" class="btn-fill">Modifier</button>
+        </div>
+      </form>
     </div>
-
-    <?php if ($formEmployee !== false) { ?>
-      <div class="connection-wrapper">
-
-        <form action="modifierEmployeForm.php" method="POST">
-          <div class="connection-form">
-
-            <div class="form-group">
-              <label for="lastname">Nom</label>
-              <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont" autocomplete="off" value="<?= htmlspecialchars($employee['lastname'] ?? ""); ?>">
-            </div>
-            <div class="form-group">
-              <label for="name">Prénom</label>
-              <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume" autocomplete="off" value=<?= htmlspecialchars($employee['name'] ?? ""); ?>>
-            </div>
-            <div class="form-group">
-              <label for="email">Adresse email</label>
-              <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr" autocomplete="off" value=<?= htmlspecialchars($employee['email'] ?? ""); ?>>
-            </div>
-            <div class="form-group">
-              <label for="password">Mot de passe <span class="red-message">*</span> </label>
-              <input type="password" name="password" id="password" minlength="8" maxlength="16" autocomplete="off">
-              <p class="red-message">* Optionnel. Si vous remplissez le mot de passe, il remplacera l'ancien!</p>
-            </div>
-          </div>
-          <div class="form-btn">
-            <input type="submit" value="Modifier" id="submit" name="submit" class="btn-fill">
-          </div>
-        </form>
-      </div>
   </section>
 </div>
-<?php } else { ?>
-  <div class="not-found">
-    <!-- <h2 class="not-found-text">Employé non trouvé</h2> -->
-    <div class="go-back-page">
-      <a href="javascript:history.back(1)" class="btn-wire">Retour page précédante</a>
-    </div>
-  </div>
-<?php } ?>
+<script src="../assets/scripts/modificationEmployeForm.js"></script>
 <?php
 require_once __DIR__ . "/templates/footer-admin.php";
 ?>
