@@ -28,7 +28,7 @@ if (isset($_GET['id'])) {
 ?>
 
 <!-- send message by form  -->
-<script>
+<!-- <script>
   $(document).ready(function() {
     $("form").submit(function(event) {
       event.preventDefault();
@@ -46,7 +46,7 @@ if (isset($_GET['id'])) {
       });
     })
   })
-</script>
+</script> -->
 
 <div class="wrapper">
 
@@ -63,52 +63,47 @@ if (isset($_GET['id'])) {
     <h1 class="header-titles">Modifier avis client</h1>
 
     <!-- messages  -->
-    <div class="form-message">
-      <?= $errors; ?>
+    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
+
+    <div class="connection-wrapper">
+
+      <form method="POST" id="modifyReview">
+        <div class="connection-form">
+          <div class="form-group">
+            <label for="client">Nom client</label>
+            <input type="text" name="client" id="client" minlength="3" maxlength="50" placeholder="Dupont Jean-Charles"
+              autocomplete="off" value="<?= htmlspecialchars($review['client'] ?? $formReview['client']); ?>">
+            <span class="error" id="client_err"> </span>
+          </div>
+          <div class="form-group">
+            <label for="comment">Commentaire</label>
+            <textarea name="comment" id="comment" class="comment" cols="30" rows="5" minlength="5"
+              maxlength="300"> <?= htmlspecialchars($review['comment'] ?? $formReview['comment']); ?></textarea>
+            <span class="error" id="comment_err"> </span>
+          </div>
+
+          <div class="form-group">
+            <label for="note">Note client
+            </label>
+            <select name="note" id="note" class="form-control note">
+              <option value="">Valeur actuel: <?= htmlspecialchars($review['note'] ?? $formReview['note']); ?></option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <span class="error" id="note_err"> </span>
+          </div>
+        </div>
+        <div class="form-btn">
+          <button type="button" id="submitbtn" class="btn-fill">Modifier</button>
+        </div>
+      </form>
     </div>
-
-    <?php if ($formReview !== false) { ?>
-      <div class="connection-wrapper">
-
-        <form action="modifierAvisForm.php" method="POST">
-          <div class="connection-form">
-            <div class="form-group">
-              <label for="client">Nom client</label>
-              <input type="text" name="client" id="client" minlength="3" maxlength="50" placeholder="Dupont Jean-Charles" autocomplete="off" value="<?= htmlspecialchars($review['client'] ?? $formReview['client']); ?>">
-            </div>
-            <div class="form-group">
-              <label for="comment">Commentaire</label>
-              <textarea name="comment" id="comment" class="comment" cols="30" rows="5" minlength="5" maxlength="300"> <?= htmlspecialchars($review['comment'] ?? $formReview['comment']); ?></textarea>
-            </div>
-
-            <div class="form-group">
-              <label for="note">Note client
-              </label>
-              <select name="note" id="note" class="form-control note">
-                <option value="">Valeur actuel: <?= htmlspecialchars($review['note'] ?? $formReview['note']); ?></option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-btn">
-            <button type="submit" value="add-review" id="submit" name="submit" class="btn-fill">Modifier</button>
-          </div>
-        </form>
-      </div>
   </section>
 </div>
-<?php } else { ?>
-  <div class="not-found">
-    <!-- <h1 class="not-found-text">Employé non trouvé</h1> -->
-    <div class="go-back-page">
-      <a href="javascript:history.back(1)" class="btn-wire">Retour page précédante</a>
-    </div>
-  </div>
-<?php } ?>
+<script src="../assets/scripts/modifyReviewForm.js"></script>
 
 <?php
 require_once __DIR__ . "/templates/footer-admin.php";

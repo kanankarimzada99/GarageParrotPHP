@@ -927,6 +927,9 @@ red;
   text-align: center;
 }
 
+.inputFileButton {
+  display:none;
+}
 .inputFile {
   display:none;
 }

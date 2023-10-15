@@ -4,19 +4,32 @@ require_once __DIR__ . "/../lib/session.php";
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/reviews.php";
 
-$id = null;
 
-$id = ($_SESSION['review']['id']);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $client = htmlspecialchars($_POST['client']);
-  $comment = htmlspecialchars($_POST['comment']);
-  $note = htmlspecialchars($_POST['note']);
+
+  $id = null;
+
+  $id = ($_SESSION['review']['id']);
+
+  //for security inputs
+  function test_input($data)
+  {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+
+  $client = test_input($_POST['client']);
+  $comment = test_input($_POST['comment']);
+  $note = test_input($_POST['note']);
 
   $errorEmpty = false;
   $errorClient = false;
   $errorComment = false;
   $errorNote = false;
+
 
 
 
