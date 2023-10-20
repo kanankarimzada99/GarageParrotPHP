@@ -36,11 +36,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   //get employees
   $employees = getEmployees($pdo);
 
-
   //verify if employee or email exist on the database
   foreach ($employees as $employee) {
+
+    //verify if employee id different employe id url
     if ($employee['id'] !== $id) {
-      if ($employee['email'] == $email) {
+      //check if email already exist
+
+      if ($employee['email'] === $email) {
         echo "<div class='alert alert-danger  m-0' role='alert'>Cet mail existe déjà.</div>";
         $error = true;
       }

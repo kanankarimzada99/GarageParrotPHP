@@ -62,7 +62,7 @@ $(document).ready(function() {
   <h2 class="header-titles">Services</h2>
   <article class="cards">
     <?php foreach ($services as  $service) { ?>
-      <?php require __DIR__ . "/templates/service-part.php" ?>
+    <?php require __DIR__ . "/templates/service-part.php" ?>
     <?php }
     ?>
   </article>
@@ -74,11 +74,11 @@ $(document).ready(function() {
   <h2 class="header-titles">Nos derniers voitures d'occasion</h2>
   <article class="cards">
     <?php foreach ($cars as  $car) { ?>
-      <?php require __DIR__ . "/templates/car-part.php" ?>
+    <?php require __DIR__ . "/templates/car-part.php" ?>
     <?php }
     ?>
     <div class="more-cars">
-      <a href="voitures.php" class="btn-fill center">Voir plus</a>
+      <a href="/pages/voitures.php" class="btn-fill center">Voir plus</a>
     </div>
   </article>
 </section>
@@ -123,7 +123,7 @@ $(document).ready(function() {
     </a>
   </div>
   <div class="add-review">
-    <a href="donner-avis.php" class="btn-fill center">Donnez votre avis</a>
+    <a href="/pages/donner-avis.php" class="btn-fill center">Donnez votre avis</a>
   </div>
 </section>
 <!-- END TESTIMONIAL  -->
@@ -147,22 +147,26 @@ $(document).ready(function() {
         <div class="contact-form-left">
           <div class="form-group">
             <label for="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont" autocomplete="off">
+            <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont"
+              autocomplete="off">
             <span class="error" id="lastname_err"> </span>
           </div>
           <div class="form-group">
             <label for="name">Prénom</label>
-            <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume" autocomplete="off">
+            <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume"
+              autocomplete="off">
             <span class="error" id="name_err"> </span>
           </div>
           <div class="form-group">
             <label for="email">Adresse e-mail</label>
-            <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr" autocomplete="off">
+            <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr"
+              autocomplete="off">
             <span class="error" id="email_err"> </span>
           </div>
           <div class="form-group">
             <label for="phone">Téléphone</label>
-            <input type="text" name="phone" id="phone" minlength="9" maxlength="15" placeholder="0105456789 / +33 123456789" autocomplete="off">
+            <input type="text" name="phone" id="phone" minlength="9" maxlength="15"
+              placeholder="0105456789 / +33 123456789" autocomplete="off">
             <span class="error" id="phone_err"> </span>
           </div>
         </div>

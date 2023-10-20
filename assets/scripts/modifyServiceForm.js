@@ -30,21 +30,24 @@ $(document).ready(function () {
         processData: false,
         contentType: false,
         cache: false,
-        async: true,
+        async: false,
+        beforeSend: function () {
+          $('#submitbtn').attr('disabled', true)
+        },
 
         success: function (data) {
           $('#form-message').html(data)
         },
-        // complete: function () {
-        //   $('#addService').trigger('reset')
-        //   // hide form
-        //   $('.connection-wrapper').hide()
-        //   // hide message after 3 seconds
-        //   setTimeout(function () {
-        //     // $('.form-message').hide();
-        //     window.location = '/admin/liste-services.php'
-        //   }, 3000)
-        // },
+        complete: function () {
+          $('#addService').trigger('reset')
+          // hide form
+          $('.connection-wrapper').hide()
+          // hide message after 3 seconds
+          setTimeout(function () {
+            // $('.form-message').hide();
+            window.location = '/admin/liste-services.php'
+          }, 3000)
+        },
       })
     }
   })

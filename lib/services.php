@@ -41,7 +41,7 @@ function getServices(PDO $pdo, int $limit = null, int $page = null): array|bool
   return $result;
 }
 
-function getTotalServices(PDO $pdo):int|bool
+function getTotalServices(PDO $pdo): int|bool
 {
   $sql = "SELECT COUNT(*) as total FROM services";
   $query = $pdo->prepare($sql);
@@ -55,17 +55,15 @@ function saveService(PDO $pdo, string $service, string $description, string $ima
   if ($id === null) {
     $query = $pdo->prepare("INSERT INTO services (service, description, image)"
       . "VALUES(:service, :description, :image)");
-}
-   
-      //if id car exist UPDATE
-   else {
+  }
+  //if id car exist UPDATE
+  else {
     $query = $pdo->prepare("UPDATE `services` SET `service` = :service, "
       . "`description` = :description, "
       . "`image` = :image WHERE `id` =:id;");
 
     $query->bindValue(':id', $id, $pdo::PARAM_INT);
   }
-
   $query->bindValue(':service', $service, $pdo::PARAM_STR);
   $query->bindValue(':description', $description, $pdo::PARAM_STR);
   $query->bindValue(':image', $image, $pdo::PARAM_STR);
@@ -78,9 +76,9 @@ function deleteService(PDO $pdo, int $id): bool
   $query->bindValue(':id', $id, $pdo::PARAM_INT);
   $query->execute();
 
-  if ($query->rowCount()> 0) {
+  if ($query->rowCount() > 0) {
     return true;
-  }else {
+  } else {
     return false;
   }
 }

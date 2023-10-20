@@ -8,23 +8,22 @@
   <title>Garage V. Parrot</title>
 
   <!-- favicon  -->
-  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
   <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
 
   <!-- jquery  -->
-  <link rel="stylesheet" href="../assets/scripts/jquery-ui.min.css">
-  <script src="../assets/scripts/jquery-3.7.0.min.js"></script>
+  <link rel="stylesheet" href="/assets/scripts/jquery-ui.min.css">
+  <script src="/assets/scripts/jquery-3.7.0.min.js"></script>
 
   <!-- BOOTSTRAP  -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <!-- FONT AWESOME  -->
   <script src="https://kit.fontawesome.com/1a0b88a9d7.js" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
 <body>
@@ -32,7 +31,7 @@
     <header class="header">
       <nav class="nav">
         <a class="logo" href="/">
-          <img src="./assets/images/logo_car_title.png" alt="logo garage parrot">
+          <img src="/assets/images/logo_car_title.png" alt="logo garage parrot">
         </a>
         <!-- HAMBURGER MENU  -->
         <div class="mobile-menu">
@@ -62,7 +61,7 @@
             <a class="nav-link" aria-current="page" href="#schedules">Horaires</a>
           </li>
           <li>
-            <a href="../admin/" class="btn-wire">Connecter</a>
+            <a href="./../admin/" class="btn-wire">Connecter</a>
           </li>
         </ul>
       </nav>

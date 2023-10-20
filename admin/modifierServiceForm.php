@@ -7,24 +7,28 @@ require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/services.php";
 
-
-
-
 $id = null;
-$formService = [
-  'service' => '',
-  'description' => ''
-];
+$error = false;
+$fileName = null;
 
-
-$service = $description = '';
-
+//for security inputs
 function test_input($data)
 {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
+}
+$service = $description = '';
+
+$service = test_input(($_POST['service']));
+$description = test_input(($_POST['description']));
+$file = $_FILES['file']['name'];
+
+if (!$file) {
+  echo '<div class="alert alert-danger d-inline" role="alert">Le fichier n\'a pas été uploadé</div>';
+  $error = true;
+  exit();
 }
 
 
@@ -75,38 +79,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 
-  $imageId = null;
   //verify if a file is sent
-  if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-    $image = $_FILES['file'];
+  if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name'] != '') {
+    $sizeImage = getimagesize($_FILES['image']['tmp_name']);
+    if ($sizeImage !== false) {
 
-    // get info about image
-    $imageName = $image['name'];
-    $imageTmpPath = $image['tmp_name'];
+      //delete spaces into the name and make name file with lowercase letters
+      $fileName = slugify(basename($_FILES['image']['name']));
 
-    //delete spaces into the name and make name file with lowercase letters
-    $imageId = slugify(basename($_FILES['file']['name']));
+      //generate unique ID for a file
+      $fileName = uniqid() . '-' . $fileName;
+
+      //move file image into new location (uploads images folder)  
+
+      if (move_uploaded_file($_FILES['image']['tmp_name'], dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $fileName)) {
+
+        if (isset($_FILES['image']['name'])) {
 
 
-    // generate uniq id to the image
-    $imageId = uniqid() . '-' . $imageId;
 
-    //regex to image format
-    $fileExtensionPattern = '/\.(jpg|jpeg|png|webp)$/i';
-    if (preg_match($fileExtensionPattern, $imageId)) {
-      // move image to the uploads folder
-      $imagePath = dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $imageId;
-      move_uploaded_file($imageTmpPath, $imagePath);
-
-      echo 'Votre image ete bien envoyé';
-      $errorImage = false;
-    } else {
-      echo   "Le format d'image n'est pas valide. Seulement jpg, jpeg, png ou webp sont permit.";
-      $errorImage = true;
+          if (file_exists(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_FILES['image']['name'])) {
+            //delete old image if new one is uploaded
+            unlink(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_FILES['image']['name']);
+          } else {
+            echo '<div class="alert alert-success d-inline" role="alert">image sauvegardé avec success</div>';
+          }
+        }
+      } else {
+        echo '<div class="alert alert-danger d-inline" role="alert">Le fichier n\'a pas été uploadé</div>';
+      }
     }
-  } else {
-    echo  "<div class='alert alert-danger m-0' role='alert'>L'image est requis.</div>";
-    $errorImage = true;
   }
 
 
@@ -115,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //all data will be saved at saveEmployee function
     if (isset($imageFile)) {
-      $res = saveService($pdo, $service, $description, $imageId, $id);
+      $res = saveService($pdo, $service, $description, $fileName, $id);
     } else {
       $res = saveService($pdo, $service, $description, $_SESSION['service']['image'], $id);
     }

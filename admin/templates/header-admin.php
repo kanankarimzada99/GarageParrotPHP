@@ -1,6 +1,6 @@
 <?php
 //ob_start() function will turn output buffering on. While output buffering is active no output is sent from the script (other than headers)
-ob_start();
+// ob_start();
 require_once __DIR__ . "../../../lib/config.php";
 require_once __DIR__ . "../../../lib/session.php";
 require_once __DIR__ . "../../../lib/pdo.php";
@@ -17,9 +17,9 @@ require_once __DIR__ . "../../../lib/not-connected.php";
   <title>Garage V. Parrot</title>
 
   <!-- favicon  -->
-  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
   <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
 
   <!-- jquery  -->

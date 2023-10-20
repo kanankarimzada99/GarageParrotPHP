@@ -50,31 +50,28 @@ $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
           </tr>
           <tbody>
             <?php foreach ($cars as $car) { ?>
-            <tr>
-              <!-- <th scope="row"><?= $car["id"]; ?></th> -->
-              <td><?= $car["code"]; ?></td>
-              <td><?= $car["brand"]; ?></td>
-              <td><?= $car["model"]; ?></td>
-              <td><?= $car["year"]; ?></td>
-              <td><?= $car["price"]; ?></td>
-              <td><?= $car["kilometers"]; ?></td>
-              <td><?= $car["color"]; ?></td>
-              <td><?= $car["gearbox"]; ?></td>
-              <td><?= $car["number_doors"]; ?></td>
-              <td><?= $car["fuel"]; ?></td>
-              <td><?= $car["co"]; ?></td>
-              <!-- <td><?= $car["image"]; ?></td> -->
-              <td>
-                <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars_decode($car['image']) ?>"
-                  alt="<?= $car['brand'] ?>">
-              </td>
+              <tr>
+                <!-- <th scope="row"><?= $car["id"]; ?></th> -->
+                <td><?= $car["code"]; ?></td>
+                <td><?= $car["brand"]; ?></td>
+                <td><?= $car["model"]; ?></td>
+                <td><?= $car["year"]; ?></td>
+                <td><?= number_format($car["price"], 2, ',', ' '); ?></td>
+                <td><?= number_format($car["kilometers"], 0, ',', ' '); ?> </td>
+                <td><?= $car["color"]; ?></td>
+                <td><?= $car["gearbox"]; ?></td>
+                <td><?= $car["number_doors"]; ?></td>
+                <td><?= $car["fuel"]; ?></td>
+                <td><?= $car["co"]; ?></td>
+                <!-- <td><?= $car["image"]; ?></td> -->
+                <td>
+                  <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars_decode($car['image']) ?>" alt="<?= $car['brand'] ?>">
+                </td>
 
-              <td><a href="modifier-voiture.php?id=<?= $car['id'] ?>"><i class="fa-solid fa-pencil"></i></a>
-                | <a href="delete-voiture.php?id=<?= $car['id'] ?>"
-                  onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet employé ?')"><i
-                    class="fa-solid fa-trash-can"></i></a>
-              </td>
-            </tr>
+                <td><a href="modifier-voiture.php?id=<?= $car['id'] ?>"><i class="fa-solid fa-pencil"></i></a>
+                  | <a href="delete-voiture.php?id=<?= $car['id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet employé ?')"><i class="fa-solid fa-trash-can"></i></a>
+                </td>
+              </tr>
             <?php } ?>
           </tbody>
         </table>
@@ -82,15 +79,15 @@ $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
       <nav aria-label="Page navigation voitures">
         <ul class="pagination">
           <?php if ($totalPages > 1) { ?>
-          <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
-          <li class="page-item">
-            <a class="page-link <?php if ($i == $page) {
+            <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
+              <li class="page-item">
+                <a class="page-link <?php if ($i == $page) {
                                       echo " active";
                                     } ?>" href="?page=<?php echo $i; ?>">
-              <?php echo $i; ?>
-            </a>
-          </li>
-          <?php } ?>
+                  <?php echo $i; ?>
+                </a>
+              </li>
+            <?php } ?>
           <?php } ?>
         </ul>
       </nav>

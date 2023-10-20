@@ -136,7 +136,7 @@ function checkBrand() {
   if (brand.trim() === '') {
     $('#brand_err').html('La marque ne peut pas être vide')
     return false
-  } else if ($('#brand').val().length < 4) {
+  } else if ($('#brand').val().length < 3) {
     $('#brand_err').html('La marque est trop court.')
     return false
   } else if (!validBrand) {

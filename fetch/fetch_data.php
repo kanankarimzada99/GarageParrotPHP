@@ -1,8 +1,8 @@
 <?php
 //fetch data filter car
 
-require_once __DIR__ . "/lib/config.php";
-require_once __DIR__ . "/lib/pdo.php";
+require_once __DIR__ . "/../lib/config.php";
+require_once __DIR__ . "/../lib/pdo.php";
 
 //check if POST['action'] has value
 if (isset($_POST["action"])) {

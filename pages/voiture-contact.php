@@ -1,9 +1,9 @@
 <?php
-require_once __DIR__ . "/lib/config.php";
-require_once __DIR__ . "/lib/session.php";
-require_once __DIR__ . "/lib/pdo.php";
-require_once __DIR__ . "/lib/cars.php";
-require_once __DIR__ . "/templates/header-navigation.php";
+require_once __DIR__ . "/../lib/config.php";
+require_once __DIR__ . "/../lib/session.php";
+require_once __DIR__ . "/../lib/pdo.php";
+require_once __DIR__ . "/../lib/cars.php";
+require_once __DIR__ . "/../templates/header-navigation.php";
 
 //verify if id is on the URL
 $error = false;
@@ -60,7 +60,7 @@ $id = null;
 <div class="wrapper">
 
   <!-- BREADCRUMB  -->
-  <?php require __DIR__ . "/templates/breadcrumb-part.php" ?>
+  <?php require __DIR__ . "/../templates/breadcrumb-part.php" ?>
   <!-- END BREADCRUMB  -->
 
   <!-- CONTACT  BUY CAR-->
@@ -123,5 +123,5 @@ $id = null;
 </div>
 <script src="../assets/scripts/validationContactBuyCar.js"></script>
 <?php
-require_once __DIR__ . "/templates/footer.php";
+require_once __DIR__ . "/../templates/footer.php";
 ?>
