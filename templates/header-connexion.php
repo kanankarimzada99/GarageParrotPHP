@@ -2,8 +2,10 @@
 require_once __DIR__ . "/../lib/config.php";
 require_once __DIR__ . "/../lib/session.php";
 
+// var_dump($_SESSION);
+
 //prevent user to back to login page if is already connected
-if (!empty($_SESSION)) {
+if (!empty($_SESSION['user'])) {
 
   if ($_SESSION['user']['role'] === 'admin') {
     header('location:/admin/liste-employes.php');

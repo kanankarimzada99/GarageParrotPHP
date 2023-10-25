@@ -83,6 +83,17 @@ input::placeholder{
 
 input[type=checkbox]{
   cursor:pointer;
+  scale:.5;
+
+}
+
+td input[type=checkbox]{
+  scale:.5;
+  margin:10px 0;
+}
+
+td p{
+  margin:0;
 }
 
 textarea::-webkit-input-placeholder{
@@ -240,14 +251,21 @@ textarea {
   width: 100%;
 }
 
-.card-img-top{
-
-  object-fit: contain;
-}
+/* .card-img-top{
+  object-fit:cover;
+  height: 200px;
+  width: 200px;
+  background-color: red;
+  
+} */
 .card-img-top.height-200{
   height: 200px;
   object-fit:contain;
 }
+
+
+
+
 .card-body.height-230{
   height: 230px;
 }
@@ -1695,9 +1713,9 @@ red;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
@@ -1724,7 +1742,15 @@ red;
 
 .car-img{
   width: 100%;
+  height: 200px;
   max-width: 700px;
+}
+
+.car-img img{
+  width: 100%;
+  height: 100%;
+  object-fit:contain;
+  aspect-ratio: 16/9;
 }
 
 .car-thumbnails{
@@ -1742,8 +1768,24 @@ red;
   margin:40px 0;
 }
 
-.car-thumbnails img{
-  width: 20%;
+.thumbnails-table{
+  width: 50px;
+}
+
+.car-thumbnails-img{
+  height: 100px;
+  width: 100px;
+  filter: grayscale(100%);
+}
+.car-thumbnails-img:hover{
+  cursor:pointer;
+  filter: grayscale(0%);
+}
+
+.car-thumbnails-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .car-descriptions{
@@ -1776,19 +1818,28 @@ red;
   color:var(--primary);
 }
 
+
+
+td .table-car-img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin:auto;
+}
+
 @media screen and (min-width:768px){
   .car{
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    padding:80px 20px;
+    /* padding:80px 20px; */
   }
 
   .car-descriptions{

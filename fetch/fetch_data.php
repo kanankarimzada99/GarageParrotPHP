@@ -3,10 +3,12 @@
 
 require_once __DIR__ . "/../lib/config.php";
 require_once __DIR__ . "/../lib/pdo.php";
+require_once __DIR__ . "/../lib/cars.php";
 
 //check if POST['action'] has value
 if (isset($_POST["action"])) {
-  $query = "SELECT * FROM cars WHERE id >= 0 ";
+  $query = "SELECT * FROM cars LEFT JOIN carimages ON cars.id=carimages.product_id WHERE product_id>0 ";
+
 
   //kilometers slider
   if (isset($_POST["mininum_kilometer"], $_POST["maximum_kilometer"]) && !empty($_POST["mininum_kilometer"]) && !empty($_POST["maximum_kilometer"])) {
@@ -23,10 +25,17 @@ if (isset($_POST["action"])) {
     $query .= "AND year BETWEEN '" . $_POST["mininum_year"] . "' AND '" . $_POST['maximum_year'] . "'";
   }
 
+  $query .= " GROUP BY cars.id ORDER BY product_id DESC";
 
+  // var_dump($query);
+
+  // var_dump($query);
   $statement = $pdo->prepare($query);
   $statement->execute();
   $result = $statement->fetchAll();
+
+  //var_dump($result);
+
 
   //get number of rows in query
   $total_row = $statement->rowCount();
@@ -35,11 +44,13 @@ if (isset($_POST["action"])) {
 
   if ($total_row > 0) {
 
+
     foreach ($result as $row) {
-      if ($row['image'] === "" || $row['image'] === null) {
+      // var_dump($row);
+      if ($row['image_path'] === "" || $row['image_path'] === null) {
         $imagePath = _ASSETS_IMAGES_FOLDER_ . "no-image.svg";
       } else {
-        $imagePath = _GARAGE_IMAGES_FOLDER_ . $row['image'];
+        $imagePath = _GARAGE_IMAGES_FOLDER_ . $row['image_path'];
       }
 
       $numberPrice = number_format($row['price'], 0, ',', ' ');
@@ -59,7 +70,7 @@ if (isset($_POST["action"])) {
   </p>
   <hr>
   <p class="price">' . $numberPrice . ' €</p>
-  <a href="voiture-details.php?id=' . $row['id'] . '" class=" btn-wire large">Details</a>
+  <a href="voiture-details.php?id=' . $row['product_id'] . '" class=" btn-wire large">Details</a>
 
 </div>
 </div>

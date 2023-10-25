@@ -35,7 +35,7 @@ $(document).ready(function () {
     checkCo2()
   })
 
-  $('#image').on('change', function () {
+  $('#file').on('change', function () {
     checkImage()
   })
 
@@ -76,32 +76,20 @@ $(document).ready(function () {
       )
     } else {
       $('#form-message').html('')
-      var form = $('#addCar')[0]
+      var form = $('#modifyCar')[0]
       var data = new FormData(form)
+
       $.ajax({
         type: 'POST',
-        url: 'ajouterVoitureForm.php',
+        url: 'modifierVoitureForm.php',
         data: data,
         processData: false,
         contentType: false,
         cache: false,
-        async: false,
-        beforeSend: function () {
-          $('#submitbtn').attr('disabled', true)
-        },
+        async: true,
 
         success: function (data) {
           $('#form-message').html(data)
-        },
-        complete: function () {
-          $('#addCar').trigger('reset')
-          // hide form
-          // $('.connection-wrapper').hide()
-          // // hide message after 3 seconds
-          // setTimeout(function () {
-          //   // $('.form-message').hide();
-          //   window.location = '/admin/liste-voitures.php'
-          // }, 3000)
         },
       })
     }
@@ -336,18 +324,52 @@ function checkCo2() {
   }
 }
 
+// function checkImage() {
+//   var fileInput = $('#file')[0].files[0]
+
+//   console.log(fileInput)
+//   //image validation
+//   if (fileInput) {
+//     if (fileInput.size > 1000000) {
+//       $('#file').addClass('input-error')
+//       $('#message-error').removeClass('d-none')
+//       $('#form-message').html(
+//         '<div class="alert alert-danger d-inline" role="alert">La taille d\'image est trop grand</div>'
+//       )
+//       $('#image_err').html("L'image ne peut pas depasser 1 Mega.")
+//       $(fileInput).val('')
+//       return false
+//     }
+
+//     if (!fileInput.type.match('image/jpeg|image/jpg|image/png|image/webp')) {
+//       $('#file').addClass('input-error')
+//       $('#message-error').removeClass('d-none')
+//       $('#message-error').html("Format d'image invalide.")
+//       $('#image_err').html('Seulement jpg, jpeg, png ou webp sont accepté')
+//       $('#form-message').html(
+//         '<div class="alert alert-danger d-inline" role="alert">Format d\'image invalide.</div>'
+//       )
+//       return false
+//     } else {
+//       $('#image_err').html('')
+//       return true
+//     }
+//   } else {
+//     return true
+//   }
+// }
 function checkImage() {
-  var fileInput = $('#images')[0].files[0]
+  var fileInput = $('#file')[0].files[0]
   //image validation
   if (!fileInput) {
-    $('#images').addClass('input-error')
+    $('#file').addClass('input-error')
     $('#message-error').removeClass('d-none')
     $('#image_err').html("L'image est requis.")
     return false
   }
 
   if (fileInput.size > 1000000) {
-    $('#images').addClass('input-error')
+    $('#file').addClass('input-error')
     $('#message-error').removeClass('d-none')
     $('#form-message').html(
       '<div class="alert alert-danger d-inline" role="alert">La taille d\'image est trop grand</div>'
@@ -358,7 +380,7 @@ function checkImage() {
   }
 
   if (!fileInput.type.match('image/jpeg|image/jpg|image/png|image/webp')) {
-    $('#images').addClass('input-error')
+    $('#file').addClass('input-error')
     $('#message-error').removeClass('d-none')
     $('#message-error').html("Format d'image invalide.")
     $('#image_err').html('Seulement jpg, jpeg, png ou webp sont accepté')

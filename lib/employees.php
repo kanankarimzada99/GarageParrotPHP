@@ -27,7 +27,7 @@ function getEmployeesById(PDO $pdo, int|string $id): array|bool
 function getEmployees(PDO $pdo, int $limit = null, int $page = null, string $role = "employee"): array|bool
 {
   //order employees by id
-  $sql = "SELECT * FROM employees WHERE role=:role";
+  $sql = "SELECT * FROM employees";
   if ($limit && !$page) {
     $sql .= " LIMIT :limit";
   }
@@ -40,7 +40,6 @@ function getEmployees(PDO $pdo, int $limit = null, int $page = null, string $rol
   // bind only if $limit exist
   if ($limit) {
     $query->bindValue(":limit", $limit, PDO::PARAM_INT);
-    $query->bindValue(':role', $role, $pdo::PARAM_STR);
   }
 
   if ($page) {

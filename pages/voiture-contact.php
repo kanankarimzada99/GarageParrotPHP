@@ -11,11 +11,12 @@ if (isset($_GET['id'])) {
   $id = $_GET['id'];
 
   $car = getCarsById($pdo, $id);
+  // var_dump($id);
 
-  if ($car['image'] === "" || $car['image'] === null) {
+  if ($car['image_path'] === "" || $car['image_path'] === null) {
     $imagePath = "/assets/images/no-image.svg";
   } else {
-    $imagePath =  '/uploads/images/' . $car["image"];
+    $imagePath =  '/uploads/images/' . $car["image_path"];
   }
 
   $_SESSION['car'] = $car;

@@ -1,18 +1,45 @@
 <?php
 
+
+//GET IMAGES FROM CARIMAGES -------------------
+function getCarImagesById(PDO $pdo, int $id): array|bool
+{
+  $query = $pdo->prepare('SELECT * FROM cars INNER JOIN carimages ON cars.id=carimages.product_id WHERE product_id=:id');
+  $query->bindValue(":id", $id, PDO::PARAM_INT);
+  $query->execute();
+  $result = $query->fetchAll(PDO::FETCH_ASSOC);
+  return $result;
+}
+
+function saveCarImages(PDO $pdo, string $image_path, int $product_id): bool
+{
+  //if id car doesnt exist INSERT
+  $query = $pdo->prepare("INSERT INTO carimages (product_id, image_path)"
+    . "VALUES(:product_id, :image_path)");
+  $query->bindValue(':product_id', $product_id, $pdo::PARAM_INT);
+  $query->bindValue(':image_path', $image_path, $pdo::PARAM_STR);
+  return $query->execute();
+}
+//----------------------------
+
+
+
+//GET CARS FROM CARS
 function getCarsById(PDO $pdo, int $id): array|bool
 {
-  $query = $pdo->prepare('SELECT * FROM cars WHERE id=:id');
+  $query = $pdo->prepare('SELECT * FROM cars INNER JOIN carimages ON cars.id=carimages.product_id WHERE product_id=:id');
   $query->bindValue(":id", $id, PDO::PARAM_INT);
   $query->execute();
   $result = $query->fetch(PDO::FETCH_ASSOC);
   return $result;
 }
 
+
+
 function getCars(PDO $pdo, int $limit = null, int $page = null): array|bool
 {
   //order cars by descending order.
-  $sql = "SELECT * FROM cars ORDER BY id DESC";
+  $sql = "SELECT * FROM cars LEFT JOIN carimages ON cars.id=carimages.product_id group by cars.id ORDER BY product_id DESC";
 
   if ($limit && !$page) {
     $sql .= " LIMIT :limit";
@@ -41,6 +68,36 @@ function getCars(PDO $pdo, int $limit = null, int $page = null): array|bool
   return $result;
 }
 
+// function getCarImages(PDO $pdo, int $limit = null): array|bool
+// {
+//   //order cars by descending order.
+//   $sql = "SELECT * FROM cars INNER JOIN carimages ON cars.id=carimages.product_id";
+
+//   if ($limit) {
+//     $sql .= " LIMIT :limit";
+//   }
+//   $query = $pdo->prepare($sql);
+
+//   // bind only if $limit exist
+//   if ($limit) {
+//     $query->bindValue(":limit", $limit, PDO::PARAM_INT);
+//   }
+
+//   $query->execute();
+//   $result = $query->fetchAll(PDO::FETCH_ASSOC);
+//   return $result;
+// }
+
+function getLastCar(PDO $pdo): array|bool
+{
+  //order cars by descending order.
+  $sql = "SELECT * FROM cars ORDER BY id DESC LIMIT 1";
+  $query = $pdo->prepare($sql);
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  return $result;
+}
+
 function getTotalCars(PDO $pdo): int|bool
 {
   //return total of rows in car table
@@ -51,17 +108,17 @@ function getTotalCars(PDO $pdo): int|bool
   return $result['total'];
 }
 
-function saveCar(PDO $pdo, string $code, string $brand, string $model, int $year, int $kilometers, string $gearbox, int $number_doors, float $price, string $color, string $fuel, string $co, string $image, int $id = null): bool
+function saveCar(PDO $pdo, string $code, string $brand, string $model, int $year, int $kilometers, string $gearbox, int $number_doors, float $price, string $color, string $fuel, string $co, int $id = null): bool
 {
   //if id car doesnt exist INSERT
   if ($id === null) {
-    $query = $pdo->prepare("INSERT INTO cars (code, brand, model, year, kilometers, gearbox, number_doors, price, color, fuel, co, image)"
-      . "VALUES(:code, :brand, :model, :year, :kilometers, :gearbox, :number_doors, :price, :color, :fuel, :co, :image)");
+    $query = $pdo->prepare("INSERT INTO cars (code, brand, model, year, kilometers, gearbox, number_doors, price, color, fuel, co)"
+      . "VALUES(:code, :brand, :model, :year, :kilometers, :gearbox, :number_doors, :price, :color, :fuel, :co)");
   }
 
   //if id car exist UPDATE 
   else {
-    $query = $pdo->prepare("UPDATE `cars` SET `code`= :code, " ."`brand`= :brand, " . "`model`= :model, " . "`year`= :year," . "`kilometers`= :kilometers," . "`gearbox`= :gearbox, " . "`number_doors`= :number_doors,  " . "`price`= :price, " . "`color`= :color,  " . "`fuel`= :fuel, " . "`co`= :co, " . "`image`= :image WHERE `id`=:id;");
+    $query = $pdo->prepare("UPDATE `cars` SET `code`= :code, " . "`brand`= :brand, " . "`model`= :model, " . "`year`= :year," . "`kilometers`= :kilometers," . "`gearbox`= :gearbox, " . "`number_doors`= :number_doors,  " . "`price`= :price, " . "`color`= :color,  " . "`fuel`= :fuel, " . "`co`= :co WHERE `id`=:id;");
 
     $query->bindValue(':id', $id, $pdo::PARAM_INT);
   }
@@ -77,7 +134,6 @@ function saveCar(PDO $pdo, string $code, string $brand, string $model, int $year
   $query->bindValue(':color', $color, $pdo::PARAM_STR);
   $query->bindValue(':fuel', $fuel, $pdo::PARAM_STR);
   $query->bindValue(':co', $co, $pdo::PARAM_STR);
-  $query->bindValue(':image', $image, $pdo::PARAM_STR);
   return $query->execute();
 }
 
@@ -96,6 +152,8 @@ function deleteCar(PDO $pdo, int $id): bool
   }
 }
 
+
+//GET INFO KILOMETERS, YEARS AND PRICE TO FILTER CARS
 
 //GET min value kilometers cars
 function getCarMinKilometer(PDO $pdo): array|bool

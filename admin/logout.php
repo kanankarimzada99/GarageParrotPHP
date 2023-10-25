@@ -12,4 +12,4 @@ session_destroy();
 unset($_SESSION);
 
 //move to login page
-header('location: ../admin/admin.php');
+header('location: /admin/');

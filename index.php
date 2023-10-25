@@ -3,6 +3,7 @@ require_once __DIR__ . "/lib/config.php";
 require_once __DIR__ . "/lib/session.php";
 require_once __DIR__ . "/lib/pdo.php";
 require_once __DIR__ . "/lib/cars.php";
+require_once __DIR__ . "/lib/carImages.php";
 require_once __DIR__ . "/lib/services.php";
 require_once __DIR__ . "/lib/reviews.php";
 require_once __DIR__ . "/lib/starRating.php";
@@ -10,10 +11,15 @@ require_once __DIR__ . "/templates/header.php";
 
 // $errors = [];
 // $messages = [];
-
+// $carImages = getCarImages($pdo);
+// var_dump($carImages);
 $cars = getCars($pdo, 3);
+
+// var_dump($cars);
 $services = getServices($pdo, 6);
 $reviews = getReviews($pdo, 4);
+
+// var_dump($cars);
 ?>
 <!-- send message by form  -->
 <!-- <script>
@@ -62,7 +68,7 @@ $(document).ready(function() {
   <h2 class="header-titles">Services</h2>
   <article class="cards">
     <?php foreach ($services as  $service) { ?>
-    <?php require __DIR__ . "/templates/service-part.php" ?>
+      <?php require __DIR__ . "/templates/service-part.php" ?>
     <?php }
     ?>
   </article>
@@ -74,7 +80,7 @@ $(document).ready(function() {
   <h2 class="header-titles">Nos derniers voitures d'occasion</h2>
   <article class="cards">
     <?php foreach ($cars as  $car) { ?>
-    <?php require __DIR__ . "/templates/car-part.php" ?>
+      <?php require __DIR__ . "/templates/car-part.php" ?>
     <?php }
     ?>
     <div class="more-cars">
@@ -147,26 +153,22 @@ $(document).ready(function() {
         <div class="contact-form-left">
           <div class="form-group">
             <label for="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont"
-              autocomplete="off">
+            <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont" autocomplete="off">
             <span class="error" id="lastname_err"> </span>
           </div>
           <div class="form-group">
             <label for="name">Prénom</label>
-            <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume"
-              autocomplete="off">
+            <input type="text" name="name" id="name" minlength="3" maxlength="25" placeholder="Guillaume" autocomplete="off">
             <span class="error" id="name_err"> </span>
           </div>
           <div class="form-group">
             <label for="email">Adresse e-mail</label>
-            <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr"
-              autocomplete="off">
+            <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr" autocomplete="off">
             <span class="error" id="email_err"> </span>
           </div>
           <div class="form-group">
             <label for="phone">Téléphone</label>
-            <input type="text" name="phone" id="phone" minlength="9" maxlength="15"
-              placeholder="0105456789 / +33 123456789" autocomplete="off">
+            <input type="text" name="phone" id="phone" minlength="9" maxlength="15" placeholder="0105456789 / +33 123456789" autocomplete="off">
             <span class="error" id="phone_err"> </span>
           </div>
         </div>

@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     if (!$error) {
       if ($user['role'] === 'admin') {
-        echo "<script> window.location = '/admin/liste-voitures.php';</script>";
+        echo "<script> window.location = '/admin/liste-employes.php';</script>";
       } else if ($user['role'] === 'employee') {
         echo "<script> window.location = '/admin/liste-voitures.php';</script>";
       } else {

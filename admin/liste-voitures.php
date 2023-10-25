@@ -14,6 +14,8 @@ if (isset($_GET['page'])) {
 //get cars
 $cars = getCars($pdo, _ADMIN_ITEM_PER_PAGE_, $page);
 
+// var_dump($cars);
+
 //get total number of cars
 $totalCars = getTotalCars($pdo);
 
@@ -42,10 +44,10 @@ $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
             <th>Km</th>
             <th>Couleur</th>
             <th class="size50">Boite vitesse</th>
-            <th>Portes</th>
+            <th>Porte</th>
             <th>Carburant</th>
             <th>CO2</th>
-            <th style="width: 10%">Image</th>
+            <th style="width: 10px;">Car</th>
             <th class="size20">action</th>
           </tr>
           <tbody>
@@ -56,20 +58,19 @@ $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
                 <td><?= $car["brand"]; ?></td>
                 <td><?= $car["model"]; ?></td>
                 <td><?= $car["year"]; ?></td>
-                <td><?= number_format($car["price"], 2, ',', ' '); ?></td>
-                <td><?= number_format($car["kilometers"], 0, ',', ' '); ?> </td>
+                <td><?= number_format($car["price"], 2, ',', '.'); ?></td>
+                <td><?= number_format($car["kilometers"], 0, ',', '.'); ?> </td>
                 <td><?= $car["color"]; ?></td>
                 <td><?= $car["gearbox"]; ?></td>
                 <td><?= $car["number_doors"]; ?></td>
                 <td><?= $car["fuel"]; ?></td>
                 <td><?= $car["co"]; ?></td>
-                <!-- <td><?= $car["image"]; ?></td> -->
                 <td>
-                  <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars_decode($car['image']) ?>" alt="<?= $car['brand'] ?>">
+                  <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars_decode($car['image_path']) ?>" alt="<?= $car['brand'] ?>" style="width: 100%">
                 </td>
 
-                <td><a href="modifier-voiture.php?id=<?= $car['id'] ?>"><i class="fa-solid fa-pencil"></i></a>
-                  | <a href="delete-voiture.php?id=<?= $car['id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet employé ?')"><i class="fa-solid fa-trash-can"></i></a>
+                <td><a href="modifier-voiture.php?id=<?= $car['product_id'] ?>"><i class="fa-solid fa-pencil"></i></a>
+                  | <a href="delete-voiture.php?id=<?= $car['product_id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet employé ?')"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
               </tr>
             <?php } ?>
