@@ -5,6 +5,8 @@ require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/cars.php";
 require_once __DIR__ . "/templates/header-admin.php";
+
+
 ?>
 
 <!-- <script>
@@ -359,7 +361,7 @@ require_once __DIR__ . "/templates/header-admin.php";
                 </div>
                 <div class="form-group">
                   <label for="kilometer">Kilométrage</label>
-                  <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="092233" autocomplete="off">
+                  <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="92233" autocomplete="off">
                   <span class="error" id="kilometer_err"></span>
                 </div>
                 <div class="form-group">
@@ -397,7 +399,7 @@ require_once __DIR__ . "/templates/header-admin.php";
                   <span class="error" id="co2_err"></span>
                 </div>
                 <div class="form-group">
-                  <label for="images">Product Images:</label>
+                  <label for="images">Voiture images:</label>
                   <input type="file" name="images[]" id="images" multiple accept=".jpeg, .jpg, .png, .webp" required>
                   <span class="error" id="image_err"> </span>
                 </div>

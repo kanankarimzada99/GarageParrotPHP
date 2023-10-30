@@ -39,17 +39,17 @@
 //   return $query->execute();
 // }
 
-//delete car
-function deleteCarImage(PDO $pdo, int $id): bool
-{
-  $query = $pdo->prepare('DELETE FROM carimages WHERE id = :id');
-  $query->bindValue(':id', $id, $pdo::PARAM_INT);
-  $query->execute();
+// //delete car
+// function deleteCarImage(PDO $pdo, int $id): bool
+// {
+//   $query = $pdo->prepare('DELETE FROM carimages WHERE id = :id');
+//   $query->bindValue(':id', $id, $pdo::PARAM_INT);
+//   $query->execute();
 
-  //Returns the number of rows affected by the SQL statement 
-  if ($query->rowCount() > 0) {
-    return true;
-  } else {
-    return false;
-  }
-}
+//   //Returns the number of rows affected by the SQL statement 
+//   if ($query->rowCount() > 0) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }

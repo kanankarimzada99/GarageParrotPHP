@@ -20,6 +20,22 @@ function saveCarImages(PDO $pdo, string $image_path, int $product_id): bool
   $query->bindValue(':image_path', $image_path, $pdo::PARAM_STR);
   return $query->execute();
 }
+
+//delete car
+function deleteCarImage(PDO $pdo, int $id): bool
+{
+  $query = $pdo->prepare('DELETE FROM carimages WHERE id = :id');
+  $query->bindValue(':id', $id, $pdo::PARAM_INT);
+  $query->execute();
+
+  //Returns the number of rows affected by the SQL statement 
+  if ($query->rowCount() > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 //----------------------------
 
 
@@ -27,7 +43,7 @@ function saveCarImages(PDO $pdo, string $image_path, int $product_id): bool
 //GET CARS FROM CARS
 function getCarsById(PDO $pdo, int $id): array|bool
 {
-  $query = $pdo->prepare('SELECT * FROM cars INNER JOIN carimages ON cars.id=carimages.product_id WHERE product_id=:id');
+  $query = $pdo->prepare('SELECT cars.id AS carId, cars.code, cars.brand, cars.model, cars.year, cars.price, cars.kilometers, cars.color, cars.gearbox, cars.number_doors, cars.fuel, cars.co, carimages.id, carimages.product_id, carimages.image_path FROM cars LEFT JOIN carimages ON cars.id=carimages.product_id WHERE cars.id=:id');
   $query->bindValue(":id", $id, PDO::PARAM_INT);
   $query->execute();
   $result = $query->fetch(PDO::FETCH_ASSOC);
@@ -39,7 +55,7 @@ function getCarsById(PDO $pdo, int $id): array|bool
 function getCars(PDO $pdo, int $limit = null, int $page = null): array|bool
 {
   //order cars by descending order.
-  $sql = "SELECT * FROM cars LEFT JOIN carimages ON cars.id=carimages.product_id group by cars.id ORDER BY product_id DESC";
+  $sql = " SELECT cars.id AS carId, cars.code, cars.brand, cars.model, cars.year, cars.price, cars.kilometers, cars.color, cars.gearbox, cars.number_doors, cars.fuel, cars.co, carimages.id, carimages.product_id, carimages.image_path FROM cars LEFT JOIN carimages ON cars.id=carimages.product_id GROUP BY cars.id ORDER BY product_id DESC";
 
   if ($limit && !$page) {
     $sql .= " LIMIT :limit";

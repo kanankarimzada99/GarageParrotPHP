@@ -11,8 +11,7 @@ if ($car['image_path'] === "" || $car['image_path'] === null) {
 
 <div class="card">
   <div class="card-header">
-    <img class="card-img-top height-200" src="<?= $imagePath; ?>"
-      alt="<?= $car['brand'] . " " . $car['model'] . " " . $car['year']; ?>">
+    <img class="card-img-top height-200" src="<?= $imagePath; ?>" alt="<?= $car['brand'] . " " . $car['model'] . " " . $car['year']; ?>">
   </div>
   <div class="card-body ">
     <h4 class="card-title"><?= $car['brand']; ?></h4>
@@ -24,6 +23,6 @@ if ($car['image_path'] === "" || $car['image_path'] === null) {
     <hr>
     <!-- number format 2 000,00 €  -->
     <p class="price"><?= number_format($car['price'], 2, ',', ' '); ?> €</p>
-    <a href="/pages/voiture-details.php?id=<?= $car['product_id']; ?>" class=" btn-wire large">Details</a>
+    <a href="/pages/voiture-details.php?id=<?= $car['carId']; ?>" class=" btn-wire large">Details</a>
   </div>
 </div>

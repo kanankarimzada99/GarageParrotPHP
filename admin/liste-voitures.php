@@ -4,7 +4,7 @@ require_once __DIR__ . "/../lib/session.php";
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/cars.php";
 require_once __DIR__ . "/templates/header-admin.php";
-
+$id = null;
 if (isset($_GET['page'])) {
   $page = (int)$_GET['page'];
 } else {
@@ -13,6 +13,7 @@ if (isset($_GET['page'])) {
 
 //get cars
 $cars = getCars($pdo, _ADMIN_ITEM_PER_PAGE_, $page);
+// var_dump($cars);
 
 // var_dump($cars);
 
@@ -52,6 +53,7 @@ $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
           </tr>
           <tbody>
             <?php foreach ($cars as $car) { ?>
+              <!-- <?php var_dump($car) ?> -->
               <tr>
                 <!-- <th scope="row"><?= $car["id"]; ?></th> -->
                 <td><?= $car["code"]; ?></td>
@@ -66,12 +68,16 @@ $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
                 <td><?= $car["fuel"]; ?></td>
                 <td><?= $car["co"]; ?></td>
                 <td>
-                  <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars_decode($car['image_path']) ?>" alt="<?= $car['brand'] ?>" style="width: 100%">
-                </td>
+                  <?php if ($car['image_path'] == null) : ?>
+                    <p>pas d'image</p>
 
-                <td><a href="modifier-voiture.php?id=<?= $car['product_id'] ?>"><i class="fa-solid fa-pencil"></i></a>
-                  | <a href="delete-voiture.php?id=<?= $car['product_id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet employé ?')"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
+              <?php else : ?>
+                <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars_decode($car['image_path']) ?>" alt="<?= $car['brand'] ?>" class="w-100 h-100">
+              <?php endif ?>
+              <td><a href="modifier-voiture.php?id=<?= $car['carId'] ?>"><i class="fa-solid fa-pencil"></i></a>
+                | <a href="delete-voiture.php?id=<?= $car['carId']  ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette voiture ?')"><i class="fa-solid fa-trash-can"></i></a>
+              </td>
               </tr>
             <?php } ?>
           </tbody>

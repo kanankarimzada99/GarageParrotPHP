@@ -82,18 +82,87 @@ input::placeholder{
 }
 
 input[type=checkbox]{
-  cursor:pointer;
-  scale:.5;
+  width: 10px;
+  height: 10px;
 
 }
 
-td input[type=checkbox]{
-  scale:.5;
+input[type=checkbox]{
+  width: 20px;
+  height: 20px;
   margin:10px 0;
 }
 
 td p{
   margin:0;
+}
+
+.table-cars{
+  display:flex;
+  align-items: flex-start;
+  justify-content:flex-start;
+  overflow-x:auto;
+  width: 100%;
+  margin-bottom:30px;
+  /* height: 180px; */
+}
+
+.table-car{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 200px;
+  /* width: 200px; */
+  /* width: 700px; */
+ 
+  /* min-width: 200px; */
+  border:2px solid var(--grayLight);
+}
+
+.table-car-delete{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-direction: column;
+  height: 200px;
+  border-radius: solid red 2px;
+  /* background-color: red; */
+}
+
+.table-car-delete p{
+  margin:0;
+  padding:0;
+}
+
+.checkbox-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.table-car-img{
+  height: 100%;
+  padding:10px;
+}
+.table-car-img img{
+  height: 100%;
+  width: 100px;
+  object-fit:cover;
+  /* aspect-ratio: 16/9; */
+  /* margin-bottom:20px; */
+}
+
+.table-car input[type=checkbox]{
+  width: 20px;
+  height: 20px;
+  margin:10px 0;
+}
+
+.connection-table .table td,
+.connection-table .table th{
+  padding:0 10px;
 }
 
 textarea::-webkit-input-placeholder{
@@ -1776,10 +1845,14 @@ red;
   height: 100px;
   width: 100px;
   filter: grayscale(100%);
+  opacity: 0.3;
+  filter:contrast(100%);
 }
 .car-thumbnails-img:hover{
   cursor:pointer;
   filter: grayscale(0%);
+  filter:contrast(100%);
+  opacity:1;
 }
 
 .car-thumbnails-img img{
@@ -1820,12 +1893,7 @@ red;
 
 
 
-td .table-car-img{
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  margin:auto;
-}
+
 
 @media screen and (min-width:768px){
   .car{

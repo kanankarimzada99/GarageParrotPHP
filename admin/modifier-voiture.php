@@ -4,6 +4,7 @@ require_once __DIR__ . "/../lib/session.php";
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/cars.php";
+require_once __DIR__ . "/../lib/carImages.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
 
@@ -35,7 +36,14 @@ if (isset($_GET['id'])) {
 
   $car = getCarsById($pdo, $id);
 
+
   $_SESSION['car'] = $car;
+  $carImages = getCarImagesById($pdo, $id);
+
+
+
+  // var_dump($_SESSION['car']);
+
 
   if ($car === false) {
     $errors[] = "Cette voiture n'existe pas";
@@ -236,17 +244,7 @@ if (isset($_GET['id'])) {
     <h1 class="header-titles">Modifier voiture</h1>
 
     <!-- messages  -->
-    <?php foreach ($messages as $message) { ?>
-    <div class="alert alert-success m-0" role="alert">
-      <?= $message; ?>
-    </div>
-    <?php } ?>
-
-    <?php foreach ($errors as $error) { ?>
-    <div class="alert alert-danger m-0" role="alert">
-      <?= $error; ?>
-    </div>
-    <?php } ?>
+    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
 
     <?php if ($formCar !== false) { ?>
 
@@ -293,7 +291,7 @@ if (isset($_GET['id'])) {
               </div>
               <div class="form-group">
                 <label for="kilometer">Kilométrage</label>
-                <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="092233"
+                <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="92233"
                   autocomplete="off"
                   value="<?= htmlspecialchars_decode($car['kilometers'] ?? $formCar['kilometer'], ENT_NOQUOTES); ?>">
                 <span class="error" id="kilometer_err"></span>
@@ -345,7 +343,7 @@ if (isset($_GET['id'])) {
               </div>
               <div class="form-group d-flex justify-content-start">
 
-                <div class="d-flex w-100">
+                <div class="d-flex align-items-center w-100">
                   <input type="checkbox" id="imgCar" name="imgCar" value="0" class="col-2">
                   <label for="imgCar">Ajouter image?</label>
                 </div>
@@ -358,9 +356,41 @@ if (isset($_GET['id'])) {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
-        <div class="form-btn">
+
+        <?php if (count($carImages)) { ?>
+
+        <!-- car thumbnails  -->
+        <div class="table-cars">
+          <div class="table-car-delete">
+            <div class="checkbox-delete">
+              <p class="text-center">Selectionnez tout</p>
+              <input type="checkbox" id="checkAll">
+            </div>
+
+            <div class="button-delete">
+              <button type="button" class="btn btn-wire" id="delete">Supprimer selection</button>
+            </div>
+
+          </div>
+          <?php foreach ($carImages as $car) { ?>
+          <div class="table-car">
+            <!-- <p>Delete</p> -->
+            <input type="checkbox" class="checkboxCars" id="<?php echo $car['id'] ?>" name="id[]">
+            <div class="table-car-img">
+              <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars_decode($car['image_path']) ?>"
+                alt="<?= $car['brand'] ?>" loading="lazy">
+            </div>
+
+          </div>
+          <?php } ?>
+        </div>
+
+        <?php } ?>
+
+        <div class="form-btn mt-2">
           <button type="button" id="submitbtn" class="btn-fill">Modifier</button>
         </div>
       </form>
@@ -380,6 +410,63 @@ if (isset($_GET['id'])) {
 require_once __DIR__ . "/templates/footer-admin.php";
 
 ?>
+
+<script>
+$(document).ready(function() {
+  $('#checkAll').click(function() {
+    if (this.checked) {
+      $('.checkboxCars').each(function() {
+        this.checked = true
+      })
+    } else {
+      $('.checkboxCars').each(function() {
+        this.checked = false
+      })
+    }
+  })
+
+  $('#delete').click(function() {
+    var dataArr = new Array()
+    if ($('.checkboxCars:checked').length > 0) {
+      $('.checkboxCars:checked').each(function() {
+        dataArr.push($(this).attr('id'))
+        $(this).closest('div').remove()
+        // $(this).closest('th').remove()
+      })
+      sendResponse(dataArr)
+      // console.log(dataArr)
+
+    } else {
+      alert('Aucune image selectionné')
+    }
+  })
+
+  function sendResponse(dataArr) {
+    $.ajax({
+      type: 'post',
+      url: 'deleteCars.php',
+      data: {
+        'data': dataArr
+      },
+      success: function(response) {
+        alert(response)
+        if ($('.table-car').length == 0) {
+          $('.table-cars').hide()
+        } else {
+          $('.table-cars').show()
+        }
+
+      },
+      error: function(errResponse) {
+        alert(errResponse)
+      }
+    })
+
+  }
+})
+</script>
+
+
 <script src="../assets/scripts/modifyCarForm.js"></script>
 <script>
 let changeImg = document.getElementById("imgCar");
