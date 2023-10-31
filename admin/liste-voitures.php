@@ -48,7 +48,7 @@ $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
             <th>Porte</th>
             <th>Carburant</th>
             <th>CO2</th>
-            <th style="width: 10px;">Car</th>
+            <th style="width: 10px;">Image</th>
             <th class="size20">action</th>
           </tr>
           <tbody>
@@ -70,14 +70,14 @@ $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
                 <td>
                   <?php if ($car['image_path'] == null) : ?>
                     <p>pas d'image</p>
-
+                  <?php else : ?>
+                    <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars_decode($car['image_path']) ?>" alt="<?= $car['brand'] ?>" class="w-100 h-100">
+                  <?php endif ?>
                 </td>
-              <?php else : ?>
-                <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars_decode($car['image_path']) ?>" alt="<?= $car['brand'] ?>" class="w-100 h-100">
-              <?php endif ?>
-              <td><a href="modifier-voiture.php?id=<?= $car['carId'] ?>"><i class="fa-solid fa-pencil"></i></a>
-                | <a href="delete-voiture.php?id=<?= $car['carId']  ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette voiture ?')"><i class="fa-solid fa-trash-can"></i></a>
-              </td>
+
+                <td><a href="modifier-voiture.php?id=<?= $car['carId'] ?>"><i class="fa-solid fa-pencil"></i></a>
+                  | <a href="delete-voiture.php?id=<?= $car['carId']  ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette voiture ?')"><i class="fa-solid fa-trash-can"></i></a>
+                </td>
               </tr>
             <?php } ?>
           </tbody>

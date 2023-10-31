@@ -105,42 +105,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <script>
-$("#lastname, #name, #email, #password").removeClass("input-error");
+  $("#lastname, #name, #email, #password").removeClass("input-error");
 
-//get variable php inside js
-var errorEmpty = "<?php echo $errorEmpty; ?>";
-var errorLastName = "<?php echo $errorLastName; ?>";
-var errorName = "<?php echo $errorName; ?>";
-var errorEmail = "<?php echo $errorEmail; ?>";
-var errorPassword = "<?php echo $errorPassword; ?>";
-var error = "<?php echo $error; ?>";
+  //get variable php inside js
+  var errorEmpty = "<?php echo $errorEmpty; ?>";
+  var errorLastName = "<?php echo $errorLastName; ?>";
+  var errorName = "<?php echo $errorName; ?>";
+  var errorEmail = "<?php echo $errorEmail; ?>";
+  var errorPassword = "<?php echo $errorPassword; ?>";
+  var error = "<?php echo $error; ?>";
 
-if (errorEmpty == true) {
-  $("#lastname, #name, #email").addClass("input-error");
-}
-if (errorLastName == true) {
-  $("#lastname").addClass("input-error");
-}
-if (errorName == true) {
-  $("#name").addClass("input-error");
-}
-if (errorEmail == true) {
-  $("#email").addClass("input-error");
-}
-if (errorPassword == true) {
-  $("#password").addClass("input-error");
-}
+  if (errorEmpty == true) {
+    $("#lastname, #name, #email").addClass("input-error");
+  }
+  if (errorLastName == true) {
+    $("#lastname").addClass("input-error");
+  }
+  if (errorName == true) {
+    $("#name").addClass("input-error");
+  }
+  if (errorEmail == true) {
+    $("#email").addClass("input-error");
+  }
+  if (errorPassword == true) {
+    $("#password").addClass("input-error");
+  }
 
-if (errorEmpty == false && error == false && errorLastName == false && errorName == false && errorEmail == false &&
-  errorPassword ==
-  false) {
-  $("#lastname, #name, #email, #password").val("");
+  if (errorEmpty == false && error == false && errorLastName == false && errorName == false && errorEmail == false &&
+    errorPassword ==
+    false) {
+    $("#lastname, #name, #email, #password").val("");
 
-  $(".connection-wrapper").hide();
-  //hide message after 4 seconds
-  setTimeout(function() {
-    window.location = '/admin/liste-employes.php';
+    $(".connection-wrapper").hide();
+    //hide message after 3 seconds
+    setTimeout(function() {
+      window.location = '/admin/liste-employes.php';
 
-  }, 4000); // <-- time in milliseconds
-}
+    }, 3000); // <-- time in milliseconds
+  }
 </script>

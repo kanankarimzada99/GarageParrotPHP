@@ -333,7 +333,8 @@ require_once __DIR__ . "/templates/header-admin.php";
             <div class="car-model-bottom">
               <div class="form-group">
                 <label for="code">Code</label>
-                <input type="text" name="code" id="code" minlength="6" maxlength="6" placeholder="BMW033" autocomplete="off">
+                <input type="text" name="code" id="code" minlength="6" maxlength="6" placeholder="BMW033"
+                  autocomplete="off">
                 <span class="error" id="code_err"></span>
               </div>
               <div class="car-model-bottom">
@@ -344,7 +345,8 @@ require_once __DIR__ . "/templates/header-admin.php";
                 </div>
                 <div class="form-group">
                   <label for="model">Modèle</label>
-                  <input type="text" name="model" id="model" minlength="3" maxlength="15" placeholder="Max 5" autocomplete="off">
+                  <input type="text" name="model" id="model" minlength="3" maxlength="15" placeholder="Max 5"
+                    autocomplete="off">
                   <span class="error" id="model_err"></span>
                 </div>
               </div>
@@ -355,23 +357,27 @@ require_once __DIR__ . "/templates/header-admin.php";
               <div class="car-description-left">
                 <div class="form-group">
                   <label for="year">Année</label>
-                  <input type="text" name="year" id="year" minlength="4" maxlength="4" placeholder="2002" autocomplete="off">
+                  <input type="text" name="year" id="year" minlength="4" maxlength="4" placeholder="2002"
+                    autocomplete="off">
                   <span class="error" id="year_err"></span>
 
                 </div>
                 <div class="form-group">
                   <label for="kilometer">Kilométrage</label>
-                  <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="92233" autocomplete="off">
+                  <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="92233"
+                    autocomplete="off">
                   <span class="error" id="kilometer_err"></span>
                 </div>
                 <div class="form-group">
                   <label for="gearbox">Boîte de vitesses</label>
-                  <input type="text" name="gearbox" id="gearbox" minlength="6" maxlength="12" placeholder="manuelle" autocomplete="off">
+                  <input type="text" name="gearbox" id="gearbox" minlength="6" maxlength="12" placeholder="manuelle"
+                    autocomplete="off">
                   <span class="error" id="gearbox_err"></span>
                 </div>
                 <div class="form-group">
                   <label for="doors">Numéro de portes</label>
-                  <input type="text" name="doors" id="doors" minlength="1" maxlength="1" placeholder="2" autocomplete="off">
+                  <input type="text" name="doors" id="doors" minlength="1" maxlength="1" placeholder="2"
+                    autocomplete="off">
                   <span class="error" id="doors_err"></span>
                 </div>
               </div>
@@ -380,26 +386,30 @@ require_once __DIR__ . "/templates/header-admin.php";
               <div class="car-description-right">
                 <div class="form-group">
                   <label for="price">Prix</label>
-                  <input type="text" name="price" id="price" minlength="4" maxlength="6" placeholder="12768" autocomplete="off">
+                  <input type="text" name="price" id="price" minlength="4" maxlength="6" placeholder="12768"
+                    autocomplete="off">
                   <span class="error" id="price_err"></span>
                 </div>
                 <div class="form-group">
                   <label for="color">Couleur</label>
-                  <input type="text" name="color" id="color" minlength="5" maxlength="10" placeholder="rouge" autocomplete="off">
+                  <input type="text" name="color" id="color" minlength="5" maxlength="10" placeholder="rouge"
+                    autocomplete="off">
                   <span class="error" id="color_err"></span>
                 </div>
                 <div class="form-group">
                   <label for="fuel">Carburant</label>
-                  <input type="text" name="fuel" id="fuel" minlength="5" maxlength="12" placeholder="életrique" autocomplete="off">
+                  <input type="text" name="fuel" id="fuel" minlength="5" maxlength="12" placeholder="életrique"
+                    autocomplete="off">
                   <span class="error" id="fuel_err"></span>
                 </div>
                 <div class="form-group">
                   <label for="co2">CO2</label>
-                  <input type="text" name="co2" id="co2" minlength="1" maxlength="3" placeholder="123" autocomplete="off">
+                  <input type="text" name="co2" id="co2" minlength="1" maxlength="3" placeholder="123"
+                    autocomplete="off">
                   <span class="error" id="co2_err"></span>
                 </div>
                 <div class="form-group">
-                  <label for="images">Voiture images:</label>
+                  <label for="images">Choisissez image(s):</label>
                   <input type="file" name="images[]" id="images" multiple accept=".jpeg, .jpg, .png, .webp" required>
                   <span class="error" id="image_err"> </span>
                 </div>

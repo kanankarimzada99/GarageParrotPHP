@@ -88,46 +88,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <script>
-$("#lastname, #name, #email, #phone,  #message").removeClass("input-error");
+  $("#lastname, #name, #email, #phone,  #message").removeClass("input-error");
 
 
-//get variable php inside js
-var errorEmpty = "<?php echo $errorEmpty; ?>";
-var errorLastName = "<?php echo $errorLastname; ?>";
-var errorName = "<?php echo $errorName; ?>";
-var errorEmail = "<?php echo $errorEmail; ?>";
-var errorPhone = "<?php echo $errorPhone; ?>";
-var errorMessage = "<?php echo $errorMessage; ?>";
+  //get variable php inside js
+  var errorEmpty = "<?php echo $errorEmpty; ?>";
+  var errorLastName = "<?php echo $errorLastname; ?>";
+  var errorName = "<?php echo $errorName; ?>";
+  var errorEmail = "<?php echo $errorEmail; ?>";
+  var errorPhone = "<?php echo $errorPhone; ?>";
+  var errorMessage = "<?php echo $errorMessage; ?>";
 
-if (errorEmpty == true) {
-  $("#lastname, #name, #email, #phone,  #message").addClass("input-error");
-}
-if (errorLastName == true) {
-  $("#lastname").addClass("input-error");
-}
-if (errorName == true) {
-  $("#name").addClass("input-error");
-}
-if (errorEmail == true) {
-  $("#email").addClass("input-error");
-}
-if (errorPhone == true) {
-  $("#phone").addClass("input-error");
-}
+  if (errorEmpty == true) {
+    $("#lastname, #name, #email, #phone,  #message").addClass("input-error");
+  }
+  if (errorLastName == true) {
+    $("#lastname").addClass("input-error");
+  }
+  if (errorName == true) {
+    $("#name").addClass("input-error");
+  }
+  if (errorEmail == true) {
+    $("#email").addClass("input-error");
+  }
+  if (errorPhone == true) {
+    $("#phone").addClass("input-error");
+  }
 
-if (errorMessage == true) {
-  $("#message").addClass("input-error");
-}
+  if (errorMessage == true) {
+    $("#message").addClass("input-error");
+  }
 
 
-if (errorEmpty == false && errorLastName == false && errorName == false && errorEmail == false && errorPhone == false &&
-  errorMessage == false) {
-  $("#lastname,#name,#email,#phone,#subject,#message").val("");
-  $(".contact-wrapper").addClass("hide");
+  if (errorEmpty == false && errorLastName == false && errorName == false && errorEmail == false && errorPhone == false &&
+    errorMessage == false) {
+    $("#lastname,#name,#email,#phone,#subject,#message").val("");
+    $(".contact-wrapper").addClass("hide");
 
-  //hide message after 5 seconds
-  setTimeout(function() {
-    window.location = '/';
-  }, 5000); // <-- time in milliseconds
-}
+    //hide message after 4 seconds
+    setTimeout(function() {
+      window.location = '/';
+    }, 4000); // <-- time in milliseconds
+  }
 </script>

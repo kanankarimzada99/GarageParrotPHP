@@ -32,7 +32,7 @@ $totalPages = ceil($totalreviews / _ADMIN_ITEM_PER_PAGE_);
       <div class="connection-table">
         <table>
           <tr>
-            <th>Nom du client</th>
+            <th>Client</th>
             <th class="w-75">Commentaire</th>
             <th>Note</th>
             <th class="size100">action</th>

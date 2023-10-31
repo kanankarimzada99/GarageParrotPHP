@@ -135,9 +135,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     errorSubject == false && errorMessage == false) {
     $("#lastname,#name,#email,#phone,#subject,#message").val("");
 
-    //hide message after 4 seconds
+    //hide message after 3 seconds
     setTimeout(function() {
       $('#form-message .alert').hide();
-    }, 4000); // <-- time in milliseconds
+    }, 3000); // <-- time in milliseconds
   }
 </script>

@@ -93,9 +93,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $("#client, #comment, #note").val("");
 
     $(".connection-wrapper").hide();
-    // hide message after 4 seconds
+    // hide message after 3 seconds
     setTimeout(function() {
       window.location = '/admin/liste-avis.php';
-    }, 4000); // <-- time in milliseconds
+    }, 3000); // <-- time in milliseconds
   }
 </script>

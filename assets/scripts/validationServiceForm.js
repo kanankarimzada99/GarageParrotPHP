@@ -51,7 +51,8 @@ $(document).ready(function () {
 })
 
 function checkService() {
-  var patternService = /^[a-zA-ZÀ-ÿ\sp{P}0-9_.-]{15,30}$/
+  var patternService = /^[a-zA-ZÀ-ÿ0-9\s\'\.\?\!\,\-]{15,30}$/
+
   var service = $('#service').val()
   var validUser = patternService.test(service)
   if (service.trim() === '') {
@@ -71,7 +72,7 @@ function checkService() {
   }
 }
 function checkDescription() {
-  var patternDescription = /^[a-zA-ZÀ-ÿ\sp{P}0-9_.-]{50,150}$/
+  var patternDescription = /^[a-zA-ZÀ-ÿ0-9\s\'\.\?\!\,\-]{50,150}$/
   var description = $('#description').val()
   var validateDescription = patternDescription.test(description)
   if (description.trim() == '') {
@@ -96,6 +97,9 @@ function checkImage() {
     $('#message-error').removeClass('d-none')
     $('#image_err').html("L'image est requis.")
     return false
+  } else {
+    $('#image').removeClass('input-error')
+    $('#message-error').addClass('d-none')
   }
 
   if (fileInput.size > 1000000) {

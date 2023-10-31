@@ -206,78 +206,78 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 <script>
-$("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2").removeClass(
-  "input-error");
+  $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2").removeClass(
+    "input-error");
 
-//get variable php inside js
-var errorEmpty = "<?php echo $errorEmpty; ?>";
-var errorCode = "<?php echo $errorCode; ?>";
-var errorBrand = "<?php echo $errorBrand; ?>";
-var errorModel = "<?php echo $errorModel; ?>";
-var errorYear = "<?php echo $errorYear; ?>";
-var errorPrice = "<?php echo $errorPrice; ?>";
-var errorKilometers = "<?php echo $errorKilometers; ?>";
-var errorColor = "<?php echo $errorColor; ?>";
-var errorGearbox = "<?php echo $errorGearbox; ?>";
-var errorDoors = "<?php echo $errorDoors; ?>";
-var errorFuel = "<?php echo $errorFuel; ?>";
-var errorCO2 = "<?php echo $errorCO2; ?>";
-var errorImage = "<?php echo $errorImage; ?>";
-
-
-if (errorEmpty == true) {
-  $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2").addClass("input-error");
-}
-if (errorCode == true) {
-  $("#code").addClass("input-error");
-}
-if (errorBrand == true) {
-  $("#brand").addClass("input-error");
-}
-if (errorModel == true) {
-  $("#model").addClass("input-error");
-}
-if (errorYear == true) {
-  $("#year").addClass("input-error");
-}
-if (errorPrice == true) {
-  $("#price").addClass("input-error");
-}
-if (errorKilometers == true) {
-  $("#kilometer").addClass("input-error");
-}
-if (errorColor == true) {
-  $("#color").addClass("input-error");
-}
-if (errorGearbox == true) {
-  $("#gearbox").addClass("input-error");
-}
-if (errorDoors == true) {
-  $("#doors").addClass("input-error");
-}
-if (errorFuel == true) {
-  $("#fuel").addClass("input-error");
-}
-if (errorCO2 == true) {
-  $("#co2").addClass("input-error");
-}
-if (errorImage == true) {
-  $("#file").addClass("input-error");
-}
+  //get variable php inside js
+  var errorEmpty = "<?php echo $errorEmpty; ?>";
+  var errorCode = "<?php echo $errorCode; ?>";
+  var errorBrand = "<?php echo $errorBrand; ?>";
+  var errorModel = "<?php echo $errorModel; ?>";
+  var errorYear = "<?php echo $errorYear; ?>";
+  var errorPrice = "<?php echo $errorPrice; ?>";
+  var errorKilometers = "<?php echo $errorKilometers; ?>";
+  var errorColor = "<?php echo $errorColor; ?>";
+  var errorGearbox = "<?php echo $errorGearbox; ?>";
+  var errorDoors = "<?php echo $errorDoors; ?>";
+  var errorFuel = "<?php echo $errorFuel; ?>";
+  var errorCO2 = "<?php echo $errorCO2; ?>";
+  var errorImage = "<?php echo $errorImage; ?>";
 
 
+  if (errorEmpty == true) {
+    $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2").addClass("input-error");
+  }
+  if (errorCode == true) {
+    $("#code").addClass("input-error");
+  }
+  if (errorBrand == true) {
+    $("#brand").addClass("input-error");
+  }
+  if (errorModel == true) {
+    $("#model").addClass("input-error");
+  }
+  if (errorYear == true) {
+    $("#year").addClass("input-error");
+  }
+  if (errorPrice == true) {
+    $("#price").addClass("input-error");
+  }
+  if (errorKilometers == true) {
+    $("#kilometer").addClass("input-error");
+  }
+  if (errorColor == true) {
+    $("#color").addClass("input-error");
+  }
+  if (errorGearbox == true) {
+    $("#gearbox").addClass("input-error");
+  }
+  if (errorDoors == true) {
+    $("#doors").addClass("input-error");
+  }
+  if (errorFuel == true) {
+    $("#fuel").addClass("input-error");
+  }
+  if (errorCO2 == true) {
+    $("#co2").addClass("input-error");
+  }
+  if (errorImage == true) {
+    $("#file").addClass("input-error");
+  }
 
-if (errorEmpty == false && errorCode == false && errorBrand == false && errorModel == false && errorYear == false &&
-  errorPrice == false && errorKilometers == false && errorColor == false && errorGearbox == false && errorDoors ==
-  false && errorFuel == false && errorCO2 == false && errorImage == false) {
-  $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2, #file").val("");
 
-  $(".connection-wrapper").hide();
-  //hide message after 4 seconds
-  setTimeout(function() {
-    // $('.form-message').hide();
-    window.location = '/admin/liste-voitures.php';
 
-  }, 4000); // <-- time in milliseconds
-}
+  if (errorEmpty == false && errorCode == false && errorBrand == false && errorModel == false && errorYear == false &&
+    errorPrice == false && errorKilometers == false && errorColor == false && errorGearbox == false && errorDoors ==
+    false && errorFuel == false && errorCO2 == false && errorImage == false) {
+    $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2, #file").val("");
+
+    $(".connection-wrapper").hide();
+    //hide message after 4 seconds
+    setTimeout(function() {
+      // $('.form-message').hide();
+      window.location = '/admin/liste-voitures.php';
+
+    }, 3500); // <-- time in milliseconds
+  }
 </script>

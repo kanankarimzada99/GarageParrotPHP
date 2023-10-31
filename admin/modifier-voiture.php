@@ -248,162 +248,140 @@ if (isset($_GET['id'])) {
 
     <?php if ($formCar !== false) { ?>
 
-    <div class="connection-wrapper">
-      <form id="modifyCar" method="POST" enctype="multipart/form-data">
-        <div class="connection-form add-car">
+      <div class="connection-wrapper">
+        <form id="modifyCar" method="POST" enctype="multipart/form-data">
+          <div class="connection-form add-car">
 
-          <div class="model">
-            <div class="model-bottom">
-              <div class="form-group">
-                <label for="code">Code</label>
-                <input type="text" name="code" id="code" minlength="6" maxlength="6" placeholder="BMW033"
-                  autocomplete="off"
-                  value="<?= htmlspecialchars_decode($car['code'] ?? $formCar['code'], ENT_NOQUOTES); ?>">
-                <span class="error" id="code_err"></span>
-              </div>
-              <div class="form-group">
-                <label for="brand">Marque</label>
-                <input type="text" name="brand" id="brand" minlength="3" maxlength="15" placeholder="Tesla"
-                  autocomplete="off"
-                  value="<?= htmlspecialchars_decode($car['brand'] ?? $formCar['brand'], ENT_NOQUOTES); ?>">
-                <span class="error" id="brand_err"></span>
-              </div>
-              <div class="form-group">
-                <label for="model">Modèle</label>
-                <input type="text" name="model" id="model" minlength="3" maxlength="15" placeholder="Max 5"
-                  autocomplete="off"
-                  value="<?= htmlspecialchars_decode($car['model'] ?? $formCar['model'], ENT_NOQUOTES); ?>">
-                <span class="error" id="model_err"></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="car-description">
-
-            <!-- LEFT SIDE  -->
-            <div class="car-description-left">
-              <div class="form-group">
-                <label for="year">Année</label>
-                <input type="text" name="year" id="year" minlength="4" maxlength="4" placeholder="2002"
-                  autocomplete="off"
-                  value="<?= htmlspecialchars_decode($car['year'] ?? $formCar['year'], ENT_NOQUOTES); ?>">
-                <span class="error" id="year_err"></span>
-              </div>
-              <div class="form-group">
-                <label for="kilometer">Kilométrage</label>
-                <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="92233"
-                  autocomplete="off"
-                  value="<?= htmlspecialchars_decode($car['kilometers'] ?? $formCar['kilometer'], ENT_NOQUOTES); ?>">
-                <span class="error" id="kilometer_err"></span>
-              </div>
-              <div class="form-group">
-                <label for="gearbox">Boîte de vitesses</label>
-                <input type="text" name="gearbox" id="gearbox" minlength="6" maxlength="12" placeholder="manuelle"
-                  autocomplete="off"
-                  value="<?= htmlspecialchars_decode($car['gearbox'] ?? $formCar['gearbox'], ENT_NOQUOTES); ?>">
-                <span class="error" id="gearbox_err"></span>
-              </div>
-              <div class="form-group">
-                <label for="doors">Numéro de portes</label>
-                <input type="text" name="doors" id="doors" minlength="1" maxlength="1" placeholder="2"
-                  autocomplete="off"
-                  value="<?= htmlspecialchars_decode($car['number_doors'] ?? $formCar['doors'], ENT_NOQUOTES); ?>">
-                <span class="error" id="doors_err"></span>
-              </div>
-            </div>
-
-            <!-- RIGHT SIDE  -->
-            <div class="car-description-right">
-              <div class="form-group">
-                <label for="price">Prix</label>
-                <input type="text" name="price" id="price" minlength="4" maxlength="6" placeholder="12768"
-                  autocomplete="off"
-                  value="<?= htmlspecialchars_decode($car['price'] ?? $formCar['price'], ENT_NOQUOTES); ?>">
-                <span class="error" id="price_err"></span>
-              </div>
-              <div class="form-group">
-                <label for="color">Couleur</label>
-                <input type="text" name="color" id="color" minlength="5" maxlength="10" placeholder="rouge"
-                  autocomplete="off"
-                  value="<?= htmlspecialchars_decode($car['color'] ?? $formCar['color'], ENT_NOQUOTES); ?>">
-                <span class="error" id="color_err"></span>
-              </div>
-              <div class="form-group">
-                <label for="fuel">Carburant</label>
-                <input type="text" name="fuel" id="fuel" minlength="5" maxlength="12" placeholder="életrique"
-                  autocomplete="off"
-                  value="<?= htmlspecialchars_decode($car['fuel'] ?? $formCar['fuel'], ENT_NOQUOTES); ?>">
-                <span class="error" id="fuel_err"></span>
-              </div>
-              <div class="form-group">
-                <label for="co2">CO2</label>
-                <input type="text" name="co2" id="co2" minlength="1" maxlength="4" placeholder="123" autocomplete="off"
-                  value="<?= htmlspecialchars_decode($car['co'] ?? $formCar['co2'], ENT_NOQUOTES); ?>">
-                <span class="error" id="co2_err"></span>
-              </div>
-              <div class="form-group d-flex justify-content-start">
-
-                <div class="d-flex align-items-center w-100">
-                  <input type="checkbox" id="imgCar" name="imgCar" value="0" class="col-2">
-                  <label for="imgCar">Ajouter image?</label>
+            <div class="model">
+              <div class="model-bottom">
+                <div class="form-group">
+                  <label for="code">Code</label>
+                  <input type="text" name="code" id="code" minlength="6" maxlength="6" placeholder="BMW033" autocomplete="off" value="<?= htmlspecialchars_decode($car['code'] ?? $formCar['code'], ENT_NOQUOTES); ?>">
+                  <span class="error" id="code_err"></span>
                 </div>
-              </div>
-              <div class="form-group">
-                <div class="inputFile">
-                  <label for="file">Modifier l'image(s)</label>
-                  <input type="file" name="file[]" id="file" multiple accept=".jpeg, .jpg, .png, .webp">
-                  <span class="error" id="image_err"> </span>
+                <div class="form-group">
+                  <label for="brand">Marque</label>
+                  <input type="text" name="brand" id="brand" minlength="3" maxlength="15" placeholder="Tesla" autocomplete="off" value="<?= htmlspecialchars_decode($car['brand'] ?? $formCar['brand'], ENT_NOQUOTES); ?>">
+                  <span class="error" id="brand_err"></span>
+                </div>
+                <div class="form-group">
+                  <label for="model">Modèle</label>
+                  <input type="text" name="model" id="model" minlength="3" maxlength="15" placeholder="Max 5" autocomplete="off" value="<?= htmlspecialchars_decode($car['model'] ?? $formCar['model'], ENT_NOQUOTES); ?>">
+                  <span class="error" id="model_err"></span>
                 </div>
               </div>
             </div>
 
+            <div class="car-description">
+
+              <!-- LEFT SIDE  -->
+              <div class="car-description-left">
+                <div class="form-group">
+                  <label for="year">Année</label>
+                  <input type="text" name="year" id="year" minlength="4" maxlength="4" placeholder="2002" autocomplete="off" value="<?= htmlspecialchars_decode($car['year'] ?? $formCar['year'], ENT_NOQUOTES); ?>">
+                  <span class="error" id="year_err"></span>
+                </div>
+                <div class="form-group">
+                  <label for="kilometer">Kilométrage</label>
+                  <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="92233" autocomplete="off" value="<?= htmlspecialchars_decode($car['kilometers'] ?? $formCar['kilometer'], ENT_NOQUOTES); ?>">
+                  <span class="error" id="kilometer_err"></span>
+                </div>
+                <div class="form-group">
+                  <label for="gearbox">Boîte de vitesses</label>
+                  <input type="text" name="gearbox" id="gearbox" minlength="6" maxlength="12" placeholder="manuelle" autocomplete="off" value="<?= htmlspecialchars_decode($car['gearbox'] ?? $formCar['gearbox'], ENT_NOQUOTES); ?>">
+                  <span class="error" id="gearbox_err"></span>
+                </div>
+                <div class="form-group">
+                  <label for="doors">Numéro de portes</label>
+                  <input type="text" name="doors" id="doors" minlength="1" maxlength="1" placeholder="2" autocomplete="off" value="<?= htmlspecialchars_decode($car['number_doors'] ?? $formCar['doors'], ENT_NOQUOTES); ?>">
+                  <span class="error" id="doors_err"></span>
+                </div>
+              </div>
+
+              <!-- RIGHT SIDE  -->
+              <div class="car-description-right">
+                <div class="form-group">
+                  <label for="price">Prix</label>
+                  <input type="text" name="price" id="price" minlength="4" maxlength="6" placeholder="12768" autocomplete="off" value="<?= htmlspecialchars_decode($car['price'] ?? $formCar['price'], ENT_NOQUOTES); ?>">
+                  <span class="error" id="price_err"></span>
+                </div>
+                <div class="form-group">
+                  <label for="color">Couleur</label>
+                  <input type="text" name="color" id="color" minlength="5" maxlength="10" placeholder="rouge" autocomplete="off" value="<?= htmlspecialchars_decode($car['color'] ?? $formCar['color'], ENT_NOQUOTES); ?>">
+                  <span class="error" id="color_err"></span>
+                </div>
+                <div class="form-group">
+                  <label for="fuel">Carburant</label>
+                  <input type="text" name="fuel" id="fuel" minlength="5" maxlength="12" placeholder="életrique" autocomplete="off" value="<?= htmlspecialchars_decode($car['fuel'] ?? $formCar['fuel'], ENT_NOQUOTES); ?>">
+                  <span class="error" id="fuel_err"></span>
+                </div>
+                <div class="form-group">
+                  <label for="co2">CO2</label>
+                  <input type="text" name="co2" id="co2" minlength="1" maxlength="4" placeholder="123" autocomplete="off" value="<?= htmlspecialchars_decode($car['co'] ?? $formCar['co2'], ENT_NOQUOTES); ?>">
+                  <span class="error" id="co2_err"></span>
+                </div>
+                <div class="form-group d-flex justify-content-start">
+
+                  <div class="d-flex align-items-center w-100">
+                    <input type="checkbox" id="imgCar" name="imgCar" value="0" class="col-2">
+                    <label for="imgCar">Ajouter image?</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="inputFile">
+                    <label for="file">Ajouter image(s)</label>
+                    <input type="file" name="file[]" id="file" multiple accept=".jpeg, .jpg, .png, .webp">
+                    <span class="error" id="image_err"> </span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
-        </div>
 
-        <?php if (count($carImages)) { ?>
+          <?php if (count($carImages)) { ?>
 
-        <!-- car thumbnails  -->
-        <div class="table-cars">
-          <div class="table-car-delete">
-            <div class="checkbox-delete">
-              <p class="text-center">Selectionnez tout</p>
-              <input type="checkbox" id="checkAll">
+            <!-- car thumbnails  -->
+            <div class="table-cars">
+              <div class="table-car-delete">
+                <div class="checkbox-delete">
+                  <p class="text-center">Selectionnez tout</p>
+                  <input type="checkbox" id="checkAll">
+                </div>
+
+                <div class="button-delete">
+                  <button type="button" class="btn btn-wire" id="delete">Supprimer selection</button>
+                </div>
+
+              </div>
+              <?php foreach ($carImages as $car) { ?>
+                <div class="table-car">
+                  <!-- <p>Delete</p> -->
+                  <input type="checkbox" class="checkboxCars" id="<?php echo $car['id'] ?>" name="id[]">
+                  <div class="table-car-img">
+                    <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars_decode($car['image_path']) ?>" alt="<?= $car['brand'] ?>" loading="lazy">
+                  </div>
+
+                </div>
+              <?php } ?>
             </div>
 
-            <div class="button-delete">
-              <button type="button" class="btn btn-wire" id="delete">Supprimer selection</button>
-            </div>
-
-          </div>
-          <?php foreach ($carImages as $car) { ?>
-          <div class="table-car">
-            <!-- <p>Delete</p> -->
-            <input type="checkbox" class="checkboxCars" id="<?php echo $car['id'] ?>" name="id[]">
-            <div class="table-car-img">
-              <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars_decode($car['image_path']) ?>"
-                alt="<?= $car['brand'] ?>" loading="lazy">
-            </div>
-
-          </div>
           <?php } ?>
-        </div>
 
-        <?php } ?>
-
-        <div class="form-btn mt-2">
-          <button type="button" id="submitbtn" class="btn-fill">Modifier</button>
-        </div>
-      </form>
-    </div>
+          <div class="form-btn mt-2">
+            <button type="button" id="submitbtn" class="btn-fill">Modifier</button>
+          </div>
+        </form>
+      </div>
   </section>
 </div>
 <?php } else { ?>
-<div class="not-found">
-  <!-- <h1 class="not-found-text">Employé non trouvé</h1> -->
-  <div class="go-back-page">
-    <a href="javascript:history.back(1)" class="btn-wire">Retour page précédante</a>
+  <div class="not-found">
+    <!-- <h1 class="not-found-text">Employé non trouvé</h1> -->
+    <div class="go-back-page">
+      <a href="javascript:history.back(1)" class="btn-wire">Retour page précédante</a>
+    </div>
   </div>
-</div>
 <?php } ?>
 
 <?php
@@ -412,73 +390,75 @@ require_once __DIR__ . "/templates/footer-admin.php";
 ?>
 
 <script>
-$(document).ready(function() {
-  $('#checkAll').click(function() {
-    if (this.checked) {
-      $('.checkboxCars').each(function() {
-        this.checked = true
-      })
-    } else {
-      $('.checkboxCars').each(function() {
-        this.checked = false
-      })
-    }
-  })
-
-  $('#delete').click(function() {
-    var dataArr = new Array()
-    if ($('.checkboxCars:checked').length > 0) {
-      $('.checkboxCars:checked').each(function() {
-        dataArr.push($(this).attr('id'))
-        $(this).closest('div').remove()
-        // $(this).closest('th').remove()
-      })
-      sendResponse(dataArr)
-      // console.log(dataArr)
-
-    } else {
-      alert('Aucune image selectionné')
-    }
-  })
-
-  function sendResponse(dataArr) {
-    $.ajax({
-      type: 'post',
-      url: 'deleteCars.php',
-      data: {
-        'data': dataArr
-      },
-      success: function(response) {
-        alert(response)
-        if ($('.table-car').length == 0) {
-          $('.table-cars').hide()
-        } else {
-          $('.table-cars').show()
-        }
-
-      },
-      error: function(errResponse) {
-        alert(errResponse)
+  $(document).ready(function() {
+    $('#checkAll').click(function() {
+      if (this.checked) {
+        $('.checkboxCars').each(function() {
+          this.checked = true
+        })
+      } else {
+        $('.checkboxCars').each(function() {
+          this.checked = false
+        })
       }
     })
 
-  }
-})
+    $('#delete').click(function() {
+      var dataArr = new Array()
+      if ($('.checkboxCars:checked').length > 0) {
+        $('.checkboxCars:checked').each(function() {
+          dataArr.push($(this).attr('id'))
+          $(this).closest('div').remove()
+          // $(this).closest('th').remove()
+        })
+        sendResponse(dataArr)
+        // console.log(dataArr)
+
+      } else {
+        alert('Aucune image selectionné')
+      }
+    })
+
+    function sendResponse(dataArr) {
+      $.ajax({
+        type: 'post',
+        url: 'deleteCars.php',
+        data: {
+          'data': dataArr
+        },
+        success: function(response) {
+          alert(response)
+          if ($('.table-car').length == 0) {
+            $('.table-cars').hide()
+          } else {
+            $('.table-cars').show()
+          }
+
+        },
+        error: function(errResponse) {
+          alert(errResponse)
+        }
+      })
+
+    }
+  })
 </script>
 
 
 <script src="../assets/scripts/modifyCarForm.js"></script>
+
+<!-- show / hide upload button  -->
 <script>
-let changeImg = document.getElementById("imgCar");
-let inputFile = document.querySelector(".inputFile");
+  let changeImg = document.getElementById("imgCar");
+  let inputFile = document.querySelector(".inputFile");
 
-const checkClick = () => {
-  if (inputFile.style.display === "block") {
-    inputFile.style.display = "none";
-  } else {
-    inputFile.style.display = "block";
+  const checkClick = () => {
+    if (inputFile.style.display === "block") {
+      inputFile.style.display = "none";
+    } else {
+      inputFile.style.display = "block";
+    }
   }
-}
 
-changeImg.addEventListener('change', checkClick)
+  changeImg.addEventListener('change', checkClick)
 </script>

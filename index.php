@@ -49,6 +49,7 @@ $(document).ready(function() {
 <!-- HERO  -->
 
 <!-- Back to top button -->
+
 <a href="#" id="button"></a>
 
 
@@ -66,72 +67,99 @@ $(document).ready(function() {
 <!-- SERVICES  -->
 <section id="services" class="services sections">
   <h2 class="header-titles">Services</h2>
-  <article class="cards">
-    <?php foreach ($services as  $service) { ?>
-      <?php require __DIR__ . "/templates/service-part.php" ?>
-    <?php }
-    ?>
-  </article>
+
+  <?php if ($services) : ?>
+    <article class="cards">
+      <?php foreach ($services as  $service) { ?>
+        <?php require __DIR__ . "/templates/service-part.php" ?>
+      <?php }
+      ?>
+    </article>
+  <?php else : ?>
+    <article class="cards">
+      <h3 class="message">Aucun service disponsible pour le moment.</h3>
+    </article>
+  <?php endif ?>
+
 </section>
 <!-- END SERVICES  -->
 
 <!-- CARS  -->
 <section id="cars" class="used-cars sections">
   <h2 class="header-titles">Nos derniers voitures d'occasion</h2>
-  <article class="cards">
-    <?php foreach ($cars as  $car) { ?>
-      <?php require __DIR__ . "/templates/car-part.php" ?>
-    <?php }
-    ?>
-    <div class="more-cars">
-      <a href="/pages/voitures.php" class="btn-fill center">Voir plus</a>
-    </div>
-  </article>
+
+  <?php if ($cars) : ?>
+
+    <article class="cards">
+      <?php foreach ($cars as  $car) { ?>
+        <?php require __DIR__ . "/templates/car-part.php" ?>
+      <?php }
+      ?>
+      <div class="more-cars">
+        <a href="/pages/voitures.php" class="btn-fill center">Voir plus</a>
+      </div>
+    </article>
+  <?php else : ?>
+    <article class="cards">
+      <h3 class="message">Aucune voiture disponsible pour le moment.</h3>
+    </article>
+
+
+  <?php endif ?>
+
 </section>
 <!-- END CARS  -->
 
 <!-- testimonial  -->
+
 <section class="testimonial sections" id="testimonial">
   <h2 class="header-titles">Les avis</h2>
-  <div id="demo" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
+  <?php if ($reviews) : ?>
+    <div id="demo" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
 
-      <!-- the first review  -->
-      <div class="carousel-item active">
+        <!-- the first review  -->
+        <div class="carousel-item active">
 
-        <div class="carousel-caption">
-          <div class="stars">
-            <?php
-            echo starRating($reviews[0]['note']); ?>
+          <div class="carousel-caption">
+            <div class="stars">
+              <?php
+              echo starRating($reviews[0]['note']); ?>
+            </div>
+            <i class="fa-sharp fa-solid fa-quote-left quote-left"></i>
+            <p>
+              <?php echo $reviews[0]['comment']; ?>
+            </p>
+            <i class="fa-sharp fa-solid fa-quote-right quote-right"></i>
+            <div class="name-caption"><?php echo $reviews[0]['client']; ?></div>
           </div>
-          <i class="fa-sharp fa-solid fa-quote-left quote-left"></i>
-          <p>
-            <?php echo $reviews[0]['comment']; ?>
-          </p>
-          <i class="fa-sharp fa-solid fa-quote-right quote-right"></i>
-          <div class="name-caption"><?php echo $reviews[0]['client']; ?></div>
         </div>
+
+        <!-- foreach to start from 1  -->
+        <?php foreach ($reviews as $key =>  $review) :
+          if ($key < 1) continue;
+          require __DIR__ . "/templates/review-part.php";
+        endforeach;
+        ?>
+
       </div>
-
-      <!-- foreach to start from 1  -->
-      <?php foreach ($reviews as $key =>  $review) :
-        if ($key < 1) continue;
-        require __DIR__ . "/templates/review-part.php";
-      endforeach;
-      ?>
-
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <i class="fas fa-arrow-left"> </i>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <i class="fas fa-arrow-right"> </i>
+      </a>
     </div>
-    <a class="carousel-control-prev" href="#demo" data-slide="prev">
-      <i class="fas fa-arrow-left"> </i>
-    </a>
-    <a class="carousel-control-next" href="#demo" data-slide="next">
-      <i class="fas fa-arrow-right"> </i>
-    </a>
-  </div>
-  <div class="add-review">
-    <a href="/pages/donner-avis.php" class="btn-fill center">Donnez votre avis</a>
-  </div>
+    <div class="add-review">
+      <a href="/pages/donner-avis.php" class="btn-fill center">Donnez votre avis</a>
+    </div>
 </section>
+<?php else : ?>
+  <article class="cards">
+    <h3 class="message">Aucun avis disponsible pour le moment.</h3>
+  </article>
+<?php endif ?>
+
 <!-- END TESTIMONIAL  -->
 
 <!-- CONTACT  -->

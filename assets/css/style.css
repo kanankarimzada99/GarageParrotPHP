@@ -112,9 +112,10 @@ td p{
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  height: 200px;
+  /* height: 200px; */
   /* width: 200px; */
   /* width: 700px; */
+  /* height: 100%; */
  
   /* min-width: 200px; */
   border:2px solid var(--grayLight);
@@ -125,8 +126,9 @@ td p{
   align-items:center;
   justify-content:space-between;
   flex-direction: column;
-  height: 200px;
-  border-radius: solid red 2px;
+  padding:10px;
+  /* height: 200px; */
+  /* border-radius: solid red 2px; */
   /* background-color: red; */
 }
 
@@ -143,13 +145,16 @@ td p{
 }
 
 .table-car-img{
-  height: 100%;
   padding:10px;
+  height: 100px;
+  width: 150px;
 }
 .table-car-img img{
   height: 100%;
-  width: 100px;
+  width: 100%;
   object-fit:cover;
+  /* height: 100px;
+  width: 100px; */
   /* aspect-ratio: 16/9; */
   /* margin-bottom:20px; */
 }
@@ -176,6 +181,12 @@ textarea::-ms-input-placeholder{
 }
 textarea::placeholder{
   color:var(--grayDark);
+}
+
+.connection-table img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
 }
 
 .red-message {
@@ -320,6 +331,13 @@ textarea {
   width: 100%;
 }
 
+.message{
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+
+
 /* .card-img-top{
   object-fit:cover;
   height: 200px;
@@ -365,6 +383,8 @@ textarea {
   gap:10px;
 }
 
+
+
 h3.no-cars{
   color:var(--primary);
   font-size: 2rem;
@@ -405,7 +425,7 @@ h3.no-cars{
   border-radius: 0.5rem;
   background-color: var(--primary);
   color: #fff;
-  display: inline-block;
+  /* display: inline-block; */
   cursor: pointer;
   font-family: 'Roboto', sans-serif;
 }
@@ -524,7 +544,7 @@ input[type="submit"]:hover{
 .go-back-list  a {
   padding:0;
   margin:0;
-  color: var(--font);
+  /* color: var(--font); */
   text-decoration: none;
   line-height: 1rem;
   font-size: 1rem;
@@ -559,6 +579,12 @@ input[type="submit"]:hover{
 }
 
 @media (min-width: 992px) {
+  
+  .message{
+    color: var(--primary);
+    font-size: 1.5rem;
+  }
+
   .breadcrumbs {
     padding: 20px 60px;
   }
@@ -576,6 +602,11 @@ input[type="submit"]:hover{
     -o-transition: all 0.2s ease;
     transition: all 0.2s ease;
   }
+
+  /* .services .message{
+    color: var(--primary);
+    font-size: 1.5rem;
+  } */
 
   /* NOT FOUND ----- */
   .not-found-text{
@@ -608,6 +639,8 @@ input[type="submit"]:hover{
   cursor: pointer;
   border:2px solid transparent;
 }
+
+
 #button::after {
   content: "\f077";
   font-family: FontAwesome;
@@ -1052,6 +1085,8 @@ red;
   .used-cars .card {
     max-width: calc(33% - 1em);
   }
+
+
 }
 
 /* LAST NEWS USED CARS --------------------------- */
@@ -1065,6 +1100,26 @@ red;
   text-align: center;
   margin:20px 0 0;
 }
+
+.used-cars h3{
+  color:var(--primary);
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+
+@media screen and (min-width: 992px) {
+  .used-cars h3{
+    color:var(--primary);
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+}
+
+
+
+
 
 /* TESTIMONIAL  CAROUSEL*/
 
@@ -1235,6 +1290,8 @@ red;
   transition: none;
   opacity: unset;
 }
+
+
 
 /* END TESTIMONIAL --------------------------- */
 
@@ -1819,7 +1876,6 @@ red;
   width: 100%;
   height: 100%;
   object-fit:contain;
-  aspect-ratio: 16/9;
 }
 
 .car-thumbnails{
@@ -2111,6 +2167,8 @@ td a .fa-trash-can{
   font-size:1.2rem;
 }
 
+
+
 tr:nth-child(even) {
   background-color: #dddddd;
 }
@@ -2147,6 +2205,24 @@ th.size100 {
   padding:0 10px;
   margin:0;
 }
+
+.connection-wrapper #imgContainer{
+  height: 150px;
+  width: 150px;
+  display: grid;
+  place-items: center;
+ 
+}
+.connection-wrapper #imgContainer img{
+  /* height: 100%;*/
+  width: 100%; 
+  height: 100%;
+  object-fit: contain;
+  aspect-ratio: 16 / 9;
+  text-align: start;
+
+}
+
 
 .form-day.center{
   text-align: center;
