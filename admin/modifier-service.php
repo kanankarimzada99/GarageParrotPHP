@@ -187,26 +187,28 @@ $(document).ready(function() {
 
 <div class="wrapper">
 
-  <?php if ($service) : ?>
 
-    <!-- BREADCRUMB  -->
-    <div class="breadcrumbs breadcrumbs-connection">
-      <div class="go-back-list">
-        <a href="/admin/liste-services.php">Revenir liste service</a>
-      </div>
+
+  <!-- BREADCRUMB  -->
+  <div class="breadcrumbs breadcrumbs-connection">
+    <div class="go-back-list">
+      <a href="/admin/liste-services.php">Revenir liste service</a>
     </div>
-    <!-- END BREADCRUMB  -->
+  </div>
+  <!-- END BREADCRUMB  -->
 
 
-    <!-- connection  -->
-    <section class="connection sections" id="connection">
-      <h1 class="header-titles">Modifier Service</h1>
+  <!-- connection  -->
+  <section class="connection sections" id="connection">
+    <h1 class="header-titles">Modifier Service</h1>
 
-      <!-- messages  -->
-      <div id="form-message" class="my-3 d-flex justify-content-center"></div>
+    <!-- if service doesnt exist  -->
+    <?php if ($service) : ?>
+    <!-- messages  -->
+    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
 
-      <!-- messages  -->
-      <!-- <div class="form-message">
+    <!-- messages  -->
+    <!-- <div class="form-message">
       <?= $errors; ?>
     </div>
 
@@ -220,23 +222,26 @@ $(document).ready(function() {
       </div>
     </div> -->
 
-      <div class="connection-wrapper">
-        <form id="modifyService" method="POST" enctype="multipart/form-data">
-          <div class="connection-form">
-            <div class="form-group">
-              <label for="service">Service</label>
-              <input type="text" name="service" id="service" minlength="5" maxlength="30" placeholder="Reparation motor" autocomplete="off" value="<?= htmlspecialchars($service['service'] ?? $formService['service']); ?>">
-              <span class="error" id="service_err"></span>
-            </div>
-            <div class="form-group">
-              <label for="description">Description</label>
-              <textarea name="description" id="description" class="service-description" cols="30" rows="5" minlength="50" maxlength="150"><?= htmlspecialchars($service['description'] ?? $formService['description']); ?></textarea>
-              <span class="error" id="description_err"></span>
-            </div>
-            <div class="form-group" id="imgContainer">
-              <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars($service['image'] ?? "") ?>" alt="<?= $service['service'] ?>">
-              <input type="hidden" name="image" value="<?= htmlspecialchars($service['image'] ?? ""); ?>">
-              <!-- <div class="form-group my-3">
+    <div class="connection-wrapper">
+      <form id="modifyService" method="POST" enctype="multipart/form-data">
+        <div class="connection-form">
+          <div class="form-group">
+            <label for="service">Service</label>
+            <input type="text" name="service" id="service" minlength="5" maxlength="30" placeholder="Reparation motor"
+              autocomplete="off" value="<?= htmlspecialchars($service['service'] ?? $formService['service']); ?>">
+            <span class="error" id="service_err"></span>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" class="service-description" cols="30" rows="5" minlength="50"
+              maxlength="150"><?= htmlspecialchars($service['description'] ?? $formService['description']); ?></textarea>
+            <span class="error" id="description_err"></span>
+          </div>
+          <div class="form-group" id="imgContainer">
+            <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars($service['image'] ?? "") ?>"
+              alt="<?= $service['service'] ?>">
+            <input type="hidden" name="image" value="<?= htmlspecialchars($service['image'] ?? ""); ?>">
+            <!-- <div class="form-group my-3">
               <input type="checkbox" id="chkbox" name="chkbox" value="0" class="col-2">
               <label for="chkbox">Cliquez ici pour changer d'image</label>
               <p class="inputFile my-2">
@@ -244,58 +249,58 @@ $(document).ready(function() {
                 <label for="file" class="btn-wire d-inline p-2  ">Modifier l'image</label>
               </p>
             </div> -->
-            </div>
-            <div class="form-group d-flex justify-content-start">
+          </div>
+          <div class="form-group d-flex justify-content-start">
 
-              <div class="d-flex align-items-center w-25">
-                <input type="checkbox" id="imgCar" name="imgCar" value="0" class="col-2 ">
-                <label for="imgCar" class="mx-2">Modifier image?</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="inputFile">
-                <label for="file">Modifier image</label>
-                <input type="file" name="file" id="file" multiple accept=".jpeg, .jpg, .png, .webp">
-                <span class="error" id="image_err"> </span>
-              </div>
+            <div class="d-flex align-items-center w-25">
+              <input type="checkbox" id="imgCar" name="imgCar" value="0" class="col-2 ">
+              <label for="imgCar" class="mx-2">Modifier image?</label>
             </div>
           </div>
-
-          <div class="form-btn mt-2">
-            <button type="button" id="submitbtn" class="btn-fill">Modifier</button>
+          <div class="form-group">
+            <div class="inputFile">
+              <label for="file">Modifier image</label>
+              <input type="file" name="file" id="file" multiple accept=".jpeg, .jpg, .png, .webp">
+              <span class="error" id="image_err"> </span>
+            </div>
           </div>
-        </form>
-      </div>
-    </section>
+        </div>
+
+        <div class="form-btn mt-2">
+          <button type="button" id="submitbtn" class="btn-fill">Modifier</button>
+        </div>
+      </form>
+    </div>
+  </section>
 </div>
 <!-- show / hide upload button  -->
 <script>
-  let changeImg = document.getElementById("imgCar");
-  let inputFile = document.querySelector(".inputFile");
+let changeImg = document.getElementById("imgCar");
+let inputFile = document.querySelector(".inputFile");
 
-  const checkClick = () => {
-    if (inputFile.style.display === "block") {
-      inputFile.style.display = "none";
-    } else {
-      inputFile.style.display = "block";
-    }
+const checkClick = () => {
+  if (inputFile.style.display === "block") {
+    inputFile.style.display = "none";
+  } else {
+    inputFile.style.display = "block";
   }
+}
 
-  changeImg.addEventListener('change', checkClick)
+changeImg.addEventListener('change', checkClick)
 </script>
 
 <script src="../assets/scripts/modifyServiceForm.js"></script>
 
 <?php else : ?>
-  <div id="form-message" class="d-flex justify-content-center">
-    <div class='d-flex justify-content-center  alert alert-danger mt-5 mb-3 mx-auto' role='alert'>Ce service n'existe
-      pas</div>
-  </div>
+<div id="form-message" class="d-flex justify-content-center">
+  <div class='d-flex justify-content-center  alert alert-danger mt-5 mb-3 mx-auto' role='alert'>Ce service n'existe
+    pas</div>
+</div>
 
 
-  <div class="go-back-page my-3 d-flex justify-content-center">
-    <a href="javascript:history.back(1)" class="btn-wire mb-5">Retour page précédante</a>
-  </div>
+<div class="go-back-page my-3 d-flex justify-content-center">
+  <a href="javascript:history.back(1)" class="btn-wire mb-5">Retour page précédante</a>
+</div>
 
 <?php endif ?>
 

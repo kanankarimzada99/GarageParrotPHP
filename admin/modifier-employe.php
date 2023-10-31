@@ -30,9 +30,9 @@ if (isset($_GET['id'])) {
 
   //get employe id
   $employee = getEmployeesById($pdo, $id);
-  if ($employee === false) {
-    $errors =  "<div class='alert alert-danger m-0' role='alert'>Cet employé n'existe pas</div>";
-  }
+  // if ($employee === false) {
+  //   $errors =  "<div class='alert alert-danger m-0' role='alert'>Cet employé n'existe pas</div>";
+  // }
 }
 
 ?>
@@ -59,6 +59,8 @@ if (isset($_GET['id'])) {
 
 <div class="wrapper">
 
+
+
   <!-- BREADCRUMB  -->
   <div class="breadcrumbs breadcrumbs-connection">
     <div class="go-back-list">
@@ -70,7 +72,7 @@ if (isset($_GET['id'])) {
   <!-- connection  -->
   <section class="connection sections" id="connection">
     <h1 class="header-titles">Modifier employé</h1>
-
+    <?php if ($employee) : ?>
     <!-- messages  -->
     <div id="form-message" class="my-3 d-flex justify-content-center"></div>
 
@@ -123,6 +125,21 @@ if (isset($_GET['id'])) {
       </form>
     </div>
   </section>
+
+  <?php else : ?>
+  <div id="form-message" class="d-flex justify-content-center">
+    <div class='d-flex justify-content-center  alert alert-danger mt-5 mb-3 mx-auto' role='alert'>Cet(te) employé(é)
+      n'existe
+      pas</div>
+  </div>
+
+
+  <div class="go-back-page my-3 d-flex justify-content-center">
+    <a href="javascript:history.back(1)" class="btn-wire mb-5">Retour page précédante</a>
+  </div>
+
+  <?php endif ?>
+
 </div>
 <script src="../assets/scripts/modificationEmployeForm.js"></script>
 <?php

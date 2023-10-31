@@ -31,18 +31,13 @@ $formCar = [
 
 
 if (isset($_GET['id'])) {
-  $id = $_GET['id'];
+  $id = (int)$_GET['id'];
   // $_SESSION['user']['id'] = $id;
 
   $car = getCarsById($pdo, $id);
 
-
   $_SESSION['car'] = $car;
   $carImages = getCarImagesById($pdo, $id);
-
-
-
-  // var_dump($_SESSION['car']);
 
 
   if ($car === false) {
@@ -243,10 +238,10 @@ if (isset($_GET['id'])) {
   <section class="connection sections" id="connection">
     <h1 class="header-titles">Modifier voiture</h1>
 
-    <!-- messages  -->
-    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
+    <?php if ($car) : ?>
+      <!-- messages  -->
+      <div id="form-message" class="my-3 d-flex justify-content-center"></div>
 
-    <?php if ($formCar !== false) { ?>
 
       <div class="connection-wrapper">
         <form id="modifyCar" method="POST" enctype="multipart/form-data">
@@ -375,17 +370,10 @@ if (isset($_GET['id'])) {
       </div>
   </section>
 </div>
-<?php } else { ?>
-  <div class="not-found">
-    <!-- <h1 class="not-found-text">Employé non trouvé</h1> -->
-    <div class="go-back-page">
-      <a href="javascript:history.back(1)" class="btn-wire">Retour page précédante</a>
-    </div>
-  </div>
-<?php } ?>
+
 
 <?php
-require_once __DIR__ . "/templates/footer-admin.php";
+      require_once __DIR__ . "/templates/footer-admin.php";
 
 ?>
 
@@ -462,3 +450,16 @@ require_once __DIR__ . "/templates/footer-admin.php";
 
   changeImg.addEventListener('change', checkClick)
 </script>
+
+<?php else : ?>
+  <div id="form-message" class="d-flex justify-content-center">
+    <div class='d-flex justify-content-center  alert alert-danger mt-5 mb-3 mx-auto' role='alert'>Cette voiture n'existe
+      pas</div>
+  </div>
+
+
+  <div class="go-back-page my-3 d-flex justify-content-center">
+    <a href="javascript:history.back(1)" class="btn-wire mb-5">Retour page précédante</a>
+  </div>
+
+<?php endif ?>

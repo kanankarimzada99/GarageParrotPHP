@@ -19,6 +19,8 @@ $cars = getCars($pdo, 3);
 $services = getServices($pdo, 6);
 $reviews = getReviews($pdo, 4);
 
+
+
 // var_dump($cars);
 ?>
 <!-- send message by form  -->
