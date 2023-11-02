@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if (errorEmpty == false && errorClient == false && errorComment == false && errorNote == false) {
     $("#client, #comment, #note").val("");
-
+    //hide form
     $(".connection-wrapper").hide();
     // hide message after 3 seconds
     setTimeout(function() {

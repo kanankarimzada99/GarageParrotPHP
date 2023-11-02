@@ -4,8 +4,6 @@ require_once __DIR__ . "/../lib/session.php";
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/cars.php";
-require_once __DIR__ . "/../lib/carImages.php";
-// require_once __DIR__ . "/templates/header-admin.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $id = null;
@@ -25,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 
   $code = $brand = $model = $year = $kilometer = $gearbox = $doors = $price = $color = $fuel = $co2 = '';
-
 
   $code = test_input($_POST['code']);
   $brand = test_input($_POST['brand']);
@@ -54,8 +51,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $errorCO2 = false;
   $errorImage = false;
 
+  $id = (int)($_SESSION['car']['carId']);
 
-  $id = test_input($_SESSION['car']['carId']);
+  //get cars
+  $cars = getCars($pdo);
+
+
+  //verify if code car exist on the database
+  foreach ($cars as $car) {
+    if ($car['code'] === $code && $car['carId'] !== $id) {
+      echo "<div class='alert alert-danger  m-0' role='alert'>Ce code existe déjà.</div>";
+      $errorCode = true;
+    }
+  }
 
   //to validate car
   if (empty($code) && empty($brand) && empty($model) && empty($year) && empty($price) && empty($kilometer) && empty($color) && empty($gearbox) && empty($doors) && empty($fuel) && empty($co2)) {
@@ -93,33 +101,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errorCO2 = true;
   }
 
-
-
-
-
-
   if ($errorEmpty !== true && $errorCode !== true && $errorBrand !== true && $errorModel !== true && $errorYear !== true && $errorKilometers !== true && $errorGearbox !== true && $errorDoors !== true && $errorPrice !== true && $errorColor !== true && $errorFuel !== true && $errorCO2 !== true) {
 
     //save car information cars table
     $res = saveCar($pdo, $code, $brand, $model, $year, $kilometer, $gearbox, $doors, $price, $color, $fuel, $co2, $id);
-
-
-
 
     //to validate image
     if (isset($_POST['imgCar'])) {
       if (empty($_FILES['file']['name'])) {
         echo "L'image pour la voiture est requis.";
       } else {
-        // var_dump("sfddddddddddddddddd");
         //verify if a file is sent
         // Handle image uploads
         if (isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != '') {
           $totalImages = count($_FILES['file']['name']);
-
-          // var_dump($totalImages);
-
-
 
           for ($i = 0; $i < $totalImages; $i++) {
             $sizeImage = getimagesize($_FILES['file']['tmp_name'][$i]);
@@ -132,12 +127,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               $fileName = uniqid() . '-' . $fileName;
 
               //move file image into new location (uploads images folder)  
-
               if (move_uploaded_file($_FILES['file']['tmp_name'][$i], dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $fileName)) {
 
                 if (isset($_FILES['file']['name'][$i])) {
-
-                  // $service = getServicesById($pdo, $_SESSION['service']['id']);
 
                   if (file_exists(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_FILES['file']['name'][$i])) {
                     //delete old image if new one is uploaded
@@ -146,31 +138,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     echo '<div class="alert alert-success d-inline" role="alert">image sauvegardé avec success</div>';
                   }
                 }
-                // $resImages = saveCarImages($pdo, $product_id, $image_path);
               } else {
                 echo '<div class="alert alert-danger d-inline" role="alert">Le fichier n\'a pas été uploadé</div>';
               }
             }
-            // $imageTmpPath = $_FILES['images']['tmp_name'][$i];
-            // $imageName = $_FILES['images']['name'][$i];
-            // $imagePath = "/uploads/images/" . $imageName; // Assuming uploads/ is a directory for storing images
-
-            // // Move uploaded image to the 'uploads' directory
-            // move_uploaded_file($imageTmpPath, $imagePath);
-
-            // //get id last car
-            // $getLastCar = getLastCar($pdo);
-            // // var_dump($getLastCar['id']);
-            // // var_dump($getLastCar);
-
-
-            // var_dump($_POST);
-
-            // var_dump($fileName);
-            // // var_dump($getLastCar['id']);
-            // var_dump($_SESSION['car']['image_path']);
-            // var_dump($_SESSION['car']);
-            // var_dump($_SESSION['images']);
 
             if ($file) {
 
@@ -187,13 +158,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($res) {
-
       echo '<div class="alert alert-success">La voiture a bien été sauvegardé.</div>';
       unset($_SESSION['car']);
       unset($_SESSION['images']);
     } else {
       echo '<div class="alert alert-danger">La voiture n\'a pas été sauvegardé.</div>';
-
       exit();
     }
   }
@@ -202,82 +171,77 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $errorEmpty = true;
 }
 
-
-
 ?>
 <script>
-  $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2").removeClass(
-    "input-error");
+$("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2").removeClass(
+  "input-error");
 
-  //get variable php inside js
-  var errorEmpty = "<?php echo $errorEmpty; ?>";
-  var errorCode = "<?php echo $errorCode; ?>";
-  var errorBrand = "<?php echo $errorBrand; ?>";
-  var errorModel = "<?php echo $errorModel; ?>";
-  var errorYear = "<?php echo $errorYear; ?>";
-  var errorPrice = "<?php echo $errorPrice; ?>";
-  var errorKilometers = "<?php echo $errorKilometers; ?>";
-  var errorColor = "<?php echo $errorColor; ?>";
-  var errorGearbox = "<?php echo $errorGearbox; ?>";
-  var errorDoors = "<?php echo $errorDoors; ?>";
-  var errorFuel = "<?php echo $errorFuel; ?>";
-  var errorCO2 = "<?php echo $errorCO2; ?>";
-  var errorImage = "<?php echo $errorImage; ?>";
-
-
-  if (errorEmpty == true) {
-    $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2").addClass("input-error");
-  }
-  if (errorCode == true) {
-    $("#code").addClass("input-error");
-  }
-  if (errorBrand == true) {
-    $("#brand").addClass("input-error");
-  }
-  if (errorModel == true) {
-    $("#model").addClass("input-error");
-  }
-  if (errorYear == true) {
-    $("#year").addClass("input-error");
-  }
-  if (errorPrice == true) {
-    $("#price").addClass("input-error");
-  }
-  if (errorKilometers == true) {
-    $("#kilometer").addClass("input-error");
-  }
-  if (errorColor == true) {
-    $("#color").addClass("input-error");
-  }
-  if (errorGearbox == true) {
-    $("#gearbox").addClass("input-error");
-  }
-  if (errorDoors == true) {
-    $("#doors").addClass("input-error");
-  }
-  if (errorFuel == true) {
-    $("#fuel").addClass("input-error");
-  }
-  if (errorCO2 == true) {
-    $("#co2").addClass("input-error");
-  }
-  if (errorImage == true) {
-    $("#file").addClass("input-error");
-  }
+//get variable php inside js
+var errorEmpty = "<?php echo $errorEmpty; ?>";
+var errorCode = "<?php echo $errorCode; ?>";
+var errorBrand = "<?php echo $errorBrand; ?>";
+var errorModel = "<?php echo $errorModel; ?>";
+var errorYear = "<?php echo $errorYear; ?>";
+var errorPrice = "<?php echo $errorPrice; ?>";
+var errorKilometers = "<?php echo $errorKilometers; ?>";
+var errorColor = "<?php echo $errorColor; ?>";
+var errorGearbox = "<?php echo $errorGearbox; ?>";
+var errorDoors = "<?php echo $errorDoors; ?>";
+var errorFuel = "<?php echo $errorFuel; ?>";
+var errorCO2 = "<?php echo $errorCO2; ?>";
+var errorImage = "<?php echo $errorImage; ?>";
 
 
+if (errorEmpty == true) {
+  $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2").addClass("input-error");
+}
+if (errorCode == true) {
+  $("#code").addClass("input-error");
+}
+if (errorBrand == true) {
+  $("#brand").addClass("input-error");
+}
+if (errorModel == true) {
+  $("#model").addClass("input-error");
+}
+if (errorYear == true) {
+  $("#year").addClass("input-error");
+}
+if (errorPrice == true) {
+  $("#price").addClass("input-error");
+}
+if (errorKilometers == true) {
+  $("#kilometer").addClass("input-error");
+}
+if (errorColor == true) {
+  $("#color").addClass("input-error");
+}
+if (errorGearbox == true) {
+  $("#gearbox").addClass("input-error");
+}
+if (errorDoors == true) {
+  $("#doors").addClass("input-error");
+}
+if (errorFuel == true) {
+  $("#fuel").addClass("input-error");
+}
+if (errorCO2 == true) {
+  $("#co2").addClass("input-error");
+}
+if (errorImage == true) {
+  $("#file").addClass("input-error");
+}
 
-  if (errorEmpty == false && errorCode == false && errorBrand == false && errorModel == false && errorYear == false &&
-    errorPrice == false && errorKilometers == false && errorColor == false && errorGearbox == false && errorDoors ==
-    false && errorFuel == false && errorCO2 == false && errorImage == false) {
-    $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2, #file").val("");
+if (errorEmpty == false && errorCode == false && errorBrand == false && errorModel == false && errorYear == false &&
+  errorPrice == false && errorKilometers == false && errorColor == false && errorGearbox == false && errorDoors ==
+  false && errorFuel == false && errorCO2 == false && errorImage == false) {
+  $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2, #file").val("");
+  //hide form
+  $(".connection-wrapper").hide();
+  //hide message after 3 seconds
+  setTimeout(function() {
+    window.location = '/admin/liste-voitures.php';
 
-    $(".connection-wrapper").hide();
-    //hide message after 4 seconds
-    setTimeout(function() {
-      // $('.form-message').hide();
-      window.location = '/admin/liste-voitures.php';
-
-    }, 3500); // <-- time in milliseconds
-  }
+  }, 3000); // <-- time in milliseconds
+}
 </script>

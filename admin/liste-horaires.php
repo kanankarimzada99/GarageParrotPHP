@@ -7,6 +7,7 @@ require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/schedules.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
+
 if (isset($_GET['page'])) {
   $page = (int)$_GET['page'];
 } else {
@@ -41,7 +42,6 @@ $totalSchedules = getTotalSchedules($pdo);
           <tbody>
             <?php foreach ($schedules as $schedule) { ?>
               <tr>
-                <!-- <th scope="row"><?= $schedule["id"]; ?></th> -->
                 <td><?= $schedule["day"]; ?></td>
 
                 <?php if ($schedule["morningOpen"] !== "00:00") { ?>

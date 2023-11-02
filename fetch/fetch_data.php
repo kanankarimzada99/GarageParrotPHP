@@ -1,6 +1,4 @@
 <?php
-//fetch data filter car
-
 require_once __DIR__ . "/../lib/config.php";
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/cars.php";
@@ -8,7 +6,6 @@ require_once __DIR__ . "/../lib/cars.php";
 //check if POST['action'] has value
 if (isset($_POST["action"])) {
   $query = "SELECT * FROM cars LEFT JOIN carimages ON cars.id=carimages.product_id WHERE product_id>0 ";
-
 
   //kilometers slider
   if (isset($_POST["mininum_kilometer"], $_POST["maximum_kilometer"]) && !empty($_POST["mininum_kilometer"]) && !empty($_POST["maximum_kilometer"])) {
@@ -27,15 +24,9 @@ if (isset($_POST["action"])) {
 
   $query .= " GROUP BY cars.id ORDER BY product_id DESC";
 
-  // var_dump($query);
-
-  // var_dump($query);
   $statement = $pdo->prepare($query);
   $statement->execute();
   $result = $statement->fetchAll();
-
-  //var_dump($result);
-
 
   //get number of rows in query
   $total_row = $statement->rowCount();
@@ -43,10 +34,7 @@ if (isset($_POST["action"])) {
   $numberPrice = null;
 
   if ($total_row > 0) {
-
-
     foreach ($result as $row) {
-      // var_dump($row);
       if ($row['image_path'] === "" || $row['image_path'] === null) {
         $imagePath = _ASSETS_IMAGES_FOLDER_ . "no-image.svg";
       } else {
@@ -58,7 +46,7 @@ if (isset($_POST["action"])) {
       $output .= '
         <div class="card">
         <div class="card-header">
-        <img class="card-img-top height-200" loading="lazy" src="' . $imagePath . '" alt="' . $row['brand'] . '" "' . $row['model'] . '" "' . $row['year'] . '>
+        <img class="card-img-top height-200" loading="lazy" src="' . $imagePath . '" alt="' . $row['brand'] . ' ' . $row['model'] . ' ' . $row['year'] . '">
 </div>
 
 <div class="card-body height-280">

@@ -33,12 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   } elseif (!preg_match(_REGEX_PHONE_, $phone)) {
     echo "<div class='alert alert-danger m-0' role='alert'>Le téléphone doit contenir uniquement des chiffres et avoir une longueur maximale de 16 caractères. Pour appel internationale, le signal \"+\" et le \"()</div>";
     $errorPhone = true;
-  }
-  //  elseif (!preg_match(_REGEX_SUBJECT_, $subject)) {
-  //   echo "<div class='alert alert-danger m-0' role='alert'>Le sujet doit contenir uniquement des lettres et avoir une longueur maximale de 60 caractères.</div>";
-  //   $errorSubject = true;
-  // }
-  elseif (!preg_match(_REGEX_MESSAGE_, $message)) {
+  } elseif (!preg_match(_REGEX_MESSAGE_, $message)) {
     echo "<div class='alert alert-danger m-0' role='alert'>Le message doit contenir une longueur maximale de 250 caractères.</div>";
     $errorMessage = true;
   }

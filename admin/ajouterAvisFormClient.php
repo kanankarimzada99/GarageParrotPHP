@@ -26,8 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $errorComment = false;
   $errorNote = false;
 
-
-
   //to validate reviews
   if (empty($client) && empty($comment) && empty($note)) {
     echo "<div class='alert alert-danger  m-0' role='alert'>Vous devez remplir tous les champs.</div>";

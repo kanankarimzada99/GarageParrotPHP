@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
   $service = $description = '';
 
-
   $service = test_input(($_POST['service']));
   $description = test_input(($_POST['description']));
   $file = $_FILES['image']['name'];
@@ -33,10 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $errorService = false;
   $errorDescription = false;
   $errorImage = false;
-
-
-
-
 
   //to validate service
   if (empty($service) && empty($description) && (!$file)) {
@@ -56,7 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit();
   }
 
-
   //verify if a file is sent
   if (isset($_FILES['image']['tmp_name']) && $_FILES['image']['tmp_name'] != '') {
     $sizeImage = getimagesize($_FILES['image']['tmp_name']);
@@ -73,8 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       if (move_uploaded_file($_FILES['image']['tmp_name'], dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $fileName)) {
 
         if (isset($_FILES['image']['name'])) {
-
-
 
           if (file_exists(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_FILES['image']['name'])) {
             //delete old image if new one is uploaded
@@ -104,7 +96,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $errorImage = false;
     } else {
       echo '<div class="alert alert-danger">Le service n\'a pas été sauvegardé.</div>';
-
       exit();
     }
   }
@@ -136,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if (errorEmpty == false && errorService == false && errorDescription == false && errorImage == false) {
     $("#service, #description, #image").val("");
-
+    //hide form
     $(".connection-wrapper").hide();
     // hide message after 3 seconds
     setTimeout(function() {

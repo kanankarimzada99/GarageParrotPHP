@@ -3,8 +3,6 @@ require_once __DIR__ . "/lib/config.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-
-
   //for security inputs
   function test_input($data)
   {
@@ -13,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = htmlspecialchars($data);
     return $data;
   }
-
 
   $lastname = test_input($_POST['lastname']);
   $name = test_input($_POST['name']);

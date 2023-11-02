@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //verify if email and password correspond to the user
     if ($email !== $user['email'] && $password_hash !== $user['password']) {
-      echo '<div class="alert alert-danger m-0" role="alert">Email ou mot de passe incorrect nbadfasdfas</div>';
+      echo '<div class="alert alert-danger m-0" role="alert">Email ou mot de passe incorrect.</div>';
       $error = true;
       return;
     } else if ($email !== $user['email'] || $password_hash !== $user['password']) {

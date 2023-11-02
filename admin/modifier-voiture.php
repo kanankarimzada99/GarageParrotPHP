@@ -4,7 +4,6 @@ require_once __DIR__ . "/../lib/session.php";
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/cars.php";
-require_once __DIR__ . "/../lib/carImages.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
 
@@ -32,196 +31,12 @@ $formCar = [
 
 if (isset($_GET['id'])) {
   $id = (int)$_GET['id'];
-  // $_SESSION['user']['id'] = $id;
 
   $car = getCarsById($pdo, $id);
 
   $_SESSION['car'] = $car;
   $carImages = getCarImagesById($pdo, $id);
-
-
-  if ($car === false) {
-    $errors[] = "Cette voiture n'existe pas";
-  }
 }
-
-// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-//   //verify errors inside the form
-
-//   //to validate code
-//   if (empty($_POST['code'])) {
-//     $errors[] = "Le code est requis.";
-//   } elseif (!preg_match(_REGEX_CODE_, $_POST['code'])) {
-//     $errors[] = "Le code doit contenir uniquement des lettres et chiffres. Trois lettres et trois numeros";
-//   }
-
-//   //to validate brand
-//   if (empty($_POST['brand'])) {
-//     $errors[] = "La marque est requis.";
-//   } elseif (!preg_match(_REGEX_BRAND_, $_POST['brand'])) {
-//     $errors[] = "La marque doit contenir uniquement des lettres et chiffres et avoir une longueur maximale de 25 caractères.";
-//   }
-//   //to validate model
-//   if (empty($_POST['model'])) {
-//     $errors[] = "Le modèle est requis.";
-//   } elseif (!preg_match(_REGEX_MODEL_, $_POST['model'])) {
-//     $errors[] = "Le modèle doit contenir uniquement des lettres, espaces et chiffres et avoir une longueur maximale de 25 caractères.";
-//   }
-//   //to validate year
-//   if (empty($_POST['year'])) {
-//     $errors[] = "L'anneé est requis.";
-//   } elseif (!preg_match(_REGEX_YEAR_, $_POST['year'])) {
-//     $errors[] = "L'anneé doit contenir uniquement des chiffres et avoir une longueur maximale de 4 caractères.";
-//   }
-//   //to validate kilometer
-//   if (empty($_POST['kilometer'])) {
-//     $errors[] = "La Kilométrage est requis.";
-//   } elseif (!preg_match(_REGEX_KILOMETERS_, $_POST['kilometer'])) {
-//     $errors[] = "La Kilométrage doit contenir uniquement des chiffres et avoir une longueur maximale de 6 caractères.";
-//   }
-//   //to validate gearbox
-//   if (empty($_POST['gearbox'])) {
-//     $errors[] = "La boîte de vitesses est requis.";
-//   } elseif (!preg_match(_REGEX_GEARBOX_, $_POST['gearbox'])) {
-//     $errors[] = "La boîte de vitesses doit contenir uniquement des lettres et avoir une longueur maximale de 15 caractères.";
-//   }
-//   //to validate doors
-//   if (empty($_POST['doors'])) {
-//     $errors[] = "Le numéro de portes est requis.";
-//   } elseif (!preg_match(_REGEX_DOORS_, $_POST['doors'])) {
-//     $errors[] = "Le numéro de portes doit contenir uniquement des chiffres et avoir une longueur maximale de 2 caractères.";
-//   }
-//   //to validate price
-//   if (empty($_POST['price'])) {
-//     $errors[] = "Le prix est requis.";
-//   } elseif (!preg_match(_REGEX_PRICE_, $_POST['price'])) {
-//     $errors[] = "Le prix doit contenir uniquement des chiffres et avoir une longueur maximale de 10 caractères.";
-//   }
-//   //to validate color
-//   if (empty($_POST['color'])) {
-//     $errors[] = "La couleur est requis.";
-//   } elseif (!preg_match(_REGEX_COLOR_, $_POST['color'])) {
-//     $errors[] = "La couleur doit contenir uniquement des lettres et espaceset avoir une longueur maximale de 15 caractères.";
-//   }
-//   //to validate fuel
-//   if (empty($_POST['fuel'])) {
-//     $errors[] = "Le carburant est requis.";
-//   } elseif (!preg_match(_REGEX_FUEL_, $_POST['fuel'])) {
-//     $errors[] = "Le carburant doit contenir uniquement des lettres et avoir une longueur maximale de 15 caractères.";
-//   }
-//   //to validate c02
-//   if (empty($_POST['co2'])) {
-//     $errors[] = "Le CO2 est requis.";
-//   } elseif (!preg_match(_REGEX_CO2_, $_POST['co2'])) {
-//     $errors[] = "Le CO2 doit contenir uniquement des chiffres et avoir une longueur maximale de 3 caractères.";
-//   }
-
-//   $imagePath = null;
-
-//   //verify if a file is sent
-//   if (isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != '') {
-//     $sizeImage = getimagesize($_FILES['file']['tmp_name']);
-//     if ($sizeImage !== false) {
-
-//       //delete spaces into the name and make name file with lowercase letters
-//       $fileName = slugify(basename($_FILES['file']['name']));
-
-//       //generate unique ID for a file
-//       $fileName = uniqid() . '-' . $fileName;
-
-//       //move file image into new location (uploads images folder)  
-
-//       if (move_uploaded_file($_FILES['file']['tmp_name'], dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $fileName)) {
-
-//         if (isset($_FILES['file']['name'])) {
-
-//           // $service = getServicesById($pdo, $_SESSION['service']['id']);
-
-//           if (file_exists(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_FILES['file']['name'])) {
-//             //delete old image if new one is uploaded
-//             unlink(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_FILES['file']['name']);
-//           } else {
-//             $messages[] = "image remplace avec success";
-//           }
-//         }
-//       } else {
-//         $errors[] = "Le fichier n'a pas été uploadé";
-//       }
-//     } else {
-//       $errors[] = "Le format d'image n'est pas valide. Seulement jpg, jpeg, png ou webp sont permit.";
-//     }
-//   }
-
-//   //to validate image
-//   if (isset($_POST['imgCar'])) {
-//     if (empty($_FILES['file']['name'])) {
-//       $errors[] = "L'image pour le service est requis.";
-//     }
-//   }
-
-
-//   //put information from form to formEmployee
-//   $formCar = [
-//     'code' => $_POST['code'],
-//     'brand' => $_POST['brand'],
-//     'model' => $_POST['model'],
-//     'year' => $_POST['year'],
-//     'kilometer' => $_POST['kilometer'],
-//     'gearbox' => $_POST['gearbox'],
-//     'doors' => $_POST['doors'],
-//     'price' => $_POST['price'],
-//     'color' => $_POST['color'],
-//     'fuel' => $_POST['fuel'],
-//     'co2' => $_POST['co2'],
-//     'image' => $_POST['image']
-//   ];
-
-
-//   //if no errors we save all information
-//   if (!$errors) {
-//     if (isset($_SESSION['user']['id'])) {
-//       //the id will be int
-//       $id = (int)$_SESSION['user']['id'];
-//     } else {
-//       $id = null;
-//     }
-
-//     //all data will be saved at saveEmployee function
-//     $id = $_SESSION['user']['id'];
-
-//     if (isset($_POST['imgCar'])) {
-//       $res = saveCar($pdo, $_POST['code'], $_POST['brand'], $_POST['model'], $_POST['year'], $_POST['kilometer'], $_POST['gearbox'], $_POST['doors'], $_POST['price'], $_POST['color'], $_POST['fuel'], $_POST['co2'],   $id);
-//     } else {
-//       $res = saveCar($pdo, $_POST['code'], $_POST['brand'], $_POST['model'], $_POST['year'], $_POST['kilometer'], $_POST['gearbox'], $_POST['doors'], $_POST['price'], $_POST['color'], $_POST['fuel'], $_POST['co2'],   $id);
-//     }
-
-//     if ($res) {
-//       $messages[] = "Le service a bien été sauvegardé";
-
-//       //all information at formService will be deleted
-//       if (!isset($_GET["id"])) {
-//         $formCar = [
-//           'code' => '',
-//           'brand' => '',
-//           'model' => '',
-//           'year' => '',
-//           'kilometer' => '',
-//           'gearbox' => '',
-//           'doors' => '',
-//           'price' => '',
-//           'color' => '',
-//           'fuel' => '',
-//           'co2' => '',
-//           'car-image' => ''
-//         ];
-//         unset($_SESSION['car']);
-//       } else {
-//         $errors[] = "Le service n'a pas été sauvegardé";
-//       }
-//     }
-//   }
-// }
 ?>
 
 <div class="wrapper">
@@ -330,7 +145,6 @@ if (isset($_GET['id'])) {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
 
@@ -351,16 +165,13 @@ if (isset($_GET['id'])) {
               </div>
               <?php foreach ($carImages as $car) { ?>
                 <div class="table-car">
-                  <!-- <p>Delete</p> -->
                   <input type="checkbox" class="checkboxCars" id="<?php echo $car['id'] ?>" name="id[]">
                   <div class="table-car-img">
                     <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars_decode($car['image_path']) ?>" alt="<?= $car['brand'] ?>" loading="lazy">
                   </div>
-
                 </div>
               <?php } ?>
             </div>
-
           <?php } ?>
 
           <div class="form-btn mt-2">
@@ -371,10 +182,8 @@ if (isset($_GET['id'])) {
   </section>
 </div>
 
-
 <?php
       require_once __DIR__ . "/templates/footer-admin.php";
-
 ?>
 
 <script>
@@ -397,10 +206,8 @@ if (isset($_GET['id'])) {
         $('.checkboxCars:checked').each(function() {
           dataArr.push($(this).attr('id'))
           $(this).closest('div').remove()
-          // $(this).closest('th').remove()
         })
         sendResponse(dataArr)
-        // console.log(dataArr)
 
       } else {
         alert('Aucune image selectionné')
@@ -457,9 +264,7 @@ if (isset($_GET['id'])) {
       pas</div>
   </div>
 
-
   <div class="go-back-page my-3 d-flex justify-content-center">
     <a href="javascript:history.back(1)" class="btn-wire mb-5">Retour page précédante</a>
   </div>
-
 <?php endif ?>

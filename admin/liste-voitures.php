@@ -13,16 +13,12 @@ if (isset($_GET['page'])) {
 
 //get cars
 $cars = getCars($pdo, _ADMIN_ITEM_PER_PAGE_, $page);
-// var_dump($cars);
-
-// var_dump($cars);
 
 //get total number of cars
 $totalCars = getTotalCars($pdo);
 
 //total pages according to total cars
 $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
-
 ?>
 <div class="wrapper">
 
@@ -53,9 +49,7 @@ $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
           </tr>
           <tbody>
             <?php foreach ($cars as $car) { ?>
-              <!-- <?php var_dump($car) ?> -->
               <tr>
-                <!-- <th scope="row"><?= $car["id"]; ?></th> -->
                 <td><?= $car["code"]; ?></td>
                 <td><?= $car["brand"]; ?></td>
                 <td><?= $car["model"]; ?></td>

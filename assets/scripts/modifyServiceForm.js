@@ -35,16 +35,6 @@ $(document).ready(function () {
         success: function (data) {
           $('#form-message').html(data)
         },
-        // complete: function () {
-        //   $('#addService').trigger('reset')
-        //   // hide form
-        //   $('.connection-wrapper').hide()
-        //   // hide message after 3 seconds
-        //   setTimeout(function () {
-        //     // $('.form-message').hide();
-        //     window.location = '/admin/liste-services.php'
-        //   }, 3000)
-        // },
       })
     }
   })
@@ -88,45 +78,9 @@ function checkDescription() {
   }
 }
 
-// function checkImage() {
-//   var fileInput = $('#image')[0].files[0]
-//   //image validation
-//   if (!fileInput) {
-//     $('#image').addClass('input-error')
-//     $('#message-error').removeClass('d-none')
-//     $('#image_err').html("L'image est requis.")
-//     return false
-//   }
-
-//   if (fileInput.size > 1000000) {
-//     $('#image').addClass('input-error')
-//     $('#message-error').removeClass('d-none')
-//     $('#form-message').html(
-//       '<div class="alert alert-danger d-inline" role="alert">La taille d\'image est trop grand</div>'
-//     )
-//     $('#image_err').html("L'image ne peut pas depasser 1 Mega.")
-//     $(fileInput).val('')
-//     return false
-//   }
-
-//   if (!fileInput.type.match('image/jpeg|image/jpg|image/png|image/webp')) {
-//     $('#image').addClass('input-error')
-//     $('#message-error').removeClass('d-none')
-//     $('#message-error').html("Format d'image invalide.")
-//     $('#image_err').html('Seulement jpg, jpeg, png ou webp sont accepté')
-//     $('#form-message').html(
-//       '<div class="alert alert-danger d-inline" role="alert">Format d\'image invalide.</div>'
-//     )
-//     return false
-//   } else {
-//     $('#image_err').html('')
-//     return true
-//   }
-// }
 function checkImage() {
   if ($('#imgCar').is(':checked')) {
     var fileInput = $('#file')[0].files[0]
-    console.log(fileInput)
     //image validation
     if (!fileInput) {
       $('#file').addClass('input-error')

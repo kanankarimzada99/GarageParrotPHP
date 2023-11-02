@@ -158,6 +158,9 @@ function checkModel() {
   }
 }
 function checkYear() {
+  var currentTime = new Date()
+  var currentYear = currentTime.getFullYear()
+  var pastYear = currentTime.getFullYear() - 15
   var patternYear = /^(20)\d{2}$/
   var year = $('#year').val()
   var validYear = patternYear.test(year)
@@ -169,9 +172,13 @@ function checkYear() {
     return false
   } else if (!validYear) {
     $('#year_err').html(
-      'Le format année est 4 chiffre à partir de 2000 (20XX).'
+      'Le format année est 4 chiffre et à partir de ' + pastYear + '.'
     )
     return false
+  } else if ($('#year').val() > currentYear) {
+    $('#year_err').html("L'année est trop grand. Année courant maximum.")
+  } else if ($('#year').val() < pastYear) {
+    $('#year_err').html("L'année est trop loin. 15 ans maximum.")
   } else {
     $('#year_err').html('')
     return true
@@ -324,44 +331,9 @@ function checkCo2() {
   }
 }
 
-// function checkImage() {
-//   var fileInput = $('#file')[0].files[0]
-
-//   console.log(fileInput)
-//   //image validation
-//   if (fileInput) {
-//     if (fileInput.size > 1000000) {
-//       $('#file').addClass('input-error')
-//       $('#message-error').removeClass('d-none')
-//       $('#form-message').html(
-//         '<div class="alert alert-danger d-inline" role="alert">La taille d\'image est trop grand</div>'
-//       )
-//       $('#image_err').html("L'image ne peut pas depasser 1 Mega.")
-//       $(fileInput).val('')
-//       return false
-//     }
-
-//     if (!fileInput.type.match('image/jpeg|image/jpg|image/png|image/webp')) {
-//       $('#file').addClass('input-error')
-//       $('#message-error').removeClass('d-none')
-//       $('#message-error').html("Format d'image invalide.")
-//       $('#image_err').html('Seulement jpg, jpeg, png ou webp sont accepté')
-//       $('#form-message').html(
-//         '<div class="alert alert-danger d-inline" role="alert">Format d\'image invalide.</div>'
-//       )
-//       return false
-//     } else {
-//       $('#image_err').html('')
-//       return true
-//     }
-//   } else {
-//     return true
-//   }
-// }
 function checkImage() {
   if ($('#imgCar').is(':checked')) {
     var fileInput = $('#file')[0].files[0]
-    console.log(fileInput)
     //image validation
     if (!fileInput) {
       $('#file').addClass('input-error')

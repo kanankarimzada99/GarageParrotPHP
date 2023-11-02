@@ -47,7 +47,7 @@ $(document).ready(function () {
         processData: false,
         contentType: false,
         cache: false,
-        async: false,
+        async: true,
 
         success: function (data) {
           $('#form-message').html(data)

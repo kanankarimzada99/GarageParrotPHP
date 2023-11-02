@@ -31,8 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $errorNote = false;
 
 
-
-
   //to validate reviews
   if (empty($client) && empty($comment) && empty($note)) {
     echo "<div class='alert alert-danger  m-0' role='alert'>Vous devez remplir tous les champs.</div>";
@@ -41,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "<div class='alert alert-danger  m-0' role='alert'>Le nom du client est requis. Maximum 50 caractères</div>";
     $errorClient = true;
   } elseif (!preg_match(_REGEX_COMMENT_, $comment)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>Le nom du client doit contenir uniquement des lettres et espaces et avoir une longueur maximale de 50 caractères.</div>";
+    echo "<div class='alert alert-danger  m-0' role='alert'>Le commentaire du client est requis et doit contenir une longueur maximale de 50 caractères.</div>";
     $errorComment = true;
   }
 
@@ -103,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if (errorEmpty == false && errorClient == false && errorComment == false && errorNote == false) {
     $("#client, #comment, #note").val("");
-
+    //hide form
     $(".connection-wrapper").hide();
     //hide message after 3 seconds
     setTimeout(function() {

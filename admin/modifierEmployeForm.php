@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   // get id from session
   $id = (int)($_SESSION['employee']['id']);
+
   //for security inputs
   function test_input($data)
   {
@@ -24,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $lastname = test_input($_POST['lastname']);
   $name = test_input($_POST['name']);
   $email = test_input($_POST['email']);
-  $password = test_input($_POST['password']);
+  $password = ($_POST['password']);
 
   $error = false;
   $errorEmpty = false;
@@ -39,18 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   //verify if employee or email exist on the database
   foreach ($employees as $employee) {
 
-    //verify if employee id different employe id url
-    if ($employee['id'] !== $id) {
-      //check if email already exist
+    //verify if employee id different employe id url to check if email exist
 
-      if ($employee['email'] === $email) {
-        echo "<div class='alert alert-danger  m-0' role='alert'>Cet mail existe déjà.</div>";
-        $error = true;
-      }
+    if ($employee['email'] === $email && $employee['id'] !== $id) {
+      echo "<div class='alert alert-danger  m-0' role='alert'>Cet e-mail existe déjà.</div>";
+      $errorEmail = true;
     }
   }
-
-
 
   //to validate employee
   if (empty($lastname) && empty($name) && empty($email)) {
@@ -67,24 +63,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errorEmail = true;
   }
 
-  // Valider le mot de passe
-  if (!empty($password)) {
-
-    if (!preg_match(_REGEX_PASSWORD_, $password)) {
-      echo "<div class='alert alert-danger  m-0' role='alert'>Le mot de passe doit avoir minimum 10 caractères et maximum 16 caractères. Il doit avoir au moins un symbole, un chiffre et un majuscule.</div>";
-      $errorPassword = true;
-    } else {
-      $password = $_SESSION['user']['password'];
-      $errorPassword = false;
-    }
-  }
-
-
   //if no errors we save all information
-  if ($errorEmpty !== true && $error !== true && $errorLastName !== true && $errorName !== true && $errorEmail !== true && $errorPassword !== true) {
+  if ($errorEmpty !== true && $error !== true && $errorLastName !== true && $errorName !== true && $errorEmail !== true) {
 
-
-    $res = saveEmployee($pdo, $lastname, $name, $email, $password, $id);
+    if (($_POST['password']) === 'undefined' || ($_POST['password']) === '') {
+      $res = saveEmployee($pdo, $lastname, $name, $email, $_SESSION['employee']['password'], $id);
+    } else {
+      $res = saveEmployee($pdo, $lastname, $name, $email, sha1($password), $id);
+    }
 
     if ($res) {
       echo "<div class='alert alert-success  m-0' role='alert'>L'employé a bien été sauvegardé</div>";
@@ -135,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     errorPassword ==
     false) {
     $("#lastname, #name, #email, #password").val("");
-
+    //hide form
     $(".connection-wrapper").hide();
     //hide message after 3 seconds
     setTimeout(function() {

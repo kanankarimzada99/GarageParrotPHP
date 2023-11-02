@@ -85,23 +85,10 @@ $(document).ready(function () {
         processData: false,
         contentType: false,
         cache: false,
-        async: false,
-        beforeSend: function () {
-          $('#submitbtn').attr('disabled', true)
-        },
+        async: true,
 
         success: function (data) {
           $('#form-message').html(data)
-        },
-        complete: function () {
-          $('#addCar').trigger('reset')
-          // hide form
-          // $('.connection-wrapper').hide()
-          // // hide message after 3 seconds
-          // setTimeout(function () {
-          //   // $('.form-message').hide();
-          //   window.location = '/admin/liste-voitures.php'
-          // }, 3000)
         },
       })
     }
@@ -170,6 +157,9 @@ function checkModel() {
   }
 }
 function checkYear() {
+  var currentTime = new Date()
+  var currentYear = currentTime.getFullYear()
+  var pastYear = currentTime.getFullYear() - 15
   var patternYear = /^(20)\d{2}$/
   var year = $('#year').val()
   var validYear = patternYear.test(year)
@@ -181,9 +171,13 @@ function checkYear() {
     return false
   } else if (!validYear) {
     $('#year_err').html(
-      'Le format année est 4 chiffre à partir de 2000 (20XX).'
+      'Le format année est 4 chiffre et à partir de ' + pastYear + '.'
     )
     return false
+  } else if ($('#year').val() > currentYear) {
+    $('#year_err').html("L'année est trop grand. Année courant maximum.")
+  } else if ($('#year').val() < pastYear) {
+    $('#year_err').html("L'année est trop loin. 15 ans maximum.")
   } else {
     $('#year_err').html('')
     return true

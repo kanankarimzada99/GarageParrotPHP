@@ -50,8 +50,6 @@ function getCarsById(PDO $pdo, int $id): array|bool
   return $result;
 }
 
-
-
 function getCars(PDO $pdo, int $limit = null, int $page = null): array|bool
 {
   //order cars by descending order.
@@ -83,26 +81,6 @@ function getCars(PDO $pdo, int $limit = null, int $page = null): array|bool
   $result = $query->fetchAll(PDO::FETCH_ASSOC);
   return $result;
 }
-
-// function getCarImages(PDO $pdo, int $limit = null): array|bool
-// {
-//   //order cars by descending order.
-//   $sql = "SELECT * FROM cars INNER JOIN carimages ON cars.id=carimages.product_id";
-
-//   if ($limit) {
-//     $sql .= " LIMIT :limit";
-//   }
-//   $query = $pdo->prepare($sql);
-
-//   // bind only if $limit exist
-//   if ($limit) {
-//     $query->bindValue(":limit", $limit, PDO::PARAM_INT);
-//   }
-
-//   $query->execute();
-//   $result = $query->fetchAll(PDO::FETCH_ASSOC);
-//   return $result;
-// }
 
 function getLastCar(PDO $pdo): array|bool
 {

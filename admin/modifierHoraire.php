@@ -30,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $afternoonOpen = test_input($_POST['afternoonOpen']);
   $afternoonClose = test_input($_POST['afternoonClose']);
 
-
   $errorEmpty = false;
   $errorMorningOpen = false;
   $errorMorningClose = false;
@@ -173,13 +172,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     errorAfternoonClose == false &&
     errorTime == false) {
     $("#moring-open, #morning-close, #afternoon-open", "afternoon-close").val("");
-
+    //hide form
     $(".connection-wrapper").hide();
 
     // hide message after 3 seconds
     setTimeout(function() {
       window.location = '/admin/liste-horaires.php';
-
     }, 3000); // <-- time in milliseconds
   }
 </script>

@@ -72,7 +72,7 @@ function saveEmployee(PDO $pdo, string $lastname, string $name, string $email, s
     $query = $pdo->prepare("UPDATE `employees` SET `lastname` = :lastname, " . "`name` = :name, " . "`email` = :email, " . "`password` = :password WHERE `employees`.`id` =:id;");
     $query->bindValue(':id', $id, $pdo::PARAM_INT);
   }
-  $password = sha1($password);
+  // $password = sha1($password);
   $query->bindValue(':lastname', $lastname, PDO::PARAM_STR);
   $query->bindValue(':name', $name, PDO::PARAM_STR);
   $query->bindValue(':email', $email, PDO::PARAM_STR);

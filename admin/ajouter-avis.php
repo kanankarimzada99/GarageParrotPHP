@@ -12,27 +12,6 @@ $id = null;
 
 ?>
 
-<!-- send message by form  -->
-<!-- <script>
-  $(document).ready(function() {
-    $("form").submit(function(event) {
-      event.preventDefault();
-      var client = $("#client").val();
-      var comment = $("#comment").val();
-      var note = $("#note").val();
-      var submit = $("#submit").val();
-
-      $(".form-message").load('ajouterAvisForm.php', {
-        client: client,
-        name: name,
-        comment: comment,
-        note: note,
-        submit: submit
-      });
-    })
-  })
-</script> -->
-
 <div class="wrapper">
 
   <!-- BREADCRUMB  -->
@@ -86,7 +65,6 @@ $id = null;
     </div>
   </section>
 </div>
-
 
 <script src="../assets/scripts/validationReviewForm.js"></script>
 

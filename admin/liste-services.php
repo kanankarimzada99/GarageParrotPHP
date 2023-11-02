@@ -36,7 +36,6 @@ $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
       <div class="connection-table">
         <table>
           <tr>
-            <!-- <th>#</th> -->
             <th>Service</th>
             <th class="w-50">Description</th>
             <th style="width: 10px">Image</th>
@@ -45,10 +44,8 @@ $totalPages = ceil($totalServices / _ADMIN_ITEM_PER_PAGE_);
           <tbody>
             <?php foreach ($services as $service) { ?>
               <tr>
-                <!-- <th scope="row"><?= $service["id"]; ?></th> -->
                 <td><?= $service["service"]; ?></td>
                 <td><?= $service["description"]; ?></td>
-                <!-- <td><?= $service["image"]; ?></td> -->
                 <td>
                   <?php if ($service['image'] == null) : ?>
                     <p>pas d'image</p>

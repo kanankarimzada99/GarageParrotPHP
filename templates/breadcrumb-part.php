@@ -1,5 +1,4 @@
   <!-- BREADCRUMB  -->
-
   <div class="breadcrumbs">
     <ul class="breadcrumb">
       <li><a href="/">Accueil</a></li>

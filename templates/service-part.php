@@ -7,9 +7,10 @@ if ($service['image'] === "") {
 }
 ?>
 
+
 <div class="card">
   <div class="card-header">
-    <img class="card-img-top" src="<?= $imagePath; ?>" alt="voiture marque X">
+    <img class="card-img-top" src="<?= $imagePath; ?>" alt="<?= $service['service'] ?>">
   </div>
   <div class="card-body ">
     <h4 class="card-title center"><?= $service['service'] ?></h4>

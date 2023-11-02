@@ -14,12 +14,7 @@ $formEmployee = [
   'password' => '',
   'conf-password' => ''
 ];
-
-
-
 ?>
-
-<!-- send message by form -->
 
 
 <div class="wrapper">

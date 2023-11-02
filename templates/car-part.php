@@ -1,7 +1,6 @@
 <!-- if image car doesn't exist  -->
 <?php
 
-// var_dump($car);
 if ($car['image_path'] === "" || $car['image_path'] === null) {
   $imagePath = _ASSETS_IMAGES_FOLDER_ . "no-image.svg";
 } else {
@@ -9,9 +8,14 @@ if ($car['image_path'] === "" || $car['image_path'] === null) {
 }
 ?>
 
+
+<?php if ($car['product_id'] !== null) : ?>
+
+
 <div class="card">
   <div class="card-header">
-    <img class="card-img-top height-200" src="<?= $imagePath; ?>" alt="<?= $car['brand'] . " " . $car['model'] . " " . $car['year']; ?>">
+    <img class="card-img-top height-200" src="<?= $imagePath; ?>"
+      alt="<?= $car['brand'] . " " . $car['model'] . " " . $car['year']; ?>">
   </div>
   <div class="card-body ">
     <h4 class="card-title"><?= $car['brand']; ?></h4>
@@ -26,3 +30,5 @@ if ($car['image_path'] === "" || $car['image_path'] === null) {
     <a href="/pages/voiture-details.php?id=<?= $car['carId']; ?>" class=" btn-wire large">Details</a>
   </div>
 </div>
+
+<?php endif ?>

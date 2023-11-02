@@ -2,8 +2,6 @@
 require_once __DIR__ . "/../lib/config.php";
 require_once __DIR__ . "/../lib/session.php";
 
-// var_dump($_SESSION);
-
 //prevent user to back to login page if is already connected
 if (!empty($_SESSION['user'])) {
 
@@ -43,7 +41,6 @@ if (!empty($_SESSION['user'])) {
   <script src="https://kit.fontawesome.com/1a0b88a9d7.js" crossorigin="anonymous"></script>
 
   <!-- CSS  -->
-  <!-- <link rel="stylesheet" href="./assets/css/override-bootstrap.css"> -->
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 

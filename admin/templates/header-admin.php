@@ -1,6 +1,5 @@
 <?php
-//ob_start() function will turn output buffering on. While output buffering is active no output is sent from the script (other than headers)
-// ob_start();
+
 require_once __DIR__ . "../../../lib/config.php";
 require_once __DIR__ . "../../../lib/session.php";
 require_once __DIR__ . "../../../lib/pdo.php";
@@ -36,7 +35,6 @@ require_once __DIR__ . "../../../lib/not-connected.php";
   <script src="https://kit.fontawesome.com/1a0b88a9d7.js" crossorigin="anonymous"></script>
 
   <!-- CSS  -->
-  <!-- <link rel="stylesheet" href="./assets/css/override-bootstrap.css"> -->
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 

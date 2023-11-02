@@ -35,16 +35,6 @@ $(document).ready(function () {
         success: function (data) {
           $('#form-message').html(data)
         },
-        // complete: function () {
-        //   $('#addService').trigger('reset')
-        //   // hide form
-        //   $('.connection-wrapper').hide()
-        //   // hide message after 3 seconds
-        //   setTimeout(function () {
-        //     // $('.form-message').hide();
-        //     window.location = '/admin/liste-services.php'
-        //   }, 3000)
-        // },
       })
     }
   })
