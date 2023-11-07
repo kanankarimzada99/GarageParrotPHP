@@ -11,5 +11,5 @@ if (isset($_POST['data'])) {
   foreach ($dataArr as $id) {
     deleteCarImage($pdo, $id);
   }
-  echo '<div class="alert alert-success d-inline" role="alert">La voiture été bien supprimé.</div>';
+  echo 'La voiture été bien supprimé.';
 }
