@@ -59,7 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   //verify if code car exist on the database
   foreach ($cars as $car) {
-    if ($car['code'] === $code && $car['carId'] !== $id) {
+
+    if ($car['code'] == $code && $car['carId'] != $id) {
       echo "<div class='alert alert-danger  m-0' role='alert'>Ce code existe déjà.</div>";
       $errorCode = true;
     }
@@ -78,6 +79,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   } elseif (!preg_match(_REGEX_MODEL_, $model)) {
     echo "<div class='alert alert-danger  m-0' role='alert'>Le modèle doit contenir uniquement des lettres, espaces et chiffres et avoir une longueur maximale de 25 caractères.</div>";
     $errorModel = true;
+  } elseif (!preg_match(_REGEX_PRICE_, $price)) {
+    echo "<div class='alert alert-danger  m-0' role='alert'>Le prix doit contenir uniquement des chiffres et avoir une longueur de 4 caractères minimum.</div>";
+    $errorPrice = true;
+  } elseif (!preg_match(_REGEX_KILOMETERS_, $kilometer)) {
+    echo "<div class='alert alert-danger  m-0' role='alert'>La kilométrage doit contenir uniquement des chiffres et avoir une longueur de 3 caractères minimum.</div>";
+    $errorKilometers = true;
   } elseif (!preg_match(_REGEX_YEAR_, $year)) {
     echo "<div class='alert alert-danger  m-0' role='alert'>L'anneé doit contenir uniquement des chiffres et avoir une longueur de 4 caractères.</div>";
     $errorYear = true;
@@ -87,9 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   } elseif (!preg_match(_REGEX_DOORS_, $doors)) {
     echo "<div class='alert alert-danger  m-0' role='alert'>Le numéro de portes doit contenir uniquement des chiffres et avoir une longueur maximale de 2 caractères.</div>";
     $errorDoors = true;
-  } elseif (!preg_match(_REGEX_PRICE_, $price)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>Le prix doit contenir uniquement des chiffres et avoir une longueur maximale de 10 caractères.</div>";
-    $errorPrice = true;
   } elseif (!preg_match(_REGEX_COLOR_, $color)) {
     echo "<div class='alert alert-danger  m-0' role='alert'>La couleur doit contenir uniquement des lettres et espaceset avoir une longueur maximale de 15 caractères.</div>";
     $errorColor = true;
@@ -109,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //to validate image
     if (isset($_POST['imgCar'])) {
       if (empty($_FILES['file']['name'])) {
-        echo "L'image pour la voiture est requis.";
+        echo "<div class='alert alert-danger  m-0' role='alert'>L'image pour la voiture est requis.</div>";
       } else {
         //verify if a file is sent
         // Handle image uploads
@@ -173,75 +177,74 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 <script>
-$("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2").removeClass(
-  "input-error");
+  $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2").removeClass(
+    "input-error");
 
-//get variable php inside js
-var errorEmpty = "<?php echo $errorEmpty; ?>";
-var errorCode = "<?php echo $errorCode; ?>";
-var errorBrand = "<?php echo $errorBrand; ?>";
-var errorModel = "<?php echo $errorModel; ?>";
-var errorYear = "<?php echo $errorYear; ?>";
-var errorPrice = "<?php echo $errorPrice; ?>";
-var errorKilometers = "<?php echo $errorKilometers; ?>";
-var errorColor = "<?php echo $errorColor; ?>";
-var errorGearbox = "<?php echo $errorGearbox; ?>";
-var errorDoors = "<?php echo $errorDoors; ?>";
-var errorFuel = "<?php echo $errorFuel; ?>";
-var errorCO2 = "<?php echo $errorCO2; ?>";
-var errorImage = "<?php echo $errorImage; ?>";
+  //get variable php inside js
+  var errorEmpty = "<?php echo $errorEmpty; ?>";
+  var errorCode = "<?php echo $errorCode; ?>";
+  var errorBrand = "<?php echo $errorBrand; ?>";
+  var errorModel = "<?php echo $errorModel; ?>";
+  var errorYear = "<?php echo $errorYear; ?>";
+  var errorPrice = "<?php echo $errorPrice; ?>";
+  var errorKilometers = "<?php echo $errorKilometers; ?>";
+  var errorColor = "<?php echo $errorColor; ?>";
+  var errorGearbox = "<?php echo $errorGearbox; ?>";
+  var errorDoors = "<?php echo $errorDoors; ?>";
+  var errorFuel = "<?php echo $errorFuel; ?>";
+  var errorCO2 = "<?php echo $errorCO2; ?>";
+  var errorImage = "<?php echo $errorImage; ?>";
 
 
-if (errorEmpty == true) {
-  $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2").addClass("input-error");
-}
-if (errorCode == true) {
-  $("#code").addClass("input-error");
-}
-if (errorBrand == true) {
-  $("#brand").addClass("input-error");
-}
-if (errorModel == true) {
-  $("#model").addClass("input-error");
-}
-if (errorYear == true) {
-  $("#year").addClass("input-error");
-}
-if (errorPrice == true) {
-  $("#price").addClass("input-error");
-}
-if (errorKilometers == true) {
-  $("#kilometer").addClass("input-error");
-}
-if (errorColor == true) {
-  $("#color").addClass("input-error");
-}
-if (errorGearbox == true) {
-  $("#gearbox").addClass("input-error");
-}
-if (errorDoors == true) {
-  $("#doors").addClass("input-error");
-}
-if (errorFuel == true) {
-  $("#fuel").addClass("input-error");
-}
-if (errorCO2 == true) {
-  $("#co2").addClass("input-error");
-}
-if (errorImage == true) {
-  $("#file").addClass("input-error");
-}
+  if (errorEmpty == true) {
+    $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2").addClass("input-error");
+  }
+  if (errorCode == true) {
+    $("#code").addClass("input-error");
+  }
+  if (errorBrand == true) {
+    $("#brand").addClass("input-error");
+  }
+  if (errorModel == true) {
+    $("#model").addClass("input-error");
+  }
+  if (errorYear == true) {
+    $("#year").addClass("input-error");
+  }
+  if (errorPrice == true) {
+    $("#price").addClass("input-error");
+  }
+  if (errorKilometers == true) {
+    $("#kilometer").addClass("input-error");
+  }
+  if (errorColor == true) {
+    $("#color").addClass("input-error");
+  }
+  if (errorGearbox == true) {
+    $("#gearbox").addClass("input-error");
+  }
+  if (errorDoors == true) {
+    $("#doors").addClass("input-error");
+  }
+  if (errorFuel == true) {
+    $("#fuel").addClass("input-error");
+  }
+  if (errorCO2 == true) {
+    $("#co2").addClass("input-error");
+  }
+  if (errorImage == true) {
+    $("#file").addClass("input-error");
+  }
 
-if (errorEmpty == false && errorCode == false && errorBrand == false && errorModel == false && errorYear == false &&
-  errorPrice == false && errorKilometers == false && errorColor == false && errorGearbox == false && errorDoors ==
-  false && errorFuel == false && errorCO2 == false && errorImage == false) {
-  $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2, #file").val("");
-  //hide form
-  $(".connection-wrapper").hide();
-  //hide message after 3 seconds
-  setTimeout(function() {
-    window.location = '/admin/liste-voitures.php';
-
-  }, 3000); // <-- time in milliseconds
-}
+  if (errorEmpty == false && errorCode == false && errorBrand == false && errorModel == false && errorYear == false &&
+    errorPrice == false && errorKilometers == false && errorColor == false && errorGearbox == false && errorDoors ==
+    false && errorFuel == false && errorCO2 == false && errorImage == false) {
+    $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2, #file").val("");
+    //hide form
+    $(".connection-wrapper").hide();
+    //hide message after 3 seconds
+    setTimeout(function() {
+      window.location = '/admin/liste-voitures.php';
+    }, 3000); // <-- time in milliseconds
+  }
 </script>

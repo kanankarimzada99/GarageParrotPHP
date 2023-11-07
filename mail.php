@@ -34,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "<div class='alert alert-danger m-0' role='alert'>Le nom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.</div>";
     $errorLastname = true;
   } elseif (!preg_match(_REGEX_FIRST_NAME_, $name)) {
-    echo $name;
     echo "<div class='alert alert-danger m-0' role='alert'>Le prénom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.</div>";
     $errorName = true;
   } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {

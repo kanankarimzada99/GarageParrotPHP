@@ -26,7 +26,7 @@ $id = null;
     <h1 class="header-titles">Donner votre avis</h1>
 
     <!-- messages  -->
-    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
+    <div id="form-message" class="my-3 mt-3 d-flex justify-content-center"></div>
 
     <div class="contact-wrapper">
       <p class="text-center active">Votre avis est très important pour nous.</p>
@@ -36,14 +36,14 @@ $id = null;
         <div class="connection-form">
           <div class="form-group">
             <label for="client">Votre nom</label>
-            <input type="text" name="client" id="client" minlength="3" maxlength="50" placeholder="Dupont Jean-Charles"
+            <input type="text" name="client" id="client" minlength="5" maxlength="50" placeholder="Dupont Jean-Charles"
               autocomplete="off">
             <span class="error" id="client_err"> </span>
           </div>
           <div class="form-group">
             <label for="comment">Votre commentaire</label>
-            <textarea name="comment" id="comment" class="comment" cols="30" rows="5" minlength="5"
-              maxlength="300"> </textarea>
+            <textarea name="comment" id="comment" class="comment" cols="30" rows="5" minlength="15"
+              maxlength="250"> </textarea>
             <span class="error" id="comment_err"> </span>
           </div>
 

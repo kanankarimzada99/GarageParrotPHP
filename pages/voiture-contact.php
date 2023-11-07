@@ -40,7 +40,7 @@ if (isset($_GET['id'])) {
     <p class="contact-buy-car-txt">Service? Rendez-vous? Voiture d'occasion? N'hésitez pas à nous rejoindre.</p>
 
     <!-- messages  -->
-    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
+    <div id="form-message" class="my-3 mt-3 d-flex justify-content-center"></div>
 
     <div class="contact-wrapper">
 
@@ -49,7 +49,7 @@ if (isset($_GET['id'])) {
           <div class="contact-form-left">
             <div class="form-group">
               <label for="lastname">Nom</label>
-              <input type="text" name="lastname" id="lastname" minlength="3" maxlength="25" placeholder="Dupont"
+              <input type="text" name="lastname" id="lastname" minlength="5" maxlength="25" placeholder="Dupont"
                 autocomplete="off">
               <span class="error" id="lastname_err"> </span>
             </div>
@@ -81,7 +81,8 @@ if (isset($_GET['id'])) {
             </div>
             <div class="form-group">
               <label for="message">Message</label>
-              <textarea name="message" id="message" cols="30" rows="5" autocomplete="off"></textarea>
+              <textarea name="message" id="message" cols="30" rows="5" autocomplete="off" minlength="15"
+                maxlength="250"></textarea>
               <span class="error" id="message_err"> </span>
             </div>
           </div>

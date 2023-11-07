@@ -42,7 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //verify if employee id different employe id url to check if email exist
 
-    if ($employee['email'] === $email && $employee['id'] !== $id) {
+
+    if ($employee['email'] == $email && $employee['id'] != $id) {
       echo "<div class='alert alert-danger  m-0' role='alert'>Cet e-mail existe déjà.</div>";
       $errorEmail = true;
     }

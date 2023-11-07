@@ -46,7 +46,7 @@ if (isset($_POST["action"])) {
       $output .= '
         <div class="card">
         <div class="card-header">
-        <img class="card-img-top height-200" loading="lazy" src="' . $imagePath . '" alt="' . $row['brand'] . ' ' . $row['model'] . ' ' . $row['year'] . '">
+        <img class="card-img-top height-200"  src="' . $imagePath . '" alt="' . $row['brand'] . ' ' . $row['model'] . ' ' . $row['year'] . '">
 </div>
 
 <div class="card-body height-280">

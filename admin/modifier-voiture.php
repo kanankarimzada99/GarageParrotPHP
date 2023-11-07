@@ -13,20 +13,6 @@ $car = null;
 $fileName = null;
 $errors = [];
 $messages = [];
-$formCar = [
-  'code' => '',
-  'brand' => '',
-  'model' => '',
-  'year' => '',
-  'kilometer' => '',
-  'gearbox' => '',
-  'doors' => '',
-  'price' => '',
-  'color' => '',
-  'fuel' => '',
-  'co2' => ''
-];
-
 
 
 if (isset($_GET['id'])) {
@@ -55,7 +41,7 @@ if (isset($_GET['id'])) {
 
     <?php if ($car) : ?>
       <!-- messages  -->
-      <div id="form-message" class="my-3 d-flex justify-content-center"></div>
+      <div id="form-message" class="my-3 mt-3 d-flex justify-content-center"></div>
 
 
       <div class="connection-wrapper">
@@ -66,17 +52,17 @@ if (isset($_GET['id'])) {
               <div class="model-bottom">
                 <div class="form-group">
                   <label for="code">Code</label>
-                  <input type="text" name="code" id="code" minlength="6" maxlength="6" placeholder="BMW033" autocomplete="off" value="<?= htmlspecialchars_decode($car['code'] ?? $formCar['code'], ENT_NOQUOTES); ?>">
+                  <input type="text" name="code" id="code" minlength="6" maxlength="6" placeholder="BMW033" autocomplete="off" value="<?= htmlspecialchars_decode($car['code'], ENT_NOQUOTES); ?>">
                   <span class="error" id="code_err"></span>
                 </div>
                 <div class="form-group">
                   <label for="brand">Marque</label>
-                  <input type="text" name="brand" id="brand" minlength="3" maxlength="15" placeholder="Tesla" autocomplete="off" value="<?= htmlspecialchars_decode($car['brand'] ?? $formCar['brand'], ENT_NOQUOTES); ?>">
+                  <input type="text" name="brand" id="brand" minlength="3" maxlength="15" placeholder="Tesla" autocomplete="off" value="<?= htmlspecialchars_decode($car['brand'], ENT_NOQUOTES); ?>">
                   <span class="error" id="brand_err"></span>
                 </div>
                 <div class="form-group">
                   <label for="model">Modèle</label>
-                  <input type="text" name="model" id="model" minlength="3" maxlength="15" placeholder="Max 5" autocomplete="off" value="<?= htmlspecialchars_decode($car['model'] ?? $formCar['model'], ENT_NOQUOTES); ?>">
+                  <input type="text" name="model" id="model" minlength="3" maxlength="15" placeholder="Max 5" autocomplete="off" value="<?= htmlspecialchars_decode($car['model'], ENT_NOQUOTES); ?>">
                   <span class="error" id="model_err"></span>
                 </div>
               </div>
@@ -88,22 +74,22 @@ if (isset($_GET['id'])) {
               <div class="car-description-left">
                 <div class="form-group">
                   <label for="year">Année</label>
-                  <input type="text" name="year" id="year" minlength="4" maxlength="4" placeholder="2002" autocomplete="off" value="<?= htmlspecialchars_decode($car['year'] ?? $formCar['year'], ENT_NOQUOTES); ?>">
+                  <input type="text" name="year" id="year" minlength="4" maxlength="4" placeholder="2002" autocomplete="off" value="<?= htmlspecialchars_decode($car['year'], ENT_NOQUOTES); ?>">
                   <span class="error" id="year_err"></span>
                 </div>
                 <div class="form-group">
                   <label for="kilometer">Kilométrage</label>
-                  <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="92233" autocomplete="off" value="<?= htmlspecialchars_decode($car['kilometers'] ?? $formCar['kilometer'], ENT_NOQUOTES); ?>">
+                  <input type="text" name="kilometer" id="kilometer" minlength="3" maxlength="6" placeholder="92233" autocomplete="off" value="<?= htmlspecialchars_decode($car['kilometers'], ENT_NOQUOTES); ?>">
                   <span class="error" id="kilometer_err"></span>
                 </div>
                 <div class="form-group">
                   <label for="gearbox">Boîte de vitesses</label>
-                  <input type="text" name="gearbox" id="gearbox" minlength="6" maxlength="12" placeholder="manuelle" autocomplete="off" value="<?= htmlspecialchars_decode($car['gearbox'] ?? $formCar['gearbox'], ENT_NOQUOTES); ?>">
+                  <input type="text" name="gearbox" id="gearbox" minlength="6" maxlength="12" placeholder="manuelle" autocomplete="off" value="<?= htmlspecialchars_decode($car['gearbox'], ENT_NOQUOTES); ?>">
                   <span class="error" id="gearbox_err"></span>
                 </div>
                 <div class="form-group">
                   <label for="doors">Numéro de portes</label>
-                  <input type="text" name="doors" id="doors" minlength="1" maxlength="1" placeholder="2" autocomplete="off" value="<?= htmlspecialchars_decode($car['number_doors'] ?? $formCar['doors'], ENT_NOQUOTES); ?>">
+                  <input type="text" name="doors" id="doors" minlength="1" maxlength="1" placeholder="2" autocomplete="off" value="<?= htmlspecialchars_decode($car['number_doors'], ENT_NOQUOTES); ?>">
                   <span class="error" id="doors_err"></span>
                 </div>
               </div>
@@ -112,22 +98,22 @@ if (isset($_GET['id'])) {
               <div class="car-description-right">
                 <div class="form-group">
                   <label for="price">Prix</label>
-                  <input type="text" name="price" id="price" minlength="4" maxlength="6" placeholder="12768" autocomplete="off" value="<?= htmlspecialchars_decode($car['price'] ?? $formCar['price'], ENT_NOQUOTES); ?>">
+                  <input type="text" name="price" id="price" minlength="4" maxlength="6" placeholder="12768" autocomplete="off" value="<?= htmlspecialchars_decode($car['price'], ENT_NOQUOTES); ?>">
                   <span class="error" id="price_err"></span>
                 </div>
                 <div class="form-group">
                   <label for="color">Couleur</label>
-                  <input type="text" name="color" id="color" minlength="5" maxlength="10" placeholder="rouge" autocomplete="off" value="<?= htmlspecialchars_decode($car['color'] ?? $formCar['color'], ENT_NOQUOTES); ?>">
+                  <input type="text" name="color" id="color" minlength="3" maxlength="15" placeholder="rouge" autocomplete="off" value="<?= htmlspecialchars_decode($car['color'], ENT_NOQUOTES); ?>">
                   <span class="error" id="color_err"></span>
                 </div>
                 <div class="form-group">
                   <label for="fuel">Carburant</label>
-                  <input type="text" name="fuel" id="fuel" minlength="5" maxlength="12" placeholder="életrique" autocomplete="off" value="<?= htmlspecialchars_decode($car['fuel'] ?? $formCar['fuel'], ENT_NOQUOTES); ?>">
+                  <input type="text" name="fuel" id="fuel" minlength="6" maxlength="12" placeholder="életrique" autocomplete="off" value="<?= htmlspecialchars_decode($car['fuel'], ENT_NOQUOTES); ?>">
                   <span class="error" id="fuel_err"></span>
                 </div>
                 <div class="form-group">
                   <label for="co2">CO2</label>
-                  <input type="text" name="co2" id="co2" minlength="1" maxlength="4" placeholder="123" autocomplete="off" value="<?= htmlspecialchars_decode($car['co'] ?? $formCar['co2'], ENT_NOQUOTES); ?>">
+                  <input type="text" name="co2" id="co2" minlength="1" maxlength="4" placeholder="123" autocomplete="off" value="<?= htmlspecialchars_decode($car['co'], ENT_NOQUOTES); ?>">
                   <span class="error" id="co2_err"></span>
                 </div>
                 <div class="form-group d-flex justify-content-start">

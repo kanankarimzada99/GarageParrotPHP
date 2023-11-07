@@ -10,10 +10,6 @@ require_once __DIR__ . "/templates/header-admin.php";
 $errors = '';
 
 
-$formService = [
-  'service' => '',
-  'description' => ''
-];
 $id = null;
 
 if (isset($_GET['id'])) {
@@ -48,19 +44,19 @@ if (isset($_GET['id'])) {
     <?php if ($service) : ?>
 
       <!-- messages  -->
-      <div id="form-message" class="my-3 d-flex justify-content-center"></div>
+      <div id="form-message" class="my-3 mt-3 d-flex justify-content-center"></div>
 
       <div class="connection-wrapper">
         <form id="modifyService" method="POST" enctype="multipart/form-data">
           <div class="connection-form">
             <div class="form-group">
               <label for="service">Service</label>
-              <input type="text" name="service" id="service" minlength="5" maxlength="30" placeholder="Reparation motor" autocomplete="off" value="<?= htmlspecialchars($service['service'] ?? $formService['service']); ?>">
+              <input type="text" name="service" id="service" minlength="15" maxlength="30" placeholder="Reparation motor" autocomplete="off" value="<?= htmlspecialchars($service['service']); ?>">
               <span class="error" id="service_err"></span>
             </div>
             <div class="form-group">
               <label for="description">Description</label>
-              <textarea name="description" id="description" class="service-description" cols="30" rows="5" minlength="50" maxlength="150"><?= htmlspecialchars($service['description'] ?? $formService['description']); ?></textarea>
+              <textarea name="description" id="description" class="service-description" cols="30" rows="5" minlength="50" maxlength="150"><?= htmlspecialchars($service['description']); ?></textarea>
               <span class="error" id="description_err"></span>
             </div>
             <div id="imgContainer">

@@ -61,7 +61,7 @@ function checkService() {
   }
 }
 function checkDescription() {
-  var patternDescription = /^[a-zA-ZÀ-ÿ\sp{P}0-9_.-]{50,150}$/
+  var patternDescription = /^[a-zA-ZÀ-ÿ0-9\s\'\.\?\!\,\-]{50,150}$/
   var description = $('#description').val()
   var validateDescription = patternDescription.test(description)
   if (description.trim() == '') {

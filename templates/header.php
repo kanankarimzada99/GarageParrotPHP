@@ -3,6 +3,15 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="title" content="garage v. parrot">
+  <meta name="description" content="Le garage V. Parrot propose une large gamme de services: réparation de la carrosserie, mécanique des voitures et vente de voitures d'occasion.">
+  <meta name="keywords" content="garage v. parrot,voiture d'ocassion,  réparation de la carrosserie, mécanique des voitures, entretien régulier, confiance pour ses clients.">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="French">
+  <meta name="revisit-after" content="2 days">
+  <meta name="author" content="Marcos Meneghetti">
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Garage V. Parrot</title>

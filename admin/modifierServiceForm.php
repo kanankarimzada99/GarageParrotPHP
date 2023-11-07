@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   //to validate image
   if (isset($_POST['imgCar'])) {
     if (empty($_FILES['file']['name'])) {
-      echo "L'image pour le service est requis.";
+      echo "<div class='alert alert-danger d-inline' role='alert'>L'image pour le service est requis.</div>";
     } else {
       //verify if a file is sent
       // Handle image uploads
@@ -126,35 +126,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 <script>
-$("#service, #description, #file").removeClass("input-error");
+  $("#service, #description, #file").removeClass("input-error");
 
-//get variable php inside js
-var errorEmpty = "<?php echo $errorEmpty; ?>";
-var errorService = "<?php echo $errorService; ?>";
-var errorDescription = "<?php echo $errorDescription; ?>";
-var errorImage = "<?php echo $errorImage; ?>";
+  //get variable php inside js
+  var errorEmpty = "<?php echo $errorEmpty; ?>";
+  var errorService = "<?php echo $errorService; ?>";
+  var errorDescription = "<?php echo $errorDescription; ?>";
+  var errorImage = "<?php echo $errorImage; ?>";
 
-if (errorEmpty == true) {
-  $("#service, #description, #file").addClass("input-error");
+  if (errorEmpty == true) {
+    $("#service, #description, #file").addClass("input-error");
 
-}
-if (errorService == true) {
-  $("#service").addClass("input-error");
-}
-if (errorDescription == true) {
-  $("#description").addClass("input-error");
-}
-if (errorImage == true) {
-  $("#file").addClass("input-error");
-}
+  }
+  if (errorService == true) {
+    $("#service").addClass("input-error");
+  }
+  if (errorDescription == true) {
+    $("#description").addClass("input-error");
+  }
+  if (errorImage == true) {
+    $("#file").addClass("input-error");
+  }
 
-if (errorEmpty == false && errorService == false && errorDescription == false && errorImage == false) {
-  $("#service, #description, #file").val("");
-  //hide form
-  $(".connection-wrapper").hide();
-  // hide message after 3 seconds
-  setTimeout(function() {
-    window.location = '/admin/liste-services.php';
-  }, 3000); // <-- time in milliseconds
-}
+  if (errorEmpty == false && errorService == false && errorDescription == false && errorImage == false) {
+    $("#service, #description, #file").val("");
+    //hide form
+    $(".connection-wrapper").hide();
+    // hide message after 3 seconds
+    setTimeout(function() {
+      window.location = '/admin/liste-services.php';
+    }, 3000); // <-- time in milliseconds
+  }
 </script>

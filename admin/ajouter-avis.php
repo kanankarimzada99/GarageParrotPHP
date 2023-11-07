@@ -17,7 +17,7 @@ $id = null;
   <!-- BREADCRUMB  -->
   <div class="breadcrumbs breadcrumbs-connection">
     <div class="go-back-list">
-      <a href="/">Revenir page accueil</a>
+      <a href="/admin/liste-avis.php">Revenir liste avis</a>
     </div>
   </div>
 
@@ -26,7 +26,7 @@ $id = null;
     <h1 class="header-titles">Ajouter avis client</h1>
 
     <!-- messages  -->
-    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
+    <div id="form-message" class="my-3 mt-3 d-flex justify-content-center"></div>
 
 
     <div class="connection-wrapper">
@@ -36,12 +36,14 @@ $id = null;
         <div class="connection-form">
           <div class="form-group">
             <label for="client">Nom client</label>
-            <input type="text" name="client" id="client" minlength="3" maxlength="50" placeholder="Dupont Jean-Charles" autocomplete="off">
+            <input type="text" name="client" id="client" minlength="5" maxlength="45" placeholder="Dupont Jean-Charles"
+              autocomplete="off">
             <span class="error" id="client_err"> </span>
           </div>
           <div class="form-group">
             <label for="comment">Commentaire</label>
-            <textarea name="comment" id="comment" class="comment" cols="30" rows="5" minlength="5" maxlength="300"> </textarea>
+            <textarea name="comment" id="comment" class="comment" cols="30" rows="5" minlength="15"
+              maxlength="250"> </textarea>
             <span class="error" id="comment_err"> </span>
           </div>
 

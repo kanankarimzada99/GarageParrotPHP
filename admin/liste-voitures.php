@@ -20,6 +20,10 @@ $totalCars = getTotalCars($pdo);
 //total pages according to total cars
 $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
 ?>
+
+<!-- if cars and page exist otherwise message error  -->
+
+<?php if ($cars && $page) : ?>
 <div class="wrapper">
 
   <!-- connection  -->
@@ -49,30 +53,33 @@ $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
           </tr>
           <tbody>
             <?php foreach ($cars as $car) { ?>
-              <tr>
-                <td><?= $car["code"]; ?></td>
-                <td><?= $car["brand"]; ?></td>
-                <td><?= $car["model"]; ?></td>
-                <td><?= $car["year"]; ?></td>
-                <td><?= number_format($car["price"], 2, ',', '.'); ?></td>
-                <td><?= number_format($car["kilometers"], 0, ',', '.'); ?> </td>
-                <td><?= $car["color"]; ?></td>
-                <td><?= $car["gearbox"]; ?></td>
-                <td><?= $car["number_doors"]; ?></td>
-                <td><?= $car["fuel"]; ?></td>
-                <td><?= $car["co"]; ?></td>
-                <td>
-                  <?php if ($car['image_path'] == null) : ?>
-                    <p>pas d'image</p>
-                  <?php else : ?>
-                    <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars_decode($car['image_path']) ?>" alt="<?= $car['brand'] ?>" class="w-100 h-100">
-                  <?php endif ?>
-                </td>
+            <tr>
+              <td><?= $car["code"]; ?></td>
+              <td><?= $car["brand"]; ?></td>
+              <td><?= $car["model"]; ?></td>
+              <td><?= $car["year"]; ?></td>
+              <td><?= number_format($car["price"], 2, ',', '.'); ?></td>
+              <td><?= number_format($car["kilometers"], 0, ',', '.'); ?> </td>
+              <td><?= $car["color"]; ?></td>
+              <td><?= $car["gearbox"]; ?></td>
+              <td><?= $car["number_doors"]; ?></td>
+              <td><?= $car["fuel"]; ?></td>
+              <td><?= $car["co"]; ?></td>
+              <td>
+                <?php if ($car['image_path'] == null) : ?>
+                <p>pas d'image</p>
+                <?php else : ?>
+                <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars_decode($car['image_path']) ?>"
+                  alt="<?= $car['brand'] ?>" class="w-100 h-100">
+                <?php endif ?>
+              </td>
 
-                <td><a href="modifier-voiture.php?id=<?= $car['carId'] ?>"><i class="fa-solid fa-pencil"></i></a>
-                  | <a href="delete-voiture.php?id=<?= $car['carId']  ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette voiture ?')"><i class="fa-solid fa-trash-can"></i></a>
-                </td>
-              </tr>
+              <td><a href="modifier-voiture.php?id=<?= $car['carId'] ?>"><i class="fa-solid fa-pencil"></i></a>
+                | <a href="delete-voiture.php?id=<?= $car['carId']  ?>"
+                  onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette voiture ?')"><i
+                    class="fa-solid fa-trash-can"></i></a>
+              </td>
+            </tr>
             <?php } ?>
           </tbody>
         </table>
@@ -80,15 +87,15 @@ $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
       <nav aria-label="Page navigation voitures">
         <ul class="pagination">
           <?php if ($totalPages > 1) { ?>
-            <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
-              <li class="page-item">
-                <a class="page-link <?php if ($i == $page) {
-                                      echo " active";
-                                    } ?>" href="?page=<?php echo $i; ?>">
-                  <?php echo $i; ?>
-                </a>
-              </li>
-            <?php } ?>
+          <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
+          <li class="page-item">
+            <a class="page-link <?php if ($i == $page) {
+                                        echo " active";
+                                      } ?>" href="?page=<?php echo $i; ?>">
+              <?php echo $i; ?>
+            </a>
+          </li>
+          <?php } ?>
           <?php } ?>
         </ul>
       </nav>
@@ -96,6 +103,20 @@ $totalPages = ceil($totalCars / _ADMIN_ITEM_PER_PAGE_);
   </section>
   <!-- END connection  -->
 </div>
+<?php else : ?>
+<div id="form-message" class="d-flex justify-content-center">
+  <div class='d-flex justify-content-center  alert alert-danger mt-5 mb-3 mx-auto' role='alert'>Cette page
+    n'existe
+    pas</div>
+</div>
+
+<div class="go-back-page my-3 d-flex justify-content-center">
+  <a href="javascript:history.back(1)" class="btn-wire mb-5">Retour page précédante</a>
+</div>
+<?php endif ?>
+
+
+
 <?php
 require_once __DIR__ . "/templates/footer-admin.php";
 ?>

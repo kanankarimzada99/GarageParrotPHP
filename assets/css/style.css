@@ -356,13 +356,38 @@ textarea {
 /* SECTION TITLES  */
 .header-titles {
   text-align: center;
-  margin: 10px 0 30px;
+  margin: 10px 0 20px;
   font-weight: 500;
   text-transform: uppercase;
   color: var(--font);
   font-family: 'Roboto', sans-serif;
   font-size: 1.4rem;
-  position: relative;
+  position:relative;
+}
+
+.header-titles::before,.header-titles::after{
+  background-color: var(--primary);
+  height: 2px;
+  width: 10%;
+  content:'';
+  position:absolute;
+  transform: translateX(-50%);
+ 
+}
+.header-titles::before{
+  bottom:-5px;
+}
+
+.header-titles::after{
+  top:-5px;
+}
+
+.header-description {
+  max-width: var(--max-wrapper);
+  font-size: 1rem;
+  font-weight: 400;
+  margin:20px auto;
+  padding:10px;
 }
 
 .sections {
@@ -634,6 +659,16 @@ input[type="submit"]:hover{
   .header-titles {
     margin: 50px 0 30px;
     font-size: 2rem;
+    position:relative;
+  }
+
+  
+
+  .header-description {
+    
+    font-size: 1.4rem;
+    padding:10px 20px;
+    margin:20px auto 30px;
   }
 
   .btn-fill {
@@ -1783,6 +1818,17 @@ red;
   padding:20px;
 }
 
+.ui-state-default, .ui-widget-content .ui-state-default{
+  border: 2px solid var(--primary);
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+}
+
+.ui-slider-horizontal .ui-slider-handle{
+  top:-0.25rem;
+}
+
 .filters{
   display:-webkit-box;
   display:-ms-flexbox;
@@ -2118,7 +2164,7 @@ CONNECTION BOSS EMPLOYE ALL PAGES---------------------------
 
 @media screen and (min-width: 992px) {
   .connection {
-    padding:60px;
+    padding:30px;
   }
 
   .connection-form {
@@ -2180,7 +2226,7 @@ textarea.comment{
   justify-content: space-between;
   max-width: var(--max-wrapper);
   width: 100%;
-  margin:40px auto;
+  margin:20px auto 40px;
 }
 
 .connection .header-titles{

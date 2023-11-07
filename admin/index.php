@@ -12,7 +12,7 @@ require_once __DIR__ . "/../templates/header-connexion.php";
   <section class="connection w-min sections" id="connection">
     <h1 class="header-titles">Connexion</h1>
     <!-- messages  -->
-    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
+    <div id="form-message" class="my-3 mt-3 d-flex justify-content-center"></div>
 
     <div class="connection-wrapper w-min">
 

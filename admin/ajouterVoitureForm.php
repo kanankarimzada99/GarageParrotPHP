@@ -85,15 +85,18 @@ if (empty($code) && empty($brand) && empty($model) && empty($year) && empty($pri
 } elseif (!preg_match(_REGEX_YEAR_, $year)) {
   echo "<div class='alert alert-danger  m-0' role='alert'>L'anneé doit contenir uniquement des chiffres et avoir une longueur de 4 caractères.</div>";
   $errorYear = true;
+} elseif (!preg_match(_REGEX_PRICE_, $price)) {
+  echo "<div class='alert alert-danger  m-0' role='alert'>Le prix doit contenir uniquement des chiffres et avoir une longueur de 4 caractères minimum.</div>";
+  $errorPrice = true;
+} elseif (!preg_match(_REGEX_KILOMETERS_, $kilometer)) {
+  echo "<div class='alert alert-danger  m-0' role='alert'>La kilométrage doit contenir uniquement des chiffres et avoir une longueur de 3 caractères minimum.</div>";
+  $errorKilometers = true;
 } elseif (!preg_match(_REGEX_GEARBOX_, $gearbox)) {
   echo "<div class='alert alert-danger  m-0' role='alert'>La boîte de vitesses doit contenir uniquement des lettres et avoir une longueur maximale de 15 caractères.</div>";
   $errorGearbox = true;
 } elseif (!preg_match(_REGEX_DOORS_, $doors)) {
   echo "<div class='alert alert-danger  m-0' role='alert'>Le numéro de portes doit contenir uniquement des chiffres et avoir une longueur maximale de 2 caractères.</div>";
   $errorDoors = true;
-} elseif (!preg_match(_REGEX_PRICE_, $price)) {
-  echo "<div class='alert alert-danger  m-0' role='alert'>Le prix doit contenir uniquement des chiffres et avoir une longueur maximale de 10 caractères.</div>";
-  $errorPrice = true;
 } elseif (!preg_match(_REGEX_COLOR_, $color)) {
   echo "<div class='alert alert-danger  m-0' role='alert'>La couleur doit contenir uniquement des lettres et espaceset avoir une longueur maximale de 15 caractères.</div>";
   $errorColor = true;
@@ -152,9 +155,9 @@ if ($errorEmpty !== true && $errorCode !== true && $errorBrand !== true && $erro
   }
 
   if ($res) {
-    echo '<div class="alert alert-success">Le service a bien été sauvegardé.</div>';
+    echo '<div class="alert alert-success d-inline" role="alert">Le service a bien été sauvegardé.</div>';
   } else {
-    echo '<div class="alert alert-danger">Le service n\'a pas été sauvegardé.</div>';
+    echo '<div class="alert alert-danger d-inline" role="alert">Le service n\'a pas été sauvegardé.</div>';
     exit();
   }
 }

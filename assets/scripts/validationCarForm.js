@@ -141,14 +141,14 @@ function checkModel() {
   var model = $('#model').val()
   var validModel = patternModel.test(model)
   if (model.trim() === '') {
-    $('#model_err').html('Le kilométrage ne peut pas être vide')
+    $('#model_err').html('Le modèle ne peut pas être vide')
     return false
-  } else if ($('#model').val().length < 4) {
-    $('#model_err').html('Le kilométrage est trop court.')
+  } else if ($('#model').val().length < 2) {
+    $('#model_err').html('Le modèle est trop court.')
     return false
   } else if (!validModel) {
     $('#model_err').html(
-      'Le kilométrage doit avoir 3 caractères minimum et 15 maximum.'
+      'Le modèle doit avoir 3 caractères minimum et 15 maximum.'
     )
     return false
   } else {
@@ -164,10 +164,10 @@ function checkYear() {
   var year = $('#year').val()
   var validYear = patternYear.test(year)
   if (year.trim() === '') {
-    $('#year_err').html('Le modèle ne peut pas être vide')
+    $('#year_err').html("L'année ne peut pas être vide")
     return false
   } else if ($('#year').val().length < 4) {
-    $('#year_err').html('Le modèle est trop court.')
+    $('#year_err').html("L'année est trop court.")
     return false
   } else if (!validYear) {
     $('#year_err').html(
@@ -184,13 +184,13 @@ function checkYear() {
   }
 }
 function checkKilometer() {
-  var patternKilometer = /^[1-9]{3,6}$/
+  var patternKilometer = /^[0-9]{3,6}$/
   var kilometer = $('#kilometer').val()
   var validKilometer = patternKilometer.test(kilometer)
   if (kilometer.trim() === '') {
     $('#kilometer_err').html('Le kilométrage ne peut pas être vide')
     return false
-  } else if ($('#kilometer').val().length < 4) {
+  } else if ($('#kilometer').val().length < 3) {
     $('#kilometer_err').html('Le kilométrage est trop court.')
     return false
   } else if ($('#kilometer').val() < 1000) {
@@ -199,9 +199,7 @@ function checkKilometer() {
     )
     return false
   } else if (!validKilometer) {
-    $('#kilometer_err').html(
-      'Seulement les chiffres sont permit, format XXXXXX.'
-    )
+    $('#kilometer_err').html('Seulement les chiffres sont permit.')
     return false
   } else {
     $('#kilometer_err').html('')
@@ -235,7 +233,7 @@ function checkDoors() {
   var doors = $('#doors').val()
   var validDoors = patternDoors.test(doors)
   if (doors.trim() === '') {
-    $('#doors_err').html('Le prix ne peut pas être vide')
+    $('#doors_err').html('Les numéro de portes ne peut pas être vide')
     return false
   } else if ($('#doors').val() < 2) {
     $('#doors_err').html(
@@ -243,7 +241,7 @@ function checkDoors() {
     )
     return false
   } else if (!validDoors) {
-    $('#doors_err').html('Seulement les chiffres sont permit, format XXXXXX.')
+    $('#doors_err').html('Seulement les chiffres sont permit.')
     return false
   } else {
     $('#doors_err').html('')
@@ -252,7 +250,7 @@ function checkDoors() {
 }
 
 function checkPrice() {
-  var patternPrice = /^[0-9]{4,10}$/
+  var patternPrice = /^[0-9]{4,6}$/
   var price = $('#price').val()
   var validPrice = patternPrice.test(price)
   if (price.trim() === '') {
@@ -262,7 +260,7 @@ function checkPrice() {
     $('#price_err').html('Le prix ne peut pas être plus petit que 3000.')
     return false
   } else if (!validPrice) {
-    $('#price_err').html('Seulement les chiffres sont permit, format XXXXXX.')
+    $('#price_err').html('Seulement les chiffres sont permit.')
     return false
   } else {
     $('#price_err').html('')

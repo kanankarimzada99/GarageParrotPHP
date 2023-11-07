@@ -25,7 +25,7 @@ require_once __DIR__ . "/templates/header-admin.php";
 
 
     <!-- messages  -->
-    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
+    <div id="form-message" class="my-3 mt-3 d-flex justify-content-center"></div>
 
     <div class="connection-wrapper">
       <form id="addCar" method="POST" enctype="multipart/form-data">
@@ -63,7 +63,7 @@ require_once __DIR__ . "/templates/header-admin.php";
                 </div>
                 <div class="form-group">
                   <label for="kilometer">Kilométrage</label>
-                  <input type="text" name="kilometer" id="kilometer" minlength="6" maxlength="6" placeholder="92233" autocomplete="off">
+                  <input type="text" name="kilometer" id="kilometer" minlength="3" maxlength="6" placeholder="92233" autocomplete="off">
                   <span class="error" id="kilometer_err"></span>
                 </div>
                 <div class="form-group">
@@ -87,17 +87,17 @@ require_once __DIR__ . "/templates/header-admin.php";
                 </div>
                 <div class="form-group">
                   <label for="color">Couleur</label>
-                  <input type="text" name="color" id="color" minlength="5" maxlength="10" placeholder="rouge" autocomplete="off">
+                  <input type="text" name="color" id="color" minlength="3" maxlength="15" placeholder="rouge" autocomplete="off">
                   <span class="error" id="color_err"></span>
                 </div>
                 <div class="form-group">
                   <label for="fuel">Carburant</label>
-                  <input type="text" name="fuel" id="fuel" minlength="5" maxlength="12" placeholder="életrique" autocomplete="off">
+                  <input type="text" name="fuel" id="fuel" minlength="6" maxlength="12" placeholder="életrique" autocomplete="off">
                   <span class="error" id="fuel_err"></span>
                 </div>
                 <div class="form-group">
                   <label for="co2">CO2</label>
-                  <input type="text" name="co2" id="co2" minlength="1" maxlength="3" placeholder="123" autocomplete="off">
+                  <input type="text" name="co2" id="co2" minlength="1" maxlength="4" placeholder="123" autocomplete="off">
                   <span class="error" id="co2_err"></span>
                 </div>
                 <div class="form-group">

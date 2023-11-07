@@ -41,7 +41,7 @@ $(document).ready(function () {
 })
 
 function checkClient() {
-  var patternClient = /^[0-9a-zA-ZÀ-ÿ\s.;"'-\d]{5,45}$/
+  var patternClient = /^[0-9a-zA-ZÀ-ÿ\s.;"'-\d]{5,50}$/
   var client = $('#client').val()
   var validClient = patternClient.test(client)
   if (client.trim() === '') {
@@ -61,7 +61,7 @@ function checkClient() {
   }
 }
 function checkComment() {
-  var patternComment = /^[0-9a-zA-ZÀ-ÿ\s.;"'-\d]{15,250}$/
+  var patternComment = /^[0-9a-zA-ZÀ-ÿ\s?!.:;"'\d]{15,250}$/
   var comment = $('#comment').val()
   var validComment = patternComment.test(comment)
   if (comment.trim() === '') {

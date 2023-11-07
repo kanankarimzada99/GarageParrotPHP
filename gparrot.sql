@@ -4,14 +4,13 @@ DROP DATABASE IF EXISTS garageparrot;
 CREATE DATABASE garageparrot;
 
 -- create table Employees 
-DROP TABLE IF EXISTS employees;
 CREATE TABLE IF NOT EXISTS employees (
   id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  lastname VARCHAR(25) NOT NULL, 
-  name VARCHAR(25) NOT NULL, 
+  lastname VARCHAR(50) NOT NULL, 
+  name VARCHAR(50) NOT NULL, 
   email VARCHAR(255) NOT NULL, 
   password VARCHAR(255) NOT NULL, 
-  role VARCHAR(20)
+  role VARCHAR(20) NOT NULL
 );
 
 -- create table Cars 
@@ -29,8 +28,7 @@ CREATE TABLE IF NOT EXISTS cars (
   gearbox VARCHAR(15) NOT NULL,
   number_doors int(2) NOT NULL,
   fuel VARCHAR(25) NOT NULL,
-  co int(5) NOT NULL,
-  image VARCHAR(255) NOT NULL
+  co int(5) NOT NULL
 );
 
 -- create table Cars images
@@ -38,7 +36,7 @@ CREATE TABLE IF NOT EXISTS carimages (
   id INT AUTO_INCREMENT PRIMARY KEY,
   product_id INT NOT NULL,
   image_path VARCHAR(255) NOT NULL,
-  FOREIGN KEY (product_id) REFERENCES cars(id)
+  FOREIGN KEY (product_id) REFERENCES cars(id) ON DELETE CASCADE
 );
 
 
@@ -88,4 +86,4 @@ INSERT INTO services(service, description, image) VALUES ('reparation de carross
 -- create reviews
 INSERT INTO reviews(client, comment, note) VALUES ('Sarah Beline', "L'equipe du garage Parrot est vraiment professionnel. Ils ont rendu ma voiture dans la date et l'heure indiqué. Bravo",'4'),('Guillaume Dupont', "J'ai trouvé le service pas bon du tout. C'est l'arnaque total. A eviter vraiment.",'1'),('Jean-Claude', "J'ai ete reçu par Vincent lui même. Il ma proposé le service de changement de batterie avec un prix très abordable. Top M. Parrot.",'5'),('Mathilde Shawiski', "J'etait interesé par une voiture d'ocasion et ils mon proposé un garantie de 1 un. Très contente",'4'),('Sarah Laporte', 'Je suis très satisfaite du travail de reparation du motor de ma voiture.','4'),('Mark Huppert', "Malheuresement ma voiture a pris du retard à cause de la livraison de la clime de la voiture, mais apart ça, le service était empecable.",'5'),('Josephine', 'Je suis venu avec ma fille pour acheter une voiture pour son anniversaire, et elle est aux anges. Service excellent','5');
 
-INSERT INTO cars(code, brand, model,year,price, kilometers,color,gearbox,number_doors,fuel,co,image) VALUES ('FRD23','Ford','Clio-5','2016','022345','23456','rouge','manuel',2,'diesel',123,'car-card.png'),('FRD46','Peugeot','408','2020','014700','12345','rouge','manuel',2,'gazole',123,'car-card.png'),('FRD34','Citroen','Escort','2021','15800','019887','rouge','manuel',2,'diesel',123,'car-card.png'),('FRD09','Ford','Kuga','2021','12890','034567','rouge','manuel',2,'essence',123,null),('FRD99','Ford','Clio-5','2015','33000','45999','rouge','manuel',2,'électrique',123,'car-card.png'),('FRD12','Ford','Ka','2017','9800','21789','rouge','manuel',2,'diesel',123,'car-card.png'),('FRD67','Ford','Fiesta','2012','12000','66999','rouge','manuel',2,'diesel',123,"car-card.png"),('FRD34','Toyota','Galaxy','2018','11560','56000','rouge','manuel',2,'gazole',123,'02-diesel.png'),('FRD22','Dacia','Duster','2021','34000','23456','rouge','manuel',2,'essence',123,"04-fiat.png"),('FRD02','Audi','Clio-5','2017','8700','45666','rouge','manuel',2,'électrique',123,'delorean.jpg');
+INSERT INTO cars(code, brand, model,year,price, kilometers,color,gearbox,number_doors,fuel,co) VALUES ('FRD23','Ford','Clio-5','2016','022345','23456','rouge','manuel',2,'diesel',67,'car-card.png'),('FRD46','Peugeot','408','2020','014700','12345','rouge','manuel',2,'gazole',87),('FRD34','Citroen','Escort','2021','15800','019887','rouge','manuel',2,'diesel',344),('FRD09','Ford','Kuga','2021','12890','034567','rouge','manuel',2,'essence',211),('FRD99','Ford','Clio-5','2015','33000','45999','rouge','manuel',2,'électrique',90),('FRD12','Ford','Ka','2017','9800','21789','rouge','manuel',2,'diesel',123),('FRD67','Ford','Fiesta','2012','12000','66999','rouge','manuel',2,'diesel',123),('FRD34','Toyota','Galaxy','2018','11560','56000','rouge','manuel',2,'gazole',44),('FRD22','Dacia','Duster','2021','34000','23456','rouge','manuel',2,'essence',444),('FRD02','Audi','Clio-5','2017','8700','45666','rouge','manuel',2,'électrique',0);

@@ -7,13 +7,6 @@ require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/employees.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
-$formEmployee = [
-  'lastname' => '',
-  'name' => '',
-  'email' => '',
-  'password' => '',
-  'conf-password' => ''
-];
 ?>
 
 
@@ -32,7 +25,7 @@ $formEmployee = [
     <h1 class="header-titles">Ajouter employé</h1>
 
     <!-- messages  -->
-    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
+    <div id="form-message" class="my-3 mt-3 d-flex justify-content-center"></div>
 
     <div class="connection-wrapper">
 

@@ -44,7 +44,7 @@ if (isset($_GET['id'])) {
     <!-- END BREADCRUMB  -->
 
     <!-- messages  -->
-    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
+    <div id="form-message" class="my-3 mt-3 d-flex justify-content-center"></div>
 
     <!-- CARS  -->
     <section id="cars" class="used-cars sections filtering">

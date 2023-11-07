@@ -25,14 +25,14 @@ require_once __DIR__ . "/templates/header-admin.php";
     <h1 class="header-titles">Ajouter Service</h1>
 
     <!-- messages  -->
-    <div id="form-message" class="my-3 d-flex justify-content-center"></div>
+    <div id="form-message" class="my-3 mt-3 d-flex justify-content-center"></div>
 
     <div class=" connection-wrapper">
       <form method="POST" id="addService" enctype="multipart/form-data">
         <div class="connection-form">
           <div class="form-group">
             <label for="service">Service</label>
-            <input type="text" name="service" id="service" minlength="5" maxlength="30" placeholder="Reparation motor"
+            <input type="text" name="service" id="service" minlength="15" maxlength="30" placeholder="Reparation motor"
               autocomplete="off">
             <span class="error" id="service_err"> </span>
           </div>

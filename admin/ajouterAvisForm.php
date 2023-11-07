@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "<div class='alert alert-danger  m-0' role='alert'>Le nom du client est requis. Seulement caractères et maximum 50 caractères.</div>";
     $errorClient = true;
   } elseif (!preg_match(_REGEX_COMMENT_, $comment)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>Le commentaire du client est requis et doit contenir une longueur maximale de 50 caractères.</div>";
+    echo "<div class='alert alert-danger  m-0' role='alert'>Le commentaire du client est requis et doit contenir une longueur maximale de 250 caractères.</div>";
     $errorComment = true;
   }
 
