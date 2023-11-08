@@ -7,8 +7,6 @@
   <meta name="description" content="Le garage V. Parrot propose une large gamme de services: réparation de la carrosserie, mécanique des voitures et vente de voitures d'occasion.">
   <meta name="keywords" content="garage v. parrot,voiture d'ocassion,  réparation de la carrosserie, mécanique des voitures, entretien régulier, confiance pour ses clients.">
   <meta name="robots" content="index, follow">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="language" content="French">
   <meta name="revisit-after" content="2 days">
   <meta name="author" content="Marcos Meneghetti">
 

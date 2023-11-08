@@ -21,7 +21,8 @@ require_once __DIR__ . "/../templates/header-connexion.php";
 
           <div class="form-group">
             <label for="email">Adresse email</label>
-            <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr" autocomplete="off">
+            <input type="text" name="email" id="email" minlength="15" maxlength="40" placeholder="email@example.fr"
+              autocomplete="off">
             <span class="error" id="email_err"> </span>
           </div>
           <div class="form-group">
@@ -29,7 +30,8 @@ require_once __DIR__ . "/../templates/header-connexion.php";
               Mot de passe
             </label>
             <div class="input-group">
-              <input type="password" name="password" id="password" class="form-control" minlength="8" maxlength="16" autocomplete="off">
+              <input type="password" name="password" id="password" class="form-control" minlength="8" maxlength="16"
+                autocomplete="off">
               <div class="input-group-append">
                 <span class="input-group-text" onclick="password_show_hide();">
                   <i class="fas fa-eye" id="show_eye"></i>
@@ -49,4 +51,5 @@ require_once __DIR__ . "/../templates/header-connexion.php";
   </section>
   <!-- END CONTACT  -->
 </div>
+</main>
 <script src="/assets/scripts/validationConnection.js"></script>
