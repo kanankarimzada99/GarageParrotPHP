@@ -6,7 +6,7 @@ adminOnly();
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/employees.php";
 require_once __DIR__ . "/templates/header-admin.php";
-
+$_SESSION['token'] = bin2hex(random_bytes(30));
 ?>
 
 
@@ -26,6 +26,10 @@ require_once __DIR__ . "/templates/header-admin.php";
 
     <!-- messages  -->
     <div id="form-message" class="my-3 mt-3 d-flex justify-content-center"></div>
+
+    <div class="w-100 text-center mt-5 d-none" id="backPage">
+      <a href="javascript:history.back(1)" class="btn-fill ">Retourner liste employés</a>
+    </div>
 
     <div class="connection-wrapper">
 
@@ -78,8 +82,8 @@ require_once __DIR__ . "/templates/header-admin.php";
             </div>
             <span class="error" id="cpassword_err"> </span>
           </div>
-
         </div>
+        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
         <div class="form-btn">
           <button type="button" id="submitbtn" class="btn-fill">Ajouter</button>
         </div>

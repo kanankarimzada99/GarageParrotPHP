@@ -4,7 +4,7 @@ require_once __DIR__ . "/../lib/session.php";
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/employees.php";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['token']) && isset($_POST['token']) && $_SESSION['token'] == $_POST['token']) {
 
   $id = null;
 
@@ -44,23 +44,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     if ($employee['email'] == $email && $employee['id'] != $id) {
-      echo "<div class='alert alert-danger  m-0' role='alert'>Cet e-mail existe déjà.</div>";
+      echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>Cet e-mail existe déjà.</div>";
       $errorEmail = true;
     }
   }
 
   //to validate employee
   if (empty($lastname) && empty($name) && empty($email)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>Vous devez remplir tous les champs.</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>Vous devez remplir tous les champs.</div>";
     $errorEmpty = true;
   } elseif (!preg_match(_REGEX_LAST_NAME_, $lastname)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>Le nom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>Le nom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.</div>";
     $errorLastName = true;
   } elseif (!preg_match(_REGEX_FIRST_NAME_, $name)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>Le prénom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>Le prénom doit contenir uniquement des lettres et avoir une longueur maximale de 25 caractères.</div>";
     $errorName = true;
   } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>Le format du e-mail address n'est pas valide</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>Le format du e-mail address n'est pas valide</div>";
     $errorEmail = true;
   }
 
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($res) {
-      echo "<div class='alert alert-success  m-0' role='alert'>L'employé a bien été sauvegardé</div>";
+      echo "<div class='alert alert-success  m-0 mt-3 mx-1' role='alert'>L'employé a bien été sauvegardé</div>";
       $errorEmpty = false;
       $errorLastName = false;
       $errorName = false;
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 } else {
-  echo "<div class='alert alert-danger m-0' role='alert'>Une erreur s'est produite durant l'envoi.</div>";
+  echo "<div class='alert alert-danger m-0 mt-3 mx-1' role='alert'>Une erreur s'est produite durant l'envoi.</div>";
   $error = true;
 }
 ?>
@@ -124,10 +124,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $("#lastname, #name, #email, #password").val("");
     //hide form
     $(".connection-wrapper").hide();
-    //hide message after 3 seconds
-    setTimeout(function() {
-      window.location = '/admin/liste-employes.php';
-
-    }, 3000); // <-- time in milliseconds
+    $('#backPage').removeClass('d-none')
   }
 </script>

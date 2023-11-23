@@ -6,6 +6,7 @@ require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/cars.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
+$_SESSION['token'] = bin2hex(random_bytes(30));
 
 ?>
 
@@ -25,7 +26,11 @@ require_once __DIR__ . "/templates/header-admin.php";
 
 
     <!-- messages  -->
-    <div id="form-message" class="my-3 mt-3 d-flex justify-content-center"></div>
+    <div id="form-message" class="my-3 mt-3 mx-2 d-flex flex-wrap justify-content-center"></div>
+
+    <div class="w-100 text-center mt-5 d-none" id="backPage">
+      <a href="javascript:history.back(1)" class="btn-fill ">Retourner liste voiture</a>
+    </div>
 
     <div class="connection-wrapper">
       <form id="addCar" method="POST" enctype="multipart/form-data">
@@ -108,12 +113,15 @@ require_once __DIR__ . "/templates/header-admin.php";
               </div>
             </div>
           </div>
+          <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
           <div class="form-btn">
             <button type="button" id="submitbtn" class="btn-fill">Ajouter</button>
           </div>
       </form>
     </div>
+
   </section>
+
 </div>
 
 <script src="../assets/scripts/validationCarForm.js"></script>

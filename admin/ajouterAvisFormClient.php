@@ -4,7 +4,8 @@ require_once __DIR__ . "/../lib/session.php";
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/reviews.php";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['token']) && isset($_POST['token']) && $_SESSION['token'] == $_POST['token']) {
 
   $id = null;
 
@@ -58,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $errorComment = false;
       $errorNote = false;
     } else {
-      echo "<div class='alert alert-danger m-0' role='alert'>Votre avis n'a pas été sauvegardé.</div>";
+      echo "<div class='alert alert-danger m-0' role='alert mt-3'>Votre avis n'a pas été sauvegardé.</div>";
       $errorEmpty = true;
     }
   }

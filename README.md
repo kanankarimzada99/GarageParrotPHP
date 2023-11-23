@@ -1,5 +1,19 @@
 <img src='./assets/images/logo_car_title.png' width="80">
 
+## Projet Garage V. Parrot Index
+
+- [Projet Garage V. Parrot Index](#projet-garage-v-parrot-index)
+- [Projet Garage Parrot](#projet-garage-parrot)
+- [Le client](#le-client)
+- [Objectif du projet](#objectif-du-projet)
+- [Les outils pour le projet](#les-outils-pour-le-projet)
+- [LE SITE GARAGE V. PARROT](#le-site-garage-v-parrot)
+- [Pour travailler en local](#pour-travailler-en-local)
+- [Les diagrammes](#les-diagrammes)
+- [Se connecter](#se-connecter) - [\*\* Attention, pour question de securité, les codes d'accès au site internet garage v. parrot ne sont pas le même que dans le fichier gparrot.sql. Les codes d'accès seront disponible seulement dans le fichier officiel du projet pour Studi.](#-attention-pour-question-de-securité-les-codes-daccès-au-site-internet-garage-v-parrot-ne-sont-pas-le-même-que-dans-le-fichier-gparrotsql-les-codes-daccès-seront-disponible-seulement-dans-le-fichier-officiel-du-projet-pour-studi)
+- [Les liens du projet](#les-liens-du-projet)
+- [Les liens perso](#les-liens-perso)
+
 ## Projet Garage Parrot
 
 Le Projet Garage Parrot (PEP) c'est un page internet d'une garage fictif développé comme projet d’études du cours Graduate Fullstack de la formation Studi. La page est totalement dynamique. Dans la partie connexion, l'administrateur du site peut ajouter, modifier ou supprimer les informations du site.
@@ -37,11 +51,13 @@ Créer une application web vitrine pour le Garage V. Parrot en mettant en avant 
 - PHP 8.2.4 sous PDO
 - MYSQL
 
-  <br>
+  <hr>
 
-  ### LE SITE INTERNET \*\*
+## LE SITE GARAGE V. PARROT
 
-  https://garageparrot.net/
+https://garageparrot.net/
+
+  <hr>
 
 ## Pour travailler en local
 
@@ -74,6 +90,8 @@ Créer une application web vitrine pour le Garage V. Parrot en mettant en avant 
 
 6.  Cliquez sur le lien localhost:3000 pour ouvrir le projet dans votre navigateur ou ecrivez localhost:3000 dans votre navigateur.
 
+<hr>
+
 ## Les diagrammes
 
 Si vous avez VSCode comme IDE, vous pouvez téléchargé l'extension **Draw.io integration** et voir les fichiers dans les dossiers diagrammes du projet. Dans le cas de n'est pas avoir cette extension, vous pouvez aller sur le site https://app.diagrams.net/ et ouvrir les fichiers .drawio
@@ -92,4 +110,21 @@ Les employés du garage on aussi accès à la connexion du site, mais seulement 
 
 <hr>
 
-##### \*\* Attention, pour question de securité, les codes d'accès au site internet garage parrot ne sont pas le même que dans le fichier gparrot.sql. Les codes d'accès seront disponible seulement dans le fichier officiel du projet pour Studi.
+##### \*\* Attention, pour question de securité, les codes d'accès au site internet garage v. parrot ne sont pas le même que dans le fichier gparrot.sql. Les codes d'accès seront disponible seulement dans le fichier officiel du projet pour Studi.
+
+<hr>
+
+## Les liens du projet
+
+- [Garage V. Parrot - Mockup - Mobile](https://www.figma.com/file/QtBWhE3LKxJgYLePTYG9k4/Garage-Vincent-Parrot---MOCKUPS?type=design&node-id=0-1&mode=design&t=nY2uAAb2qvCw4MwX-0)
+- [Garage V. Parrot - Mockup - Desktop](https://www.figma.com/file/QtBWhE3LKxJgYLePTYG9k4/Garage-Vincent-Parrot---MOCKUPS?type=design&node-id=12-2&mode=design&t=nY2uAAb2qvCw4MwX-0)
+- [Garage V. Parrot - Trello](https://trello.com/b/fM2qOOkH/garage-vicent-parrot)
+- [Le site Garage V. Parrot](https://garageparrot.net/)
+
+<hr>
+
+## Les liens perso
+
+- [Portfolio](https://marcosmene.github.io/marcosmeneghetti_portfolio/)
+- [LinkedIn](https://www.linkedin.com/in/3dmarcosmeneghetti/)
+- [Github](https://github.com/MarcosMene)

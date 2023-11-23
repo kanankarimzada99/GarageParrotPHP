@@ -7,7 +7,7 @@ require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/employees.php";
 
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['token']) && isset($_POST['token']) && $_SESSION['token'] == $_POST['token']) {
 
   $id = null;
   $error = false;
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $res = saveEmployee($pdo, $lastName, $name, $email, sha1($password), $id);
 
     if ($res) {
-      echo "<div class='alert alert-success  m-0' role='alert'>L'employé a bien été sauvegardé.</div>";
+      echo "<div class='alert alert-success  m-0 mt-3' role='alert'>L'employé a bien été sauvegardé.</div>";
 
       $error = false;
       $errorEmpty = false;
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $errorEmail = false;
       $errorPassword = false;
     } else {
-      echo "<div class='alert alert-danger m-0' role='alert'>L'employé n'a pas été sauvegardé.</div>";
+      echo "<div class='alert alert-danger m-0 mt-3' role='alert'>L'employé n'a pas été sauvegardé.</div>";
       exit();
     }
   }
@@ -87,40 +87,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <script>
-  $("#name, #lastname, #email, #password").removeClass("input-error");
+$("#name, #lastname, #email, #password").removeClass("input-error");
 
-  //get variable php inside js
-  var errorEmpty = "<?php echo $errorEmpty; ?>";
-  var errorName = "<?php echo $errorName; ?>";
-  var errorLastName = "<?php echo $errorLastName; ?>";
-  var errorEmail = "<?php echo $errorEmail; ?>";
-  var errorPassword = "<?php echo $errorPassword; ?>";
+//get variable php inside js
+var errorEmpty = "<?php echo $errorEmpty; ?>";
+var errorName = "<?php echo $errorName; ?>";
+var errorLastName = "<?php echo $errorLastName; ?>";
+var errorEmail = "<?php echo $errorEmail; ?>";
+var errorPassword = "<?php echo $errorPassword; ?>";
 
-  if (errorEmpty == true) {
-    $("#name, #lastname, #email, #password").addClass("input-error");
+if (errorEmpty == true) {
+  $("#name, #lastname, #email, #password").addClass("input-error");
 
-  }
-  if (errorName == true) {
-    $("#name").addClass("input-error");
-  }
-  if (errorLastName == true) {
-    $("#lastname").addClass("input-error");
-  }
-  if (errorEmail == true) {
-    $("#email").addClass("input-error");
-  }
-  if (errorPassword == true) {
-    $("#password").addClass("input-error");
-  }
+}
+if (errorName == true) {
+  $("#name").addClass("input-error");
+}
+if (errorLastName == true) {
+  $("#lastname").addClass("input-error");
+}
+if (errorEmail == true) {
+  $("#email").addClass("input-error");
+}
+if (errorPassword == true) {
+  $("#password").addClass("input-error");
+}
 
-  if (errorEmpty == false && errorName == false && errorLastName == false && errorEmail == false && errorPassword ==
-    false) {
-    $("#name, #lastname, #email, #password").val("");
-    //hide form
-    $(".connection-wrapper").hide();
-    // hide message after 3 seconds
-    setTimeout(function() {
-      window.location = '/admin/liste-employes.php';
-    }, 3000); // <-- time in milliseconds
-  }
+if (errorEmpty == false && errorName == false && errorLastName == false && errorEmail == false && errorPassword ==
+  false) {
+  $("#name, #lastname, #email, #password").val("");
+  //hide form
+  $(".connection-wrapper").hide();
+  $('#backPage').removeClass('d-none')
+}
 </script>

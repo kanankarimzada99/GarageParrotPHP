@@ -8,6 +8,9 @@ require_once __DIR__ . "/../lib/reviews.php";
 require_once __DIR__ . "/../lib/starRating.php";
 require_once __DIR__ . "/../templates/header-navigation.php";
 
+
+$_SESSION['token'] = bin2hex(random_bytes(30));
+
 $id = null;
 ?>
 
@@ -60,6 +63,7 @@ $id = null;
             <span class="error" id="note_err"> </span>
           </div>
         </div>
+        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
         <div class="form-btn">
           <button type="button" id="submitbtn" class="btn-fill">Envoyez</button>
         </div>

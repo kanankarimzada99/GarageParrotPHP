@@ -41,8 +41,8 @@ if (isset($_POST["action"])) {
         $imagePath = _GARAGE_IMAGES_FOLDER_ . $row['image_path'];
       }
 
-      $numberPrice = number_format($row['price'], 0, ',', ' ');
-      $numberKilometers = number_format($row['kilometers'], 0, ',', ' ');
+      $numberPrice = number_format($row['price'], 2, ',', '.');
+      $numberKilometers = number_format($row['kilometers'], 0, ',', '.');
       $output .= '
         <div class="card">
         <div class="card-header">
@@ -58,7 +58,7 @@ if (isset($_POST["action"])) {
   </p>
   <hr>
   <p class="price">' . $numberPrice . ' €</p>
-  <a href="voiture-details.php?id=' . $row['product_id'] . '" class=" btn-wire large">Details</a>
+  <a href="voiture-details.php?id=' . $row['product_id'] . '" class=" btn-wire large">Détails</a>
 
 </div>
 </div>

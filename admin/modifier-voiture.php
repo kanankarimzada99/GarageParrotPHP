@@ -6,7 +6,7 @@ require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/cars.php";
 require_once __DIR__ . "/templates/header-admin.php";
 
-
+$_SESSION['token'] = bin2hex(random_bytes(30));
 
 $id = null;
 $car = null;
@@ -42,6 +42,10 @@ if (isset($_GET['id'])) {
     <?php if ($car) : ?>
       <!-- messages  -->
       <div id="form-message" class="my-3 mt-3 d-flex justify-content-center"></div>
+
+      <div class="w-100 text-center mt-5 d-none" id="backPage">
+        <a href="javascript:history.back(1)" class="btn-fill ">Retourner liste voiture</a>
+      </div>
 
 
       <div class="connection-wrapper">
@@ -159,7 +163,7 @@ if (isset($_GET['id'])) {
               <?php } ?>
             </div>
           <?php } ?>
-
+          <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
           <div class="form-btn mt-2">
             <button type="button" id="submitbtn" class="btn-fill">Modifier</button>
           </div>
@@ -251,6 +255,6 @@ if (isset($_GET['id'])) {
   </div>
 
   <div class="go-back-page my-3 d-flex justify-content-center">
-    <a href="javascript:history.back(1)" class="btn-wire mb-5">Retour page précédante</a>
+    <a href="javascript:history.back(1)" class="btn-wire mb-5">Retourner liste voitures</a>
   </div>
 <?php endif ?>

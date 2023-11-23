@@ -8,6 +8,9 @@ require_once __DIR__ . "/lib/reviews.php";
 require_once __DIR__ . "/lib/starRating.php";
 require_once __DIR__ . "/templates/header.php";
 
+
+$_SESSION['token'] = bin2hex(random_bytes(30));
+
 $cars = getCars($pdo, 3);
 $services = getServices($pdo, 6);
 $reviews = getReviews($pdo, 4);
@@ -68,9 +71,12 @@ $reviews = getReviews($pdo, 4);
         <?php require __DIR__ . "/templates/car-part.php" ?>
       <?php }
       ?>
-      <div class="more-cars">
-        <a href="/pages/voitures.php" class="btn-fill center">Voir plus</a>
-      </div>
+
+      <?php if (count($cars) > 1) : ?>
+        <div class="more-cars">
+          <a href="/pages/voitures.php" class="btn-fill center">Voir plus</a>
+        </div>
+      <?php endif ?>
     </article>
   <?php else : ?>
     <article class="cards">
@@ -186,6 +192,7 @@ $reviews = getReviews($pdo, 4);
           </div>
         </div>
       </div>
+      <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
 
       <div class="form-btn">
         <button type="button" id="submitbtn" class="btn-fill">Envoyer</button>

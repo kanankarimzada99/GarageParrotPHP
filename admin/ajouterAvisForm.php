@@ -4,7 +4,7 @@ require_once __DIR__ . "/../lib/session.php";
 require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/reviews.php";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['token']) && isset($_POST['token']) && $_SESSION['token'] == $_POST['token']) {
 
   $id = null;
 
@@ -53,14 +53,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $res = saveReview($pdo, $client, $comment, $note, $id);
 
     if ($res) {
-      echo "<div class='alert alert-success  m-0' role='alert'>L'avis du client a bien été sauvegardé.</div>";
+      echo "<div class='alert alert-success  m-0' role='alert mt-3'>L'avis du client a bien été sauvegardé.</div>";
 
       $errorEmpty = false;
       $errorClient = false;
       $errorComment = false;
       $errorNote = false;
     } else {
-      echo "<div class='alert alert-danger m-0' role='alert'>L'avis du client n'a pas été sauvegardé.</div>";
+      echo "<div class='alert alert-danger m-0' role='alert mt-3'>L'avis du client n'a pas été sauvegardé.</div>";
       $errorEmpty = true;
     }
   }
@@ -93,9 +93,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $("#client, #comment, #note").val("");
     //hide form
     $(".connection-wrapper").hide();
-    // hide message after 3 seconds
-    setTimeout(function() {
-      window.location = '/admin/liste-avis.php';
-    }, 3000); // <-- time in milliseconds
+    $('#backPage').removeClass('d-none')
   }
 </script>

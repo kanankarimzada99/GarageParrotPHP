@@ -9,7 +9,7 @@ require_once __DIR__ . "/../lib/services.php";
 
 
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['token']) && isset($_POST['token']) && $_SESSION['token'] == $_POST['token']) {
 
   $id = null;
   $error = false;
@@ -29,8 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $service = test_input(($_POST['service']));
   $description = test_input(($_POST['description']));
-
-
   $file = $_FILES['file']['name'];
 
   $errorImage = false;
@@ -45,52 +43,91 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   //to validate service
   if (empty($service) && empty($description)) {
-    echo  "<div class='alert alert-danger d-inline' role='alert'>Vous devez remplir tous les champs.</div>";
+    echo  "<div class='alert alert-danger d-inline mt-3 mx-1' role='alert'>Vous devez remplir tous les champs.</div>";
     $errorEmpty = true;
   } elseif (!preg_match(_REGEX_SERVICE_, $service)) {
-    echo   "<div class='alert alert-danger d-inline' role='alert'>Le service doit contenir uniquement des lettres et chiffres et avoir une longueur maximale de 25 caractères.</div>";
+    echo   "<div class='alert alert-danger d-inline mt-3 mx-1' role='alert'>Le service doit contenir uniquement des lettres et chiffres et avoir une longueur maximale de 25 caractères.</div>";
     $errorService = true;
   } elseif (!preg_match(_REGEX_DESCRIPTION_, $description)) {
-    echo   "<div class='alert alert-danger d-inline' role='alert'>La description doit contenir uniquement des lettres, espaces et chiffres et avoir une longueur maximale de 200 caractères.</div>";
+    echo   "<div class='alert alert-danger d-inline mt-3 mx-1' role='alert'>La description doit contenir uniquement des lettres, espaces et chiffres et avoir une longueur maximale de 200 caractères.</div>";
     $errorDescription = true;
   }
 
   //to validate image
   if (isset($_POST['imgCar'])) {
     if (empty($_FILES['file']['name'])) {
-      echo "<div class='alert alert-danger d-inline' role='alert'>L'image pour le service est requis.</div>";
+      echo "<div class='alert alert-danger d-inline mt-3 mx-1' role='alert'>L'image pour le service est requis.</div>";
     } else {
       //verify if a file is sent
-      // Handle image uploads
       if (isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != '') {
 
         $sizeImage = getimagesize($_FILES['file']['tmp_name']);
+
+
         if ($sizeImage !== false) {
 
-          //delete spaces into the name and make name file with lowercase letters
-          $fileName = slugify(basename($_FILES['file']['name']));
+          // Define the allowed file types and size limit
+          $allowed_types = array("image/jpeg", "image/jpg", "image/png", "image/webp");
+          $max_size = 1000000; // in bytes
 
-          //generate unique ID for a file
-          $fileName = uniqid() . '-' . $fileName;
+          // Get the file size, type, and name
+          $file_size = $_FILES['file']['size'];
+          $file_type = image_type_to_mime_type(exif_imagetype($_FILES['file']['tmp_name']));
+          $file_name = $_FILES['file']['name'];
 
-          //move file image into new location (uploads images folder)  
 
-          if (move_uploaded_file($_FILES['file']['tmp_name'], dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $fileName)) {
-
-            if (isset($_FILES['file']['name'])) {
-
-              if (file_exists(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_FILES['file']['name'])) {
-                //delete old image if new one is uploaded
-                unlink(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_FILES['file']['name']);
-              } else {
-                echo '<div class="alert alert-success d-inline" role="alert">image sauvegardé avec success</div>';
-              }
-            }
-            // $resImages = saveCarImages($pdo, $product_id, $image_path);
-          } else {
-            echo '<div class="alert alert-danger d-inline" role="alert">Le fichier n\'a pas été uploadé</div>';
+          // Validate the file size
+          if ($file_size > $max_size) {
+            // File size is too large, add an error message
+            echo '<div class="alert alert-danger d-inline mt-3  mx-1" role="alert">Image ' . $file_name . 'est trop grand. Elle n\'été pas sauvegardée. Le maximum est ' . filesize($max_size) . '.' . '</div>';
             $errorImage = true;
+            exit();
           }
+
+          // Validate the file type
+          else if (!in_array($file_type, $allowed_types)) {
+            // File type is not allowed, add an error message
+            echo '<div class="alert alert-danger d-inline mt-3  mx-1" role="alert">Image ' . $file_name . ' n\'est pas sauvegardé. Seulement jpeg, jpg, png et webp sont permis.</div>';
+            $errorImage = true;
+            $fileName = slugify($file_name);
+            exit();
+          }
+
+          // Validate the file is an image
+          else if (!getimagesize($_FILES['file']['tmp_name'])) {
+            // File is not an image, add an error message
+            echo '<div class="alert alert-danger d-inline mt-3  mx-1" role="alert">Image ' . $file_name . 'n\'est pas valide.</div>';
+            $errorImage = true;
+            exit();
+          } else {
+            //delete spaces into the name and make name file with lowercase letters
+            $fileName = slugify($file_name);
+
+            //generate unique ID for a file
+            $fileName = uniqid() . '-' . $fileName;
+
+            //move file image into new location (uploads images folder)  
+
+            if (move_uploaded_file($_FILES['file']['tmp_name'], dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $fileName)) {
+
+              if (isset($_FILES['file']['name'])) {
+
+                if (file_exists(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_FILES['file']['name'])) {
+                  //delete old image if new one is uploaded
+                  unlink(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_FILES['file']['name']);
+                } else {
+                  echo '<div class="alert alert-success d-inline mt-3 mx-1" role="alert">Image ' . $file_name . '  est sauvegardé avec success.</div>';
+                }
+              }
+            } else {
+              echo '<div class="alert alert-danger d-inline mt-3 mx-1" role="alert">Le fichier n\'a pas été uploadé</div>';
+              $errorImage = true;
+            }
+          }
+        } else {
+          $errorImage = true;
+          echo '<div class="alert alert-danger d-inline mt-3 mx-1" role="alert">Il y a un problème avec l\'image ' . $_FILES['file']['name'] . '.' . ' Choisissez une autre.</div>';
+          exit();
         }
       }
     }
@@ -107,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($res) {
-      echo  "<div class='alert alert-success d-inline' role='alert'>Le service a bien été sauvegardé.</div>";
+      echo  "<div class='alert alert-success d-inline mt-3' role='alert'>Le service a bien été sauvegardé.</div>";
 
       $errorImage = false;
       $errorEmpty = false;
@@ -118,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       //empty session service
       unset($_SESSION['service']);
     } else {
-      echo  "<div class='alert alert-success d-inline' role='alert'>Le service a bien été sauvegardé.</div>";
+      echo  "<div class='alert alert-success d-inline mt-3' role='alert'>Le service a bien été sauvegardé.</div>";
       $errorImage = true;
     }
   }
@@ -152,9 +189,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $("#service, #description, #file").val("");
     //hide form
     $(".connection-wrapper").hide();
-    // hide message after 3 seconds
-    setTimeout(function() {
-      window.location = '/admin/liste-services.php';
-    }, 3000); // <-- time in milliseconds
+    $('#backPage').removeClass('d-none')
   }
 </script>

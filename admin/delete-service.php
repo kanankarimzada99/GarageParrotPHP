@@ -42,19 +42,23 @@ if ($service) {
   <section class="connection sections" id="connection ">
 
     <!-- messages  -->
-    <?php foreach ($messages as $message) { ?>
-      <div class="alert alert-success m-0" role="alert">
-        <?= $message; ?>
-      </div>
-    <?php } ?>
 
-    <?php foreach ($errors as $error) { ?>
-      <div class="alert alert-danger m-0" role="alert">
-        <?= $error; ?>
-      </div>
-    <?php } ?>
+    <div id="form-message" class="my-3 mt-3 d-flex justify-content-center">
+
+      <?php foreach ($messages as $message) { ?>
+        <div class="alert alert-success m-0" role="alert">
+          <?= $message; ?>
+        </div>
+      <?php } ?>
+
+      <?php foreach ($errors as $error) { ?>
+        <div class="alert alert-danger m-0" role="alert">
+          <?= $error; ?>
+        </div>
+      <?php } ?>
+    </div>
     <div class="w-100 text-center mt-5">
-      <a href="javascript:history.back(1)" class="btn-fill ">Page precedante</a>
+      <a href="javascript:history.back(1)" class="btn-fill ">Retourner liste services</a>
     </div>
   </section>
 </div>

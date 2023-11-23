@@ -80,7 +80,7 @@ $totalPages = ceil($totalreviews / _ADMIN_ITEM_PER_PAGE_);
   </div>
 
   <div class="go-back-page my-3 d-flex justify-content-center">
-    <a href="javascript:history.back(1)" class="btn-wire mb-5">Retour page précédante</a>
+    <a href="javascript:history.back(1)" class="btn-wire mb-5">Retourner list avis</a>
   </div>
 <?php endif ?>
 

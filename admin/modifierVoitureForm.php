@@ -5,7 +5,7 @@ require_once __DIR__ . "/../lib/pdo.php";
 require_once __DIR__ . "/../lib/tools.php";
 require_once __DIR__ . "/../lib/cars.php";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['token']) && isset($_POST['token']) && $_SESSION['token'] == $_POST['token']) {
   $id = null;
   $error = false;
   $fileName = null;
@@ -61,47 +61,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   foreach ($cars as $car) {
 
     if ($car['code'] == $code && $car['carId'] != $id) {
-      echo "<div class='alert alert-danger  m-0' role='alert'>Ce code existe déjà.</div>";
+      echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>Ce code existe déjà.</div>";
       $errorCode = true;
     }
   }
 
   //to validate car
   if (empty($code) && empty($brand) && empty($model) && empty($year) && empty($price) && empty($kilometer) && empty($color) && empty($gearbox) && empty($doors) && empty($fuel) && empty($co2)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>Vous devez remplir tous les champs.</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>Vous devez remplir tous les champs.</div>";
     $errorEmpty = true;
   } elseif (!preg_match(_REGEX_CODE_, $code)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>Le code doit contenir uniquement des lettres et chiffres. Trois lettres et trois numéros.</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>Le code doit contenir uniquement des lettres et chiffres. Trois lettres et trois numéros.</div>";
     $errorCode = true;
   } elseif (!preg_match(_REGEX_BRAND_, $brand)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>La marque doit contenir uniquement des lettres et chiffres et avoir une longueur maximale de 25 caractères.</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>La marque doit contenir uniquement des lettres et chiffres et avoir une longueur maximale de 25 caractères.</div>";
     $errorBrand = true;
   } elseif (!preg_match(_REGEX_MODEL_, $model)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>Le modèle doit contenir uniquement des lettres, espaces et chiffres et avoir une longueur maximale de 25 caractères.</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>Le modèle doit contenir uniquement des lettres, espaces et chiffres et avoir une longueur maximale de 25 caractères.</div>";
     $errorModel = true;
   } elseif (!preg_match(_REGEX_PRICE_, $price)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>Le prix doit contenir uniquement des chiffres et avoir une longueur de 4 caractères minimum.</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>Le prix doit contenir uniquement des chiffres et avoir une longueur de 4 caractères minimum.</div>";
     $errorPrice = true;
   } elseif (!preg_match(_REGEX_KILOMETERS_, $kilometer)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>La kilométrage doit contenir uniquement des chiffres et avoir une longueur de 3 caractères minimum.</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>La kilométrage doit contenir uniquement des chiffres et avoir une longueur de 3 caractères minimum.</div>";
     $errorKilometers = true;
   } elseif (!preg_match(_REGEX_YEAR_, $year)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>L'anneé doit contenir uniquement des chiffres et avoir une longueur de 4 caractères.</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>L'anneé doit contenir uniquement des chiffres et avoir une longueur de 4 caractères.</div>";
     $errorYear = true;
   } elseif (!preg_match(_REGEX_GEARBOX_, $gearbox)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>La boîte de vitesses doit contenir uniquement des lettres et avoir une longueur maximale de 15 caractères.</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>La boîte de vitesses doit contenir uniquement des lettres et avoir une longueur maximale de 15 caractères.</div>";
     $errorGearbox = true;
   } elseif (!preg_match(_REGEX_DOORS_, $doors)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>Le numéro de portes doit contenir uniquement des chiffres et avoir une longueur maximale de 2 caractères.</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>Le numéro de portes doit contenir uniquement des chiffres et avoir une longueur maximale de 2 caractères.</div>";
     $errorDoors = true;
   } elseif (!preg_match(_REGEX_COLOR_, $color)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>La couleur doit contenir uniquement des lettres et espaceset avoir une longueur maximale de 15 caractères.</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>La couleur doit contenir uniquement des lettres et espaceset avoir une longueur maximale de 15 caractères.</div>";
     $errorColor = true;
   } elseif (!preg_match(_REGEX_FUEL_, $fuel)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>Le carburant doit contenir uniquement des lettres et avoir une longueur maximale de 15 caractères.</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>Le carburant doit contenir uniquement des lettres et avoir une longueur maximale de 15 caractères.</div>";
     $errorFuel = true;
   } elseif (!preg_match(_REGEX_CO2_, $co2)) {
-    echo "<div class='alert alert-danger  m-0' role='alert'>Le CO2 doit contenir uniquement des chiffres et avoir une longueur maximale de 3 caractères.</div>";
+    echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>Le CO2 doit contenir uniquement des chiffres et avoir une longueur maximale de 3 caractères.</div>";
     $errorCO2 = true;
   }
 
@@ -113,19 +113,54 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //to validate image
     if (isset($_POST['imgCar'])) {
       if (empty($_FILES['file']['name'])) {
-        echo "<div class='alert alert-danger  m-0' role='alert'>L'image pour la voiture est requis.</div>";
+        echo "<div class='alert alert-danger  m-0 mt-3 mx-1' role='alert'>L'image pour la voiture est requis.</div>";
       } else {
         //verify if a file is sent
         // Handle image uploads
         if (isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != '') {
           $totalImages = count($_FILES['file']['name']);
 
+          // Define the allowed file types and size limit
+          $allowed_types = array("image/jpeg", "image/jpg", "image/png", "image/webp");
+          $max_size = 1000000; // in bytes
+
           for ($i = 0; $i < $totalImages; $i++) {
+
+            // Get the file size, type, and name
+            $file_size = $_FILES['file']['size'][$i];
+            $file_type = image_type_to_mime_type(exif_imagetype($_FILES['file']['tmp_name'][$i]));
+            $file_name = $_FILES['file']['name'][$i];
+
+            // Validate the file size
+            if ($file_size > $max_size) {
+              // File size is too large, add an error message
+              echo '<div class="alert alert-danger d-inline mt-3  mx-1" role="alert">Image ' . $file_name . 'est trop grand. Elle n\'été pas sauvegardée. Le maximum est ' . filesize($max_size) . '.' . '</div>';
+              $errorImage = true;
+              continue; // Skip this file
+            }
+
+            // Validate the file type
+            if (!in_array($file_type, $allowed_types)) {
+              // File type is not allowed, add an error message
+              echo '<div class="alert alert-danger d-inline mt-3  mx-1" role="alert">Image ' . $file_name . ' n\'est pas valide.</div>';
+              $errorImage = true;
+              continue; // Skip this file
+            }
+
+            // Validate the file is an image
+            if (!getimagesize($_FILES['file']['tmp_name'][$i])) {
+              // File is not an image, add an error message
+              echo '<div class="alert alert-danger d-inline mt-3  mx-1" role="alert">Image ' . $file_name . ' n\'est pas valide.</div>';
+              $errorImage = true;
+              continue; // Skip this file
+            }
+
+
             $sizeImage = getimagesize($_FILES['file']['tmp_name'][$i]);
             if ($sizeImage !== false) {
 
               //delete spaces into the name and make name file with lowercase letters
-              $fileName = slugify(basename($_FILES['file']['name'][$i]));
+              $fileName = slugify(basename($file_name));
 
               //generate unique ID for a file
               $fileName = uniqid() . '-' . $fileName;
@@ -139,13 +174,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     //delete old image if new one is uploaded
                     unlink(dirname(__DIR__) . _GARAGE_IMAGES_FOLDER_ . $_FILES['file']['name'][$i]);
                   } else {
-                    echo '<div class="alert alert-success d-inline" role="alert">image sauvegardé avec success</div>';
+                    echo '<div class="alert alert-success d-inline  mt-3 mx-1" role="alert">Image' . $file_name . ' sauvegardé avec success.</div>';
                   }
                 }
               } else {
-                echo '<div class="alert alert-danger d-inline" role="alert">Le fichier n\'a pas été uploadé</div>';
+                echo '<div class="alert alert-danger d-inline mt-3 mx-1" role="alert">Image n\'a pas été uploadé</div>';
               }
+            } else {
+              $errorImage = true;
+              echo '<div class="alert alert-danger d-inline mt-3 mx-1" role="alert">Il y a un problème avec l\'image ' . $_FILES['image']['name'] . '.' . ' Choisissez une autre.</div>';
+              exit();
             }
+
 
             if ($file) {
 
@@ -162,16 +202,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($res) {
-      echo '<div class="alert alert-success">La voiture a bien été sauvegardé.</div>';
+      echo '<div class="alert alert-success d-inline m-0 mt-3 mx-1" role="alert">La voiture a bien été sauvegardé.</div>';
       unset($_SESSION['car']);
-      unset($_SESSION['images']);
+      unset($_SESSION['file']);
     } else {
-      echo '<div class="alert alert-danger">La voiture n\'a pas été sauvegardé.</div>';
+      echo '<div class="alert alert-danger d-inline m-0 mt-3 mx-1" role="alert">La voiture n\'a pas été sauvegardé.</div>';
       exit();
     }
   }
 } else {
-  echo "<div class='alert alert-danger m-0' role='alert'>Une erreur s'est produite durant l'envoi.</div>";
+  echo '<div class="alert alert-danger d-inline m-0 mt-3 mx-1" role="alert" >Une erreur s\'est produite durant l\'envoi.</div>';
   $errorEmpty = true;
 }
 
@@ -236,15 +276,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $("#file").addClass("input-error");
   }
 
+
+  if (errorEmpty == false && errorCode == false && errorBrand == false && errorModel == false && errorYear == false &&
+    errorPrice == false && errorKilometers == false && errorColor == false && errorGearbox == false && errorDoors ==
+    false && errorFuel == false && errorCO2 == false && errorImage == true) {
+    $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2, #file").val("");
+    //hide form
+    $(".connection-wrapper").hide();
+    $('#backPage').removeClass('d-none')
+  }
+
+
+
   if (errorEmpty == false && errorCode == false && errorBrand == false && errorModel == false && errorYear == false &&
     errorPrice == false && errorKilometers == false && errorColor == false && errorGearbox == false && errorDoors ==
     false && errorFuel == false && errorCO2 == false && errorImage == false) {
     $("#code, #brand, #model, #year, #kilometer, #gearbox, #doors, #price, #color, #fuel, #co2, #file").val("");
     //hide form
     $(".connection-wrapper").hide();
-    //hide message after 3 seconds
-    setTimeout(function() {
-      window.location = '/admin/liste-voitures.php';
-    }, 3000); // <-- time in milliseconds
+    $('#backPage').removeClass('d-none')
   }
 </script>

@@ -1137,7 +1137,7 @@ red;
 @media screen and (min-width: 576px) {
 
   .services .card-body {
-    height: 310px;
+    height: 220px;
   }
 
   .services .card,
@@ -1149,9 +1149,9 @@ red;
 
 @media screen and (min-width: 992px) {
 
-  .services .card-body {
+  /* .services .card-body {
     height: 250px;
-  }
+  } */
   
   .services .card,
   .used-cars .card {

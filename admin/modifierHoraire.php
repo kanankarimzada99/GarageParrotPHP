@@ -49,33 +49,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   //to validate schedule
   if (empty($morningOpen) && empty($morningClose) && empty($afternoonOpen) && empty($afternoonClose)) {
-    echo "<div class='alert alert-danger  m-auto' role='alert'>Vous devez remplir tous les champs.</div>";
+    echo "<div class='alert alert-danger  m-auto mt-3' role='alert'>Vous devez remplir tous les champs.</div>";
     $errorEmpty = true;
   } else {
     //to validate morning
     if ($twoNumbersMorningOpen !== "00" || $twoNumbersMorningClose !== "00") {
 
       if (empty($morningOpen)) {
-        echo "<div class='alert alert-danger  m-auto' role='alert'>L'horaire d'ouverture du matin est requis.</div>";
+        echo "<div class='alert alert-danger  m-auto mt-3' role='alert'>L'horaire d'ouverture du matin est requis.</div>";
         $errorMorningOpen = true;
       } elseif (!preg_match(_REGEX_TIME_, $morningOpen)) {
-        echo "<div class='alert alert-danger  m-auto' role='alert'>Le format d'horaire doit être 00:00. Les lettres ne sont pas accepté.</div>";
+        echo "<div class='alert alert-danger  m-auto mt-3' role='alert'>Le format d'horaire doit être 00:00. Les lettres ne sont pas accepté.</div>";
         $errorMorningOpen = true;
       }
 
       //to validate morning end
       elseif (empty($morningClose)) {
-        echo "<div class='alert alert-danger  m-auto' role='alert'>L'horaire fermeture du matin est requis.</div>";
+        echo "<div class='alert alert-danger  m-auto mt-3' role='alert'>L'horaire fermeture du matin est requis.</div>";
         $errorMorningClose = true;
       } elseif (!preg_match(_REGEX_TIME_, $morningClose)) {
-        echo "<div class='alert alert-danger  m-auto' role='alert'>Le format d'horaire doit être 00:00. Les lettres ne sont pas accepté.</div>";
+        echo "<div class='alert alert-danger  m-auto mt-3' role='alert'>Le format d'horaire doit être 00:00. Les lettres ne sont pas accepté.</div>";
         $errorMorningClose = true;
       } elseif (($twoNumbersMorningOpen == $twoNumbersMorningClose) && ($lastTwoNumbersMorningOpen == $lastTwoNumbersMorningClose)) {
-        echo "<div class='alert alert-danger  m-auto' role='alert'>L'horaire d'ouverture ne peut pas être le même que l'horaire de fermeture.</div>";
-        $errorMorningClose = true;
+        echo "<div class='alert alert-danger  m-auto mt-3' role='alert'>L'horaire d'ouverture ne peut pas être le même que l'horaire de fermeture.</div>";
+        $errorMorningOpen = true;
       } elseif ($twoNumbersMorningOpen > $twoNumbersMorningClose && $twoNumbersMorningClose !== "00") {
-        echo "<div class='alert alert-danger  m-auto' role='alert'>L'horaire d'ouverture ne peut pas être plus grand que l'horaire de fermeture.</div>";
-        $errorMorningClose = true;
+        echo "<div class='alert alert-danger  m-auto mt-3' role='alert'>L'horaire d'ouverture ne peut pas être plus grand que l'horaire de fermeture.</div>";
+        $errorMorningOpen = true;
       }
     }
 
@@ -83,28 +83,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($twoNumbersAfternoonOpen !== "00" && $twoNumbersAfternoonClose !== "00") {
 
       if (empty($afternoonOpen)) {
-        echo "<div class='alert alert-danger  m-auto' role='alert'>L'horaire d'ouverture de l'
+        echo "<div class='alert alert-danger  m-auto mt-3' role='alert'>L'horaire d'ouverture de l'
         après-midi est requis.</div>";
         $errorAfternoonOpen = true;
       } elseif (!preg_match(_REGEX_TIME_, $afternoonOpen)) {
-        echo "<div class='alert alert-danger  m-auto' role='alert'>Le format d'horaire doit être 00:00. Les lettres ne sont pas accepté.</div>";
+        echo "<div class='alert alert-danger  m-auto mt-3' role='alert'>Le format d'horaire doit être 00:00. Les lettres ne sont pas accepté.</div>";
         $errorAfternoonOpen = true;
       } elseif ($twoNumbersAfternoonOpen != "00" && intval($twoNumbersAfternoonOpen) <= intval($twoNumbersMorningClose)) {
-        echo "<div class='alert alert-danger  m-auto' role='alert'>L'horaire d'ouverture de l'après-midi  doit être plus grand que l'horaire de fermeture du matin.</div>";
+        echo "<div class='alert alert-danger  m-auto mt-3' role='alert'>L'horaire d'ouverture de l'après-midi  doit être plus grand que l'horaire de fermeture du matin.</div>";
         $errorAfternoonOpen = true;
       } elseif (empty($afternoonClose)) {
         echo "<div class='alert alert-danger  m-auto' role='alert'>L'horaire fermeture de l'
         après-midi est requis.</div>";
         $errorAfternoonClose = true;
       } elseif (!preg_match(_REGEX_TIME_, $morningClose)) {
-        echo "<div class='alert alert-danger  m-auto' role='alert'>Le format d'horaire doit être 00:00. Les lettres ne sont pas accepté.</div>";
+        echo "<div class='alert alert-danger  m-auto mt-3' role='alert'>Le format d'horaire doit être 00:00. Les lettres ne sont pas accepté.</div>";
         $errorMorningClose = true;
       } elseif (($twoNumbersAfternoonOpen == $twoNumbersAfternoonClose) && ($lastTwoNumbersAfternoonOpen == $lastTwoNumbersAfternoonClose)) {
-        echo "<div class='alert alert-danger  m-auto' role='alert'>L'horaire d'ouverture ne peut pas être le même que l'horaire de fermeture.</div>";
-        $errorAfternoonClose = true;
+        echo "<div class='alert alert-danger  m-auto mt-3' role='alert'>L'horaire d'ouverture ne peut pas être le même que l'horaire de fermeture.</div>";
+        $errorAfternoonOpen = true;
       } elseif ($twoNumbersAfternoonOpen > $twoNumbersAfternoonClose && $twoNumbersAfternoonClose !== "00") {
-        echo "<div class='alert alert-danger  m-auto' role='alert'>L'horaire d'ouverture ne peut pas être plus grand que l'horaire de fermeture.</div>";
-        $errorAfternoonClose = true;
+        echo "<div class='alert alert-danger  m-auto mt-3' role='alert'>L'horaire d'ouverture ne peut pas être plus grand que l'horaire de fermeture.</div>";
+        $errorAfternoonOpen = true;
       }
     }
   }
@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $res = saveSchedule($pdo, $morningOpen, $morningClose, $afternoonOpen, $afternoonClose, $id);
 
     if ($res) {
-      echo  "<div class='alert alert-success  m-auto' role='alert'>L'horaire a bien été sauvegardé.</div>";
+      echo  "<div class='alert alert-success  mx-auto mt-3' role='alert'>L'horaire a bien été sauvegardé.</div>";
 
       $errorEmpty = false;
       $errorMorningOpen = false;
@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       unset($_SESSION['schedule']);
     } else {
-      echo "<div class='alert alert-error  m-auto' role='alert'>L'horaire n'a pas été sauvegardé.</div>";
+      echo "<div class='alert alert-error  mx-auto mt-3' role='alert'>L'horaire n'a pas été sauvegardé.</div>";
     }
   }
 }
@@ -174,10 +174,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $("#moring-open, #morning-close, #afternoon-open", "afternoon-close").val("");
     //hide form
     $(".connection-wrapper").hide();
-
-    // hide message after 3 seconds
-    setTimeout(function() {
-      window.location = '/admin/liste-horaires.php';
-    }, 3000); // <-- time in milliseconds
+    $('#backPage').removeClass('d-none')
   }
 </script>

@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-06-06T11:12:47.254Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="OFjQ0ufac7MUELPmBcc8" version="21.3.6" type="device">
+<mxfile host="Electron" modified="2023-11-13T07:40:06.654Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="KgDLFTZqW66GybLQqbl8" version="21.6.5" type="device">
   <diagram name="Page-1" id="PWhBi2eLa0c5Ziiqytqa">
-    <mxGraphModel dx="1221" dy="620" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2072" dy="1212" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -36,7 +36,7 @@
         <mxCell id="nECvfhJZmOqHD13zfMiE-16" value="Visiteur" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
           <mxGeometry x="743.3083050847457" y="722.0362025316456" width="36.101694915254235" height="72.20354430379747" as="geometry" />
         </mxCell>
-        <mxCell id="nECvfhJZmOqHD13zfMiE-20" value="Modifier information service" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="nECvfhJZmOqHD13zfMiE-20" value="Gérer les informations de service" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="419.99694915254236" y="459.99810126582275" width="144.40677966101694" height="60.16962025316456" as="geometry" />
         </mxCell>
         <mxCell id="nECvfhJZmOqHD13zfMiE-21" value="" style="endArrow=none;html=1;rounded=0;entryX=0.017;entryY=0.39;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="nECvfhJZmOqHD13zfMiE-20" edge="1">
@@ -90,7 +90,7 @@
             <mxPoint x="719.2405084745761" y="782.2058227848102" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="nECvfhJZmOqHD13zfMiE-34" value="Ajouter des nouvelles&lt;br&gt;&amp;nbsp;voitures au site" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+        <mxCell id="nECvfhJZmOqHD13zfMiE-34" value="Gérer les nouvelles&lt;br&gt;&amp;nbsp;voitures au site" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="245" y="160" width="135" height="58.14" as="geometry" />
         </mxCell>
         <mxCell id="nECvfhJZmOqHD13zfMiE-35" value="" style="endArrow=none;html=1;rounded=0;exitX=0.012;exitY=0.414;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="nECvfhJZmOqHD13zfMiE-34" edge="1">
@@ -137,9 +137,6 @@
             <mxPoint x="389" y="203" as="sourcePoint" />
             <mxPoint x="541" y="214" as="targetPoint" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="nECvfhJZmOqHD13zfMiE-59" value="&lt;font color=&quot;#ababab&quot;&gt;Cas d&#39;utilisation - Marcos Meneghetti - Graduate Fullstack&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="486" y="10" width="330" height="30" as="geometry" />
         </mxCell>
         <mxCell id="nECvfhJZmOqHD13zfMiE-62" value="Laisser temoignage" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="564.3999999999999" y="990" width="118.06" height="60.17" as="geometry" />

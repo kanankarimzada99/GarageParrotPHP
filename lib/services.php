@@ -12,7 +12,7 @@ function getServicesById(PDO $pdo, int|string $id): array|bool
 function getServices(PDO $pdo, int $limit = null, int $page = null): array|bool
 {
   //order services by id
-  $sql = "SELECT * FROM services ORDER BY id";
+  $sql = "SELECT * FROM services ORDER BY id DESC";
 
   if ($limit && !$page) {
     $sql .= " LIMIT :limit";

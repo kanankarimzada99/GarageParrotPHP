@@ -22,6 +22,8 @@ if (isset($_GET['id'])) {
   $schedule = getSchedulesById($pdo, $_GET['id']);
   $_SESSION['schedule'] = $schedule;
 }
+
+$_SESSION['token'] = bin2hex(random_bytes(30));
 ?>
 
 <!-- send message by form  -->
@@ -62,7 +64,11 @@ if (isset($_GET['id'])) {
 
     <?php if ($schedule) : ?>
       <!-- messages  -->
-      <div class="form-message flex-column d-flex justify-content-center">
+      <div class="form-message flex-column d-flex justify-content-center mt-3">
+      </div>
+
+      <div class="w-100 text-center mt-5 d-none" id="backPage">
+        <a href="javascript:history.back(1)" class="btn-fill ">Retourner liste horaires</a>
       </div>
 
 
@@ -97,6 +103,7 @@ if (isset($_GET['id'])) {
               </div>
             </fieldset>
           </div>
+          <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
           <div class="form-btn">
             <button type="submit" id="submit" value="modify-schedule" class="btn-fill">Modifier</button>
           </div>
@@ -111,7 +118,7 @@ if (isset($_GET['id'])) {
       </div>
 
       <div class="go-back-page my-3 d-flex justify-content-center">
-        <a href="javascript:history.back(1)" class="btn-wire mb-5">Retour page précédante</a>
+        <a href="javascript:history.back(1)" class="btn-wire mb-5">Retourner liste</a>
       </div>
 
     <?php endif ?>

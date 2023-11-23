@@ -4,10 +4,9 @@ require_once __DIR__ . "/admin/templates/header-admin.php";
 $error = $_SERVER["REDIRECT_STATUS"] ?? null;
 
 $error_title = '';
-$error_message ='';
+$error_message = '';
 
-if($error === '404')
-{
+if ($error === '404') {
   $error_title = "La page que vous recherchez semble introuvable.";
 }
 ?>

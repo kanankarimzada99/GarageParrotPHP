@@ -9,6 +9,7 @@ require_once __DIR__ . "/../lib/services.php";
 require_once __DIR__ . "/templates/header-admin.php";
 $errors = '';
 
+$_SESSION['token'] = bin2hex(random_bytes(30));
 
 $id = null;
 
@@ -46,6 +47,10 @@ if (isset($_GET['id'])) {
       <!-- messages  -->
       <div id="form-message" class="my-3 mt-3 d-flex justify-content-center"></div>
 
+      <div class="w-100 text-center mt-5 d-none" id="backPage">
+        <a href="javascript:history.back(1)" class="btn-fill ">Retourner liste service</a>
+      </div>
+
       <div class="connection-wrapper">
         <form id="modifyService" method="POST" enctype="multipart/form-data">
           <div class="connection-form">
@@ -60,7 +65,7 @@ if (isset($_GET['id'])) {
               <span class="error" id="description_err"></span>
             </div>
             <div id="imgContainer">
-              <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars($service['image'] ?? "") ?>" alt="<?= $service['service'] ?>">
+              <img src="<?= _GARAGE_IMAGES_FOLDER_ . htmlspecialchars($service['image'] ?? "") ?>" alt="<?= $service['service'] ?>" loading="lazy">
               <input type="hidden" name="image" value="<?= htmlspecialchars($service['image'] ?? ""); ?>">
               <div class="checkboxImage">
                 <input type="checkbox" id="imgCar" name="imgCar" value="0" class="col-2 ">
@@ -76,6 +81,7 @@ if (isset($_GET['id'])) {
               </div>
             </div>
           </div>
+          <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
           <div class="form-btn mt-2">
             <button type="button" id="submitbtn" class="btn-fill">Modifier</button>
           </div>
@@ -108,7 +114,7 @@ if (isset($_GET['id'])) {
   </div>
 
   <div class="go-back-page my-3 d-flex justify-content-center">
-    <a href="javascript:history.back(1)" class="btn-wire mb-5">Retour page précédante</a>
+    <a href="javascript:history.back(1)" class="btn-wire mb-5">Retourner liste services</a>
   </div>
 <?php endif ?>
 

@@ -6,7 +6,7 @@ require_once __DIR__ . "/../lib/reviews.php";
 
 
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['token']) && isset($_POST['token']) && $_SESSION['token'] == $_POST['token']) {
 
   $id = null;
 
@@ -76,38 +76,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <script>
-  $("#client, #comment, #note").removeClass("input-error");
+$("#client, #comment, #note").removeClass("input-error");
 
-  //get variable php inside js
-  var errorEmpty = "<?php echo $errorEmpty; ?>";
-  var errorClient = "<?php echo $errorClient; ?>";
-  var errorComment = "<?php echo $errorComment; ?>";
-  var errorNote = "<?php echo $errorNote; ?>";
-
-
-  if (errorEmpty == true) {
-    $("#client, #comment, #note").addClass("input-error");
-  }
-  if (errorClient == true) {
-    $("#client").addClass("input-error");
-  }
-  if (errorComment == true) {
-    $("#comment").addClass("input-error");
-  }
-  if (errorNote == true) {
-    $("#note").addClass("input-error");
-  }
+//get variable php inside js
+var errorEmpty = "<?php echo $errorEmpty; ?>";
+var errorClient = "<?php echo $errorClient; ?>";
+var errorComment = "<?php echo $errorComment; ?>";
+var errorNote = "<?php echo $errorNote; ?>";
 
 
-  if (errorEmpty == false && errorClient == false && errorComment == false && errorNote == false) {
-    $("#client, #comment, #note").val("");
-    //hide form
-    $(".connection-wrapper").hide();
-    //hide message after 3 seconds
-    setTimeout(function() {
-      // $('.form-message').hide();
-      window.location = '/admin/liste-avis.php';
+if (errorEmpty == true) {
+  $("#client, #comment, #note").addClass("input-error");
+}
+if (errorClient == true) {
+  $("#client").addClass("input-error");
+}
+if (errorComment == true) {
+  $("#comment").addClass("input-error");
+}
+if (errorNote == true) {
+  $("#note").addClass("input-error");
+}
 
-    }, 3000); // <-- time in milliseconds
-  }
+
+if (errorEmpty == false && errorClient == false && errorComment == false && errorNote == false) {
+  $("#client, #comment, #note").val("");
+  //hide form
+  $(".connection-wrapper").hide();
+  $('#backPage').removeClass('d-none')
+}
 </script>
