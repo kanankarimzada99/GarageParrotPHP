@@ -45,9 +45,9 @@ if (isset($_GET['id'])) {
     <?php if ($service) : ?>
 
       <!-- messages  -->
-      <div id="form-message" class="my-3 mt-3 d-flex justify-content-center"></div>
+      <div id="form-message" class="my-3 mt-3 d-flex  flex-wrap justify-content-center"></div>
 
-      <div class="w-100 text-center mt-5 d-none" id="backPage">
+      <div class="w-100 text-center mt-4 d-none" id="backPage">
         <a href="javascript:history.back(1)" class="btn-fill ">Retourner liste service</a>
       </div>
 
@@ -108,7 +108,7 @@ if (isset($_GET['id'])) {
 <script src="../assets/scripts/modifyServiceForm.js"></script>
 
 <?php else : ?>
-  <div id="form-message" class="d-flex justify-content-center">
+  <div id="form-message" class="d-flex  flex-wrap justify-content-center">
     <div class='d-flex justify-content-center  alert alert-danger mt-5 mb-3 mx-auto' role='alert'>Ce service n'existe
       pas</div>
   </div>

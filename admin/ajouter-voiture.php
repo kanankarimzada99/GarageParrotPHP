@@ -28,7 +28,7 @@ $_SESSION['token'] = bin2hex(random_bytes(30));
     <!-- messages  -->
     <div id="form-message" class="my-3 mt-3 mx-2 d-flex flex-wrap justify-content-center"></div>
 
-    <div class="w-100 text-center mt-5 d-none" id="backPage">
+    <div class="w-100 text-center mt-4 d-none" id="backPage">
       <a href="javascript:history.back(1)" class="btn-fill ">Retourner liste voiture</a>
     </div>
 

@@ -41,7 +41,7 @@ if ($employee) {
   <section class="connection sections" id="connection ">
 
     <!-- messages  -->
-    <div id="form-message" class="my-3 mt-3 d-flex justify-content-center">
+    <div id="form-message" class="my-3 mt-3 d-flex  flex-wrap justify-content-center">
 
       <?php foreach ($messages as $message) { ?>
         <div class="alert alert-success m-0" role="alert">

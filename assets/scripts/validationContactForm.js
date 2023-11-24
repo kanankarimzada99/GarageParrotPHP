@@ -145,7 +145,7 @@ function checkPhone() {
 }
 
 function checkSubject() {
-  var patternSubject = /^[0-9a-zA-ZÀ-ÿ\s?\.\,\;\"\'\d]{10,60}/
+  var patternSubject = /^[0-9a-zA-ZÀ-ÿ\-\s?\.\,\;\"\'\d]{10,60}/
   var subject = $('#subject').val()
   var validSubject = patternSubject.test(subject)
   if (subject.trim() === '') {

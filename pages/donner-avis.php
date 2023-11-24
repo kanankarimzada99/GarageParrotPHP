@@ -39,14 +39,12 @@ $id = null;
         <div class="connection-form">
           <div class="form-group">
             <label for="client">Votre nom</label>
-            <input type="text" name="client" id="client" minlength="5" maxlength="50" placeholder="Dupont Jean-Charles"
-              autocomplete="off">
+            <input type="text" name="client" id="client" minlength="5" maxlength="50" placeholder="Dupont Jean-Charles" autocomplete="off">
             <span class="error" id="client_err"> </span>
           </div>
           <div class="form-group">
             <label for="comment">Votre commentaire</label>
-            <textarea name="comment" id="comment" class="comment" cols="30" rows="5" minlength="15"
-              maxlength="250"> </textarea>
+            <textarea name="comment" id="comment" class="comment" cols="30" rows="5" minlength="15" maxlength="250"> </textarea>
             <span class="error" id="comment_err"> </span>
           </div>
 

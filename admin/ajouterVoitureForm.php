@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['token']) && isset($
         // Validate the file size
         if ($file_size > $max_size) {
           // File size is too large, add an error message
-          echo '<div class="alert alert-danger d-inline mt-3  mx-1" role="alert">Image ' . $file_name . 'est trop grand. Elle n\'été pas sauvegardée. Le maximum est ' . filesize($max_size) . '.' . '</div>';
+          echo '<div class="alert alert-danger d-inline mt-3  mx-1" role="alert">Image ' . $file_name . ' est trop grand. Elle n\'été pas sauvegardée. Le maximum est ' . filesize($max_size) . '.' . '</div>';
           $errorImage = true;
           continue; // Skip this file
         }
@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['token']) && isset($
         // Validate the file type
         if (!in_array($file_type, $allowed_types)) {
           // File type is not allowed, add an error message
-          echo '<div class="alert alert-danger d-inline mt-3  mx-1" role="alert">Image ' . $file_name . 'n\'est pas valide.</div>';
+          echo '<div class="alert alert-danger d-inline mt-3  mx-1" role="alert">Image ' . $file_name . ' n\'est pas valide.</div>';
           $errorImage = true;
           continue; // Skip this file
         }
@@ -151,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['token']) && isset($
         // Validate the file is an image
         if (!getimagesize($_FILES['images']['tmp_name'][$i])) {
           // File is not an image, add an error message
-          echo '<div class="alert alert-danger d-inline mt-3  mx-1" role="alert">Image ' . $file_name . 'n\'est pas valide.</div>';
+          echo '<div class="alert alert-danger d-inline mt-3  mx-1" role="alert">Image ' . $file_name . ' n\'est pas valide.</div>';
           $errorImage = true;
           continue; // Skip this file
         }

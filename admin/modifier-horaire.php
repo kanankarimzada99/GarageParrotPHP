@@ -64,10 +64,10 @@ $_SESSION['token'] = bin2hex(random_bytes(30));
 
     <?php if ($schedule) : ?>
       <!-- messages  -->
-      <div class="form-message flex-column d-flex justify-content-center mt-3">
+      <div class="form-message flex-column d-flex flex-wrap justify-content-center mt-3">
       </div>
 
-      <div class="w-100 text-center mt-5 d-none" id="backPage">
+      <div class="w-100 text-center mt-4 d-none" id="backPage">
         <a href="javascript:history.back(1)" class="btn-fill ">Retourner liste horaires</a>
       </div>
 
@@ -111,7 +111,7 @@ $_SESSION['token'] = bin2hex(random_bytes(30));
       </div>
 
     <?php else : ?>
-      <div id="form-message" class="d-flex justify-content-center">
+      <div id="form-message" class="d-flex  flex-wrap justify-content-center">
         <div class='d-flex justify-content-center  alert alert-danger mt-5 mb-3 mx-auto' role='alert'>Cette horaire
           n'existe
           pas</div>
